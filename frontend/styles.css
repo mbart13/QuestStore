@@ -69,11 +69,14 @@ label[for="username"], label[for="password"] {
     margin: 0em 8em;
     height: 100vh;
     transform: skewX(-8deg);
-
 }
 
 .left-section-item {
-    margin-bottom: .5em;
+    margin-bottom: 1em;
+}
+
+.input-fields {
+    text-align: left;
 }
 
 .btn-main-page { 
@@ -86,7 +89,6 @@ label[for="username"], label[for="password"] {
     font-family: 'BLAME Regular';
     padding: 0;
 }
-
 
 .btn-login {
     position: relative;
