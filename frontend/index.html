@@ -1,10 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <title>Quest Store</title>
 </head>
+
 <body>
 
+
+    <section class="left-section-container">
+
+        <div class="main-section">
+
+            <div class="main-section-item title">
+                <h1 class="title-item quest">QUEST</h1>
+                <h1 class="title-item store">STORE</h1>
+            </div>
+
+            <form class="main-section-item">
+                <div class="input-field">
+                    <label for="username">Username</label><br>
+                    <input class="input-login" id="username" name="username" type="text" placeholder="dominik-san"
+                        required>
+                </div>
+
+                <div class="input-field">
+                    <label for="password">Password</label><br>
+                    <input class="input-login" id="password" name="password" type="password" placeholder="password"
+                        required>
+                </div>
+
+                <div class="main-section-item btn-container">
+                    <div>
+                        <button class="btn-main-page btn-login" type="submit"><span>Log in</span></button>
+                    </div>
+                    <div>
+                        <button class="btn-main-page btn-forgotten-password" type="submit">Forgotten password</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
 </body>
+
 </html>
