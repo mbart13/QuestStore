@@ -9,7 +9,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-  }
+}
 
 body {
     background-image: url("Assets/background-image.jpg");
@@ -46,9 +46,6 @@ label[for="username"], label[for="password"] {
     text-align: left;
 }
 
-.input-field {
-    text-align: left;
-}
 
 .btn-container {
     text-align: right;
@@ -65,7 +62,7 @@ label[for="username"], label[for="password"] {
 
 }
 
-.main-section {
+.left-section {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -75,7 +72,7 @@ label[for="username"], label[for="password"] {
 
 }
 
-.main-section-item {
+.left-section-item {
     margin-bottom: .5em;
 }
 
@@ -112,5 +109,6 @@ input {
     border: none;
     padding: .6em;
     min-width: 100%;
+    text-align: left;
 }
 
