@@ -1,4 +1,5 @@
 body.welcome-page {
+    display: initial;
     background-image: url("Assets/background-image.jpg");
     font-family: 'BLAME Regular';
 }

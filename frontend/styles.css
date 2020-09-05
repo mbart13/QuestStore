@@ -17,12 +17,11 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background:
-        linear-gradient(
-        rgba(0, 0, 0, 0.7),
-        rgba(0, 0, 0, 0.7)
-        ),
-        url("Assets/background-image.jpg");
+    background: linear-gradient(
+            rgba(0, 0, 0, 0.7),
+            rgba(0, 0, 0, 0.7)
+    ),
+    url("Assets/background-image.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
