@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&display=swap');
+
 @font-face {
     font-family: 'BLAME Regular';
     font-style: normal;
@@ -23,11 +25,6 @@ body {
     background-attachment: fixed;
     background-size: cover;
 
-}
-
-body.welcome-page {
-    background-image: url("Assets/background-image.jpg");
-    font-family: 'BLAME Regular';
 }
 
  
