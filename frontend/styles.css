@@ -12,6 +12,9 @@
 }
 
 body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background:
         linear-gradient(
         rgba(0, 0, 0, 0.7),
@@ -22,10 +25,11 @@ body {
     background-position: center;
     background-attachment: fixed;
     background-size: cover;
-
+    font-family: 'Cardo';
 }
 
 body.welcome-page {
+    align-items: normal;
     background-image: url("Assets/background-image.jpg");
     font-family: 'BLAME Regular';
 }
@@ -124,3 +128,21 @@ input {
     text-align: left;
 }
 
+content-view {
+    width: 800px;
+    max-width: 100%;
+
+}
+
+/* FOOTER */
+
+.footer {
+    width: 800px;
+    max-width: 100%;
+}
+
+.footer p {
+    color: #D3D3D3;
+    text-align: center;
+    font-size: 1.5em;
+}
