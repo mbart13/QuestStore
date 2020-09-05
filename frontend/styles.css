@@ -13,7 +13,7 @@
     padding: 0;
 }
 
-body {
+body.page {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -32,6 +32,7 @@ body {
 #content-view {
     width: 800px;
     max-width: 100%;
+    margin-top: 4.2em;
 }
 
 #content {
@@ -43,6 +44,22 @@ body {
 #content div {
     margin: 6px 0;
     border-radius: 5px;
+}
+
+/* HEADER */
+
+#header {
+    display: flex;
+    flex-flow: row nowrap;
+    background-color: #001513;
+    padding: 1.7em 0 0.5em 0;
+    width: 100%;
+    position: fixed;
+}
+
+#header h1 {
+    font-family: 'BLAME Regular';
+    color: #D3D3D3;
 }
 
 /* FOOTER */
