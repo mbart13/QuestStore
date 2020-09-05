@@ -87,12 +87,19 @@ body.page {
 
 .header-menu-option {
     min-width: 50px;
-    margin: 0 5px;
+    padding: 0 5px;
     color: #D3D3D3;
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-between;
     align-items: center;
+    border-style: solid;
+    border-radius: 3px;
+    border-color: transparent;
+}
+
+.header-menu-option:hover {
+    border-color: #D3D3D3;
 }
 
 svg path {
