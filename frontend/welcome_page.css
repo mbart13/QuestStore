@@ -6,17 +6,16 @@ body.welcome-page {
 
 .title {
     color: #550609;
-    font-size: 2.7rem;
+    font-size: 5vh;
     font-weight: normal;
 }
 
 .title-item {
     margin: 0;
-}
-
-.title-item.quest {
     text-align: left;
 }
+
+
 
 .title-item.store {
     text-align: right;
@@ -25,7 +24,7 @@ body.welcome-page {
 
 label[for="username"], label[for="password"] {
     color: #01342F;
-    font-size: 1.5em;
+    font-size: 3vh;
     text-align: left;
 }
 
@@ -75,7 +74,7 @@ label[for="username"], label[for="password"] {
 
 .btn-login {
     position: relative;
-    font-size: 2rem;
+    font-size: 2vh;
     margin-bottom: 1.3em;    
 }
 
@@ -86,7 +85,7 @@ label[for="username"], label[for="password"] {
 }
 
 .btn-forgotten-password {
-    font-size: 1rem;
+    font-size: 1.5vh;
 
 }
 
