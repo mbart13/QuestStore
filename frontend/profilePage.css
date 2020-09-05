@@ -1,17 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&display=swap');
+
+@font-face {
+    font-family: 'BLAME Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: url('Assets/Blame-Z15z.ttf') format('truetype');
+}
+
 .user-profile {
     display: grid;
-    grid-template-columns: 50% 50%;
-    background-color: grey;
-    padding: 10px;
-    margin: 0px;
-    grid-gap: 0px;
+/*    grid-template-columns: 50% 50%; */
+    grid-template-columns: 50% auto;
+    padding: 0px;
+    grid-gap: 10px 10px;
+    margin-bottom: 10px;
+
+
 }
 
 .user-profile > div {
     background-color: rgba(255, 255, 255, 0.8);
     border: 1px solid rgba(0, 0, 0, 0.8);
     text-align: center;
-    padding: 20px;
+    padding: 10px;
     font-size: 30px;
 }
 
@@ -19,7 +30,7 @@
 
   grid-column-start: 1;
   grid-column-end: 3;
-  height: 440px;
+  min-height: 440px;
   left: 0px;
   right: 0px;
   top: 100px;
@@ -30,13 +41,132 @@
 
     display: grid;
     grid-template-columns: 33% auto 33%;
+  padding: 120px;
+  margin: 0px;
+  grid-gap: 10px 10px;
+
 }
 
 .user-info-item {
-    background-color: rgba(255, 255, 255, 0.8);
+    background: #B2B2B2;
     border: 1px solid rgba(0, 0, 0, 0.8);
     text-align: center;
-    padding: 20px;
+    padding: 10px;
     font-size: 30px;
+    margin: 0px;
+}
+
+.profile-picture img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.user-data {
+    display: grid;
+    grid-template-columns: auto;
 
 }
+
+.info-block {
+    margin: 10px;
+    text-align: left;
+    font-family: Cardo;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 45px;
+
+color: #000000;
+
+}
+
+/* Rank */
+
+.user-rank p {
+
+    padding-top: 15px;
+    font-family: 'BLAME Regular';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 25px;
+    text-align: center;
+    border: 10px solid #001513;
+
+    color: #000000;
+}
+
+.bold {
+
+    font-weight: bold;
+}
+
+/* Solid border */
+hr.solid {
+  height:2px;
+  border-width:0;
+  color:#000000;
+  background-color:#000000;
+}
+
+/*---------------------------------------------------*/
+@import "lesshat";
+
+.wrapper {
+  width:300px;
+  margin:100px auto;
+}
+
+.irregularShape {
+	border-bottom: 100px solid tomato;
+	border-left: 30px solid transparent;
+	border-right:30px solid transparent;
+  border-top:15px solid transparent;
+	height: 0;
+	width: 200px;
+  transform: rotate(-5deg);
+  -ms-transform: rotate(-5deg); /* IE 9 */
+  -webkit-transform: rotate(-5deg); /* Safari and Chrome */
+  cursor:pointer;
+     p {
+      position:absolute;
+      top:10px;
+      z-index:10;
+      transform: rotate(5deg);
+      -ms-transform: rotate(5deg); /* IE 9 */
+      -webkit-transform: rotate(5deg); /* Safari and Chrome */
+      font-family:arial, san-serif;
+      font-weight:bold;
+      font-size:30px;
+      color:#fff;
+      left:30%;
+  }
+  &:hover {
+    border-bottom: 100px solid darken(tomato,6%);
+    &:after {
+      	border-bottom: 100px solid darken(tomato,6%);
+    }
+
+  }
+}
+
+#irregularShape:after {
+  content: "";
+	border-bottom: 100px solid tomato;
+	border-left: 30px solid transparent;
+	border-right:42px solid transparent;
+  border-top:20px solid transparent;
+	height: 0;
+	width: 198px;
+  display: block;
+  left:0;
+  margin-left:-25px;
+  margin-top:-8px;
+  transform: rotate(5deg);
+  -ms-transform: rotate(5deg); /* IE 9 */
+  -webkit-transform: rotate(5deg); /* Safari and Chrome */
+
+}
+
+
