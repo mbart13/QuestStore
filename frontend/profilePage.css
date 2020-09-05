@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&display=swap');
+
+@font-face {
+    font-family: 'BLAME Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: url('Assets/Blame-Z15z.ttf') format('truetype');
+}
+
+.user-profile {
+    display: grid;
+/*    grid-template-columns: 50% 50%; */
+    grid-template-columns: 50% auto;
+    padding: 0px;
+    grid-gap: 10px 10px;
+    margin-bottom: 10px;
+
+
+}
+
+.user-profile > div {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    text-align: center;
+    padding: 10px;
+    font-size: 30px;
+}
+
+.user-info {
+
+  grid-column-start: 1;
+  grid-column-end: 3;
+  min-height: 440px;
+  left: 0px;
+  right: 0px;
+  top: 100px;
+
+  background: linear-gradient(125.39deg, #001513 26.03%, #550609 49.2%, #001513 67.85%);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+
+    display: grid;
+    grid-template-columns: 33% auto 33%;
+  padding: 120px;
+  margin: 0px;
+  grid-gap: 10px 10px;
+
+}
+
+.user-info-item {
+    background: #B2B2B2;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    text-align: center;
+    padding: 10px;
+    font-size: 30px;
+    margin: 0px;
+}
+
+.profile-picture img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.user-data {
+    display: grid;
+    grid-template-columns: auto;
+
+}
+
+.info-block {
+    margin: 10px;
+    text-align: left;
+    font-family: Cardo;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 45px;
+
+color: #000000;
+
+}
+
+/* Rank */
+
+.user-rank p {
+
+    padding-top: 15px;
+    font-family: 'BLAME Regular';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 25px;
+    text-align: center;
+    border: 10px solid #001513;
+
+    color: #000000;
+}
+
+.bold {
+
+    font-weight: bold;
+}
+
+/* Solid border */
+hr.solid {
+  height:2px;
+  border-width:0;
+  color:#000000;
+  background-color:#000000;
+}
+
+/*---------------------------------------------------*/
+
+.wrapper {
+  width: auto;
+  margin:0px auto;
+
+}
+
+.irregularShape {
+	border-bottom: 60px solid #550609;
+	border-left: 0px solid transparent;
+	border-right:25px solid transparent;
+    border-top: 0px solid transparent;
+	height: 0;
+	width: 200px;
+	background: 0;
+
+    padding-top: 0px;
+	font-family: 'BLAME Regular';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 15px;
+
+    text-align: center;
+
+    color: #FFFFFF;
+  }
+
+.button-spacing {
+    display: grid;
+    grid-template-columns: auto;
+
+}
+
+.irregularShape:hover {
+	border-bottom: 60px solid #001513;
+	border-left: 0px solid transparent;
+	border-right:25px solid transparent;
+    border-top: 0px solid transparent;
+}
+
+.aux-container {
+  min-height: 150px;
+  left: 0px;
+  right: 0px;
+  top: 100px;
+
+  background: linear-gradient(125.39deg, #001513 26.03%, #550609 49.2%, #001513 67.85%);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+
+}
+
+
+
