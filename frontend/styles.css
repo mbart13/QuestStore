@@ -40,7 +40,7 @@ body {
     align-items: stretch;
 }
 
-#content div {
+#content div.container {
     margin: 6px 0;
     border-radius: 5px;
 }

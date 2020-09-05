@@ -1,0 +1,42 @@
+.user-profile {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    background-color: grey;
+    padding: 10px;
+    margin: 0px;
+    grid-gap: 0px;
+}
+
+.user-profile > div {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    text-align: center;
+    padding: 20px;
+    font-size: 30px;
+}
+
+.user-info {
+
+  grid-column-start: 1;
+  grid-column-end: 3;
+  height: 440px;
+  left: 0px;
+  right: 0px;
+  top: 100px;
+
+  background: linear-gradient(125.39deg, #001513 26.03%, #550609 49.2%, #001513 67.85%);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+
+    display: grid;
+    grid-template-columns: 33% auto 33%;
+}
+
+.user-info-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    text-align: center;
+    padding: 20px;
+    font-size: 30px;
+
+}
