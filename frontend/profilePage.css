@@ -111,62 +111,46 @@ hr.solid {
 }
 
 /*---------------------------------------------------*/
-@import "lesshat";
 
 .wrapper {
-  width:300px;
-  margin:100px auto;
+  width: auto;
+  margin:0px auto;
+
 }
 
 .irregularShape {
-	border-bottom: 100px solid tomato;
-	border-left: 30px solid transparent;
-	border-right:30px solid transparent;
-  border-top:15px solid transparent;
+	border-bottom: 60px solid #550609;
+	border-left: 0px solid transparent;
+	border-right:25px solid transparent;
+    border-top: 0px solid transparent;
 	height: 0;
 	width: 200px;
-  transform: rotate(-5deg);
-  -ms-transform: rotate(-5deg); /* IE 9 */
-  -webkit-transform: rotate(-5deg); /* Safari and Chrome */
-  cursor:pointer;
-     p {
-      position:absolute;
-      top:10px;
-      z-index:10;
-      transform: rotate(5deg);
-      -ms-transform: rotate(5deg); /* IE 9 */
-      -webkit-transform: rotate(5deg); /* Safari and Chrome */
-      font-family:arial, san-serif;
-      font-weight:bold;
-      font-size:30px;
-      color:#fff;
-      left:30%;
-  }
-  &:hover {
-    border-bottom: 100px solid darken(tomato,6%);
-    &:after {
-      	border-bottom: 100px solid darken(tomato,6%);
-    }
+	background: 0;
 
+    padding-top: 0px;
+	font-family: 'BLAME Regular';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 15px;
+
+    text-align: center;
+
+    color: #FFFFFF;
   }
+
+.button-spacing {
+    display: grid;
+    grid-template-columns: auto;
+
 }
 
-#irregularShape:after {
-  content: "";
-	border-bottom: 100px solid tomato;
-	border-left: 30px solid transparent;
-	border-right:42px solid transparent;
-  border-top:20px solid transparent;
-	height: 0;
-	width: 198px;
-  display: block;
-  left:0;
-  margin-left:-25px;
-  margin-top:-8px;
-  transform: rotate(5deg);
-  -ms-transform: rotate(5deg); /* IE 9 */
-  -webkit-transform: rotate(5deg); /* Safari and Chrome */
-
+.irregularShape:hover {
+	border-bottom: 60px solid #001513;
+	border-left: 0px solid transparent;
+	border-right:25px solid transparent;
+    border-top: 0px solid transparent;
 }
+
 
 
