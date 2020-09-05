@@ -1,13 +1,12 @@
 body.welcome-page {
     display: initial;
     background-image: url("Assets/background-image-shadow.jpg");
-    font-family: Cardo;
+    font-family: 'BLAME Regular';
 }
 
 .title-item {
     color: #550609;
     font-size: 8vh;
-    font-family: 'BLAME Regular';
     margin: 0;
     text-align: left;
 }
@@ -30,6 +29,7 @@ label[for="username"], label[for="password"] {
     font-size: 3vh;
     text-align: left;
     font-weight: bold;
+    font-family: inherit;
 }
 
 
@@ -63,16 +63,17 @@ label[for="username"], label[for="password"] {
 }
 
 .btn-main-page { 
+    clip-path: polygon(0 0, 95% 0, 100% 100%, 0% 100%);    
     outline: none;
     cursor: pointer;
-    background-color: transparent;
-    color: #550609;
+    background-color: #550609;
+    color: white;
     border: 5px solid #550609;
-    padding: 0;
     font-weight: bold;
     width: 80%;
-    padding: .2em
-    
+    padding-top: .8em;
+    padding-bottom: .2em;
+    font-family: inherit;
 }
 
 .btn-login {
@@ -82,9 +83,8 @@ label[for="username"], label[for="password"] {
 }
 
 .btn-main-page:hover {
-    color: #01342F;
-    border: 5px solid #01342F;
-    background-color: rgb(175, 170, 170);
+    background-color: #7e5556;
+    border: 5px solid #7e5556;
 }
 
 .btn-forgotten-password {
@@ -103,6 +103,13 @@ input {
     text-align: left;
 }
 
-.input-login {
+.input-field {
     margin-bottom: 1em
+}
+
+.left-section-item h1 {
+    margin-bottom: .4em;
+}
+.input-field-container {
+    margin-bottom: 1em;
 }
