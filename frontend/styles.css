@@ -13,7 +13,7 @@
     padding: 0;
 }
 
-body {
+body.page {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -32,6 +32,7 @@ body {
 #content-view {
     width: 800px;
     max-width: 100%;
+    margin-top: 90px;
 }
 
 #content {
@@ -43,6 +44,65 @@ body {
 #content div.container {
     margin: 6px 0;
     border-radius: 5px;
+}
+
+/* HEADER */
+
+#header {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    background-color: #001513;
+    padding: 0.5em 0;
+    height: 80px;
+    width: 100%;
+    position: fixed;
+}
+
+#header-left {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+#header h1 {
+    font-size: 40px;
+    font-family: 'BLAME Regular';
+    color: #D3D3D3;
+    align-self: flex-end;
+    padding: 0 0.7em;
+}
+
+.search-field {
+    background-color: #D3D3D3;
+    width: 700px;
+    max-width: 100%;
+    clip-path: polygon(0 0, 95% 0, 100% 100%, 0% 100%);
+    border-radius: 5px;
+}
+
+.header-menu {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.header-menu-option {
+    min-width: 50px;
+    margin: 0 5px;
+    color: #D3D3D3;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+svg path {
+    fill-opacity: 0;
+}
+
+.menu-icon {
+    fill: #D3D3D3;
+    fill-opacity: 1;
+
 }
 
 /* FOOTER */

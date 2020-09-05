@@ -1,61 +1,61 @@
 body.welcome-page {
     display: initial;
     background-image: url("Assets/background-image.jpg");
-    font-family: 'BLAME Regular';
-}
-
-.title {
-    color: #550609;
-    font-size: 2.7rem;
-    font-weight: normal;
+    font-family: Cardo;
 }
 
 .title-item {
+    color: #550609;
+    font-size: 8vh;
+    font-family: 'BLAME Regular';
     margin: 0;
-}
-
-.title-item.quest {
     text-align: left;
 }
 
-.title-item.store {
-    text-align: right;
-
+.title {
+    text-align: center;
 }
+
+.title.quest {
+    text-align: left;
+}
+
+.title.store {
+    text-align: right;
+}
+
 
 label[for="username"], label[for="password"] {
     color: #01342F;
-    font-size: 1.5em;
+    font-size: 3vh;
     text-align: left;
+    font-weight: bold;
 }
 
 
 .btn-container {
     text-align: right;
     margin-top: 3em;
-
 }
 
 .left-section-container {
     width: 37vw;
-    background-color: rgba(129,135,133,.5);
     height: 100vh;
     text-align: center;
-    transform: skewX(8deg);
-
 }
 
 .left-section {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 0em 8em;
+    margin: 0em 5em;
     height: 100vh;
-    transform: skewX(-8deg);
+    position: fixed;
 }
 
 .left-section-item {
-    margin-bottom: 1em;
+    margin-bottom: 2em;
+
 }
 
 .input-fields {
@@ -63,19 +63,21 @@ label[for="username"], label[for="password"] {
 }
 
 .btn-main-page { 
-    min-width: 80%;
     outline: none;
     cursor: pointer;
     background-color: transparent;
     color: #550609;
     border: 5px solid #550609;
-    font-family: 'BLAME Regular';
     padding: 0;
+    font-weight: bold;
+    width: 80%;
+    padding: .2em
+    
 }
 
 .btn-login {
     position: relative;
-    font-size: 2rem;
+    font-size: 1.7em;
     margin-bottom: 1.3em;    
 }
 
@@ -86,13 +88,21 @@ label[for="username"], label[for="password"] {
 }
 
 .btn-forgotten-password {
-    font-size: 1rem;
+    font-size: 1em;
+}
 
+form.left-section-item {
+    width: 100%;
 }
 
 input {
     border: none;
     padding: .6em;
-    min-width: 100%;
+    width: 100%;
+    min-width: 20em;
     text-align: left;
+}
+
+.input-login {
+    margin-bottom: 1em
 }
