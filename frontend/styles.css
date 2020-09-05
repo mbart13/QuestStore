@@ -65,10 +65,11 @@ body.page {
 }
 
 #header h1 {
+    font-size: 40px;
     font-family: 'BLAME Regular';
     color: #D3D3D3;
     align-self: flex-end;
-    padding: 0 1em;
+    padding: 0 0.7em;
 }
 
 .search-field {
@@ -85,19 +86,23 @@ body.page {
 }
 
 .header-menu-option {
-    margin: 0 10px;
+    min-width: 50px;
+    margin: 0 5px;
     color: #D3D3D3;
     display: flex;
     flex-flow: column nowrap;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 
+svg path {
+    fill-opacity: 0;
+}
+
 .menu-icon {
-    height: 50px;
-    width: 50px;
-    color: #D3D3D3;
-    background-color: transparent;
+    fill: #D3D3D3;
+    fill-opacity: 1;
+
 }
 
 /* FOOTER */
