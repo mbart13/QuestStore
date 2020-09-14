@@ -1,30 +1,40 @@
-body.welcome-page {
+.page.welcome-page {
   display: initial;
   background-image: url("Assets/background-image-shadow.jpg");
   font-family: "BLAME Regular";
 }
 
-.title-item {
-  color: #550609;
-  font-size: 8vh;
-  margin: 0;
-  text-align: left;
+.main-section-container {
+  width: 37vw;
+  height: 100vh;
 }
+
+ .main-section {
+  height: 100vh;
+  margin: 0em 4em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+} 
 
 .title {
-  text-align: center;
+  font-size: 8vh;
+  color: #550609;
 }
 
-.title.quest {
-  text-align: left;
+.title .store::before {
+  content: "|\00a0\00a0\00a0";
 }
 
-.title.store {
-  text-align: right;
+.main-section-item {
+  width: 100%;
+  margin-bottom: 4vh;
 }
 
-label[for="username"],
-label[for="password"] {
+
+label {
   color: #01342f;
   font-size: 3vh;
   text-align: left;
@@ -32,36 +42,31 @@ label[for="password"] {
   font-family: inherit;
 }
 
+.login {
+  padding: 0.6em;
+  width: 100%;
+  min-width: 20em;
+  text-align: left;
+}
+
+.input-field {
+  border: none;
+  outline: none;
+  width: 100%;
+  padding: 0.6em;
+}
+
+.input-item {
+  margin-bottom: .5em;
+}
+
 .btn-container {
   text-align: right;
   margin-top: 3em;
 }
 
-.left-section-container {
-  width: 37vw;
-  height: 100vh;
-  text-align: center;
-}
-
-.left-section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 0em 5em;
-  height: 100vh;
-  position: fixed;
-}
-
-.left-section-item {
-  margin-bottom: 2em;
-}
-
-.input-fields {
-  text-align: left;
-}
-
 .btn-main-page {
-  clip-path: polygon(0 0, 95% 0, 100% 100%, 0% 100%);
+  clip-path: polygon(0 0, 90% 0, 100% 100%, 0% 100%);
   outline: none;
   cursor: pointer;
   background-color: #550609;
@@ -89,25 +94,31 @@ label[for="password"] {
   font-size: 1em;
 }
 
-form.left-section-item {
-  width: 100%;
-}
+@media screen and (max-width: 420px) {
+  .main-section-container {
+    width: 100vw;
+    height: 100vh;
+  }
 
-input {
-  border: none;
-  padding: 0.6em;
-  width: 100%;
-  min-width: 20em;
-  text-align: left;
-}
+  .main-section {
+    margin: 0 auto;
+    width: 100%;
+  }
 
-.input-field {
-  margin-bottom: 1em;
-}
+  .title .store::before {
+    content: "";
+  }
 
-.left-section-item h1 {
-  margin-bottom: 0.1em;
-}
-.input-field-container {
-  margin-bottom: 1em;
+  .title {
+    text-align: center;
+  }
+
+  .btn-container {
+    text-align: center;
+  }
+
+  .login {
+    text-align: center;
+  }
+
 }
