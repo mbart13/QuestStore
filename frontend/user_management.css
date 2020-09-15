@@ -1,5 +1,8 @@
 .users-list {
-    background: linear-gradient(125.39deg, #001513 26.03%, #550609 49.2%, #001513 67.85%);
+  background: linear-gradient(125.39deg, #001513 26.03%, #550609 49.2%, #001513 67.85%);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
+  inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
 }
 
 .users-list .header {
@@ -13,7 +16,14 @@
     float: right;
     margin-right: 0.5em;
     margin-top: .2em;
+    transition: color .2s;
   }
+
+
+.fa-plus:hover {
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+}
 
 .fa-sort {
     color: white;
@@ -28,7 +38,7 @@ table {
 }
 
 th {
-    height: 50px;
+    height: 40px;
     text-align: center;
 }
 
@@ -36,7 +46,7 @@ td {
     height: 30px;
     text-align: center;
     padding: .8em;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #D3D3D3;
     font-size: .8rem;
 }
 
@@ -44,6 +54,9 @@ thead {
     background-color: #D3D3D3;
     width: 100%;
     padding: 2em;
+    font-size: 0.9rem;
+    font-weight: bold;
+
 }
 
 tbody {
