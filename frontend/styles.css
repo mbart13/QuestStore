@@ -106,6 +106,7 @@ svg path {
 .menu-icon {
   fill: #d3d3d3;
   fill-opacity: 1;
+  background-size: 40px 60px;
 }
 
 /* FOOTER */
