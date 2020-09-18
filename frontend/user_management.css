@@ -13,6 +13,7 @@
 }
 
 .fa-plus {
+    color: #D3D3D3;
     float: right;
     margin-right: 0.5em;
     margin-top: .2em;
@@ -47,15 +48,16 @@ td {
     text-align: center;
     padding: .8em;
     border-bottom: 1px solid #D3D3D3;
-    font-size: .8rem;
+    font-size: .9rem;
 }
 
 thead {
     background-color: #D3D3D3;
     width: 100%;
     padding: 2em;
-    font-size: 0.9rem;
+    font-size: .9rem;
     font-weight: bold;
+    border-bottom: 1px solid #D3D3D3;
 
 }
 
