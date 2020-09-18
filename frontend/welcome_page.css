@@ -71,7 +71,7 @@ label {
   cursor: pointer;
   background-color: #550609;
   color: white;
-  border: 5px solid #550609;
+  border: none;
   font-weight: bold;
   width: 80%;
   padding: 0.4em;
