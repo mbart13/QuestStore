@@ -1,0 +1,123 @@
+.page.welcome-page {
+  display: initial;
+  background-image: url("../assets/background-image-shadow.jpg");
+  font-family: "BLAME Regular";
+}
+
+.main-section-container {
+  width: 37vw;
+  height: 100vh;
+}
+
+.main-section {
+  height: 100vh;
+  margin: 0em 4em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+} 
+
+.title {
+  font-size: 8vh;
+  color: #550609;
+}
+
+.title .store::before {
+  content: "|\00a0\00a0\00a0";
+}
+
+.main-section-item {
+  width: 100%;
+  margin-bottom: 4vh;
+}
+
+
+label {
+  color: #01342f;
+  font-size: 3vh;
+  text-align: left;
+  font-weight: bold;
+  font-family: inherit;
+}
+
+.login {
+  padding: 0.6em;
+  width: 100%;
+  min-width: 20em;
+  text-align: left;
+}
+
+.input-field {
+  border: none;
+  outline: none;
+  width: 100%;
+  padding: 0.6em;
+}
+
+.input-item {
+  margin-bottom: .5em;
+}
+
+.btn-container {
+  text-align: right;
+  margin-top: 3em;
+}
+
+.btn-main-page {
+  clip-path: polygon(0 0, 90% 0, 100% 100%, 0% 100%);
+  outline: none;
+  cursor: pointer;
+  background-color: #550609;
+  color: white;
+  border: none;
+  font-weight: bold;
+  width: 80%;
+  padding: 0.4em;
+  font-family: inherit;
+}
+
+.btn-login {
+  position: relative;
+  font-size: 1.7em;
+  margin-bottom: 1.3em;
+}
+
+.btn-main-page:hover {
+  background-color: #7e5556;
+  border: 5px solid #7e5556;
+}
+
+.btn-forgotten-password {
+  font-size: 1em;
+}
+
+@media screen and (max-width: 420px) {
+  .main-section-container {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .main-section {
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .title .store::before {
+    content: "";
+  }
+
+  .title {
+    text-align: center;
+  }
+
+  .btn-container {
+    text-align: center;
+  }
+
+  .login {
+    text-align: center;
+  }
+
+}
