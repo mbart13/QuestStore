@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Create User </title>
+    <link rel="stylesheet" href="../static/assets/font-awesome-4.7.0/css/font-awesome.min.css" th:href="@{/css/font-awesome.min.css}">
+    <link rel="stylesheet" href="../static/css/styles.css" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="../static/css/create_user.css" th:href="@{/css/create_user.css}">
+
+</head>
+
+<body>
+    <script src="../static/js/header.js"></script>
+
+    <!-- Page content goes here-->
+
+    <div class="user-creation">
+        <h1 class="header"> Create User</h1>
+
+        <div class="form-container">
+            <div class="user-creation-form">
+                <form action="user_management.html">
+                    <div class="form-item">
+                        <label for="name">First Name:</label><br>
+                        <input class="input-field" id="name" name="name" type="text" placeholder="Enter first name">
+                    </div>
+                    <div class="form-item">
+                        <label for="surname">Last Name:</label><br>
+                        <input class="input-field" id="surname" name="surname" type="text" placeholder="Enter last name">
+                    </div>
+                    <div class="form-item">
+                        <label for="username">Username:</label><br>
+                        <input class="input-field" id="username" name="username" type="text" placeholder="Enter Username">
+                    </div>
+                    <div class="form-item">
+                        <select name="role">
+                            <option disabled selected value>-- select role --</option>
+                            <option value="Mentor">Mentor</option>
+                            <option value="Codecooler">Codecooler</option>
+                        </select>
+                    </div>
+                    <button type="submit">Save User</button>
+
+                </form>
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- End of page content-->
+
+    <script src="../static/js/footer.js"></script>
+
+</body>
+
+</html>
