@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Browse Items </title>
+    <link rel="stylesheet" href="../static/css/styles.css" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="../static/css/browse_items.css" th:href="@{/css/browse_items.css}">
+
+</head>
+
+<body>
+    <script src="../static/js/header.js" th:src="@{/js/header.js}"></script>
+
+    <!-- Page content goes here-->
+
+    <header class="header">
+        <ul class="link-list">
+            <li class="link"><span>Basic Items</span> </li>
+            <li class="link"><span>Magic Items</span></li>
+        </ul>
+
+    </header>
+
+    <div class="item" th:each="item : ${items}">
+        <div class="item-header">
+            <ul class="header-list">
+                <li class="item-header item-name"><span th:text="${item.name}">item name</span> </li>
+                <li class="item-header item-cost"><span th:text="'COST: ' + ${item.cost} + ' CC'">item cost</span></li>
+            </ul>
+        </div>
+        <div class="item-body">
+            <div class="icon">
+                <img class="shopping-cart" src="../static/assets/cart.png" th:src="@{/assets/cart.png}" alt="">
+            </div>
+            <div class="description">
+                <p th:text="${item.description}">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio assumenda distinctio eum blanditiis voluptate. Libero nesciunt ut
+                    quasi
+                </p>
+                <br>
+                <button class="btn button-cta">Show Item</button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- End of page content-->
+
+    <script src="../static/js/footer.js" th:src="@{/js/footer.js}"></script>
+
+</body>
+
+</html>
