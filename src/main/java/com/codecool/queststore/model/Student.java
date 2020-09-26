@@ -1,7 +1,9 @@
 package com.codecool.queststore.model;
 
+import javax.persistence.Entity;
 import java.util.HashMap;
 
+@Entity
 public class Student extends User{
 
     private Integer accountBalance;
