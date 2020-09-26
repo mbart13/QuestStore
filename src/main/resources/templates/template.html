@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Title </title>
-    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/css/styles.css" th:href="@{/css/styles.css}">
 
 </head>
 
 <body>
-    <script src="../static/js/header.js"></script>
+<script type="text/javascript" th:src="@{/js/header.js}" src="../static/js/header.js"></script>
 
     <!-- Page content goes here-->
 
@@ -19,7 +19,7 @@
 
     <!-- End of page content-->
 
-    <script src="../static/js/footer.js"></script>
+    <script type="text/javascript" th:src="@{/js/footer.js}" src="../static/js/header.js"></script>
 
 </body>
 
