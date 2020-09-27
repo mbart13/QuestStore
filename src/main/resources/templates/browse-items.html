@@ -17,14 +17,14 @@
 
     <header class="header">
         <ul class="link-list">
-            <li class="link"><span>Basic Items</span> </li>
-            <li class="link"><span>Magic Items</span></li>
+            <li class="link"><span class="basic-items">Basic Items</span></li>
+            <li class="link"><span class="magic-items">Extra Items</span></li>
         </ul>
 
     </header>
 
-    <div class="item" th:each="item : ${items}">
-        <div class="item-header">
+    <div class="item" th:classappend="${item.type == 'BASIC'} ? 'basic' : 'magic'" th:each="item : ${items}">
+        <div class="item-header ">
             <ul class="header-list">
                 <li class="item-header item-name"><span th:text="${item.name}">item name</span> </li>
                 <li class="item-header item-cost"><span th:text="'COST: ' + ${item.cost} + ' CC'">item cost</span></li>
@@ -35,11 +35,13 @@
                 <img class="shopping-cart" src="../static/assets/cart.png" th:src="@{/assets/cart.png}" alt="">
             </div>
             <div class="description">
-                <p th:text="${item.description}">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio assumenda distinctio eum blanditiis voluptate. Libero nesciunt ut
-                    quasi
-                </p>
+                <p th:text="${item.description}">Lorem ipsum dolor</p>
                 <br>
-                <button class="btn button-cta">Show Item</button>
+                <p class="item-type" th:text="'Type: ' + ${#strings.toUpperCase(item.type)}"></p>
+                <br>
+                <form action="#" th:action="@{/items/{id}(id=${item.id})}" method="post">
+                    <button type="submit" class="btn button-cta">Go To Item</button>
+                </form>
             </div>
 
         </div>
@@ -48,7 +50,7 @@
     <!-- End of page content-->
 
     <script src="../static/js/footer.js" th:src="@{/js/footer.js}"></script>
-
+    <script src="../static/js/browse_items.js" th:src="@{/js/browse_items.js}"></script>
 </body>
 
 </html>

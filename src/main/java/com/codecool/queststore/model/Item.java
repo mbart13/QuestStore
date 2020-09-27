@@ -1,9 +1,6 @@
 package com.codecool.queststore.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Item {
@@ -15,9 +12,6 @@ public class Item {
     private String description;
     private int cost;
     private String type;
-
-    public Item() {
-    }
 
     public Long getId() {
         return id;
