@@ -9,6 +9,7 @@
 
 h1 {
     font-weight: normal;
+    user-select: none;
 }
 
 h2 {
@@ -33,7 +34,7 @@ label {
 }
 
 #quest{
-    background-color: #001513;
+    background: linear-gradient(125.39deg, #001513 26.03%, #550609 49.2%, #001513 67.85%);
     padding-bottom: 0.7%;
 }
 
