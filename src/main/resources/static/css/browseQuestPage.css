@@ -19,13 +19,6 @@ p {
     font-size: 1.2em;
 }
 
-label {
-    font-size: 1.2em;
-}
-
-#content {
-}
-
 .basic-section {
     background-color: #d3d3d3;
     margin: 0.7% 0.7% 0 0.7%;
@@ -51,7 +44,9 @@ label {
     padding-top: 0.6em;
 }
 
-#qcontent {
+#quest{
+    background-color: #001513;
+    padding-bottom: 0.7%;
 }
 
 #qinfo {
@@ -61,76 +56,27 @@ label {
 
 #qdescription {
     display: flex;
-    flex-direction: column;
-    flex-basis: 75%;
+    flex-direction: row;
 }
 
 #qbasic-info {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
+    margin-left: 0.5em;
 }
 
 #qicon {
     flex-basis: 25%;
 }
 
-#short-description {
-    flex-basis: 75%;
-}
-
 #qicon path {
     fill-opacity: 1;
 }
 
-#more-inf-button {
-    align-self: center;
-    color: #70070A;
-    margin: 0.5em;
-}
-
-#more-inf-content {
-    display: none;
-    margin-top: 0.5em;
-}
-
-#qdone-by {
-    margin-left: 0;
-    flex-basis: 25%;
-    text-align: center;
-}
-
-#qform {
-    display: flex;
-    flex-direction: column;
-}
-
-#qform-queries {
-    display: flex;
-    flex-direction: column;
-}
-
-.qform-querry {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 0.5em;
-}
-
-.input-field {
-    width: 90%;
-    padding: 0.5em;
-    border: none;
-    border-radius: 0.3em;
-}
-
 #qsubmit {
-    display: flex;
-    justify-content: center;
-}
-
-#qsubmit input {
     background: none;
-    width: 75%;
+    width: 100%;
     border-color: #550609;
     color: #550609;
     font-family: "BLAME Regular";
