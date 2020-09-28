@@ -1,13 +1,10 @@
 package com.codecool.queststore.controller;
 
-import com.codecool.queststore.model.Item;
 import com.codecool.queststore.service.ItemService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-
-import java.util.List;
 
 @Controller
 @RequestMapping("/items")
@@ -21,8 +18,7 @@ public class ItemController {
 
     @GetMapping
     public String showAllItems(Model model) {
-        List<Item> items = itemService.showAllItems();
-        model.addAttribute("items", items);
+        model.addAttribute("items", itemService.showAllItems());
         return "browse_items";
     }
 
