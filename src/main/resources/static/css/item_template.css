@@ -1,0 +1,59 @@
+.item-body {
+    background-color: inherit;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas:
+            "left right"
+            "bottom bottom";
+    grid-gap: 10px;
+    margin: .6em;
+}
+
+.details {
+    background-color: #d3d3d3;
+    height: 100%;
+    text-align: center;
+    padding: .8em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.details-left {
+    grid-area: left;
+    padding: 2em 3em;
+}
+
+.details-right {
+    grid-area: right;
+}
+
+.details-bottom {
+    grid-area: bottom;
+}
+
+.details-right h2 {
+    font-size: 1.2em;
+}
+
+.details-right span {
+    font-size: 1.8em;
+    font-family: "BLAME Regular", sans-serif;
+    color: #550609;
+}
+
+.details p.info {
+    margin-top: 1.2em;
+}
+
+.details p span {
+    text-decoration: underline;
+}
+
+.purchase, .go-back {
+    margin-top: .7em;
+    margin-bottom: .5em;
+    width: 70%;
+}
+

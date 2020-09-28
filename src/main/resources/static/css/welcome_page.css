@@ -1,7 +1,7 @@
 .page.welcome-page {
   display: initial;
   background-image: url("../assets/background-image-shadow.jpg");
-  font-family: "BLAME Regular";
+  font-family: "BLAME Regular", sans-serif;
 }
 
 .main-section-container {
@@ -11,7 +11,7 @@
 
 .main-section {
   height: 100vh;
-  margin: 0em 4em;
+  margin: 0 4em;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -86,7 +86,7 @@ label {
 
 .btn-main-page:hover {
   background-color: #7e5556;
-  border: 5px solid #7e5556;
+
 }
 
 .btn-forgotten-password {

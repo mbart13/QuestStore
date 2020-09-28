@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/css/styles.css" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="../static/css/browse_items.css" th:href="@{/css/browse_items.css}">
+    <link rel="stylesheet" href="../static/css/item_template.css" th:href="@{/css/item_template.css}">
+    <title>Item</title>
+</head>
+    <body>
+
+        <script src="../static/js/header.js" th:src="@{/js/header.js}"></script>
+
+        <!-- Page content goes here-->
+        <div class="item" th:object="${item}">
+            <div class="item-header ">
+                <ul class="header-list">
+                    <li class="item-header item-name"><span th:text="${item.name}">item name</span> </li>
+                    <li class="item-header item-cost"><span th:text="'COST: ' + ${item.cost} + ' CC'">item cost</span></li>
+                </ul>
+            </div>
+
+            <div class="item-body">
+                <div class="details details-left">
+                    <h2 th:text="${item.description}">Description of the item</h2>
+                    <p class="info">Type: <strong th:text="${item.type}">BASIC</strong></p>
+                    <p class="info"><span>Basic items</span>: available for individual students</p>
+                    <p><span>Extra items</span>: available only for group</p>
+                </div>
+                <div class="details details-right">
+                    <h2>You have already redeemed this reward:</h2>
+                    <span>3 times</span>
+
+                </div>
+                <div class="details details-bottom">
+                    <h3>Make sure you have enough coolcoins before purchase!</h3>
+                    <form class="purchase">
+                        <button class="button-cta" onclick="alert('Not implemented yet!')" th:text="${#strings.toUpperCase(item.type) == 'BASIC'} ? 'Purchase Reward' : 'Purchase with group'">Purchase Reward</button>
+                    </form>
+                    <form action="/items" class="go-back">
+                        <button class="button-cta">Go Back</button>
+                    </form>
+
+
+                </div>
+
+            </div>
+        </div>
+
+        <!-- End of page content-->
+
+        <script src="../static/js/footer.js" th:src="@{/js/footer.js}"></script>
+
+    </body>
+</html>
