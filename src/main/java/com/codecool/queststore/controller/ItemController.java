@@ -23,12 +23,12 @@ public class ItemController {
     public String showAllItems(Model model) {
         List<Item> items = itemService.showAllItems();
         model.addAttribute("items", items);
-        return "browse-items";
+        return "browse_items";
     }
 
     @PostMapping("{id}")
     public String showItem(@PathVariable(name="id") Long id, Model model) {
         model.addAttribute("item", itemService.findById(id));
-        return "item-template";
+        return "item_template";
     }
 }

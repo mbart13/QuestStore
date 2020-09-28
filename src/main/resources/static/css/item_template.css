@@ -22,6 +22,7 @@
 
 .details-left {
     grid-area: left;
+    padding: 2em 3em;
 }
 
 .details-right {
@@ -39,6 +40,20 @@
 .details-right span {
     font-size: 1.8em;
     font-family: "BLAME Regular", sans-serif;
+    color: #550609;
 }
 
+.details p.info {
+    margin-top: 1.2em;
+}
+
+.details p span {
+    text-decoration: underline;
+}
+
+.purchase, .go-back {
+    margin-top: .7em;
+    margin-bottom: .5em;
+    width: 70%;
+}
 
