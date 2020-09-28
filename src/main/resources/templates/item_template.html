@@ -22,10 +22,10 @@
 
             <div class="item-body">
                 <div class="details details-left">
-                    <h2>Book private session with one of the mentors</h2>
-                    <p>Type: <strong>BASIC</strong></p>
-                    <p>Basic items: available for individual students</p>
-                    <p>Extra items: available only for group of students</p>
+                    <h2 th:text="${item.description}">Description of the item</h2>
+                    <p class="info">Type: <strong th:text="${item.type}">BASIC</strong></p>
+                    <p class="info"><span>Basic items</span>: available for individual students</p>
+                    <p><span>Extra items</span>: available only for group</p>
                 </div>
                 <div class="details details-right">
                     <h2>You have already redeemed this reward:</h2>
@@ -33,8 +33,14 @@
 
                 </div>
                 <div class="details details-bottom">
-                    <h2>You already redeemed this reward</h2>
-                    <span>3 times</span>
+                    <h3>Make sure you have enough coolcoins before purchase!</h3>
+                    <form class="purchase">
+                        <button class="button-cta" onclick="alert('Not implemented yet!')" th:text="${#strings.toUpperCase(item.type) == 'BASIC'} ? 'Purchase Reward' : 'Purchase with group'">Purchase Reward</button>
+                    </form>
+                    <form action="/items" class="go-back">
+                        <button class="button-cta">Go Back</button>
+                    </form>
+
 
                 </div>
 
