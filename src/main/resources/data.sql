@@ -17,3 +17,23 @@ values
 ('Workshop', 'Purchase 60 min workshop with a mentor or mentors on the topic of your choosing', 1000, 'EXTRA'),
 ('Extra materials', 'Get some extra materials for the topic you are currently studying', 500, 'EXTRA'),
 ('Dressing Up', 'All mentors should dress up as pirates (or just funny) for the day', 5000, 'EXTRA');
+
+DROP TABLE IF EXISTS students;
+
+CREATE TABLE students (
+id INT AUTO_INCREMENT  PRIMARY KEY,
+name VARCHAR(150) NOT NULL,
+surname VARCHAR(150) NOT NULL,
+role VARCHAR(50) NOT NULL,
+passwordhash VARCHAR(150) NOT NULL,
+email VARCHAR(150) NOT NULL,
+balance INT NOT NULL,
+earnings INT NOT NULL
+);
+
+INSERT INTO students (name, surname, role, passwordhash, email, balance, earnings)
+VALUES
+('Lukasz', 'Lesiuk', 'student', '---', 'lukasz.lesiuk.2@gmail.com', 1000, 3000),
+('Uesugi', 'Kenshin', 'student', '---', 'uesugi.genshin@niigata.jp', 1500, 4000),
+('Miamoto', 'Musashi', 'student', '---', 'miamoto.mushashi@nitenichi-ryu.jp', 0, 9000),
+('name1', 'surname1', 'student', '---', 'mail@mail.com', 3750, 13000);

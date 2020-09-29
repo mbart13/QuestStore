@@ -5,7 +5,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-
 @Entity
 public abstract class User {
 
@@ -16,17 +15,19 @@ public abstract class User {
     private String surname;
     private String role;
     private String passwordHash;
+    private String email;
 
 
     public User() {
 
     }
 
-    public User(String name, String surname, String role, String passwordHash) {
+    public User(String name, String surname, String role, String passwordHash, String email) {
         this.name = name;
         this.surname = surname;
         this.role = role;
         this.passwordHash = passwordHash;
+        this.email = email;
     }
 
     public Integer getId() {
@@ -67,5 +68,13 @@ public abstract class User {
 
     public void setPasswordHash(String passwordHash) {
         this.passwordHash = passwordHash;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

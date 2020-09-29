@@ -1,4 +1,4 @@
-package com.codecool.queststore.controllers;
+package com.codecool.queststore.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

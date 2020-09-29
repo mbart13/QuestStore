@@ -15,9 +15,9 @@ public class Student extends User{
 
     }
 
-    public Student(String name, String surname, String role, String passwordHash,
+    public Student(String name, String surname, String role, String passwordHash, String email,
                    Integer accountBalance, Integer totalEarnings, HashMap completedAssignments, HashMap rewards) {
-        super(name, surname, role, passwordHash);
+        super(name, surname, role, passwordHash, email);
         this.accountBalance = accountBalance;
         this.totalEarnings = totalEarnings;
         this.completedAssignments = completedAssignments;
