@@ -1,4 +1,4 @@
-package com.codecool.queststore.repositiory;
+package com.codecool.queststore.repository;
 
 import com.codecool.queststore.model.Student;
 import org.springframework.data.repository.CrudRepository;

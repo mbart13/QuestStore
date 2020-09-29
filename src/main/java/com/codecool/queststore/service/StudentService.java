@@ -1,7 +1,7 @@
 package com.codecool.queststore.service;
 
 import com.codecool.queststore.model.Student;
-import com.codecool.queststore.repositiory.StudentRepository;
+import com.codecool.queststore.repository.StudentRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -37,3 +37,4 @@ VALUES
 ('Uesugi', 'Kenshin', 'student', '---', 'uesugi.genshin@niigata.jp', 1500, 4000),
 ('Miamoto', 'Musashi', 'student', '---', 'miamoto.mushashi@nitenichi-ryu.jp', 0, 9000),
 ('name1', 'surname1', 'student', '---', 'mail@mail.com', 3750, 13000);
+
