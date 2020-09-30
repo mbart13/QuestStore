@@ -39,9 +39,7 @@
                 <br>
                 <p class="item-type" th:text="'Type: ' + ${#strings.toUpperCase(item.type)}"></p>
                 <br>
-                <form action="#" th:action="@{/items/{id}(id=${item.id})}" method="post">
-                    <button type="submit" class="btn button-cta">Go To Item</button>
-                </form>
+                <a class="button-cta" href="#" th:href="@{/items/{id}(id=${item.id})}"> Go To Item </a>
             </div>
 
         </div>

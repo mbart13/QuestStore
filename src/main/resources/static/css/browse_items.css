@@ -65,6 +65,7 @@ img.shopping-cart {
 }
 
 .button-cta {
+    display: inline-block;
     width: 100%;
     clip-path: polygon(0 0, 90% 0, 100% 100%, 0% 100%);
     outline: none;
@@ -76,7 +77,8 @@ img.shopping-cart {
     font-size: 1em;
     padding: .5em;
     font-family: "BLAME Regular", sans-serif;
-    z-index: -1;
+    text-decoration: none;
+    text-align: center;
 }
 
 .button-cta:hover {
@@ -117,5 +119,4 @@ img.shopping-cart {
 }
 .basic-items-selected {
     background: linear-gradient(90deg, rgb(0, 21, 19) 5%, rgb(85, 6, 9) 13%, rgb(85, 6, 9) 40%, rgb(0, 21, 19) 47%);;
-
 }

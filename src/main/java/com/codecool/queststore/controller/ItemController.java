@@ -22,7 +22,7 @@ public class ItemController {
         return "browse_items";
     }
 
-    @PostMapping("/{id}")
+    @GetMapping("/{id}")
     public String showItem(@PathVariable(name="id") Long id, Model model) {
         model.addAttribute("item", itemService.findById(id));
         return "item_template";
