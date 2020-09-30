@@ -1,0 +1,142 @@
+@import url("https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&display=swap");
+
+@font-face {
+    font-family: "BLAME Regular";
+    font-style: normal;
+    font-weight: normal;
+    src: url("../assets/the_blame.ttf") format("truetype");
+}
+
+h1 {
+    font-weight: normal;
+    user-select: none;
+}
+
+h2 {
+    font-size: 1.3em;
+}
+
+p {
+    font-size: 1.2em;
+}
+
+label {
+    font-size: 1.2em;
+}
+
+#content {
+}
+
+.basic-section {
+    background-color: #d3d3d3;
+    margin: 0.7% 0.7% 0 0.7%;
+    padding: 1%;
+}
+
+#quest{
+    background: linear-gradient(125.39deg, #001513 26.03%, #550609 49.2%, #001513 67.85%);
+    padding-bottom: 0.7%;
+}
+
+#qheader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.qtitle {
+    color: #d3d3d3;
+    font-family: "BLAME Regular";
+    font-size: 1.4em;
+    margin: 0.7em 0.5em;
+    padding-top: 0.6em;
+}
+
+#qcontent {
+}
+
+#qinfo {
+    display: flex;
+    flex-direction: row;
+}
+
+#qdescription {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 75%;
+}
+
+#qbasic-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#qicon {
+    flex-basis: 25%;
+}
+
+#short-description {
+    flex-basis: 75%;
+}
+
+#qicon path {
+    fill-opacity: 1;
+}
+
+#more-inf-button {
+    align-self: center;
+    color: #70070A;
+    margin: 0.5em;
+}
+
+#more-inf-content {
+    display: none;
+    margin-top: 0.5em;
+}
+
+#qdone-by {
+    margin-left: 0;
+    flex-basis: 25%;
+    text-align: center;
+}
+
+#qform {
+    display: flex;
+    flex-direction: column;
+}
+
+#qform-queries {
+    display: flex;
+    flex-direction: column;
+}
+
+.qform-querry {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.5em;
+}
+
+.input-field {
+    width: 90%;
+    padding: 0.5em;
+    border: none;
+    border-radius: 0.3em;
+}
+
+#qsubmit {
+    display: flex;
+    justify-content: center;
+}
+
+#qsubmit input {
+    background: none;
+    width: 75%;
+    border-color: #550609;
+    color: #550609;
+    font-family: "BLAME Regular";
+    font-size: 1.2em;
+    padding: 0.5em;
+    padding-top: 1em;
+    border-width: 0.3em;
+}
