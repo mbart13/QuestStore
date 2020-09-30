@@ -113,8 +113,9 @@ img.shopping-cart {
 }
 
 .extra-items-selected {
-    background: linear-gradient(90.02deg, #001513 56.25%, #550609 75.51%, #001513 97.38%);
+    background: linear-gradient(90deg, rgb(0, 21, 19) 53%, rgb(85, 6, 9) 60%, rgb(85, 6, 9) 87%, rgb(0, 21, 19) 95%);
 }
 .basic-items-selected {
-    background: linear-gradient(90.02deg, #001513 1.06%, #550609 24.49%, #001513 47.92%);
+    background: linear-gradient(90deg, rgb(0, 21, 19) 5%, rgb(85, 6, 9) 13%, rgb(85, 6, 9) 40%, rgb(0, 21, 19) 47%);;
+
 }
