@@ -16,24 +16,7 @@ public class Quest {
     private String shortDescription;
     private String details;
     private String instruction;
-    private String answer;
-    private boolean isCompleted;
-
-    public Quest(Long id,
-                 String name,
-                 int reward,
-                 String shortDescription,
-                 String details,
-                 String instruction) {
-        this.id = id;
-        this.name = name;
-        this.reward = reward;
-        this.shortDescription = shortDescription;
-        this.details = details;
-        this.instruction = instruction;
-        this.isCompleted = false;
-    }
-//Temporary constructor for testing purposes
+    private boolean isExtra;
 
 
     public Long getId() {
@@ -82,21 +65,5 @@ public class Quest {
 
     public void setInstruction(String instruction) {
         this.instruction = instruction;
-    }
-
-    public String getAnswer() {
-        return answer;
-    }
-
-    public void setAnswer(String answer) {
-        this.answer = answer;
-    }
-
-    public boolean isCompleted() {
-        return isCompleted;
-    }
-
-    public void setCompleted(boolean completed) {
-        isCompleted = completed;
     }
 }
