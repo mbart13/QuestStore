@@ -1,13 +1,3 @@
-DROP TABLE IF EXISTS item;
-
-CREATE TABLE item (
-id INT AUTO_INCREMENT  PRIMARY KEY,
-name VARCHAR(150) NOT NULL,
-description VARCHAR(1000),
-cost INT NOT NULL,
-type VARCHAR(50)
-);
-
 insert into item (name, description, cost, type)
 values
 ('Private Mentoring', 'Book private session with one of the mentors', 50, 'BASIC'),
@@ -18,18 +8,7 @@ values
 ('Extra materials', 'Get some extra materials for the topic you are currently studying', 500, 'EXTRA'),
 ('Dressing Up', 'All mentors should dress up as pirates (or just funny) for the day', 5000, 'EXTRA');
 
-DROP TABLE IF EXISTS students;
 
-CREATE TABLE students (
-id INT AUTO_INCREMENT  PRIMARY KEY,
-name VARCHAR(150) NOT NULL,
-surname VARCHAR(150) NOT NULL,
-role VARCHAR(50) NOT NULL,
-passwordhash VARCHAR(150) NOT NULL,
-email VARCHAR(150) NOT NULL,
-balance INT NOT NULL,
-earnings INT NOT NULL
-);
 
 INSERT INTO students (name, surname, role, passwordhash, email, balance, earnings)
 VALUES

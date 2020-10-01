@@ -17,54 +17,16 @@
                 <h1 class="title store">STORE</h1>
             </div>
             <div class="main-section-item">
-                <form th:action="@{/login}" method="post">
-                    <div class="login">
-                        <div th:if="${param.error}">
-                            <div class="alert alert-danger">
-                                Invalid username or password.
-                            </div>
-                        </div>
-                        <div th:if="${param.logout}">
-                            <div class="alert alert-info">
-                                You have been logged out.
-                            </div>
-                        </div>
-                        <div class="input-item">
-                            <label for="username">Username</label><br>
-                            <input class="input-field"
-                                   id="username"
-                                   name="username"
-                                   type="text"
-                                   placeholder="dominik-san"
-                                   required>
-                        </div>
-                        <div class="input-item">
-                            <label for="password">Password</label><br>
-                            <input class="input-field"
-                                   id="password"
-                                   name="password"
-                                   type="password"
-                                   placeholder="password"
-                                   required>
-                        </div>
+                <div class="btn-container">
+                    <div>
+                        <a class="btn-main-page btn-login"
+                                type="submit"
+                                name="login-submit"
+                                id="login-submit"
+                                href="/user"
+                                th:href="@{/user}">BEGIN</a>
                     </div>
-
-                    <div class="btn-container">
-                        <div>
-                            <button class="btn-main-page btn-login"
-                                    type="submit"
-                                    name="login-submit"
-                                    id="login-submit">LOG IN</button>
-                        </div>
-<!--                        <div>-->
-<!--                            <td><a th:href="@{profile_page}" class="btn">gotoprofile</a></td>-->
-
-<!--                        </div>-->
-                        <div>
-                            <button class="btn-main-page btn-forgotten-password" type="submit">Forgotten password</button>
-                        </div>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
