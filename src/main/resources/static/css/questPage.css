@@ -118,10 +118,12 @@ label {
 }
 
 .input-field {
-    width: 90%;
+    width: 100%;
+    resize: vertical;
     padding: 0.5em;
     border: none;
     border-radius: 0.3em;
+    margin-top: 0.5em;
 }
 
 #qsubmit {
@@ -132,9 +134,10 @@ label {
 #qsubmit input {
     background: none;
     width: 75%;
-    border-color: #550609;
-    color: #550609;
+    background-color: #550609;
+    color: #d3d3d3;
     font-family: "BLAME Regular";
+    clip-path: polygon(0 0, 95% 0, 100% 100%, 0% 100%);
     font-size: 1.2em;
     padding: 0.5em;
     padding-top: 1em;
