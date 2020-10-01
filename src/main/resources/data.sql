@@ -10,10 +10,19 @@ values
 
 
 
-INSERT INTO students (name, surname, role, passwordhash, email, balance, earnings)
+INSERT INTO students (username, name, surname, role, password, email, balance, earnings, enabled)
 VALUES
-('Lukasz', 'Lesiuk', 'student', '---', 'lukasz.lesiuk.2@gmail.com', 1000, 3000),
-('Uesugi', 'Kenshin', 'student', '---', 'uesugi.genshin@niigata.jp', 1500, 4000),
-('Miamoto', 'Musashi', 'student', '---', 'miamoto.mushashi@nitenichi-ryu.jp', 0, 9000),
-('name1', 'surname1', 'student', '---', 'mail@mail.com', 3750, 13000);
+('nodi','Lukasz', 'Lesiuk', 'student', '1', 'lukasz.lesiuk.2@gmail.com', 1000, 3000, true),
+('user1','Uesugi', 'Kenshin', 'student', '1', 'uesugi.genshin@niigata.jp', 1500, 4000, true),
+('user2','Miamoto', 'Musashi', 'student', '1', 'miamoto.mushashi@nitenichi-ryu.jp', 0, 9000, true),
+('user3','name1', 'surname1', 'student', '1', 'mail@mail.com', 3750, 13000, true);
 
+
+INSERT INTO user_roles (username, role)
+VALUES ('nodi', 'USER');
+INSERT INTO user_roles (username, role)
+VALUES ('user1', 'USER');
+INSERT INTO user_roles (username, role)
+VALUES ('user2', 'USER');
+INSERT INTO user_roles (username, role)
+VALUES ('user3', 'USER');
