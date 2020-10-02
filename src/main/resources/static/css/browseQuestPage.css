@@ -26,7 +26,7 @@ p {
     padding: 1%;
 }
 
-#quest{
+.quest{
     background-color: #001513;
     padding-bottom: 0.7%;
 }
@@ -39,7 +39,7 @@ p {
     background: linear-gradient(90.02deg, #001513 52.87%, #550609 59.96%, #550609 87.04%, #001513 94.59%);
 }
 
-#qheader {
+.qheader {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -53,22 +53,22 @@ p {
     padding-top: 0.6em;
 }
 
-#quest{
+.quest{
     background: linear-gradient(125.39deg, #001513 26.03%, #550609 49.2%, #001513 67.85%);
     padding-bottom: 0.7%;
 }
 
-#qinfo {
+.qinfo {
     display: flex;
     flex-direction: row;
 }
 
-#qdescription {
+.qdescription {
     display: flex;
     flex-direction: row;
 }
 
-#qbasic-info {
+.qbasic-info {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -79,11 +79,11 @@ p {
     flex-basis: 25%;
 }
 
-#qicon path {
+.qicon path {
     fill-opacity: 1;
 }
 
-#qsubmit {
+.qsubmit {
     margin-top: 0.8em;
     background: none;
     width: 100%;

@@ -20,7 +20,8 @@ public class QuestController {
     }
 
     @GetMapping
-    public String showQuests(){
+    public String showQuests(Model model){
+        model.addAttribute("quests", questService.showAllQuests());
         return "browse_quests";
     }
 

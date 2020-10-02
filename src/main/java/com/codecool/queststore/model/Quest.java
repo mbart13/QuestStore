@@ -18,7 +18,6 @@ public class Quest {
     private String instruction;
     private boolean isExtra;
 
-
     public Long getId() {
         return id;
     }
@@ -65,5 +64,13 @@ public class Quest {
 
     public void setInstruction(String instruction) {
         this.instruction = instruction;
+    }
+
+    public boolean isExtra() {
+        return isExtra;
+    }
+
+    public void setExtra(boolean extra) {
+        isExtra = extra;
     }
 }
