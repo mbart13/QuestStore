@@ -6,6 +6,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import javax.sql.DataSource;
@@ -29,10 +30,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/css/**",
                         "/img/**",
                         "/assets/**",
+                        "/h2-console/**",
                         "/webjars/**").permitAll()
                     .antMatchers(
                         "/user/**").hasRole("USER")
-                    .anyRequest().authenticated()
+//                    .anyRequest().authenticated()
+                .anyRequest().permitAll()
                 .and()
                 .formLogin()
                     .loginPage("/login")
@@ -45,14 +48,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .logoutSuccessUrl("/login?logout")
                     .permitAll()
                 .and()
-                .exceptionHandling()
-                    .accessDeniedHandler(accessDeniedHandler);
+                //TODO - enable csfr
+                .csrf().disable();
 
-//        http.authorizeRequests()
-//                .anyRequest().authenticated()
-//                .and().formLogin()
-//                .loginPage("/login").permitAll();
-//        }
+                //for temp disabling security
+//                http.csrf().disable();
+                http.headers().frameOptions().disable();
     }
 
 
@@ -71,10 +72,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         //from db
         auth.jdbcAuthentication().dataSource(dataSource)
                 .usersByUsernameQuery(
-                        "select username, password, enabled from students where username=?")
+                        "select username, password,CASE ENABLED WHEN 1 THEN 'true' ELSE 'false' END from students where username=?")
                 .authoritiesByUsernameQuery(
                         "select username, role from user_roles where username=?");
     }
+//    CASE ENABLED WHEN 1 THEN 'true' ELSE 'false' END 'ENABLED'
+
+//       auth.jdbcAuthentication()
+//               .dataSource(dataSource)
+//            .passwordEncoder(passwordEncoder())
+//            .authoritiesByUsernameQuery("select USERNAME, ROLE from EMPLOYEE where USERNAME=?")
+//            .usersByUsernameQuery("select USERNAME, PASSWORD , 1 as enabled from EMPLOYEE where USERNAME=?");
 
 }
 
