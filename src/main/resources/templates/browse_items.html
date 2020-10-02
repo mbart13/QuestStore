@@ -23,7 +23,7 @@
 
     </header>
 
-    <div class="item" th:classappend="${item.type == 'BASIC'} ? 'basic' : 'magic'" th:each="item : ${items}">
+    <div class="item" th:each="item,iter : ${items}" th:classappend="${item.type == 'BASIC'} ? 'basic' : 'magic'">
         <div class="item-header ">
             <ul class="header-list">
                 <li class="item-header item-name"><span th:text="${item.name}">item name</span> </li>

@@ -1,0 +1,133 @@
+.dashboard {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+        "header header header"
+        "left middle right";
+
+    background: linear-gradient(125.39deg, #001513 26.03%, #550609 49.2%, #001513 67.85%);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25),
+    inset 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    grid-gap: 10px;
+    padding: .8em;
+}
+
+.header {
+    grid-area: header;
+}
+
+.admin-image {
+    grid-area: left;
+}
+
+.admin-buttons {
+    grid-area: middle;
+
+}
+
+.admin-buttons, .user-stats {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-stats {
+    grid-area: right;
+}
+
+.admin-image img {
+    max-width:100%;
+    max-height:100%;
+}
+
+.admin-image, .admin-buttons, .user-stats {
+    background-color: #d3d3d3;
+}
+
+.header h1 {
+    font-size: 1.8em;
+    font-family: "BLAME Regular", sans-serif;
+    color: #d3d3d3;
+    text-align: center;
+}
+
+.button-cta {
+    margin-bottom: .8em;
+
+}
+
+.image-container {
+    padding: .5em;
+}
+
+.user-rank p {
+    padding: .2em;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.5em;
+    text-align: center;
+    border: 8px solid #001513;
+    color: #000000;
+    font-family: "BLAME Regular", sans-serif;
+}
+
+.button-cta {
+    width: 80%;
+    margin: 1.2em;
+    font-size: .8em;
+    padding: .8em;
+}
+
+.user-stats h2 {
+    font-size: 1.6em;
+    text-align: center;
+}
+
+.circle {
+    background: linear-gradient(180deg, #06413B 26.56%, #550609 50.52%, #001513 71.87%);
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    margin: 0 auto;
+    padding: .4em;
+}
+
+.circle p {
+    padding: .2em;
+    font-size: 2em;
+    font-weight: bold;
+    background-color: #d3d3d3;
+    border-radius: 50%;
+}
+
+.stats-item {
+    margin-bottom: 1.2em;
+    text-align: center;
+}
+
+.recent-activities {
+    background: linear-gradient(125.39deg, #001513 26.03%, #550609 49.2%, #001513 67.85%);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25),
+    inset 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    margin-top: .5em;
+    padding: .5em;
+}
+
+.recent-activities h2 {
+    font-family: "BLAME Regular", sans-serif;
+    color: #d3d3d3;
+    text-align: center;
+    padding: .3em;
+}
+
+.recent-activities-content {
+    background-color: #d3d3d3;
+    padding: .8em;
+}
+.recent-activities-content span {
+    font-style: italic;
+    font-weight: 700;
+}

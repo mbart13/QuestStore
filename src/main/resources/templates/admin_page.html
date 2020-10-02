@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Admin Page </title>
+    <link rel="stylesheet" href="../static/css/styles.css" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="../static/css/admin_page.css" th:href="@{/css/admin_page.css}">
+</head>
+
+<body>
+    <script src="../static/js/header.js" th:href="@{/js/header.js}"></script>
+
+    <!-- Page content goes here-->
+    <div class="dashboard">
+
+        <div class="header">
+            <h1>Admin Dashboard</h1>
+        </div>
+
+        <div class="admin-image">
+            <div class="image-container">
+                <div>
+                    <img src="../static/assets/AdminImage.jpeg" th:src="@{/assets/AdminImage.jpeg}" alt="admin image">
+                </div>
+                <div class="user-rank">
+                    <p>Shogun</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="admin-buttons">
+            <a class="button-cta users" href="#" th:href="">Users</a>
+            <a class="button-cta classes" href="#" th:href="">Classes</a>
+            <a class="button-cta levels" href="#" th:href="">Exp Levels</a>
+        </div>
+        <div class="user-stats">
+            <div class="stats-item mentors">
+                <div>
+                    <h2>Mentors</h2>
+                </div>
+                <div class="circle">
+                    <p>12</p>
+                </div>
+            </div>
+            <div class="stats-item codecoolers">
+                <div>
+                    <h2>Codecoolers</h2>
+                </div>
+                <div class="circle">
+                    <p>59</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="recent-activities">
+        <div class="recent-activities-header">
+            <h2>Recent Activities</h2>
+        </div>
+        <div class="recent-activities-content">
+            <p><span>2.10.2020: </span>Lorem ipsum dolor sit amet consectetur adipisicing elit </p>
+            <p><span>29.09.2020: </span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi impedit consequuntur molestiae </p>
+            <p><span>26.09.2020: </span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi impedit </p>
+        </div>
+    </div>
+
+
+
+
+    <!-- End of page content-->
+
+    <script src="../static/js/footer.js" th:href="@{/js/footer.js}"></script>
+
+</body>
+
+</html>

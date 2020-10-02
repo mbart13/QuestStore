@@ -64,26 +64,6 @@ img.shopping-cart {
     z-index: 1;
 }
 
-.button-cta {
-    display: inline-block;
-    width: 100%;
-    clip-path: polygon(0 0, 90% 0, 100% 100%, 0% 100%);
-    outline: none;
-    cursor: pointer;
-    background-color: #550609;
-    color: #d3d3d3;
-    border: none;
-    font-weight: bold;
-    font-size: 1em;
-    padding: .5em;
-    font-family: "BLAME Regular", sans-serif;
-    text-decoration: none;
-    text-align: center;
-}
-
-.button-cta:hover {
-    background-color: #7e5556;
-}
 
 .item {
     margin-bottom: .8em;
