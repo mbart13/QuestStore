@@ -1,14 +1,14 @@
 function selectBasicQuests() {
     document.getElementById("type-choice").style.background="linear-gradient(90deg, #001513 5%, #550609 13%, #550609 40%, #001513 47%)"
     changeClassDisplay('extra', 'none')
-    changeClassDisplay('basic', 'flex')
+    changeClassDisplay('basic', 'block')
 }
 
 
 function selectExtraQuests() {
     document.getElementById("type-choice").style.background="linear-gradient(90deg, #001513 53%, #550609 60%, #550609 87%, #001513 95%)"
-    changeClassDisplay('extra', 'flex')
-    changeClassDisplay('basic', 'basic')
+    changeClassDisplay('extra', 'block')
+    changeClassDisplay('basic', 'none')
 }
 
 function changeClassDisplay(elementClass, display) {
@@ -18,5 +18,6 @@ function changeClassDisplay(elementClass, display) {
     }
 }
 
+selectBasicQuests();
 document.getElementById("basic-quests").addEventListener("click", selectBasicQuests);
 document.getElementById("extra-quests").addEventListener("click", selectExtraQuests);
