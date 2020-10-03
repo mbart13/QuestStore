@@ -52,10 +52,15 @@
 <!--                    <span th:if="${#fields.hasErrors('assignment')}" th:errors="*{assignment}"></span>-->
                     </div>
                 </div>
-                <div id="qsubmit" class="basic-section">
-                    <input type="submit" value="START QUEST">
+                <div class="basic-section button-area">
+                    <button class="qsubmit" type="submit" onclick="alert('Not implemented yet!')">Start quest</button>
                 </div>
             </form>
+            <div class="basic-section button-area">
+                <form action="/quests">
+                    <button class="qsubmit" type="submit">Go back</button>
+                </form>
+            </div>
         </div>
     </div>
 
