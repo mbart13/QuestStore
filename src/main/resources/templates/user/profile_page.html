@@ -1,27 +1,33 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile page</title>
     <link rel="stylesheet" href="../static/css/styles.css" th:href="@{/css/styles.css}">
-    <link rel="stylesheet" href="../static/css/profilePage.css" th:href="@{/css/profilePage.css}">
+    <link rel="stylesheet" href="../static/css/profilePage.css" th:href="@{/css/profile_page.css}">
 </head>
 
 <body>
-    <script src="../static/js/header.js" th:href="@{/js/header.js}"></script>
+    <script type="text/javascript" th:src="@{/js/header.js}" src="../static/js/header.js"></script>
 
     <!-- Page content goes here-->
     <div class="user-profile">
         <div class="user-info">
             <div class="user-info-item">
                 <div class="profile-picture">
-                    <img src="../static/assets/profileImage.jpg" alt="User Image">
+                    <img src="../static/assets/profileImage.jpg" th:src="@{/assets/images/profileImage.jpg}" alt="User Image">
                 </div>
                 <div class="user-rank">
                     <p>rank</p>
                 </div>
+                <span sec:authorize="isAuthenticated()" style="display: inline-block;">
+                    | Logged user: <span sec:authentication="name"></span> |
+                    Roles: <span sec:authentication="principal.authorities"></span> |
+                    <a th:href="@{/logout}">Sign Out</a>
+                </span>
             </div>
             <div class="user-info-item user-data">
                 <div class="info-block">
@@ -70,7 +76,7 @@
     </div>
 
     <!-- End of page content-->
-    <script src="../static/js/footer.js" th:href="@{/js/footer.js}"></script>
+    <script type="text/javascript" th:src="@{/js/footer.js}" src="../static/js/header.js"></script>
 
 </body>
 
