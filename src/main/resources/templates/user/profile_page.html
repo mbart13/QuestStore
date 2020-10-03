@@ -14,20 +14,23 @@
     <script type="text/javascript" th:src="@{/js/header.js}" src="../static/js/header.js"></script>
 
     <!-- Page content goes here-->
-    <div class="user-profile">
+<!--    <div th:object="${username}">-->
+<!--        <h3><span th:text="${username}">optional field name</span></h3>-->
+    </div>
+    <div class="user-profile" th:object="${username}">
         <div class="user-info">
             <div class="user-info-item">
                 <div class="profile-picture">
                     <img src="../static/assets/profileImage.jpg" th:src="@{/assets/images/profileImage.jpg}" alt="User Image">
                 </div>
                 <div class="user-rank">
-                    <p>rank</p>
+                    <p th:text="${username}">rank</p>
                 </div>
-                <span sec:authorize="isAuthenticated()" style="display: inline-block;">
-                    | Logged user: <span sec:authentication="name"></span> |
-                    Roles: <span sec:authentication="principal.authorities"></span> |
-                    <a th:href="@{/logout}">Sign Out</a>
-                </span>
+<!--                <span sec:authorize="isAuthenticated()" style="display: inline-block;">-->
+<!--                    | Logged user: <span sec:authentication="name"></span> |-->
+<!--                    Roles: <span sec:authentication="principal.authorities"></span> |-->
+<!--                    <a th:href="@{/logout}">Sign Out</a>-->
+<!--                </span>-->
             </div>
             <div class="user-info-item user-data">
                 <div class="info-block">
