@@ -8,7 +8,7 @@
 
 .user-creation .header {
     color: #D3D3D3;
-    font-family: BLAME Regular;
+    font-family: BLAME Regular, sans-serif;
     text-align: center;
     padding: .5em 0;
 }

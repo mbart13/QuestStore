@@ -68,7 +68,12 @@ document.write(`
 `);
 
 document.getElementById("sign-out").addEventListener("click", logout)
+document.getElementById("profile").addEventListener("click", goToProfile)
 
 function logout() {
     window.location.replace("/logout")
+}
+
+function goToProfile() {
+    window.location.replace("/user")
 }

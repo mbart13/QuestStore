@@ -93,6 +93,17 @@ label {
   font-size: 1em;
 }
 
+.btn-container.btn-begin {
+  text-align: center;
+
+}
+
+.btn-begin a {
+  display: inline-block;
+  text-decoration: none;
+  width: 70%;
+}
+
 @media screen and (max-width: 420px) {
   .main-section-container {
     width: 100vw;
@@ -121,3 +132,4 @@ label {
   }
 
 }
+

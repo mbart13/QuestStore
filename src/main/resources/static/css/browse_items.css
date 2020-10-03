@@ -23,6 +23,7 @@
 
 .header {
     margin-bottom: .8em;
+    padding: .7em;
 }
 
 .header-list {
@@ -41,7 +42,7 @@
 
 .item-body {
     background-color: #d3d3d3;
-
+    margin: .3em;
 }
 
 img.shopping-cart {

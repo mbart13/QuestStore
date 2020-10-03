@@ -110,6 +110,10 @@ svg path {
   background-size: 60px 90px;
 }
 
+#notifications, #cart, #sign-out, #profile:hover {
+  cursor: pointer;
+}
+
 /* FOOTER */
 
 .footer {
