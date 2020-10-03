@@ -97,6 +97,7 @@ body.page {
 }
 
 .header-menu-option:hover {
+  cursor: pointer;
   border-color: #d3d3d3;
 }
 
@@ -110,9 +111,6 @@ svg path {
   background-size: 60px 90px;
 }
 
-#notifications, #cart, #sign-out, #profile:hover {
-  cursor: pointer;
-}
 
 /* FOOTER */
 
