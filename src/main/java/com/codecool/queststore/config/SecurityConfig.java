@@ -53,9 +53,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 //TODO - enable csfr
                 .csrf().disable();
-
                 //for temp disabling security
-//                http.csrf().disable();
                 http.headers().frameOptions().disable();
     }
 
@@ -75,12 +73,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //        auth.jdbcAuthentication().dataSource(dataSource);
 
         auth.userDetailsService(userDetailsService);
-        //from db
-//        auth.jdbcAuthentication().dataSource(dataSource)
-//                .usersByUsernameQuery(
-//                        "select username, password, enabled from students where username = ?")
-//                .authoritiesByUsernameQuery(
-//                        "select username, role from user_roles where username = ?");
     }
 
 
