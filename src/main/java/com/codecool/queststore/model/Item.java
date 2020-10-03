@@ -13,6 +13,9 @@ public class Item {
     private int cost;
     private String type;
 
+    @OneToOne(mappedBy = "item")
+    private StudentItem studentItem;
+
     public Long getId() {
         return id;
     }
@@ -51,5 +54,13 @@ public class Item {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public StudentItem getStudentItem() {
+        return studentItem;
+    }
+
+    public void setStudentItem(StudentItem studentItem) {
+        this.studentItem = studentItem;
     }
 }
