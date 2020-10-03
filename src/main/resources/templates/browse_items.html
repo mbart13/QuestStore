@@ -35,7 +35,7 @@
                 <img class="shopping-cart" src="../static/assets/cart.png" th:src="@{/assets/cart.png}" alt="cart">
             </div>
             <div class="description">
-                <p th:text="${item. 3description}">Lorem ipsum dolor</p>
+                <p th:text="${item.description}">Lorem ipsum dolor</p>
                 <br>
                 <p class="item-type" th:text="'Type: ' + ${#strings.toUpperCase(item.type)}"></p>
                 <br>

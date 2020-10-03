@@ -35,7 +35,6 @@ p {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    margin-bottom: 0.7em;
     background: linear-gradient(90.02deg, #001513 52.87%, #550609 59.96%, #550609 87.04%, #001513 94.59%);
 }
 
@@ -47,7 +46,7 @@ p {
 
 .qtitle {
     color: #d3d3d3;
-    font-family: "BLAME Regular";
+    font-family: "BLAME Regular", sans-serif;
     font-size: 1.4em;
     margin: 0.7em 0.5em;
     padding-top: 0.6em;
@@ -56,6 +55,7 @@ p {
 .quest{
     background: linear-gradient(125.39deg, #001513 26.03%, #550609 49.2%, #001513 67.85%);
     padding-bottom: 0.7%;
+    margin: 0.7em 0;
 }
 
 .qinfo {
@@ -84,14 +84,23 @@ p {
 }
 
 .qsubmit {
-    margin-top: 0.8em;
-    background: none;
     width: 100%;
-    border-color: #550609;
-    color: #550609;
-    font-family: "BLAME Regular";
-    font-size: 1em;
-    padding: 0.5em;
-    padding-top: 1em;
-    border-width: 0.3em;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.qsubmit button {
+    width: 75%;
+    background-color: #550609;
+    color: #d3d3d3;
+    font-family: "BLAME Regular", sans-serif;
+    clip-path: polygon(0 0, 95% 0, 100% 100%, 0% 100%);
+    font-size: 1.2em;
+    padding: 1em 0.5em 0.5em;
+    border: none;
+}
+
+.qsubmit button:hover {
+    background-color: #7e5556;
 }

@@ -18,10 +18,10 @@
         <h1 class="qtitle" id="extra-quests">EXTRA QUESTS</h1>
     </div>
 
-    <div class="quest" th:each="quest : ${quests}" th:classappend="${quest.isExtra} ? 'extra' : 'basic'">
+    <div class="quest" th:each="quest : ${quests}" th:classappend="${quest.isExtra()} ? 'extra' : 'basic'">
         <div class="qheader">
             <h1 class="qtitle"><span th:text="${quest.name}">quest name</span></h1>
-            <h1 class="qtitle"><span th:text="${quest.reward}">quest reward</span></h1>
+            <h1 class="qtitle"><span th:text="${quest.reward}">quest reward</span>CC</h1>
         </div>
         <div class="qcontent">
             <div class="qinfo">
@@ -33,7 +33,9 @@
                     </svg>
                     <div class="qbasic-info">
                         <p class="short-description"><span th:text="${quest.shortDescription}">quest shortDescription</span></p>
-                        <input class="qsubmit" type="submit" value="SEE QUEST">
+                        <form class="qsubmit" action="#" th:action="@{/quests/{id}(id=${quest.id})}" method="get">
+                            <button type="submit">Go to quest</button>
+                        </form>
                     </div>
                 </div>
             </div>
