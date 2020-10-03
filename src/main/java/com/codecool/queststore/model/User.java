@@ -1,77 +1,72 @@
 package com.codecool.queststore.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 
-@MappedSuperclass
-public abstract class User {
-
+@Entity
+@Table(name = "users")
+public class User extends UserTemplate {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    private String name;
-    private String surname;
-    private String role;
-    private String passwordHash;
-    private String email;
-
+    private Integer balance;
+    private Integer earnings;
+    private ArrayList completedAssignments;
+    private ArrayList rewards;
 
     public User() {
 
     }
 
-    public User(String name, String surname, String role, String passwordHash, String email) {
-        this.name = name;
-        this.surname = surname;
-        this.role = role;
-        this.passwordHash = passwordHash;
-        this.email = email;
+    public User(String username, String name, String surname, String role, String passwordHash, String email,
+                Integer balance, Integer earnings, ArrayList completedAssignments, ArrayList rewards) {
+        super(username, name, surname, role, passwordHash, email);
+        this.balance = balance;
+        this.earnings = earnings;
+        this.completedAssignments = completedAssignments;
+        this.rewards = rewards;
     }
 
+
+    public Integer getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Integer balance) {
+        this.balance = balance;
+    }
+
+    public Integer getEarnings() {
+        return earnings;
+    }
+
+    public void setEarnings(Integer earnings) {
+        this.earnings = earnings;
+    }
+
+    public ArrayList getCompletedAssignments() {
+        return completedAssignments;
+    }
+
+    public void setCompletedAssignments(ArrayList completedAssignments) {
+        this.completedAssignments = completedAssignments;
+    }
+
+    public ArrayList getRewards() {
+        return rewards;
+    }
+
+    public void setRewards(ArrayList rewards) {
+        this.rewards = rewards;
+    }
+
+    @Override
     public Integer getId() {
         return id;
     }
 
+    @Override
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-    public String getPasswordHash() {
-        return passwordHash;
-    }
-
-    public void setPasswordHash(String passwordHash) {
-        this.passwordHash = passwordHash;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 }

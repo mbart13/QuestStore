@@ -1,7 +1,7 @@
 package com.codecool.queststore.service;
 
-import com.codecool.queststore.model.Student;
-import com.codecool.queststore.repository.StudentRepository;
+import com.codecool.queststore.model.User;
+import com.codecool.queststore.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,26 +9,26 @@ import java.util.List;
 @Service
 public class StudentService {
 
-    private final StudentRepository studentRepository;
+    private final UserRepository userRepository;
 
-    public StudentService(StudentRepository studentRepository) {
-        this.studentRepository = studentRepository;
+    public StudentService(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
-    public List<Student> showAllStudents() {
-        return (List<Student>) studentRepository.findAll();
+    public List<User> showAllStudents() {
+        return (List<User>) userRepository.findAll();
     }
 
-    public Student findById(Long id) {
-        return studentRepository.findById(id).orElseThrow(() -> new RuntimeException("Entity not found"));
+    public User findById(Long id) {
+        return userRepository.findById(id).orElseThrow(() -> new RuntimeException("Entity not found"));
     }
 
-    public Student findByEmail(String email) {
-        List<Student> allStudents = showAllStudents();
+    public User findByEmail(String email) {
+        List<User> allUsers = showAllStudents();
 
-        for (Student student : allStudents) {
-            if (student.getEmail() == email) {
-                return student;
+        for (User user : allUsers) {
+            if (user.getEmail() == email) {
+                return user;
             }
         }
 

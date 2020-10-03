@@ -10,12 +10,12 @@ values
 
 
 
-INSERT INTO users (username, name, surname, role, password, email, balance, earnings, enabled)
+INSERT INTO users (id, username, name, surname, role, password, email, balance, earnings, enabled)
 VALUES
-('nodi','Lukasz', 'Lesiuk', 'student', '1', 'lukasz.lesiuk.2@gmail.com', 1000, 3000, true),
-('user1','Uesugi', 'Kenshin', 'student', '{noop}1', 'uesugi.genshin@niigata.jp', 1500, 4000, true),
-('user2','Miamoto', 'Musashi', 'student', '{noop}1', 'miamoto.mushashi@nitenichi-ryu.jp', 0, 9000, true),
-('user3','name1', 'surname1', 'student', '{noop}1', 'mail@mail.com', 3750, 13000, false);
+(1, 'nodi','Lukasz', 'Lesiuk', 'user', '1', 'lukasz.lesiuk.2@gmail.com', 1000, 3000, true),
+(2, 'user1','Uesugi', 'Kenshin', 'user', '{noop}1', 'uesugi.genshin@niigata.jp', 1500, 4000, true),
+(3, 'user2','Miamoto', 'Musashi', 'user', '{noop}1', 'miamoto.mushashi@nitenichi-ryu.jp', 0, 9000, true),
+(4, 'user3','name1', 'surname1', 'user', '{noop}1', 'mail@mail.com', 3750, 13000, false);
 
 
 INSERT INTO authorities (username, authority)
