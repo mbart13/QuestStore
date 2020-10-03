@@ -89,7 +89,7 @@ body.page {
   color: #d3d3d3;
   display: flex;
   flex-flow: column nowrap;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   border-style: solid;
   border-radius: 3px;
@@ -107,7 +107,7 @@ svg path {
 .menu-icon {
   fill: #d3d3d3;
   fill-opacity: 1;
-  background-size: 40px 60px;
+  background-size: 60px 90px;
 }
 
 /* FOOTER */

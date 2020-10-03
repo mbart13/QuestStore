@@ -70,7 +70,9 @@ p {
 
 .qbasic-info {
     display: flex;
-    flex-direction: column;
+
+Extra Items
+  flex-direction: column;
     align-items: center;
     margin-left: 0.5em;
 }
@@ -103,4 +105,5 @@ p {
 
 .qsubmit button:hover {
     background-color: #7e5556;
+    cursor: pointer;
 }
