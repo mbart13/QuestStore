@@ -2,10 +2,15 @@ package com.codecool.queststore.config;
 
 import com.codecool.queststore.controller.LoggingAccessDeniedHandler;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
@@ -18,7 +23,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private LoggingAccessDeniedHandler accessDeniedHandler;
 
     @Autowired
-    DataSource dataSource;
+    UserDetailsService userDetailsService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -28,10 +33,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/",
                         "/js/**",
                         "/css/**",
-                        "/img/**",
                         "/assets/**",
-                        "/h2-console/**",
-                        "/webjars/**").permitAll()
+                        "/h2-console/**").permitAll()
                     .antMatchers(
                         "/user/**").hasRole("USER")
 //                    .anyRequest().authenticated()
@@ -69,20 +72,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .password("{noop}1")
 //                .roles("USER");
 
-        //from db
-        auth.jdbcAuthentication().dataSource(dataSource)
-                .usersByUsernameQuery(
-                        "select username, password,CASE ENABLED WHEN 1 THEN 'true' ELSE 'false' END from students where username=?")
-                .authoritiesByUsernameQuery(
-                        "select username, role from user_roles where username=?");
-    }
-//    CASE ENABLED WHEN 1 THEN 'true' ELSE 'false' END 'ENABLED'
+//        auth.jdbcAuthentication().dataSource(dataSource);
 
-//       auth.jdbcAuthentication()
-//               .dataSource(dataSource)
-//            .passwordEncoder(passwordEncoder())
-//            .authoritiesByUsernameQuery("select USERNAME, ROLE from EMPLOYEE where USERNAME=?")
-//            .usersByUsernameQuery("select USERNAME, PASSWORD , 1 as enabled from EMPLOYEE where USERNAME=?");
+        auth.userDetailsService(userDetailsService);
+        //from db
+//        auth.jdbcAuthentication().dataSource(dataSource)
+//                .usersByUsernameQuery(
+//                        "select username, password, enabled from students where username = ?")
+//                .authoritiesByUsernameQuery(
+//                        "select username, role from user_roles where username = ?");
+    }
+
+
+    @Bean
+    public PasswordEncoder getPasswordEncoder() {
+        return NoOpPasswordEncoder.getInstance();
+    }
 
 }
 
