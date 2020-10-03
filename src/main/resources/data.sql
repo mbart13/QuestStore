@@ -8,8 +8,25 @@ values
 ('Extra materials', 'Get some extra materials for the topic you are currently studying', 500, 'EXTRA'),
 ('Dressing Up', 'All mentors should dress up as pirates (or just funny) for the day', 5000, 'EXTRA');
 
+
 insert into quest (name, reward, short_description, details, instruction, is_extra)
 values
 ('Spot mistake in assignment', 50, 'At Codecool we pay a lot of attention to the quality of our assignment instructions, but mistakes still happen. You can however let us know about them and not only make the life easier for your colleagues, but also earn some CCs!', 'The default value of quest is shown on the top, but a mentor can award more depending on your replies, especially your fix suggestion.', 'Please let us know: on which page the mistake is, what exactly is it and what is your idea to fix it?', 0),
 ('Spot mistake in assignment2', 500, 'At Codecool we pay a lot of attention to the quality of our assignment instructions, but mistakes still happen. You can however let us know about them and not only make the life easier for your colleagues, but also earn some CCs!', 'The default value of quest is " + reward + ", but a mentor can award more depending on your replies, especially your fix suggestion.', 'Please let us know: on which page the mistake is, what exactly is it and what is your idea to fix it?', 0),
 ('Spot mistake in assignment3', 250, 'At Codecool we pay a lot of attention to the quality of our assignment instructions, but mistakes still happen. You can however let us know about them and not only make the life easier for your colleagues, but also earn some CCs!', 'The default value of quest is " + reward + ", but a mentor can award more depending on your replies, especially your fix suggestion.', 'Please let us know: on which page the mistake is, what exactly is it and what is your idea to fix it?', 1);
+
+
+INSERT INTO users (id, username, name, surname, role, password, email, balance, earnings)
+VALUES
+(1, 'nodi','Lukasz', 'Lesiuk', 'user', '1', 'lukasz.lesiuk.2@gmail.com', 1000, 3000),
+(2, 'user1','Uesugi', 'Kenshin', 'user', '{noop}1', 'uesugi.genshin@niigata.jp', 1500, 4000),
+(3, 'user2','Miamoto', 'Musashi', 'user', '{noop}1', 'miamoto.mushashi@nitenichi-ryu.jp', 0, 9000),
+(4, 'user3','name1', 'surname1', 'user', '{noop}1', 'mail@mail.com', 3750, 13000);
+
+
+--INSERT INTO authorities (username, authority)
+--VALUES
+--('nodi', 'USER'),
+--('user1', 'USER'),
+--('user2', 'USER'),
+--('user3', 'USER');
