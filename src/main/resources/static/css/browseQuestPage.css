@@ -52,6 +52,10 @@ p {
     padding-top: 0.6em;
 }
 
+.qtitle:hover {
+    cursor: pointer;
+}
+
 .quest{
     background: linear-gradient(125.39deg, #001513 26.03%, #550609 49.2%, #001513 67.85%);
     padding-bottom: 0.7%;
@@ -70,15 +74,13 @@ p {
 
 .qbasic-info {
     display: flex;
-
-Extra Items
-  flex-direction: column;
+    flex-direction: column;
     align-items: center;
     margin-left: 0.5em;
 }
 
-#qicon {
-    flex-basis: 25%;
+.qicon {
+    flex-basis: 40%;
 }
 
 .qicon path {

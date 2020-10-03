@@ -71,5 +71,4 @@ document.getElementById("sign-out").addEventListener("click", logout)
 
 function logout() {
     window.location.replace("/logout")
-    // window.location.replace(window.location.hostname + "/logout")
 }
