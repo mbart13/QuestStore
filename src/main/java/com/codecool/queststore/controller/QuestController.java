@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/quests")
+@RequestMapping("quest/quests")
 public class QuestController {
 
     private final QuestService questService;
@@ -22,12 +22,12 @@ public class QuestController {
     @GetMapping
     public String showQuests(Model model){
         model.addAttribute("quests", questService.showAllQuests());
-        return "browse_quests";
+        return "quest/browse_quests";
     }
 
     @GetMapping("{id}")
     public String showQuest(@PathVariable(name="id") Long id, Model model) {
         model.addAttribute("quest", questService.findById(id));
-        return "quest";
+        return "quest/quest";
     }
 }

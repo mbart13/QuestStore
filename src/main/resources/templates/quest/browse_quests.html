@@ -33,7 +33,7 @@
                     </svg>
                     <div class="qbasic-info">
                         <p class="short-description"><span th:text="${quest.shortDescription}">quest shortDescription</span></p>
-                        <form class="qsubmit" action="#" th:action="@{/quests/{id}(id=${quest.id})}" method="get">
+                        <form class="qsubmit" action="#" th:action="@{quests/{id}(id=${quest.id})}" method="get">
                             <button type="submit">Go to quest</button>
                         </form>
                     </div>
