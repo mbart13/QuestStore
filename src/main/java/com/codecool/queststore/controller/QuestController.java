@@ -22,12 +22,12 @@ public class QuestController {
     @GetMapping
     public String showQuests(Model model){
         model.addAttribute("quests", questService.showAllQuests());
-        return "browse_quests";
+        return "quest/browse_quests";
     }
 
     @GetMapping("{id}")
     public String showQuest(@PathVariable(name="id") Long id, Model model) {
         model.addAttribute("quest", questService.findById(id));
-        return "quest";
+        return "quest/quest";
     }
 }

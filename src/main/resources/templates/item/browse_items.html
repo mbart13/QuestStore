@@ -39,7 +39,7 @@
                 <br>
                 <p class="item-type" th:text="'Type: ' + ${#strings.toUpperCase(item.type)}"></p>
                 <br>
-                <a class="button-cta" href="#" th:href="@{item/items/{id}(id=${item.id})}"> Go To Item </a>
+                <a class="button-cta" href="#" th:href="@{items/{id}(id=${item.id})}"> Go To Item </a>
             </div>
 
         </div>
