@@ -21,12 +21,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/")
-    public String root() {
-        return "index";
-    }
-
-    @GetMapping("/user")
+    @GetMapping("/user/profile_page")
     public String userIndex(ModelMap model) {
 
         UserDetailsImpl userDetails = (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -43,7 +38,7 @@ public class UserController {
 //        return "item_template";
 //    }
 
-    @GetMapping("/login")
+    @GetMapping({"/login", "/", "/index"})
     public String login() {
         return "login";
     }

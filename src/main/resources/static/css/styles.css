@@ -84,7 +84,7 @@ body.page {
 }
 
 .header-menu-option {
-  min-width: 50px;
+  width: 50px;
   padding: 0 5px;
   color: #d3d3d3;
   display: flex;
