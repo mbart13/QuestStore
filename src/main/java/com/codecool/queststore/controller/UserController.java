@@ -32,12 +32,6 @@ public class UserController {
         return "user/profile_page";
     }
 
-//    @GetMapping("/{id}")
-//    public String showItem(@PathVariable(name="id") Long id, Model model) {
-//        model.addAttribute("user", userService.findById(id));
-//        return "item_template";
-//    }
-
     @GetMapping({"/login", "/", "/index"})
     public String login() {
         return "login";
@@ -48,7 +42,6 @@ public class UserController {
         return "/error/access-denied";
     }
 
-//    @RequestMapping(value="/login", method = RequestMethod.GET)
     @GetMapping("hello")
     public String printUser(ModelMap model) {
 

@@ -36,7 +36,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/assets/**",
                         "/h2-console/**").permitAll()
                     .antMatchers(
-                        "/user/**").hasRole("USER")
+                        "/user/**",
+                        "/item/**",
+                        "/quest/**"
+                            ).hasRole("USER")
 //                    .anyRequest().authenticated()
                 .anyRequest().permitAll()
                 .and()
