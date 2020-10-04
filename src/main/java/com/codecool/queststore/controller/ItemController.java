@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @Controller
-@RequestMapping("/items")
+@RequestMapping("item/items")
 public class ItemController {
 
     private final ItemService itemService;
