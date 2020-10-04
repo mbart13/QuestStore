@@ -37,9 +37,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/h2-console/**").permitAll()
                     .antMatchers(
                         "/user/**",
-                        "/quests/**",
-                        "/items/**"
-                    ).hasRole("USER")
+                        "/item/**",
+                        "/quest/**"
+                            ).hasRole("USER")
 //                    .anyRequest().authenticated()
                 .anyRequest().permitAll()
                 .and()
