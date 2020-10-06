@@ -1,5 +1,6 @@
 package com.codecool.queststore.service;
 
+import com.codecool.queststore.exception.EntityNotFoundException;
 import com.codecool.queststore.model.Item;
 import com.codecool.queststore.repository.ItemRepository;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,7 @@ public class ItemService {
     }
 
     public Item findById(Long id) {
-        return itemRepository.findById(id).orElseThrow(() -> new RuntimeException("Entity not found"));
+        return itemRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException(id, ));
     }
 }

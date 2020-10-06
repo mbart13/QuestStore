@@ -20,6 +20,7 @@ public class QuestService {
     }
 
     public Quest findById(Long id) {
-        return questRepository.findById(id).orElseThrow(() -> new RuntimeException("Entity not found"));
+        return questRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Entity not found"));
     }
 }

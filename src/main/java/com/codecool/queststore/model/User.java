@@ -2,6 +2,7 @@ package com.codecool.queststore.model;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -11,8 +12,10 @@ public class User extends UserTemplate {
     private Integer id;
     private Integer balance;
     private Integer earnings;
-    private ArrayList completedAssignments;
-    private ArrayList rewards;
+    @OneToMany
+    private List<Quest> completedAssignments;
+    @OneToMany
+    private List<Item> rewards;
 
     public User() {
 

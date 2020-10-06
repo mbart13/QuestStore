@@ -26,7 +26,7 @@ public class Student {
     @Column(name = "password")
     private String password;
 
-    @OneToMany(mappedBy = "student", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "student", fetch = FetchType.LAZY)
     private Set<StudentItem> items = new HashSet<>();
 
     public long getId() {

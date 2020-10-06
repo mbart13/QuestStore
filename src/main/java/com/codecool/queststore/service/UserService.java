@@ -27,7 +27,7 @@ public class UserService {
         List<User> allUsers = showAllStudents();
 
         for (User user : allUsers) {
-            if (user.getEmail() == email) {
+            if (user.getEmail().equals(email)) {
                 return user;
             }
         }
