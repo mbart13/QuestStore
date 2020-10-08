@@ -1,12 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&display=swap");
 
-@font-face {
-  font-family: "BLAME Regular";
-  font-style: normal;
-  font-weight: normal;
-  src: url("../assets/the_blame2.ttf") format("truetype");
-}
-
 * {
   box-sizing: border-box;
   margin: 0;
