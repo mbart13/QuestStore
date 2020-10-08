@@ -1,5 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&display=swap");
 
+/*Backap font loading in case the one from init.js fails*/
+@font-face {
+font-family: 'BLAME Regular';
+font-style: normal;
+font-weight: normal;
+src: url('../../static/assets/the_blame.ttf') format('truetype');
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
