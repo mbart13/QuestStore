@@ -2,14 +2,15 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../static/css/styles.css" th:href="@{/css/styles.css}">
-    <link rel="stylesheet" href="../static/css/browse_items.css" th:href="@{/css/browse_items.css}">
-    <link rel="stylesheet" href="../static/css/item_template.css" th:href="@{/css/item_template.css}">
+    <link rel="stylesheet" href="../../static/css/styles.css" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="../../static/css/browse_items.css" th:href="@{/css/browse_items.css}">
+    <link rel="stylesheet" href="../../static/assets/font-awesome-4.7.0/css/font-awesome.min.css" th:href="@{/assets/font-awesome-4.7.0/css/font-awesome.min.css}">
+    <link rel="stylesheet" href="../../static/css/item_template.css" th:href="@{/css/item_template.css}">
     <title>Item</title>
 </head>
     <body>
 
-        <script src="../static/js/header.js" th:src="@{/js/header.js}"></script>
+        <script src="../../static/js/header.js" th:src="@{/js/header.js}"></script>
 
         <!-- Page content goes here-->
         <div class="item" th:object="${item}">
@@ -34,21 +35,25 @@
                 </div>
                 <div class="details details-bottom">
                     <h3>Make sure you have enough coolcoins before purchase!</h3>
-                    <div class="btn purchase">
-                        <a class="button-cta" onclick="alert('Not implemented yet')"
-                           th:text="${#strings.toUpperCase(item.type) == 'BASIC'} ? 'Purchase Reward' : 'Purchase with group'">Purchase Reward</a>
-                    </div>
+                    <form class="btn purchase" th:action="@{/student-items}" method="post">
+                        <button class="button-cta" th:name="item_id" th:value="${item.getId()}" type="submit"
+                           th:text="${#strings.toUpperCase(item.type) == 'BASIC'} ? 'Purchase Reward' : 'Purchase with group'">Purchase Reward</button>
+
+                    </form>
                     <div class="btn go-back">
                         <a class="button-cta" href="#" th:href="@{/item/items}">Go Back</a>
                     </div>
-                </div>
+                    <div th:if="${purchaseMade ne null}">
+                         <div th:replace="${purchaseMade} ? ~{item/fragments :: purchaseConfirmed} : ~{item/fragments :: purchaseDeclined}"></div>
+                    </div>
 
+                </div>
             </div>
         </div>
 
         <!-- End of page content-->
 
-        <script src="../static/js/footer.js" th:src="@{/js/footer.js}"></script>
+        <script src="../../static/js/footer.js" th:src="@{/js/footer.js}"></script>
 
     </body>
 </html>

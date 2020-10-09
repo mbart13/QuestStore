@@ -23,15 +23,12 @@ public class UserService {
         return userRepository.findById(id).orElseThrow(() -> new RuntimeException("Entity not found"));
     }
 
-    public User findByEmail(String email) {
-        List<User> allUsers = showAllStudents();
-
-        for (User user : allUsers) {
-            if (user.getEmail() == email) {
-                return user;
-            }
-        }
-
-        throw new RuntimeException("Entity not found");
+    public User findByUsername(String username) {
+        return userRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("Entity not found"));
     }
+
+    public User save(User user) {
+        return userRepository.save(user);
+    }
+
 }

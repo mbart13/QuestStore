@@ -15,15 +15,15 @@
 
     <!-- Page content goes here-->
 
-    <header class="header">
+    <header class="header basic-items-selected">
         <ul class="link-list">
-            <li class="link"><span class="basic-items">Basic Items</span></li>
+            <li class="link"><span class="basic-items selected">Basic Items</span></li>
             <li class="link"><span class="magic-items">Extra Items</span></li>
         </ul>
 
     </header>
 
-    <div class="item" th:each="item : ${items}" th:classappend="${item.type == 'BASIC'} ? 'basic' : 'magic'">
+    <div class="item" th:each="item : ${items}" th:classappend="${item.type == 'BASIC'} ? 'basic show' : 'magic hide'">
         <div class="item-header ">
             <ul class="header-list">
                 <li class="item-header item-name"><span th:text="${item.name}">item name</span> </li>

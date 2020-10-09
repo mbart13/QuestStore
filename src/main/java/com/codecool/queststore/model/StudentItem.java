@@ -1,39 +1,42 @@
 package com.codecool.queststore.model;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "student_items")
 public class StudentItem {
 
     @Id
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(name = "order_date")
-    private Date orderDate;
+    private LocalDate orderDate = LocalDate.now();
 
     @ManyToOne
+    @JoinColumn(name = "user_id")
     private Student student;
 
     @OneToOne
     private Item item;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Date getOrderDate() {
+    public LocalDate getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(Date orderDate) {
+    public void setOrderDate(LocalDate orderDate) {
         this.orderDate = orderDate;
     }
+
 
     public Student getStudent() {
         return student;

@@ -1,5 +1,6 @@
 package com.codecool.queststore.config;
 
+
 import com.codecool.queststore.model.User;
 import com.codecool.queststore.model.UserDetailsImpl;
 import com.codecool.queststore.repository.UserRepository;

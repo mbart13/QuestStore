@@ -1,34 +1,31 @@
 package com.codecool.queststore.controller;
 
-import com.codecool.queststore.model.User;
 import com.codecool.queststore.model.UserDetailsImpl;
+import com.codecool.queststore.service.StudentItemService;
 import com.codecool.queststore.service.UserService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+
+import java.security.Principal;
 
 @Controller
 public class UserController {
 
     private final UserService userService;
+    private final StudentItemService studentItemService;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, StudentItemService studentItemService) {
         this.userService = userService;
+        this.studentItemService = studentItemService;
     }
 
     @GetMapping("/user/profile_page")
-    public String userIndex(ModelMap model) {
-
-        UserDetailsImpl userDetails = (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        String name = userDetails.getUsername(); //get logged in username
-
-        model.addAttribute("username", name);
-
+    public String userIndex(ModelMap model, Principal principal) {
+        Long userID = userService.findByUsername(principal.getName()).getId();
+        model.addAttribute("studentItems", studentItemService.findByUserID(userID));
+        model.addAttribute("username", principal.getName());
         return "user/profile_page";
     }
 

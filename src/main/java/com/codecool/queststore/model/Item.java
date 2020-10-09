@@ -7,14 +7,11 @@ public class Item {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String name;
-    private String description;
-    private int cost;
-    private String type;
-
-    @OneToOne(mappedBy = "item")
-    private StudentItem studentItem;
+    protected Long id;
+    protected String name;
+    protected String description;
+    protected int cost;
+    protected String type;
 
     public Long getId() {
         return id;
@@ -56,11 +53,4 @@ public class Item {
         this.type = type;
     }
 
-    public StudentItem getStudentItem() {
-        return studentItem;
-    }
-
-    public void setStudentItem(StudentItem studentItem) {
-        this.studentItem = studentItem;
-    }
 }

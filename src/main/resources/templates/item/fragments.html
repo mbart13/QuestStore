@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Fragments</title>
+</head>
+<body>
+<div class="purchase-confirmed" th:fragment="purchaseConfirmed">
+    <p><i class="fa fa-check"></i> Purchase successful!</p></div>
+<div class="purchase-declined" th:fragment="purchaseDeclined">
+    <p><i class="fa fa-times"></i> You don't have enough coolcoins!</p></div>
+</body>
+</html>

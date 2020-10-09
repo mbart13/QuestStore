@@ -137,6 +137,7 @@ hr.solid {
   border-left: 0px solid transparent;
   border-right: 25px solid transparent;
   border-top: 0px solid transparent;
+  cursor: pointer;
 }
 
 .aux-container {

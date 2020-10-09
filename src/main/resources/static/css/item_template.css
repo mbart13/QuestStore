@@ -60,3 +60,16 @@
 .btn {
     width: 90%;
 }
+
+.purchase-confirmed, .purchase-declined {
+    margin-top: .8em;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.purchase-confirmed {
+    color: #06413B;
+}
+
+.purchase-declined {
+    color: #70070A;
+}
