@@ -40,7 +40,6 @@ public class StudentItemController {
             studentItemService.save(studentItem);
             userService.save(student);
             model.addAttribute("purchaseMade", true);
-
         } else {
             model.addAttribute("purchaseMade", false);
         }
