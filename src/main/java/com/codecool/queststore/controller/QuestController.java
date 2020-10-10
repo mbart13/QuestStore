@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("quest/quests")
+@RequestMapping("/quests")
 public class QuestController {
 
     private final QuestService questService;

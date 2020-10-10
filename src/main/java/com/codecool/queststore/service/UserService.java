@@ -22,16 +22,4 @@ public class UserService {
     public User findById(Long id) {
         return userRepository.findById(id).orElseThrow(() -> new RuntimeException("Entity not found"));
     }
-
-    public User findByEmail(String email) {
-        List<User> allUsers = showAllStudents();
-
-        for (User user : allUsers) {
-            if (user.getEmail() == email) {
-                return user;
-            }
-        }
-
-        throw new RuntimeException("Entity not found");
-    }
 }
