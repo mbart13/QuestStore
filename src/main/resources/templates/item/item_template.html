@@ -27,10 +27,20 @@
                     <p class="info"><span>Basic items</span>: available for individual students</p>
                     <p><span>Extra items</span>: available only for group</p>
                 </div>
-                <div class="details details-right">
-                    <h2>You have already redeemed this reward:</h2>
-                    <span>3 times</span>
-                </div>
+                <th:block th:switch="${studentItems.size()}">
+                    <div th:case="0" class="details details-right">
+                        <h2>You have not redeemed this reward before</h2>
+<!--                        <span th:text="${studentItems.size()} + ' times'">3 times</span>-->
+                    </div>
+                    <div th:case="1" class="details details-right">
+                        <h2>You have already redeemed this reward:</h2>
+                        <span>1 time</span>
+                    </div>
+                    <div th:case="*" class="details details-right">
+                        <h2>You have already redeemed this reward:</h2>
+                        <span th:text="${studentItems.size()} + ' times'">3 times</span>
+                    </div>
+                </th:block>
                 <div class="details details-bottom">
                     <h3>Make sure you have enough coolcoins before purchase!</h3>
                     <form class="btn purchase" th:action="@{/student-items}" method="post">
@@ -41,9 +51,7 @@
                         <a class="button-cta" href="#" th:href="@{/item/items}">Go Back</a>
                     </div>
                     <div th:if="${purchaseMade ne null}">
-                         <div
-                             th:replace="${purchaseMade} ? ~{item/fragments :: purchaseConfirmed} : ~{item/fragments :: purchaseDeclined}">
-                         </div>
+                         <div th:replace="${purchaseMade} ? ~{item/fragments :: purchaseConfirmed} : ~{item/fragments :: purchaseDeclined}"></div>
                     </div>
                 </div>
             </div>

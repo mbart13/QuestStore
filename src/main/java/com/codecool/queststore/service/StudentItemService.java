@@ -22,4 +22,8 @@ public class StudentItemService {
     public List<StudentItem> findByUserID(Long id) {
         return studentItemRepository.findByStudentId(id);
     }
+
+    public List<StudentItem> findByUserIDAndItemId(Long studentId, Long itemId) {
+        return studentItemRepository.findByStudentIdAndItemId(studentId, itemId);
+    }
 }

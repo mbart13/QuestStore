@@ -44,6 +44,7 @@ public class StudentItemController {
             model.addAttribute("purchaseMade", false);
         }
 
+        model.addAttribute("studentItems", studentItemService.findByUserIDAndItemId(student.getId(), id));
         model.addAttribute("item", item);
         return "item/item_template";
     }

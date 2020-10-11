@@ -27,7 +27,7 @@ VALUES
 insert into student (current_balance, rank, total_earnings, user_id)
 values
 (1000, 'samurai', 1000, 1),
-(500, 'samurai', 2000, 5)
+(5000, 'samurai', 7000, 5)
 
 
 --INSERT INTO authorities (username, authority)

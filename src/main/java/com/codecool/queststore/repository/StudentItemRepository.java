@@ -11,4 +11,6 @@ public interface StudentItemRepository extends JpaRepository<StudentItem, Long> 
 
     List<StudentItem> findByStudentId(Long id);
 
+    List<StudentItem> findByStudentIdAndItemId(Long studentId, Long itemId);
+
 }
