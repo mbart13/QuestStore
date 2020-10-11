@@ -24,10 +24,10 @@ VALUES
 ('user3','name1', 'surname1', 'user', '{noop}1'),
 ('mbart','Michal', 'Bartosik', 'user', '1');
 
-insert into student (current_balance, rank, total_earnings, user_id)
+insert into student (current_balance, rank, module, total_earnings, user_id)
 values
-(1000, 'samurai', 1000, 1),
-(5000, 'samurai', 7000, 5)
+(1000, 'Samurai', 'Web', 1000, 1),
+(500, 'Samurai', 'Web', 1000, 5)
 
 
 --INSERT INTO authorities (username, authority)

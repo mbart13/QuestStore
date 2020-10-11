@@ -4,6 +4,7 @@ import com.codecool.queststore.model.Student;
 import com.codecool.queststore.service.ItemService;
 import com.codecool.queststore.service.StudentItemService;
 import com.codecool.queststore.service.UserService;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.security.Principal;
 
-
+@AllArgsConstructor
 @Controller
 @RequestMapping("item/items")
 public class ItemController {
@@ -20,12 +21,6 @@ public class ItemController {
     private final ItemService itemService;
     private final StudentItemService studentItemService;
     private final UserService userService;
-
-    public ItemController(ItemService itemService, StudentItemService studentItemService, UserService userService) {
-        this.itemService = itemService;
-        this.studentItemService = studentItemService;
-        this.userService = userService;
-    }
 
     @GetMapping
     public String getAllItems(Model model) {

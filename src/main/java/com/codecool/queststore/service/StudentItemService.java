@@ -2,18 +2,16 @@ package com.codecool.queststore.service;
 
 import com.codecool.queststore.model.StudentItem;
 import com.codecool.queststore.repository.StudentItemRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@AllArgsConstructor
 @Service
 public class StudentItemService {
 
     private final StudentItemRepository studentItemRepository;
-
-    public StudentItemService(StudentItemRepository studentItemRepository) {
-        this.studentItemRepository = studentItemRepository;
-    }
 
     public StudentItem save(StudentItem studentItem) {
         return studentItemRepository.save(studentItem);

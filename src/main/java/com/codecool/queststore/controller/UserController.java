@@ -4,6 +4,7 @@ import com.codecool.queststore.model.Student;
 import com.codecool.queststore.model.UserDetailsImpl;
 import com.codecool.queststore.service.StudentItemService;
 import com.codecool.queststore.service.UserService;
+import lombok.AllArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -11,16 +12,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.security.Principal;
 
+@AllArgsConstructor
 @Controller
 public class UserController {
 
     private final UserService userService;
     private final StudentItemService studentItemService;
-
-    public UserController(UserService userService, StudentItemService studentItemService) {
-        this.userService = userService;
-        this.studentItemService = studentItemService;
-    }
 
     @GetMapping("/user/profile_page")
     public String userIndex(ModelMap model, Principal principal) {
@@ -37,7 +34,7 @@ public class UserController {
 
     @GetMapping("/access-denied")
     public String accessDenied() {
-        return "/error/access-denied";
+        return "/error/access_denied";
     }
 
     @GetMapping("hello")

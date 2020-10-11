@@ -2,18 +2,16 @@ package com.codecool.queststore.service;
 
 import com.codecool.queststore.model.Item;
 import com.codecool.queststore.repository.ItemRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@AllArgsConstructor
 @Service
 public class ItemService {
 
     private final ItemRepository itemRepository;
-
-    public ItemService(ItemRepository itemRepository) {
-        this.itemRepository = itemRepository;
-    }
 
     public List<Item> showAllItems() {
         return itemRepository.findAll();

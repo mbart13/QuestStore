@@ -6,6 +6,7 @@ import com.codecool.queststore.model.StudentItem;
 import com.codecool.queststore.service.ItemService;
 import com.codecool.queststore.service.StudentItemService;
 import com.codecool.queststore.service.UserService;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.security.Principal;
 
+@AllArgsConstructor
 @Controller
 @RequestMapping("/student-items")
 public class StudentItemController {
@@ -21,12 +23,6 @@ public class StudentItemController {
     private final ItemService itemService;
     private final StudentItemService studentItemService;
     private final UserService userService;
-
-    public StudentItemController(ItemService itemService, StudentItemService studentItemService, UserService userService) {
-        this.itemService = itemService;
-        this.studentItemService = studentItemService;
-        this.userService = userService;
-    }
 
     @PostMapping
     public String purchaseItem(@RequestParam("item_id") Long id, Principal principal, Model model) {
