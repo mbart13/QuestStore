@@ -1,10 +1,11 @@
 package com.codecool.queststore.controller;
 
+import com.codecool.queststore.model.Student;
 import com.codecool.queststore.model.User;
 import com.codecool.queststore.model.UserDetailsImpl;
 import com.codecool.queststore.service.UserService;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.stereotype.Controller;
+    import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +20,10 @@ public class UserController {
 
     public UserController(UserService userService) {
         this.userService = userService;
+        User newUser = new Student("new", "user", "1", "Jan",
+        "Kowalski", 13, 15);
+
+        userService.saveUser(newUser);
     }
 
     @GetMapping("/user/profile_page")

@@ -5,21 +5,23 @@ import java.util.ArrayList;
 
 @Entity
 @Table(name = "users")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class User{
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
-    private String username;
-    private String role;
-    private String password;
-//    private Integer balance;
-//    private Integer earnings;
-//    private ArrayList completedAssignments;
-//    private ArrayList rewards;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    protected Long id;
+
+    @Column(name = "username", unique = true)
+    protected String username;
+
+    @Column(name = "role")
+    protected String role;
+
+    @Column(name = "password")
+    protected String password;
 
     public User() {
-
     }
 
     public User(String username, String role, String password) {
@@ -28,11 +30,11 @@ public class User{
         this.password = password;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

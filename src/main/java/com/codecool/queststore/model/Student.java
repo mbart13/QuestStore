@@ -5,11 +5,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-public class Student {
+@Table(name = "STUDENTS")
+public class Student extends User{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private long id;
 
     @Column(name = "first_name")
     private String firstName;
@@ -23,17 +24,27 @@ public class Student {
     @Column(name = "total_earnings")
     private int totalEarnings;
 
-    @Column(name = "password")
-    private String password;
+//    @Column(name = "password")
+//    private String password;
 
     @OneToMany(mappedBy = "student", fetch = FetchType.EAGER)
     private Set<StudentItem> items = new HashSet<>();
 
-    public long getId() {
+    public Student (String username, String role, String password, String firstName, String lastName,
+                    Integer currentBalance, Integer totalEarnings) {
+        super(username, role, password);
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.currentBalance = currentBalance;
+        this.totalEarnings = totalEarnings;
+    }
+
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -67,14 +78,6 @@ public class Student {
 
     public void setTotalEarnings(int totalEarnings) {
         this.totalEarnings = totalEarnings;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public Set<StudentItem> getItems() {

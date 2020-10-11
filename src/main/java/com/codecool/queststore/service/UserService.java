@@ -22,4 +22,8 @@ public class UserService {
     public User findById(Long id) {
         return userRepository.findById(id).orElseThrow(() -> new RuntimeException("Entity not found"));
     }
+
+    public void saveUser(User user) {
+        userRepository.save(user);
+    }
 }
