@@ -32,7 +32,7 @@ public class ItemController {
     public String getItem(@PathVariable(name="id") Long id, Model model, Principal principal) {
         model.addAttribute("item", itemService.findById(id));
         Student student = (Student) userService.findByUsername(principal.getName());
-        model.addAttribute("studentItems", studentItemService.findByUserIDAndItemId(student.getId(), id));
+        model.addAttribute("studentItems", studentItemService.findByUserIdAndItemId(student.getId(), id));
         return "item/item_template";
     }
 }

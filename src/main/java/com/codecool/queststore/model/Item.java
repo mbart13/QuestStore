@@ -12,10 +12,10 @@ public class Item {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected Long id;
-    protected String name;
-    protected String description;
-    protected int cost;
-    protected String type;
+    private Long id;
+    private String name;
+    private String description;
+    private int cost;
+    private String type;
 
 }

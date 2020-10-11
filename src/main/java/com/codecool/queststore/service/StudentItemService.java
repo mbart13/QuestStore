@@ -1,5 +1,7 @@
 package com.codecool.queststore.service;
 
+import com.codecool.queststore.model.Item;
+import com.codecool.queststore.model.Student;
 import com.codecool.queststore.model.StudentItem;
 import com.codecool.queststore.repository.StudentItemRepository;
 import lombok.AllArgsConstructor;
@@ -21,7 +23,19 @@ public class StudentItemService {
         return studentItemRepository.findByStudentId(id);
     }
 
-    public List<StudentItem> findByUserIDAndItemId(Long studentId, Long itemId) {
+    public List<StudentItem> findByUserIdAndItemId(Long studentId, Long itemId) {
         return studentItemRepository.findByStudentIdAndItemId(studentId, itemId);
+    }
+
+    public StudentItem saveItem(Student student, Item item) {
+        StudentItem savedStudentItem = null;
+        if (student.getCurrentBalance() >= item.getCost()) {
+            StudentItem studentItem = new StudentItem();
+            studentItem.setItem(item);
+            studentItem.setStudent(student);
+            student.setCurrentBalance(student.getCurrentBalance() - item.getCost());
+            savedStudentItem = this.save(studentItem);
+        }
+        return savedStudentItem;
     }
 }

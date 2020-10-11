@@ -28,19 +28,15 @@ public class StudentItemController {
     public String purchaseItem(@RequestParam("item_id") Long id, Principal principal, Model model) {
         Item item = itemService.findById(id);
         Student student = (Student) userService.findByUsername(principal.getName());
-        if (student.getCurrentBalance() >= item.getCost()) {
-            StudentItem studentItem = new StudentItem();
-            studentItem.setItem(item);
-            studentItem.setStudent(student);
-            student.setCurrentBalance(student.getCurrentBalance() - item.getCost());
-            studentItemService.save(studentItem);
-            userService.save(student);
+        StudentItem studentItem = studentItemService.saveItem(student, item);
+
+        if (studentItem != null) {
             model.addAttribute("purchase", "confirmed");
         } else {
             model.addAttribute("purchase", "declined");
         }
 
-        model.addAttribute("studentItems", studentItemService.findByUserIDAndItemId(student.getId(), id));
+        model.addAttribute("studentItems", studentItemService.findByUserIdAndItemId(student.getId(), id));
         model.addAttribute("item", item);
         return "item/item_template";
     }
