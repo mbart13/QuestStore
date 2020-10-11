@@ -1,34 +1,29 @@
 package com.codecool.queststore.controller;
 
-import com.codecool.queststore.model.User;
+import com.codecool.queststore.model.Student;
 import com.codecool.queststore.model.UserDetailsImpl;
+import com.codecool.queststore.service.StudentItemService;
 import com.codecool.queststore.service.UserService;
+import lombok.AllArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.security.Principal;
+
+@AllArgsConstructor
 @Controller
 public class UserController {
 
     private final UserService userService;
-
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
+    private final StudentItemService studentItemService;
 
     @GetMapping("/user/profile_page")
-    public String userIndex(ModelMap model) {
-
-        UserDetailsImpl userDetails = (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        String name = userDetails.getUsername(); //get logged in username
-
-        model.addAttribute("username", name);
-
+    public String userIndex(ModelMap model, Principal principal) {
+        Student student = (Student) userService.findByUsername(principal.getName());
+        model.addAttribute("studentItems", studentItemService.findByUserID(student.getId()));
+        model.addAttribute("student", student);
         return "user/profile_page";
     }
 
@@ -39,7 +34,7 @@ public class UserController {
 
     @GetMapping("/access-denied")
     public String accessDenied() {
-        return "/error/access-denied";
+        return "/error/access_denied";
     }
 
     @GetMapping("hello")

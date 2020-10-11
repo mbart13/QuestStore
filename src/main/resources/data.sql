@@ -16,18 +16,18 @@ values
 ('Spot mistake in assignment3', 250, 'At Codecool we pay a lot of attention to the quality of our assignment instructions, but mistakes still happen. You can however let us know about them and not only make the life easier for your colleagues, but also earn some CCs!', 'The default value of quest is " + reward + ", but a mentor can award more depending on your replies, especially your fix suggestion.', 'Please let us know: on which page the mistake is, what exactly is it and what is your idea to fix it?', 1);
 
 
---INSERT INTO users (id, username, name, surname, role, password, email, balance, earnings)
---VALUES
---(1, 'nodi','Lukasz', 'Lesiuk', 'user', '1', 'lukasz.lesiuk.2@gmail.com', 1000, 3000),
---(2, 'user1','Uesugi', 'Kenshin', 'user', '{noop}1', 'uesugi.genshin@niigata.jp', 1500, 4000),
---(3, 'user2','Miamoto', 'Musashi', 'user', '{noop}1', 'miamoto.mushashi@nitenichi-ryu.jp', 0, 9000),
---(4, 'user3','name1', 'surname1', 'user', '{noop}1', 'mail@mail.com', 3750, 13000);
-
-INSERT INTO users (id, username, role, password)
+INSERT INTO users (username, name, surname, role, password)
 VALUES
-(1, 'nodi', 'user', '1'),
-(2, 'user1', 'user', '1'),
-(3, 'user2','user', '1');
+('nodi','Lukasz', 'Lesiuk', 'user', '1'),
+('user1','Uesugi', 'Kenshin', 'user', '{noop}1'),
+('user2','Miamoto', 'Musashi', 'user', '{noop}1'),
+('user3','name1', 'surname1', 'user', '{noop}1'),
+('mbart','Michal', 'Bartosik', 'user', '1');
+
+insert into student (current_balance, rank, module, total_earnings, user_id)
+values
+(1000, 'Samurai', 'Web', 1000, 1),
+(500, 'Samurai', 'Web', 1000, 5)
 
 
 --INSERT INTO authorities (username, authority)

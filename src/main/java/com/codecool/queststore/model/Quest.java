@@ -1,10 +1,15 @@
 package com.codecool.queststore.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+@Getter
+@Setter
 @Entity
 public class Quest {
 
@@ -18,59 +23,4 @@ public class Quest {
     private String instruction;
     private boolean isExtra;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getReward() {
-        return reward;
-    }
-
-    public void setReward(int reward) {
-        this.reward = reward;
-    }
-
-    public String getShortDescription() {
-        return shortDescription;
-    }
-
-    public void setShortDescription(String shortDescription) {
-        this.shortDescription = shortDescription;
-    }
-
-    public String getDetails() {
-        return details;
-    }
-
-    public void setDetails(String details) {
-        this.details = details;
-    }
-
-    public String getInstruction() {
-        return instruction;
-    }
-
-    public void setInstruction(String instruction) {
-        this.instruction = instruction;
-    }
-
-    public boolean isExtra() {
-        return isExtra;
-    }
-
-    public void setExtra(boolean extra) {
-        isExtra = extra;
-    }
 }
