@@ -49,8 +49,8 @@
                     <div class="btn go-back">
                         <a class="button-cta" href="#" th:href="@{/items}">Go Back</a>
                     </div>
-                    <div th:if="${purchaseMade ne null}">
-                         <div th:replace="${purchaseMade} ? ~{item/fragments :: purchaseConfirmed} : ~{item/fragments :: purchaseDeclined}"></div>
+                    <div th:if="${purchase != null}">
+                         <div th:replace="${purchase == 'confirmed'} ? ~{item/fragments :: purchaseConfirmed} : ~{item/fragments :: purchaseDeclined}"></div>
                     </div>
                 </div>
             </div>

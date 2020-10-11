@@ -35,9 +35,9 @@ public class StudentItemController {
             student.setCurrentBalance(student.getCurrentBalance() - item.getCost());
             studentItemService.save(studentItem);
             userService.save(student);
-            model.addAttribute("purchaseMade", true);
+            model.addAttribute("purchase", "confirmed");
         } else {
-            model.addAttribute("purchaseMade", false);
+            model.addAttribute("purchase", "declined");
         }
 
         model.addAttribute("studentItems", studentItemService.findByUserIDAndItemId(student.getId(), id));
