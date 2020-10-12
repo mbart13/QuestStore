@@ -24,14 +24,14 @@ public class ItemController {
 
     @GetMapping
     public String getAllItems(Model model) {
-        model.addAttribute("items", itemService.showAllItems());
+        model.addAttribute("items", itemService.findAll());
         return "item/browse_items";
     }
 
     @GetMapping("/{id}")
     public String getItem(@PathVariable(name="id") Long id, Model model, Principal principal) {
-        model.addAttribute("item", itemService.findById(id));
         Student student = (Student) userService.findByUsername(principal.getName());
+        model.addAttribute("item", itemService.findById(id));
         model.addAttribute("studentItems", studentItemService.findByUserIdAndItemId(student.getId(), id));
         return "item/item_template";
     }

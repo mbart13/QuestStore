@@ -27,7 +27,7 @@ public class StudentItemService {
         return studentItemRepository.findByStudentIdAndItemId(studentId, itemId);
     }
 
-    public StudentItem saveItem(Student student, Item item) {
+    public StudentItem addStudentItem(Student student, Item item) {
         StudentItem savedStudentItem = null;
         if (student.getCurrentBalance() >= item.getCost()) {
             StudentItem studentItem = new StudentItem();

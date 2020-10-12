@@ -13,7 +13,7 @@ public class ItemService {
 
     private ItemRepository itemRepository;
 
-    public List<Item> showAllItems() {
+    public List<Item> findAll() {
         return itemRepository.findAll();
     }
 

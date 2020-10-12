@@ -8,10 +8,10 @@ import com.codecool.queststore.service.StudentItemService;
 import com.codecool.queststore.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.security.Principal;
 
@@ -25,19 +25,11 @@ public class StudentItemController {
     private final UserService userService;
 
     @PostMapping
-    public String purchaseItem(@RequestParam("item_id") Long id, Principal principal, Model model) {
+    public String purchaseItem(@RequestParam("item_id") Long id, Principal principal, RedirectAttributes attributes) {
         Item item = itemService.findById(id);
         Student student = (Student) userService.findByUsername(principal.getName());
-        StudentItem studentItem = studentItemService.saveItem(student, item);
-
-        if (studentItem != null) {
-            model.addAttribute("purchase", "confirmed");
-        } else {
-            model.addAttribute("purchase", "declined");
-        }
-
-        model.addAttribute("studentItems", studentItemService.findByUserIdAndItemId(student.getId(), id));
-        model.addAttribute("item", item);
-        return "item/item_template";
+        StudentItem studentItem = studentItemService.addStudentItem(student, item);
+        attributes.addFlashAttribute("purchaseConfirmed", studentItem != null);
+        return "redirect:/items/" + id;
     }
 }

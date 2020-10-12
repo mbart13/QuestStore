@@ -2,6 +2,7 @@ package com.codecool.queststore.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -10,6 +11,8 @@ import java.util.Set;
 
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @PrimaryKeyJoinColumn(name = "user_id")
 @Table(name = "STUDENTS")
@@ -36,18 +39,4 @@ public class Student extends User{
     @OneToMany(mappedBy = "student", fetch = FetchType.EAGER)
     private Set<StudentItem> items = new HashSet<>();
 
-    public Student() {
-
-    }
-
-    public Student (String username, String role, String password, String firstName, String lastName,
-                    Integer currentBalance, Integer totalEarnings, String rank, String module) {
-        super(username, role, password);
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.currentBalance = currentBalance;
-        this.totalEarnings = totalEarnings;
-        this.rank = rank;
-        this.module = module;
-    }
 }
