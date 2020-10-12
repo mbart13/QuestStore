@@ -11,8 +11,6 @@ import java.util.Set;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @PrimaryKeyJoinColumn(name = "user_id")
 @Table(name = "STUDENTS")

@@ -19,7 +19,8 @@ INSERT INTO users (id, username, role, password)
 VALUES
 (1, 'nodi', 'user', '1'),
 (2, 'user1', 'user', '1'),
-(3, 'user2','user', '1');
+(3, 'user2','user', '1'),
+(4, 'mbart', 'user', 1);
 
 --INSERT INTO users (username, name, surname, role, password)
 --VALUES
@@ -32,7 +33,7 @@ VALUES
 insert into students (first_name, last_name, current_balance, rank, module, total_earnings, user_id)
 values
 ('Lukasz', 'Lesiuk', 1000, 'Samurai', 'Web', 1000, 1),
-('Michal', 'Bartosik', 500, 'Samurai', 'Web', 1000, 3)
+('Michal', 'Bartosik', 500, 'Samurai', 'Web', 1000, 4)
 
 
 --INSERT INTO authorities (username, authority)

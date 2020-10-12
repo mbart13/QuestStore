@@ -1,6 +1,5 @@
 package com.codecool.queststore.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,12 +25,4 @@ public class User{
     @Column(name = "password")
     protected String password;
 
-    public User() {
-    }
-
-    public User(String username, String role, String password) {
-        this.username = username;
-        this.role = role;
-        this.password = password;
-    }
 }
