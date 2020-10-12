@@ -1,16 +1,18 @@
 package com.codecool.queststore.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+@Getter
+@Setter
 @Entity
+@PrimaryKeyJoinColumn(name = "user_id")
 @Table(name = "STUDENTS")
 public class Student extends User{
-
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private long id;
 
     @Column(name = "first_name")
     private String firstName;
@@ -24,67 +26,23 @@ public class Student extends User{
     @Column(name = "total_earnings")
     private int totalEarnings;
 
-//    @Column(name = "password")
-//    private String password;
+    @Column(name = "rank")
+    private String rank;
+
+    @Column(name = "module")
+    private String module;
 
     @OneToMany(mappedBy = "student", fetch = FetchType.EAGER)
     private Set<StudentItem> items = new HashSet<>();
 
     public Student (String username, String role, String password, String firstName, String lastName,
-                    Integer currentBalance, Integer totalEarnings) {
+                    Integer currentBalance, Integer totalEarnings, String rank, String module) {
         super(username, role, password);
         this.firstName = firstName;
         this.lastName = lastName;
         this.currentBalance = currentBalance;
         this.totalEarnings = totalEarnings;
-    }
-
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public int getCurrentBalance() {
-        return currentBalance;
-    }
-
-    public void setCurrentBalance(int currentBalance) {
-        this.currentBalance = currentBalance;
-    }
-
-    public int getTotalEarnings() {
-        return totalEarnings;
-    }
-
-    public void setTotalEarnings(int totalEarnings) {
-        this.totalEarnings = totalEarnings;
-    }
-
-    public Set<StudentItem> getItems() {
-        return items;
-    }
-
-    public void setItems(Set<StudentItem> items) {
-        this.items = items;
+        this.rank = rank;
+        this.module = module;
     }
 }

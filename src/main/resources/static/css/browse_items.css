@@ -26,6 +26,10 @@
     padding: .7em;
 }
 
+.button-cta {
+    width: 100%;
+}
+
 .header-list {
     display: flex;
     justify-content: space-between;
@@ -55,6 +59,7 @@ img.shopping-cart {
 }
 .item-body .description {
     margin: .5em 1em;
+
 }
 
 .description {
@@ -64,7 +69,6 @@ img.shopping-cart {
 #header {
     z-index: 1;
 }
-
 
 .item {
     margin-bottom: .8em;

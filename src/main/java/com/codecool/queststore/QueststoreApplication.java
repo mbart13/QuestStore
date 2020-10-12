@@ -16,16 +16,4 @@ public class QueststoreApplication {
     public static void main(String[] args) {
         SpringApplication.run(QueststoreApplication.class, args);
     }
-
-
-//    @Bean
-//    public CommandLineRunner runner() {
-//        return (args) -> {
-//            User newUser = new Student("new", "user", "1", "Jan",
-//                    "Kowalski", 13, 15);
-//
-//
-//            userRepository.save(newUser);
-//        };
-//    }
 }

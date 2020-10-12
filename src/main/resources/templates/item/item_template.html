@@ -2,14 +2,15 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../static/css/styles.css" th:href="@{/css/styles.css}">
-    <link rel="stylesheet" href="../static/css/browse_items.css" th:href="@{/css/browse_items.css}">
-    <link rel="stylesheet" href="../static/css/item_template.css" th:href="@{/css/item_template.css}">
+    <link rel="stylesheet" href="../../static/css/styles.css" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="../../static/css/browse_items.css" th:href="@{/css/browse_items.css}">
+    <link rel="stylesheet" href="../../static/assets/font-awesome-4.7.0/css/font-awesome.min.css" th:href="@{/assets/font-awesome-4.7.0/css/font-awesome.min.css}">
+    <link rel="stylesheet" href="../../static/css/item_template.css" th:href="@{/css/item_template.css}">
     <title>Item</title>
 </head>
     <body>
 
-        <script src="../static/js/header.js" th:src="@{/js/header.js}"></script>
+        <script src="../../static/js/header.js" th:src="@{/js/header.js}"></script>
 
         <!-- Page content goes here-->
         <div class="item" th:object="${item}">
@@ -19,7 +20,6 @@
                     <li class="item-header item-cost"><span th:text="'COST: ' + ${item.cost} + ' CC'">item cost</span></li>
                 </ul>
             </div>
-
             <div class="item-body">
                 <div class="details details-left">
                     <h2 th:text="${item.description}">Description of the item</h2>
@@ -27,28 +27,38 @@
                     <p class="info"><span>Basic items</span>: available for individual students</p>
                     <p><span>Extra items</span>: available only for group</p>
                 </div>
-                <div class="details details-right">
-                    <h2>You have already redeemed this reward:</h2>
-                    <span>3 times</span>
-
-                </div>
+                <th:block th:switch="${studentItems.size()}">
+                    <div th:case="0" class="details details-right">
+                        <h2>You have not redeemed this reward before</h2>
+                    </div>
+                    <div th:case="1" class="details details-right">
+                        <h2>You have already redeemed this reward:</h2>
+                        <span>1 time</span>
+                    </div>
+                    <div th:case="*" class="details details-right">
+                        <h2>You have already redeemed this reward:</h2>
+                        <span th:text="${studentItems.size()} + ' times'">3 times</span>
+                    </div>
+                </th:block>
                 <div class="details details-bottom">
                     <h3>Make sure you have enough coolcoins before purchase!</h3>
-                    <div class="btn purchase">
-                        <a class="button-cta" onclick="alert('Not implemented yet')"
-                           th:text="${#strings.toUpperCase(item.type) == 'BASIC'} ? 'Purchase Reward' : 'Purchase with group'">Purchase Reward</a>
-                    </div>
+                    <form class="btn purchase" th:action="@{/student-items}" method="post">
+                        <button class="button-cta" th:name="item_id" th:value="${item.getId()}" type="submit"
+                           th:text="${#strings.toUpperCase(item.type) == 'BASIC'} ? 'Purchase Reward' : 'Purchase with Team'">Purchase Reward</button>
+                    </form>
                     <div class="btn go-back">
                         <a class="button-cta" href="#" th:href="@{/items}">Go Back</a>
                     </div>
+                    <div th:if="${purchase != null}">
+                         <div th:replace="${purchase == 'confirmed'} ? ~{item/fragments :: purchaseConfirmed} : ~{item/fragments :: purchaseDeclined}"></div>
+                    </div>
                 </div>
-
             </div>
         </div>
 
         <!-- End of page content-->
 
-        <script src="../static/js/footer.js" th:src="@{/js/footer.js}"></script>
+        <script src="../../static/js/footer.js" th:src="@{/js/footer.js}"></script>
 
     </body>
 </html>

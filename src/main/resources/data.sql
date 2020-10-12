@@ -17,13 +17,22 @@ values
 
 INSERT INTO users (id, username, role, password)
 VALUES
-(1, 'nodi', 'user', '1');
---(2, 'user1', 'user', '1'),
---(3, 'user2','user', '1');
+(1, 'nodi', 'user', '1'),
+(2, 'user1', 'user', '1'),
+(3, 'user2','user', '1');
 
-insert INTO students (id, first_name, last_name, current_balance, total_earnings)
+--INSERT INTO users (username, name, surname, role, password)
+--VALUES
+--('nodi','Lukasz', 'Lesiuk', 'user', '1'),
+--('user1','Uesugi', 'Kenshin', 'user', '1'),
+--('user2','Miamoto', 'Musashi', 'user', '1'),
+--('user3','name1', 'surname1', 'user', '1'),
+--('mbart','Michal', 'Bartosik', 'user', '1');
+
+insert into students (first_name, last_name, current_balance, rank, module, total_earnings, user_id)
 values
-(1, 'Lukasz', 'Lesiuk', 1200, 2500);
+('Lukasz', 'Lesiuk', 1000, 'Samurai', 'Web', 1000, 1),
+('Michal', 'Bartosik', 500, 'Samurai', 'Web', 1000, 3)
 
 
 --INSERT INTO authorities (username, authority)

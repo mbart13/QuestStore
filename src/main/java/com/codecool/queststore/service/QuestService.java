@@ -2,18 +2,16 @@ package com.codecool.queststore.service;
 
 import com.codecool.queststore.model.Quest;
 import com.codecool.queststore.repository.QuestRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@AllArgsConstructor
 @Service
 public class QuestService {
 
     private final QuestRepository questRepository;
-
-    public QuestService(QuestRepository questRepository) {
-        this.questRepository = questRepository;
-    }
 
     public List<Quest> showAllQuests() {
         return questRepository.findAll();
