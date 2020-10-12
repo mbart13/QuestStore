@@ -1,5 +1,6 @@
 package com.codecool.queststore.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -34,6 +35,10 @@ public class Student extends User{
 
     @OneToMany(mappedBy = "student", fetch = FetchType.EAGER)
     private Set<StudentItem> items = new HashSet<>();
+
+    public Student() {
+
+    }
 
     public Student (String username, String role, String password, String firstName, String lastName,
                     Integer currentBalance, Integer totalEarnings, String rank, String module) {
