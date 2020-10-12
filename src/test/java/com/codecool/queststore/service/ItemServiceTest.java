@@ -37,7 +37,7 @@ class ItemServiceTest {
     }
 
     @Test
-    @DisplayName("should return all elements in the list")
+    @DisplayName("should return all elements in the collection")
     void findAll() {
         List<Item> returnItems = new ArrayList<>();
         returnItems.add(privateMentoring);

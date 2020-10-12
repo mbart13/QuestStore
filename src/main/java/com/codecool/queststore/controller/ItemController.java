@@ -30,8 +30,8 @@ public class ItemController {
 
     @GetMapping("/{id}")
     public String getItem(@PathVariable(name="id") Long id, Model model, Principal principal) {
-        model.addAttribute("item", itemService.findById(id));
         Student student = (Student) userService.findByUsername(principal.getName());
+        model.addAttribute("item", itemService.findById(id));
         model.addAttribute("studentItems", studentItemService.findByUserIdAndItemId(student.getId(), id));
         return "item/item_template";
     }

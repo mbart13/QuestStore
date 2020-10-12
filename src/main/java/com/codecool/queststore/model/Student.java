@@ -1,5 +1,6 @@
 package com.codecool.queststore.model;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
