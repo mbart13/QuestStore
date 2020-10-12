@@ -24,7 +24,7 @@ public class ItemController {
 
     @GetMapping
     public String getAllItems(Model model) {
-        model.addAttribute("items", itemService.showAllItems());
+        model.addAttribute("items", itemService.findAll());
         return "item/browse_items";
     }
 
