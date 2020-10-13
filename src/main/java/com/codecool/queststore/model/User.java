@@ -25,4 +25,8 @@ public class User{
     @Column(name = "password")
     protected String password;
 
+    @Lob
+    @Column(name = "image")
+    protected Byte[] image;
+
 }

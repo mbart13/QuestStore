@@ -21,7 +21,7 @@
         <div class="user-info">
             <div class="user-info-item">
                 <div class="profile-picture">
-                    <img src="../../static/assets/images/profileImage.jpg" th:src="@{/assets/images/profileImage.jpg}" alt="User Image">
+                    <img src="../../static/assets/images/profileImage.jpg" th:src="@{/profile-page/form/image}" alt="User Image">
                 </div>
                 <div class="user-rank">
                     <p th:text="${student.rank}">rank</p>
@@ -35,7 +35,7 @@
             <div class="user-info-item user-data">
                 <div class="info-block">
                     <p>Module:</p>
-                    <p th:text="${student.module}"  class="bold">Web</p>
+                    <p th:text="${student.module}" class="bold">Web</p>
                 </div>
                 <hr class="solid">
                 <div class="info-block">
@@ -58,7 +58,8 @@
                     <button type="button" class="irregularShape" onclick="alert('Not implemented yet!')"><br><br>Change password</button>
                 </div>
                 <div class="wrapper">
-                    <button type="button" class="irregularShape" onclick="alert('Not implemented yet!')"><br><br>Drink tea</button>
+<!--                    <a class="irregularShape" href="#" th:href="@{'/profile-page/image'}" role="button"><br><br>Change Image</a>-->
+                    <button type="button" class="irregularShape" th:onclick="|window.location.href='/profile-page/form'|"><br><br>Change Image</button>
                 </div>
                 <div class="wrapper">
                     <button type="submit" class="irregularShape" href="/items" th:onclick="|window.location.href='/items'|" ><br><br>Go to items</button>

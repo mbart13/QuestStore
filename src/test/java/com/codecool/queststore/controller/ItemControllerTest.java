@@ -17,6 +17,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,6 +48,8 @@ class ItemControllerTest {
     Item workshop;
     Student student;
     StudentItem studentItem;
+    @Mock
+    Principal principal;
 
     @BeforeEach
     void setUp() {
@@ -55,6 +58,17 @@ class ItemControllerTest {
         workshop = Item.builder().id(2L).name("Workshop").build();
         items.add(privateMentoring);
         items.add(workshop);
+
+        student = new Student();
+        student.setUsername("Domo123");
+        student.setId(3L);
+
+        studentItem = new StudentItem();
+        studentItem.setStudent(student);
+        studentItem.setItem(privateMentoring);
+
+        studentItems = new ArrayList<>();
+        studentItems.add(studentItem);
 
         mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
     }
@@ -69,5 +83,17 @@ class ItemControllerTest {
                 .andExpect(MockMvcResultMatchers.model().attribute("items", hasSize(2)));
     }
 
+    @Test
+    void getItem() throws Exception {
+        when(itemService.findById(1L)).thenReturn(privateMentoring);
+        when(principal.getName()).thenReturn("Domo123");
+        when(userService.findByUsername("Domo123")).thenReturn(student);
+        when(studentItemService.findByUserIdAndItemId(3L, 1L)).thenReturn(studentItems);
 
+        mockMvc.perform(MockMvcRequestBuilders.get("/items/1"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.view().name("item/item_template"))
+                .andExpect(MockMvcResultMatchers.model().attribute("item", privateMentoring))
+                .andExpect(MockMvcResultMatchers.model().attribute("studentItems", hasSize(1)));
+    }
 }

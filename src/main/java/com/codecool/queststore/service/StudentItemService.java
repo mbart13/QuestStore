@@ -13,7 +13,7 @@ import java.util.List;
 @Service
 public class StudentItemService {
 
-    private StudentItemRepository studentItemRepository;
+    private final StudentItemRepository studentItemRepository;
 
     public StudentItem save(StudentItem studentItem) {
         return studentItemRepository.save(studentItem);

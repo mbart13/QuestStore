@@ -1,43 +1,43 @@
-.user-creation {
+
+.form-container {
     position: relative;
     background: linear-gradient(125.39deg, #001513 26.03%, #550609 49.2%, #001513 67.85%);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
-    inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25),
+    inset 0 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
 }
 
-.user-creation .header {
+.form-container .header {
     color: #D3D3D3;
     font-family: BLAME Regular, sans-serif;
     text-align: center;
     padding: .5em 0;
 }
-.form-container {
+.form-body {
     background-color: #D3D3D3;
     margin: 5px;
+    text-align: center;
 }
 
-.user-creation-form {
+.form {
     width: 70%;
     margin: 0 auto;
     padding: 1em;
 }
 
-.user-creation-form input {
+.form input {
     border: none;
     outline: none;
-    font-size: 1.5em;
-    clip-path: polygon(0 0, 90% 0, 100% 100%, 0% 100%);
+    font-size: 1.2em;
     padding: .3em;
     width: 100%;
 
 }
-.user-creation-form label {
-    font-size: 2em;
-    text-align: left;
+.form label {
+    font-size: 1.5em;
 }
 
-.user-creation-form select {
+.form select {
     border: none;
     outline: none;
     font-size: 1.2em;
@@ -47,7 +47,12 @@
 }
 
 .form-item {
-    margin-bottom: .8em;    
+    margin-bottom: .5em;
+    text-align: left;
+}
+
+.form-item label {
+    font-weight: bold;
 }
 
 button {
@@ -61,8 +66,16 @@ button {
     font-size: 1.5em;;
     width: 100%;
     padding: 0.4em;
-    font-family: BLAME Regular;
-    margin: 1.2em auto;
+    font-family: BLAME Regular, sans-serif;
+    margin: .8em auto;
+}
+
+button.img-upload {
+    margin: .4em auto;
+}
+
+input.img-upload {
+    padding: .3em 0;
 }
 
 button:hover {

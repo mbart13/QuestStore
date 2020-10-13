@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../static/css/styles.css" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="../../static/css/form.css" th:href="@{/css/form.css}">
+    <title>Upload Image</title>
+</head>
+<body>
+    <script type="text/javascript" th:src="@{/js/header.js}" src="../../static/js/header.js"></script>
+
+    <!-- Page content goes here-->
+
+    <div class="form-container">
+        <h1 class="header">Upload New File</h1>
+
+        <div class="form-body">
+            <div class="form">
+                <form action="http://localhost" method="post" enctype="multipart/form-data"
+                      th:action="@{/profile-page/form}">
+                    <div class="form-item">
+                        <label >Select File (<1MB)</label>
+                        <input class="img-upload file" name="image_file" type="file">
+                    </div>
+                    <button class="img-upload" type="submit">Upload File</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- End of page content-->
+
+    <script type="text/javascript" th:src="@{/js/footer.js}" src="../../static/js/footer.js"></script>
+</body>
+</html>

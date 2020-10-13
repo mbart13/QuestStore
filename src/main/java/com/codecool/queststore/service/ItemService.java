@@ -11,13 +11,13 @@ import java.util.List;
 @Service
 public class ItemService {
 
-    private ItemRepository itemRepository;
+    private final ItemRepository itemRepository;
 
     public List<Item> findAll() {
         return itemRepository.findAll();
     }
 
     public Item findById(Long id) {
-        return itemRepository.findById(id).orElseThrow(() -> new RuntimeException("Entity not found"));
+        return itemRepository.findById(id).orElseThrow(() -> new RuntimeException(String.format("Item with id = %d was not found", id)));
     }
 }
