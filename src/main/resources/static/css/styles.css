@@ -18,12 +18,9 @@ body.page {
   flex-direction: column;
   align-items: center;
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url("../assets/background-image.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
+              url("../assets/background-image.jpg") no-repeat fixed center;
   background-size: cover;
-  font-family: "Cardo";
+  font-family: "Cardo", sans-serif;
 }
 
 #content-view {
@@ -154,5 +151,6 @@ svg path {
 }
 
 .button-cta:hover {
-  background-color: #7e5556;
+  background-color: #701f1f;
+  color: white;
 }

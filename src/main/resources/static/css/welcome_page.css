@@ -40,6 +40,7 @@ label {
   text-align: left;
   font-weight: bold;
   font-family: inherit;
+  margin-bottom: .3em;
 }
 
 .login {
@@ -54,13 +55,14 @@ label {
   outline: none;
   width: 100%;
   padding: 0.6em;
+  margin-top: .2em;
 }
 
 .input-item {
   margin-bottom: .5em;
 }
 
-.btn-container {
+.login-btn-container {
   text-align: right;
   margin-top: 3em;
 }
@@ -70,7 +72,7 @@ label {
   outline: none;
   cursor: pointer;
   background-color: #550609;
-  color: white;
+  color: #d3d3d3;
   border: none;
   font-weight: bold;
   width: 80%;
@@ -81,16 +83,20 @@ label {
 .btn-login {
   position: relative;
   font-size: 1.7em;
-  margin-bottom: 1.3em;
+  margin-bottom: .8em;
 }
 
 .btn-main-page:hover {
-  background-color: #7e5556;
+  background-color: #701f1f;
+  color: white;
 
 }
 
 .btn-forgotten-password {
   font-size: 1em;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
 }
 
 .btn-container.btn-begin {
@@ -102,6 +108,14 @@ label {
   display: inline-block;
   text-decoration: none;
   width: 70%;
+}
+
+.alert {
+  margin-bottom: 1em;
+}
+
+.forgotten-password-btn-container {
+  text-align: right;
 }
 
 @media screen and (max-width: 420px) {

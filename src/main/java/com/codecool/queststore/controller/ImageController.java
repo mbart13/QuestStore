@@ -17,7 +17,7 @@ import java.security.Principal;
 
 @AllArgsConstructor
 @Controller
-@RequestMapping("/profile-page/form")
+@RequestMapping("/profile-page")
 public class ImageController {
 
     private final ImageService imageService;
@@ -25,11 +25,11 @@ public class ImageController {
 
     @GetMapping
     public String showImageForm() {
-        return "user/imageuploadform";
+        return "user/image_upload_form";
     }
 
     @PostMapping
-    public String addNewImage(@RequestParam("image_file") MultipartFile file, Principal principal) {
+    public String addNewImage(@RequestParam("image-file") MultipartFile file, Principal principal) {
         imageService.saveImage(file, principal.getName());
         return "redirect:/user/profile_page";
     }

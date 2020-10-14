@@ -49,17 +49,19 @@
                     </div>
                 </div>
 
-                <div class="btn-container">
+                <div class="login-btn-container">
                     <div>
                         <button class="btn-main-page btn-login"
                                 type="submit"
                                 name="login-submit"
                                 id="login-submit">LOG IN</button>
                     </div>
-
-                    <div>
-                        <button class="btn-main-page btn-forgotten-password" type="submit">Forgotten password</button>
-                    </div>
+                </div>
+            </form>
+            <form  method="get">
+                <div class="forgotten-password-btn-container">
+                    <a class="btn-main-page btn-forgotten-password" href="#" th:href="@{/forgotten-password/form}">Forgotten password</a>
+<!--                    <button class="btn-main-page btn-forgotten-password" type="submit">Forgotten password</button>-->
                 </div>
             </form>
         </div>
