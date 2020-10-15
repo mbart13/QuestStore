@@ -20,16 +20,6 @@ public class UserController {
     private final UserService userService;
     private final StudentItemService studentItemService;
 
-//    public UserController(UserService userService, StudentItemService studentItemService) {
-//        this.userService = userService;
-//        this.studentItemService = studentItemService;
-
-//        User newUser = new Student("new", "user", "1", "Jan",
-//        "Kowalski", 13, 15, "token1", "token2");
-//
-//        userService.save(newUser);
-//    }
-
     @GetMapping("/user/profile_page")
     public String userIndex(ModelMap model, Principal principal) {
         Student student = (Student) userService.findByUsername(principal.getName());
@@ -56,6 +46,5 @@ public class UserController {
 
         model.addAttribute("username", name);
         return "user/hello";
-
     }
 }

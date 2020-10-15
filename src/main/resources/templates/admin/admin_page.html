@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Admin Page </title>
+    <title>Profile page</title>
     <link rel="stylesheet" href="../../static/css/styles.css" th:href="@{/css/styles.css}">
-    <link rel="stylesheet" href="../../static/css/admin_page.css" th:href="@{/css/admin_page.css}">
+    <link rel="stylesheet" href="../../static/css/profile_page.css" th:href="@{/css/admin_page.css}">
 </head>
 
 <body>
@@ -30,11 +31,11 @@
             </div>
 
         </div>
-        <div class="admin-buttons">
-            <a class="button-cta users" href="#" th:href="">Users</a>
-            <a class="button-cta classes" href="#" th:href="">Classes</a>
-            <a class="button-cta levels" href="#" th:href="">Exp Levels</a>
-        </div>
+<!--        <div class="admin-buttons">-->
+<!--            <a class="button-cta users" href="#" th:href="">Users</a>-->
+<!--            <a class="button-cta classes" href="#" th:href="">Classes</a>-->
+<!--            <a class="button-cta levels" href="#" th:href="">Exp Levels</a>-->
+<!--        </div>-->
         <div class="user-stats">
             <div class="stats-item mentors">
                 <div>

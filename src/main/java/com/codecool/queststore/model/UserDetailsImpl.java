@@ -16,31 +16,18 @@ public class UserDetailsImpl implements UserDetails {
     private final Boolean enabled;
     private List<GrantedAuthority> authorities;
 
-    public UserDetailsImpl(String username, String password, Boolean enabled) {
-        this.username = username;
-        this.password = password;
-        this.enabled = enabled;
-        this.authorities = new ArrayList<GrantedAuthority>();
-        this.authorities.add(new SimpleGrantedAuthority("USER"));
-    }
-
     public UserDetailsImpl(User user) {
         this.username = user.getUsername();
         this.password = user.getPassword();
         this.enabled = true;
         this.authorities = new ArrayList<GrantedAuthority>();
-        this.authorities.add(new SimpleGrantedAuthority("USER"));
-    }
-
-    public UserDetailsImpl(String username) {
-        this.username = username;
-        this.password = "1";
-        this.enabled = true;
+        this.authorities.add(new SimpleGrantedAuthority(user.getRole().toUpperCase()));
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
+//        return Arrays.asList(new SimpleGrantedAuthority("ROLE_ADMIN"));
+        return authorities;
     }
 
     @Override

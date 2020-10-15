@@ -17,10 +17,10 @@ values
 
 INSERT INTO users (id, username, role, password)
 VALUES
-(1, 'nodi', 'user', '1'),
-(2, 'user1', 'user', '1'),
-(3, 'user2','user', '1'),
-(4, 'mbart', 'user', '1');
+(1, 'nodi', 'role_user', '1'),
+(2, 'user1', 'role_user', '1'),
+(3, 'admin','role_admin', '1'),
+(4, 'mbart', 'role_user', '1');
 
 --INSERT INTO users (username, name, surname, role, password)
 --VALUES

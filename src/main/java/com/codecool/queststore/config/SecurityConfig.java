@@ -37,15 +37,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/h2-console/**").permitAll()
                     .antMatchers(
                         "/user/**",
-                        "/item/**",
-                        "/quest/**"
+                        "/items/**",
+                        "/quests/**"
                             ).hasRole("USER")
+                    .antMatchers(
+                        "/admin"
+                            ).hasRole("ADMIN")
 //                    .anyRequest().authenticated()
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()
                     .loginPage("/login")
-                    .defaultSuccessUrl("/user/profile_page", true)
+                    .defaultSuccessUrl("/loginRedirectg", true)
                     .permitAll()
                 .and()
                 .logout()
