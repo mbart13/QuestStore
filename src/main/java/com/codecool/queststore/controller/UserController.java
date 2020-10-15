@@ -1,7 +1,6 @@
 package com.codecool.queststore.controller;
 
 import com.codecool.queststore.model.Student;
-import com.codecool.queststore.model.User;
 import com.codecool.queststore.model.UserDetailsImpl;
 import com.codecool.queststore.service.StudentItemService;
 import com.codecool.queststore.service.UserService;
@@ -23,7 +22,7 @@ public class UserController {
     @GetMapping("/user/profile_page")
     public String userIndex(ModelMap model, Principal principal) {
         Student student = (Student) userService.findByUsername(principal.getName());
-        model.addAttribute("studentItems", studentItemService.findByUserID(student.getId()));
+        model.addAttribute("studentItems", studentItemService.findByUserId(student.getId()));
         model.addAttribute("student", student);
         return "user/profile_page";
     }

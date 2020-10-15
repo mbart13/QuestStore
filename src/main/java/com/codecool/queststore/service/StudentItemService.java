@@ -19,7 +19,7 @@ public class StudentItemService {
         return studentItemRepository.save(studentItem);
     }
 
-    public List<StudentItem> findByUserID(Long id) {
+    public List<StudentItem> findByUserId(Long id) {
         return studentItemRepository.findByStudentId(id);
     }
 
