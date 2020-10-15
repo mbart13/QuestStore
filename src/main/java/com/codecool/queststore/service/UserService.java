@@ -13,8 +13,8 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-    public List<User> showAllStudents() {
-        return (List<User>) userRepository.findAll();
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
     }
 
     public User findById(Long id) {

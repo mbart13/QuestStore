@@ -12,7 +12,7 @@
 
 <body>
     <script src="../../static/js/init.js" th:src="@{/js/init.js}"></script>
-    <script src="../../static/js/header.js" th:href="@{/js/header.js}"></script>
+    <script src="../../static/js/header.js" th:src="@{/js/header.js}"></script>
 
     <div class="users-list">
 
@@ -24,15 +24,15 @@
                 <thead>
                     <tr>
                         <th>ID <i class="fa fa-sort"></i></th>
-                        <th>Username <i class="fa fa-sort"></i></th>
-                        <th>Full Name <i class="fa fa-sort"></i></th>
+                        <th>First Name <i class="fa fa-sort"></i></th>
+                        <th>Last Name <i class="fa fa-sort"></i></th>
                         <th>Role <i class="fa fa-sort"></i></th>
                         <th>Action <i class="fa fa-sort"></i></th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
+                <tbody th:each="user : ${users}">
+                    <tr th:remove="all">
+                        <td></td>
                         <td>Dominik@gmail.com</td>
                         <td>Dominik Starzyk</td>
                         <td>Mentor</td>
@@ -42,7 +42,7 @@
                         </td>
 
                     </tr>
-                    <tr>
+                    <tr th:remove="all">
                         <td>2</td>
                         <td>Michal@gmail.con</td>
                         <td>Michal Bartosik</td>
@@ -54,72 +54,15 @@
 
                     </tr>
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td th:text="${user.id}"></td>
+                        <td th:text="${user.firstName}"></td>
+                        <td th:text="${user.lastName}"></td>
+                        <td th:text="${#strings.capitalize(#strings.substring(user.role, 5, user.role.length()))}"></td>
                         <td>
-                            <span></span>
-                            <span></span>
+                            <span class="action-btn"><a href="#">Edit</a> </span>
+                            <span class="action-btn"><a href="#">Delete</a> </span>
                         </td>
-
                     </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <span></span>
-                            <span></span>
-                        </td>
-
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <span></span>
-                            <span></span>
-                        </td>
-
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <span></span>
-                            <span></span>
-                        </td>
-
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <span></span>
-                            <span></span>
-                        </td>
-
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <span></span>
-                            <span></span>
-                        </td>
-
-                    </tr>
-
                 </tbody>
             </table>
             <div class="pagination">
@@ -129,7 +72,7 @@
 
     </div>
 
-    <script src="../static/js/footer.js" th:href="@{/js/footer.js}"></script>
+    <script src="../../static/js/footer.js" th:src="@{/js/footer.js}"></script>
 </body>
 
 </html>
