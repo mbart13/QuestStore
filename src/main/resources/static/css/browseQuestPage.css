@@ -49,7 +49,6 @@ p {
     font-family: "BLAME Regular", sans-serif;
     font-size: 1.4em;
     margin: 0.7em 0.5em;
-    padding-top: 0.6em;
 }
 
 .qtitle:hover {
@@ -102,7 +101,7 @@ p {
     font-family: "BLAME Regular", sans-serif;
     clip-path: polygon(0 0, 95% 0, 100% 100%, 0% 100%);
     font-size: 1.2em;
-    padding: 1em 0.5em 0.5em;
+    padding: 0.5em 0.5em 0.5em;
     border: none;
 }
 
