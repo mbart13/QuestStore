@@ -14,11 +14,8 @@
     <script src="../../static/js/init.js" th:src="@{/js/init.js}"></script>
     <script type="text/javascript" th:src="@{/js/header.js}" src="../../static/js/header.js"></script>
 
-    <!-- Page content goes here-->
-<!--    <div th:object="${username}">-->
-<!--        <h3><span th:text="${username}">optional field name</span></h3>-->
-<!--    </div>-->
     <div class="user-profile" th:object="${student.username}">
+
         <div class="user-info">
             <div class="user-info-item">
                 <div class="profile-picture">

@@ -35,7 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/student/**",
                         "/items/**",
                         "/quests/**"
-                            ).hasRole("STUDENT")
+                            ).hasAnyRole("ADMIN", "STUDENT")
                     .antMatchers(
                             "/admin"
                             ).hasRole("ADMIN")

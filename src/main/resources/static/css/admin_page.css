@@ -22,19 +22,20 @@
 }
 
 .admin-buttons {
-    grid-area: middle;
+    grid-area: right;
 
 }
+
+.user-stats {
+    grid-area: middle;
+}
+
 
 .admin-buttons, .user-stats {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-.user-stats {
-    grid-area: right;
 }
 
 .admin-image img {
@@ -88,15 +89,15 @@
 .circle {
     background: linear-gradient(180deg, #06413B 26.56%, #550609 50.52%, #001513 71.87%);
     border-radius: 50%;
-    width: 70px;
-    height: 70px;
+    width: 90px;
+    height: 90px;
     margin: 0 auto;
-    padding: .4em;
+    padding: .5em;
 }
 
 .circle p {
-    padding: .2em;
-    font-size: 2em;
+    padding: .3em;
+    font-size: 2.4em;
     font-weight: bold;
     background-color: #d3d3d3;
     border-radius: 50%;
@@ -107,7 +108,7 @@
     text-align: center;
 }
 
-.recent-activities {
+.management {
     background: linear-gradient(125.39deg, #001513 26.03%, #550609 49.2%, #001513 67.85%);
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25),
     inset 0 4px 4px rgba(0, 0, 0, 0.25);
@@ -116,18 +117,41 @@
     padding: .5em;
 }
 
-.recent-activities h2 {
+.management h2 {
     font-family: "BLAME Regular", sans-serif;
     color: #d3d3d3;
     text-align: center;
     padding: .3em;
 }
 
-.recent-activities-content {
+.management-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     background-color: #d3d3d3;
     padding: .8em;
 }
-.recent-activities-content span {
+.management span {
     font-style: italic;
     font-weight: 700;
+}
+
+.action-item {
+    padding:.5em;
+    text-align: center;
+}
+
+.action-item:hover {
+    border: 5px solid black;
+    cursor: pointer;
+}
+
+.action-item a {
+    text-decoration: none;
+    color: black;
+
+}
+.action-item a span {
+    font-weight: bold;
+    font-size: 1.2em;
+    font-style: normal;
 }

@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile page</title>
     <link rel="stylesheet" href="../../static/css/styles.css" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="../../static/assets/font-awesome-4.7.0/css/font-awesome.min.css" th:href="@{/assets/font-awesome-4.7.0/css/font-awesome.min.css}">
     <link rel="stylesheet" href="../../static/css/admin_page.css" th:href="@{/css/admin_page.css}">
 </head>
 
@@ -18,7 +19,7 @@
     <div class="dashboard">
 
         <div class="header">
-            <h1 th:text="${user.firstName} + ' ' + ${user.lastName}">Admin Dashboard</h1>
+            <h1 th:text="'Welcome, ' + ${user.username}">Welcome</h1>
         </div>
 
         <div class="admin-image">
@@ -33,9 +34,9 @@
 
         </div>
         <div class="admin-buttons">
-            <a class="button-cta users" href="#" th:href="@{/users}">Users</a>
-            <a class="button-cta classes" href="#">Classes</a>
-            <a class="button-cta levels" href="#">Exp Levels</a>
+            <a class="button-cta" href="#">Edit Profile</a>
+            <a class="button-cta" href="#" th:href="@{/items}">Items</a>
+            <a class="button-cta" href="#" th:href="@{/quests}">Quests</a>
         </div>
         <div class="user-stats">
             <div class="stats-item mentors">
@@ -48,7 +49,7 @@
             </div>
             <div class="stats-item codecoolers">
                 <div>
-                    <h2>Codecoolers</h2>
+                    <h2>Students</h2>
                 </div>
                 <div class="circle">
                     <p th:text="${students_count}">59</p>
@@ -57,14 +58,24 @@
         </div>
 
     </div>
-    <div class="recent-activities">
-        <div class="recent-activities-header">
-            <h2>Recent Activities</h2>
+    <div class="management">
+        <div class="management-header">
+            <h2>Management</h2>
         </div>
-        <div class="recent-activities-content">
-            <p><span>2.10.2020: </span>Lorem ipsum dolor sit amet consectetur adipisicing elit </p>
-            <p><span>29.09.2020: </span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi impedit consequuntur molestiae </p>
-            <p><span>26.09.2020: </span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi impedit </p>
+        <div class="management-content">
+            <div class="action-item">
+                <a th:href="@{/users}"><i class="fa fa-user fa-4x"></i><br><span>Users</span></a>
+            </div>
+            <div class="action-item">
+                <a><i class="fa fa-users fa-4x"></i><br><span>Classes</span></a>
+            </div>
+            <div class="action-item">
+                <a><i class="fa fa-book fa-4x"></i><br><span>Exp Levels</span></a>
+            </div>
+            <div class="action-item">
+                <a><i class="fa fa-university fa-4x"></i><br><span>Ranks</span></a>
+            </div>
+
         </div>
     </div>
 

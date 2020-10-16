@@ -7,7 +7,7 @@
 
 .users-list .header {
     color: #D3D3D3;
-    font-family: BLAME Regular;
+    font-family: BLAME Regular, sans-serif;
     text-align: center;
     padding: .5em 0;
 }
@@ -48,7 +48,7 @@ td {
     text-align: center;
     padding: .8em;
     border-bottom: 1px solid #D3D3D3;
-    font-size: .9rem;
+    font-size: 1rem;
 }
 
 thead {
