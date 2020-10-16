@@ -1,6 +1,6 @@
 insert into item (name, description, cost, type)
 values
-('Private Mentoring', 'Book private session with one of the mentors', 50, 'BASIC'),
+('Private Mentoring', 'Book private session with a mentor', 50, 'BASIC'),
 ('Extend Assignment', 'Extend SI week assignment deadline by one day', 500, 'BASIC'),
 ('Rent a Mentor', 'Mentor joins your team for one hour to help you with your project', 1000, 'EXTRA'),
 ('Off-School Day', 'The whole course goes to an off-school program for a day', 30000, 'EXTRA'),
@@ -18,14 +18,15 @@ values
 INSERT INTO users (id, first_name, last_name, username, role, password)
 VALUES
 (1, 'Noriaki', 'Kasai', 'nori','role_admin', '1'),
-(2, 'Lukasz', 'Lesiuk', 'nodi', 'role_user', '1'),
-(3, 'Michal', 'Bartosik', 'mbart', 'role_user', '1');
+(2, 'Dominik', 'Starzyk', 'domi', 'role_mentor', '1'),
+(3, 'Lukasz', 'Lesiuk', 'nodi', 'role_student', '1'),
+(4, 'Michal', 'Bartosik', 'mbart', 'role_student', '1');
 
 
 insert into students (current_balance, rank, module, total_earnings, user_id)
 values
-(1000, 'Samurai', 'Web', 1000, 2),
-(500, 'Samurai', 'Web', 1000, 3);
+(1000, 'Samurai', 'Web', 1000, 3),
+(500, 'Samurai', 'Web', 1000, 4);
 
 
 --INSERT INTO authorities (username, authority)

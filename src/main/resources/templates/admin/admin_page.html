@@ -18,7 +18,7 @@
     <div class="dashboard">
 
         <div class="header">
-            <h1>Admin Dashboard</h1>
+            <h1 th:text="${user.firstName} + ' ' + ${user.lastName}">Admin Dashboard</h1>
         </div>
 
         <div class="admin-image">
@@ -43,7 +43,7 @@
                     <h2>Mentors</h2>
                 </div>
                 <div class="circle">
-                    <p>12</p>
+                    <p th:text="${mentors_count}">12</p>
                 </div>
             </div>
             <div class="stats-item codecoolers">
@@ -51,7 +51,7 @@
                     <h2>Codecoolers</h2>
                 </div>
                 <div class="circle">
-                    <p>59</p>
+                    <p th:text="${students_count}">59</p>
                 </div>
             </div>
         </div>

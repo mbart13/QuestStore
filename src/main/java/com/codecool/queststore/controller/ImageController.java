@@ -31,7 +31,9 @@ public class ImageController {
     @PostMapping
     public String addNewImage(@RequestParam("image-file") MultipartFile file, Principal principal) {
         imageService.saveImage(file, principal.getName());
-        return "redirect:/users/profile_page";
+        User user = userService.findByUsername(principal.getName());
+        String role = user.getRole().substring(5).toLowerCase();
+        return "redirect:/" + role + "/profile-page";
     }
 
     @GetMapping("/image")

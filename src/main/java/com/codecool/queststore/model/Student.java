@@ -11,7 +11,7 @@ import java.util.Set;
 @Setter
 @Entity
 @PrimaryKeyJoinColumn(name = "user_id")
-@Table(name = "STUDENTS")
+@Table(name = "students")
 public class Student extends User{
 
     @Column(name = "current_balance")
@@ -26,7 +26,7 @@ public class Student extends User{
     @Column(name = "module")
     private String module;
 
-    @OneToMany(mappedBy = "student", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "student")
     private Set<StudentItem> items = new HashSet<>();
 
 }

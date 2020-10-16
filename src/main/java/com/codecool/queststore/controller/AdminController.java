@@ -1,15 +1,28 @@
 package com.codecool.queststore.controller;
 
+import com.codecool.queststore.service.UserService;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.security.Principal;
+
+@AllArgsConstructor
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
 
-    @GetMapping
-    public String admin() {
+    private final UserService userService;
+
+    @GetMapping("/profile-page")
+    public String admin(Model model, Principal principal) {
+        Long countOfStudents = userService.countByRole("role_student");
+        Long countOfMentors = userService.countByRole("role_mentor");
+        model.addAttribute("mentors_count", countOfMentors);
+        model.addAttribute("students_count", countOfStudents);
+        model.addAttribute("user", userService.findByUsername(principal.getName()));
         return "admin/admin_page";
     }
 }

@@ -19,7 +19,7 @@ public class StudentItem {
     @Column(name = "order_date")
     private LocalDate orderDate = LocalDate.now();
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private Student student;
 

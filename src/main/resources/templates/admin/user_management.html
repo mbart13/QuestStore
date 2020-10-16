@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../static/css/styles.css" th:href="@{/css/styles.css}">
-    <link rel="stylesheet" href="../../static/assets/font-awesome-4.7.0/css/font-awesome.min.css" th:href="@{/css/font-awesome.min.css}">
+    <link rel="stylesheet" href="../../static/assets/font-awesome-4.7.0/css/font-awesome.min.css" th:href="@{/assets/font-awesome-4.7.0/css/font-awesome.min.css}">
     <link rel="stylesheet" href="../../static/css/user_management.css" th:href="@{/css/user_management.css}">
     <title>Users Management</title>
 </head>
@@ -16,7 +16,7 @@
 
     <div class="users-list">
 
-        <h1 class="header">Users Management<span title="create user" id="plus-icon"><a href="create_user.html"> <i class="fa fa-plus"></i></a></span>
+        <h1 class="header">Users Management<span title="create user" id="plus-icon"><a th:onclick="|window.location.href='/users/new'|"> <i class="fa fa-plus"></i></a></span>
         </h1>
 
         <div class="users-table">

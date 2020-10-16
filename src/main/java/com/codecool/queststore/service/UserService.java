@@ -28,4 +28,8 @@ public class UserService {
     public User save(User user) {
         return userRepository.save(user);
     }
+
+    public Long countByRole(String role) {
+        return userRepository.countByRole(role);
+    }
 }

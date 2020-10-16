@@ -22,11 +22,11 @@ public class LoginRedirectController {
 
         if(role.contains("ROLE_ADMIN")){
 //            return "user/profile_page";
-            redirectView.setUrl("admin");
+            redirectView.setUrl("admin/profile-page");
 
         }
-        else if(role.contains("ROLE_USER")) {
-            redirectView.setUrl("users/profile_page");
+        else if(role.contains("ROLE_STUDENT")) {
+            redirectView.setUrl("student/profile-page");
         }
         return redirectView;
 
