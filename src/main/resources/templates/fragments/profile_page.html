@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Fragments</title>
+</head>
+<body>
+
+<!--USER STATS-->
+<div th:fragment="user-stats">
+    <div class="user-stats" >
+        <div class="stats-item mentors">
+            <div>
+                <h2>Mentors</h2>
+            </div>
+            <div class="circle">
+                <p th:text="${mentors_count}">12</p>
+            </div>
+        </div>
+        <div class="stats-item codecoolers">
+            <div>
+                <h2>Students</h2>
+            </div>
+            <div class="circle">
+                <p th:text="${students_count}">59</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--ADMIN-ACTIONS-->
+<div th:fragment="admin-actions">
+    <div class="management">
+        <div class="management-header">
+            <h2>Management</h2>
+        </div>
+        <div class="management-content">
+            <div class="action-item">
+                <a th:href="@{/users}"><i class="fa fa-user fa-4x"></i><br><span>Users</span></a>
+            </div>
+            <div class="action-item">
+                <a><i class="fa fa-users fa-4x"></i><br><span>Classes</span></a>
+            </div>
+            <div class="action-item">
+                <a><i class="fa fa-book fa-4x"></i><br><span>Exp Levels</span></a>
+            </div>
+            <div class="action-item">
+                <a><i class="fa fa-university fa-4x"></i><br><span>Ranks</span></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <div class="user-info-item user-data" th:fragment="student-data">
+        <div class="info-block">
+            <p>Module:</p>
+            <p th:text="${student.module}" class="bold">Web</p>
+        </div>
+        <hr class="solid">
+        <div class="info-block">
+            <p>Account:</p>
+            <p th:text="${student.currentBalance}" class="bold">400 cc</p>
+
+        </div>
+        <hr class="solid">
+        <div class="info-block">
+            <p>Total earnings:</p>
+            <p th:text="${student.totalEarnings}" class="bold">1250 cc</p>
+        </div>
+    </div>
+
+
+
+
+    <div class="aux-container" th:fragment="student-aux-container">
+        <p class="container-title">Backpack</p>
+        <div th:if="${studentItems.isEmpty()}" class="user-info-item">
+            <p>Empty</p>
+        </div>
+        <div th:if="${not studentItems.isEmpty()}" class="user-info-item">
+            <ul th:each="studentItem : ${studentItems} ">
+                <li th:text="${studentItem.item.name}"></li>
+            </ul>
+        </div>
+    </div>
+    <div class="aux-container">
+        <p class="container-title">Completed assignments</p>
+        <div class="user-info-item">Assignments</div>
+    </div>
+
+
+
+</body>
+</html>

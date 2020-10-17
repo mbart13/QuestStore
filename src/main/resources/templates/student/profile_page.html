@@ -1,3 +1,95 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org"-->
+<!--      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">-->
+
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Profile page</title>-->
+<!--    <link rel="stylesheet" href="../../static/css/styles.css" th:href="@{/css/styles.css}">-->
+<!--    <link rel="stylesheet" href="../../static/css/profile_page.css" th:href="@{/css/profile_page.css}">-->
+<!--</head>-->
+
+<!--<body>-->
+<!--    <script src="../../static/js/init.js" th:src="@{/js/init.js}"></script>-->
+<!--    <script type="text/javascript" th:src="@{/js/header.js}" src="../../static/js/header.js"></script>-->
+
+<!--    <div class="user-profile" th:object="${student.username}">-->
+
+<!--        <div class="user-info">-->
+<!--            <div class="user-info-item">-->
+<!--                <div class="profile-picture">-->
+<!--                    <img src="../../static/assets/images/profileImage.jpg" th:src="@{/profile-page/image}" alt="User Image">-->
+<!--                </div>-->
+<!--                <div class="user-rank">-->
+<!--                    <p th:text="${student.rank}">rank</p>-->
+<!--                </div>-->
+<!--&lt;!&ndash;                <span sec:authorize="isAuthenticated()" style="display: inline-block;">&ndash;&gt;-->
+<!--&lt;!&ndash;                    | Logged user: <span sec:authentication="name"></span> |&ndash;&gt;-->
+<!--&lt;!&ndash;                    Roles: <span sec:authentication="principal.authorities"></span> |&ndash;&gt;-->
+<!--&lt;!&ndash;                    <a th:href="@{/logout}">Sign Out</a>&ndash;&gt;-->
+<!--&lt;!&ndash;                </span>&ndash;&gt;-->
+<!--            </div>-->
+<!--            <div class="user-info-item user-data">-->
+<!--                <div class="info-block">-->
+<!--                    <p>Module:</p>-->
+<!--                    <p th:text="${student.module}" class="bold">Web</p>-->
+<!--                </div>-->
+<!--                <hr class="solid">-->
+<!--                <div class="info-block">-->
+<!--                    <p>Account:</p>-->
+<!--                    <p th:text="${student.currentBalance}" class="bold">400 cc</p>-->
+
+<!--                </div>-->
+<!--                <hr class="solid">-->
+<!--                <div class="info-block">-->
+<!--                    <p>Total earnings:</p>-->
+<!--                    <p th:text="${student.totalEarnings}" class="bold">1250 cc</p>-->
+<!--                </div>-->
+
+<!--            </div>-->
+<!--            <div class="user-info-item button-spacing">-->
+<!--                <div class="wrapper">-->
+<!--                    <button type="button" class="irregularShape" onclick="alert('Not implemented yet!')"><br><br>Edit data</button>-->
+<!--                </div>-->
+<!--                <div class="wrapper">-->
+<!--                    <button type="button" class="irregularShape" onclick="alert('Not implemented yet!')"><br><br>Change password</button>-->
+<!--                </div>-->
+<!--                <div class="wrapper">-->
+<!--                    <button type="button" class="irregularShape" th:onclick="|window.location.href='/profile-page'|"><br><br>Change Image</button>-->
+<!--                </div>-->
+<!--                <div class="wrapper">-->
+<!--                    <button type="submit" class="irregularShape" href="/items" th:onclick="|window.location.href='/items'|" ><br><br>Go to items</button>-->
+<!--                </div>-->
+<!--                <div class="wrapper">-->
+<!--                    <button type="submit" class="irregularShape" href="/quests" th:onclick="|window.location.href='/quests'|"><br><br>Go to quests</button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="aux-container">-->
+<!--            <p class="container-title">Backpack</p>-->
+<!--            <div th:if="${studentItems.isEmpty()}" class="user-info-item">-->
+<!--                <p>Empty</p>-->
+<!--            </div>-->
+<!--            <div th:if="${not studentItems.isEmpty()}" class="user-info-item">-->
+<!--                <ul th:each="studentItem : ${studentItems} ">-->
+<!--                    <li th:text="${studentItem.item.name}"></li>-->
+<!--                </ul>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="aux-container">-->
+<!--            <p class="container-title">Completed assignments</p>-->
+<!--            <div class="user-info-item">Assignments</div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--    &lt;!&ndash; End of page content&ndash;&gt;-->
+<!--    <script type="text/javascript" th:src="@{/js/footer.js}" src="../../static/js/footer.js"></script>-->
+
+<!--</body>-->
+
+<!--</html>-->
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
@@ -7,84 +99,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile page</title>
     <link rel="stylesheet" href="../../static/css/styles.css" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="../../static/assets/font-awesome-4.7.0/css/font-awesome.min.css" th:href="@{/assets/font-awesome-4.7.0/css/font-awesome.min.css}">
+    <link rel="stylesheet" href="../../static/css/admin_page.css" th:href="@{/css/admin_page.css}">
     <link rel="stylesheet" href="../../static/css/profile_page.css" th:href="@{/css/profile_page.css}">
 </head>
 
 <body>
-    <script src="../../static/js/init.js" th:src="@{/js/init.js}"></script>
-    <script type="text/javascript" th:src="@{/js/header.js}" src="../../static/js/header.js"></script>
+<script src="../../static/js/init.js" th:src="@{/js/init.js}"></script>
+<script src="../../static/js/header.js" th:src="@{/js/header.js}"></script>
 
-    <div class="user-profile" th:object="${student.username}">
 
-        <div class="user-info">
-            <div class="user-info-item">
-                <div class="profile-picture">
-                    <img src="../../static/assets/images/profileImage.jpg" th:src="@{/profile-page/image}" alt="User Image">
-                </div>
-                <div class="user-rank">
-                    <p th:text="${student.rank}">rank</p>
-                </div>
-<!--                <span sec:authorize="isAuthenticated()" style="display: inline-block;">-->
-<!--                    | Logged user: <span sec:authentication="name"></span> |-->
-<!--                    Roles: <span sec:authentication="principal.authorities"></span> |-->
-<!--                    <a th:href="@{/logout}">Sign Out</a>-->
-<!--                </span>-->
-            </div>
-            <div class="user-info-item user-data">
-                <div class="info-block">
-                    <p>Module:</p>
-                    <p th:text="${student.module}" class="bold">Web</p>
-                </div>
-                <hr class="solid">
-                <div class="info-block">
-                    <p>Account:</p>
-                    <p th:text="${student.currentBalance}" class="bold">400 cc</p>
+<!-- Page content goes here-->
+<div class="dashboard">
 
-                </div>
-                <hr class="solid">
-                <div class="info-block">
-                    <p>Total earnings:</p>
-                    <p th:text="${student.totalEarnings}" class="bold">1250 cc</p>
-                </div>
+    <div class="header">
+        <h1 th:text="'Welcome, ' + ${student.username}">Welcome</h1>
+    </div>
 
+    <div class="user-image"> <!-- change -->
+        <div class="image-container">
+            <div>
+                <img src="../../static/assets/AdminImage.jpeg" th:src="@{/assets/images/profileImage.jpg}" alt="admin image">
             </div>
-            <div class="user-info-item button-spacing">
-                <div class="wrapper">
-                    <button type="button" class="irregularShape" onclick="alert('Not implemented yet!')"><br><br>Edit data</button>
-                </div>
-                <div class="wrapper">
-                    <button type="button" class="irregularShape" onclick="alert('Not implemented yet!')"><br><br>Change password</button>
-                </div>
-                <div class="wrapper">
-                    <button type="button" class="irregularShape" th:onclick="|window.location.href='/profile-page'|"><br><br>Change Image</button>
-                </div>
-                <div class="wrapper">
-                    <button type="submit" class="irregularShape" href="/items" th:onclick="|window.location.href='/items'|" ><br><br>Go to items</button>
-                </div>
-                <div class="wrapper">
-                    <button type="submit" class="irregularShape" href="/quests" th:onclick="|window.location.href='/quests'|"><br><br>Go to quests</button>
-                </div>
+            <div class="user-rank">
+                <p>Shogun</p>
             </div>
-        </div>
-        <div class="aux-container">
-            <p class="container-title">Backpack</p>
-            <div th:if="${studentItems.isEmpty()}" class="user-info-item">
-                <p>Empty</p>
-            </div>
-            <div th:if="${not studentItems.isEmpty()}" class="user-info-item">
-                <ul th:each="studentItem : ${studentItems} ">
-                    <li th:text="${studentItem.item.name}"></li>
-                </ul>
-            </div>
-        </div>
-        <div class="aux-container">
-            <p class="container-title">Completed assignments</p>
-            <div class="user-info-item">Assignments</div>
         </div>
     </div>
 
-    <!-- End of page content-->
-    <script type="text/javascript" th:src="@{/js/footer.js}" src="../../static/js/footer.js"></script>
+    <th:block th:insert="fragments/profile_page :: student-data">
+
+    </th:block>
+
+    <div class="user-buttons"> <!-- change -->
+        <a class="button-cta" href="#">Edit Profile</a>
+        <a class="button-cta" href="#" th:href="@{/items}">Items</a>
+        <a class="button-cta" href="#" th:href="@{/quests}">Quests</a>
+    </div>
+</div>
+
+<th:block th:insert="fragments/profile_page :: student-aux-container">
+
+</th:block>
+
+<!-- End of page content-->
+
+<script src="../../static/js/footer.js" th:src="@{/js/footer.js}"></script>
+
 
 </body>
 
