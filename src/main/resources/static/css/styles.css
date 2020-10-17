@@ -126,9 +126,9 @@ svg path {
   font-family: "BLAME Regular", sans-serif;
   font-style: normal;
   font-weight: normal;
-  font-size: 15px;
+  font-size: 1.2em;
   line-height: 15px;
-  color: #ffffff;
+  color: #d3d3d3;
   padding-top: 10px;
   padding-bottom: 10px;
 }

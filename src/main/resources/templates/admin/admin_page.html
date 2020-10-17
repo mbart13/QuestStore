@@ -8,7 +8,7 @@
     <title>Profile page</title>
     <link rel="stylesheet" href="../../static/css/styles.css" th:href="@{/css/styles.css}">
     <link rel="stylesheet" href="../../static/assets/font-awesome-4.7.0/css/font-awesome.min.css" th:href="@{/assets/font-awesome-4.7.0/css/font-awesome.min.css}">
-    <link rel="stylesheet" href="../../static/css/admin_page.css" th:href="@{/css/admin_page.css}">
+    <link rel="stylesheet" href="../../static/css/profile_page.css" th:href="@{/css/profile_page.css}">
 </head>
 
 <body>
@@ -22,10 +22,10 @@
             <h1 th:text="'Welcome, ' + ${user.username}">Welcome</h1>
         </div>
 
-        <div class="admin-image">
+        <div class="user-image">
             <div class="image-container">
                 <div>
-                    <img src="../../static/assets/AdminImage.jpeg" th:src="@{/assets/AdminImage.jpeg}" alt="admin image">
+                    <img src="../../static/assets/AdminImage.jpeg" th:src="@{/profile-page/image}" alt="User Image">
                 </div>
                 <div class="user-rank">
                     <p>Shogun</p>
@@ -33,8 +33,9 @@
             </div>
 
         </div>
-        <div class="admin-buttons">
+        <div class="user-buttons">
             <a class="button-cta" href="#">Edit Profile</a>
+            <a class="button-cta" href="#" th:href="@{/profile-page}">Upload Image</a>
             <a class="button-cta" href="#" th:href="@{/items}">Items</a>
             <a class="button-cta" href="#" th:href="@{/quests}">Quests</a>
         </div>

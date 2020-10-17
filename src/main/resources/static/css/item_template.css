@@ -22,7 +22,7 @@
 
 .details-left {
     grid-area: left;
-    padding: 2em;
+    padding: 1em;
 }
 
 .details-right {
