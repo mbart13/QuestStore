@@ -75,5 +75,5 @@ function logout() {
 }
 
 function goToProfile() {
-    window.location.replace("/student/profile-page")
+    window.location.replace("/loginRedirect")
 }

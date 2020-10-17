@@ -30,7 +30,7 @@ public class LostPasswordController {
             user = userService.findByUsername(username);
 
         } catch (RuntimeException e) {
-            log.info("There is no such username in the database");
+            log.info(String.format("There is no user with username '%s' in the database", username));
         }
         if (user != null) {
             model.addAttribute("password", user.getPassword());

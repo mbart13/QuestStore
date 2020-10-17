@@ -30,6 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/js/**",
                         "/css/**",
                         "/assets/**",
+                        "/forgotten-password/**",
                         "/h2-console/**").permitAll()
                     .antMatchers(
                         "/student/**",
@@ -39,8 +40,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers(
                             "/admin"
                             ).hasRole("ADMIN")
-//                    .anyRequest().authenticated()
-                .anyRequest().permitAll()
+                    .anyRequest().authenticated()
+//                .anyRequest().permitAll()
                 .and()
                 .formLogin()
                     .loginPage("/login")

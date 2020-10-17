@@ -18,10 +18,8 @@ public class AdminController {
 
     @GetMapping("/profile-page")
     public String admin(Model model, Principal principal) {
-        Long countOfStudents = userService.countByRole("role_student");
-        Long countOfMentors = userService.countByRole("role_mentor");
-        model.addAttribute("mentors_count", countOfMentors);
-        model.addAttribute("students_count", countOfStudents);
+        model.addAttribute("mentors_count", userService.countByRole("role_mentor"));
+        model.addAttribute("students_count", userService.countByRole("role_student"));
         model.addAttribute("user", userService.findByUsername(principal.getName()));
         return "admin/admin_page";
     }
