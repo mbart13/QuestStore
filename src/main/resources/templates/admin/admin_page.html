@@ -64,8 +64,8 @@
             <h2>Management</h2>
         </div>
         <div class="management-content">
-            <div class="action-item">
-                <a th:href="@{/users}"><i class="fa fa-user fa-4x"></i><br><span>Users</span></a>
+            <div class="action-item" th:onclick="|window.location.href='/users/'|">
+                <a><i class="fa fa-user fa-4x"></i><br><span>Users</span></a>
             </div>
             <div class="action-item">
                 <a><i class="fa fa-users fa-4x"></i><br><span>Classes</span></a>
