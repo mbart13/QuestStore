@@ -23,7 +23,6 @@
 
 .admin-buttons {
     grid-area: right;
-
 }
 
 .user-stats, .user-data {
@@ -65,7 +64,7 @@ hr.solid {
 .aux-container {
     display: flex;
     flex-direction: column;
-    min-height: 150px;
+    min-height: 15em;
     left: 0;
     right: 0;
     top: 100px;
@@ -97,7 +96,7 @@ hr.solid {
     text-align: left;
     padding: 10px;
     color: black;
-    flex: max-content;
+    flex-grow: 1;
 }
 
 .header h1 {
@@ -108,7 +107,6 @@ hr.solid {
 }
 
 .button-cta {
-    margin-bottom: .8em;
 
 }
 
@@ -183,8 +181,7 @@ hr.solid {
 
 .management {
     background: linear-gradient(125.39deg, #001513 26.03%, #550609 49.2%, #001513 67.85%);
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25),
-    inset 0 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25), inset 0 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
     margin-top: .5em;
     padding: .5em;
