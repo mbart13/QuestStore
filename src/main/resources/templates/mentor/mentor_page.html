@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile page</title>
+    <link rel="stylesheet" href="../../static/css/styles.css" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="../../static/assets/font-awesome-4.7.0/css/font-awesome.min.css" th:href="@{/assets/font-awesome-4.7.0/css/font-awesome.min.css}">
+    <link rel="stylesheet" href="../../static/css/mentor_page.css" th:href="@{/css/mentor_page.css}">
+</head>
+
+<body>
+<script src="../../static/js/init.js" th:src="@{/js/init.js}"></script>
+<script src="../../static/js/header.js" th:src="@{/js/header.js}"></script>
+
+<!-- Page content goes here-->
+<div class="dashboard">
+
+    <div class="header">
+        <h1 th:text="'Welcome, ' + ${mentor.username}">Welcome</h1>
+    </div>
+
+    <div class="user-image">
+        <div class="image-container">
+            <div>
+                <img src="../../static/assets/images/profileImage.jpg" th:src="@{/profile-page/image}" alt="User Image">
+            </div>
+            <div class="user-rank">
+                <p>MENTOR</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="user-data">
+        <div class="info-block">
+<!--            <p>Module</p>-->
+<!--            <p th:text="${student.module}" class="bold">Web</p>-->
+        </div>
+<!--        <hr class="solid">-->
+<!--        <div class="info-block">-->
+<!--            <p>Account:</p>-->
+<!--            <p th:text="${student.currentBalance}" class="bold">400 cc</p>-->
+
+<!--        </div>-->
+<!--        <hr class="solid">-->
+<!--        <div class="info-block">-->
+<!--            <p>Total earnings:</p>-->
+<!--            <p th:text="${student.totalEarnings}" class="bold">1250 cc</p>-->
+<!--        </div>-->
+    </div>
+    <div class="user-buttons">
+        <a class="button-cta" href="#">Edit Profile</a>
+        <a class="button-cta" href="#" th:href="@{/profile-page}">Upload Image</a>
+        <a class="button-cta" href="#" th:href="@{/items}">Items</a>
+        <a class="button-cta" href="#" th:href="@{/quests}">Quests</a>
+    </div>
+</div>
+<!--<div class="backpack">-->
+<!--    <div class="aux-container">-->
+<!--        <p class="container-title">Backpack</p>-->
+<!--        <div th:if="${studentItems.isEmpty()}" class="user-info-item">-->
+<!--            <p>Empty</p>-->
+<!--        </div>-->
+<!--        <div th:if="${not studentItems.isEmpty()}" class="user-info-item">-->
+<!--            <ul th:each="studentItem : ${studentItems} ">-->
+<!--                <li th:text="${studentItem.item.name}"></li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="aux-container">-->
+<!--        <p class="container-title">Completed assignments</p>-->
+<!--        <div class="user-info-item">Assignments</div>-->
+<!--    </div>-->
+<!--</div>-->
+
+
+
+<!-- End of page content-->
+
+<script src="../../static/js/footer.js" th:src="@{/js/footer.js}"></script>
+
+</body>
+
+</html>

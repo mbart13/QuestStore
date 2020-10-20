@@ -28,6 +28,15 @@ values
 (1000, 'Samurai', 'Web', 1000, 3),
 (500, 'Samurai', 'Web', 1000, 4);
 
+insert into mentors (rank, user_id)
+values
+('lama', 2);
+
+insert into mentor_students (id, user_id, student_user_id)
+values
+(1, 2, 3),
+(2, 2, 4);
+
 
 --INSERT INTO authorities (username, authority)
 --VALUES

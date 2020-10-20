@@ -1,0 +1,227 @@
+.dashboard {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+        "header header header"
+        "left middle right";
+
+    background: linear-gradient(125.39deg, #001513 26.03%, #550609 49.2%, #001513 67.85%);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25),
+    inset 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    grid-gap: .5em;
+    padding: .5em;
+}
+
+.header {
+    grid-area: header;
+}
+
+.admin-image {
+    grid-area: left;
+}
+
+.admin-buttons {
+    grid-area: right;
+}
+
+.user-stats, .user-data {
+    grid-area: middle;
+}
+
+
+.user-buttons, .user-stats {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-image img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.user-image, .user-buttons, .user-stats, .user-data {
+    background-color: #d3d3d3;
+}
+
+.user-data {
+    display: grid;
+    grid-template-columns: auto;
+    padding: 10px;
+}
+
+hr.solid {
+    height: 2px;
+    border-width: 0;
+    color: #000000;
+    background-color: #000000;
+
+}
+
+.aux-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 15em;
+    left: 0;
+    right: 0;
+    top: 100px;
+
+    background: linear-gradient(
+            125.39deg,
+            #001513 26.03%,
+            #550609 49.2%,
+            #001513 67.85%
+    );
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25),
+    inset 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    padding: .2em .5em;
+}
+
+.backpack {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+    margin-top: 10px;
+    text-align: center;
+    color: black;
+}
+
+.user-info-item {
+    background: #b2b2b2;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    text-align: left;
+    padding: 10px;
+    color: black;
+    flex-grow: 1;
+}
+
+.header h1 {
+    font-size: 1.8em;
+    font-family: "BLAME Regular", sans-serif;
+    color: #d3d3d3;
+    text-align: center;
+}
+
+.button-cta {
+
+}
+
+.image-container {
+    padding: .5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    text-align: center;
+}
+
+.info-block {
+    margin: 10px;
+    text-align: left;
+    font-family: Cardo, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 45px;
+    color: #000000;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.user-rank p {
+    padding: .2em;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.5em;
+    text-align: center;
+    border: 8px solid #001513;
+    color: #000000;
+    font-family: "BLAME Regular", sans-serif;
+}
+
+.button-cta {
+    width: 80%;
+    margin: 1.2em;
+    font-size: .9em;
+    padding: .8em;
+}
+
+.user-stats h2 {
+    font-size: 2em;
+    text-align: center;
+}
+
+.circle {
+    background: linear-gradient(180deg, #06413B 26.56%, #550609 50.52%, #001513 71.87%);
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+    margin: 0 auto;
+    padding: .5em;
+}
+
+.circle p {
+    padding: .3em;
+    font-size: 2.4em;
+    font-weight: bold;
+    background-color: #d3d3d3;
+    border-radius: 50%;
+}
+
+.stats-item {
+    margin-bottom: 1.2em;
+    text-align: center;
+}
+
+.management {
+    background: linear-gradient(125.39deg, #001513 26.03%, #550609 49.2%, #001513 67.85%);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25), inset 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    margin-top: .5em;
+    padding: .5em;
+}
+
+.management h2 {
+    font-family: "BLAME Regular", sans-serif;
+    color: #d3d3d3;
+    text-align: center;
+    padding: .3em;
+}
+
+.management-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: #d3d3d3;
+    padding: .8em;
+}
+.management span {
+    font-style: italic;
+    font-weight: 700;
+}
+
+.action-item {
+    padding:.5em;
+    text-align: center;
+}
+
+.action-item:hover {
+    box-shadow: 0 0 0 5px black;
+    cursor: pointer;
+}
+
+.action-item a {
+    text-decoration: none;
+    color: black;
+
+}
+.action-item a span {
+    font-weight: bold;
+    font-size: 1.2em;
+    font-style: normal;
+}

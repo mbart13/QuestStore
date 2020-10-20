@@ -15,8 +15,8 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private LoggingAccessDeniedHandler accessDeniedHandler;
+//    @Autowired
+//    private LoggingAccessDeniedHandler accessDeniedHandler;
 
     @Autowired
     UserDetailsService userDetailsService;
@@ -36,12 +36,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/student/**",
                         "/items/**",
                         "/quests/**"
-                            ).hasAnyRole("ADMIN", "STUDENT")
+                            ).hasAnyRole("ADMIN", "STUDENT", "MENTOR")
                     .antMatchers(
                             "/admin"
                             ).hasRole("ADMIN")
+                    .antMatchers(
+                            "/mentor"
+                                ).hasRole("MENTOR")
                     .anyRequest().authenticated()
-//                .anyRequest().permitAll()
                 .and()
                 .formLogin()
                     .loginPage("/login")
@@ -64,17 +66,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        //in memory
-//        auth.inMemoryAuthentication()
-//                .withUser("user")
-//                .password("{noop}1")
-//                .roles("USER")
-//                .and()
-//                .withUser("user2")
-//                .password("{noop}1")
-//                .roles("USER");
 
-//        auth.jdbcAuthentication().dataSource(dataSource);
 
         auth.userDetailsService(userDetailsService);
     }
