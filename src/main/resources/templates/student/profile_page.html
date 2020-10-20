@@ -36,7 +36,7 @@
     <div class="user-data">
         <div class="info-block">
             <p>Module:</p>
-            <p th:text="${student.module}" class="bold">Web</p>
+            <p th:text="${student.module != null} ? ${student.module} : 'Not assigned'" class="bold">Web</p>
         </div>
         <hr class="solid">
         <div class="info-block">

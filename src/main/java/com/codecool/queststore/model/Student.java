@@ -12,7 +12,7 @@ import java.util.Set;
 @Entity
 @PrimaryKeyJoinColumn(name = "user_id")
 @Table(name = "students")
-public class Student extends User{
+public class Student extends User {
 
     @Column(name = "current_balance")
     private int currentBalance;
@@ -28,5 +28,9 @@ public class Student extends User{
 
     @OneToMany(mappedBy = "student")
     private Set<StudentItem> items = new HashSet<>();
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "course_id")
+    private Course course;
 
 }

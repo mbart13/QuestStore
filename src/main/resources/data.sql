@@ -28,14 +28,13 @@ values
 (1000, 'Samurai', 'Web', 1000, 3),
 (500, 'Samurai', 'Web', 1000, 4);
 
-insert into mentors (rank, user_id)
+insert into courses (id, name)
 values
-('lama', 2);
-
-insert into mentor_students (id, user_id, student_user_id)
-values
-(1, 2, 3),
-(2, 2, 4);
+(1, 'WAW.2019.10'),
+(2, 'KRK.2019.10'),
+(3, 'WAW.2020.02'),
+(4, 'KRK.2020.02'),
+(5, 'KRK.2020.05');
 
 
 --INSERT INTO authorities (username, authority)

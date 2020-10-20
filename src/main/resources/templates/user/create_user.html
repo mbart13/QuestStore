@@ -22,24 +22,21 @@
 
         <div class="form-body">
             <div class="form">
-                <form action="../admin/user_management.html">
+                <form th:action="@{/users}" method="post" th:object="${user}">
                     <div class="form-item">
                         <label for="name">First Name:</label><br>
-                        <input class="input-field" id="name" name="name" type="text" placeholder="Enter first name">
+                        <input class="input-field" id="name" th:field="*{firstName}" type="text" placeholder="Enter first name">
                     </div>
                     <div class="form-item">
                         <label for="surname">Last Name:</label><br>
-                        <input class="input-field" id="surname" name="surname" type="text" placeholder="Enter last name">
-                    </div>
-                    <div class="form-item">
-                        <label for="username">Username:</label><br>
-                        <input class="input-field" id="username" name="username" type="text" placeholder="Enter Username">
+                        <input class="input-field" id="surname" th:field="*{lastName}" type="text" placeholder="Enter last name">
                     </div>
                     <div class="form-item">
                         <select name="role">
                             <option disabled selected value>-- select role --</option>
-                            <option value="Mentor">Mentor</option>
-                            <option value="Codecooler">Codecooler</option>
+                            <option th:field="*{role}" value="role_admin">Admin</option>
+                            <option th:field="*{role}" value="role_mentor">Mentor</option>
+                            <option th:field="*{role}" value="role_student">Student</option>
                         </select>
                     </div>
                     <button type="submit">Save User</button>

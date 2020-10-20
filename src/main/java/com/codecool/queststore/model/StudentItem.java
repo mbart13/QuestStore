@@ -20,10 +20,12 @@ public class StudentItem {
     private LocalDate orderDate = LocalDate.now();
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "student_id")
     private Student student;
 
     @OneToOne
     private Item item;
+
+    private boolean used = false;
 
 }
