@@ -29,4 +29,6 @@ public class Student extends User{
     @OneToMany(mappedBy = "student")
     private Set<StudentItem> items = new HashSet<>();
 
+    @OneToMany(mappedBy = "student")
+    private Set<StudentQuest> quests = new HashSet<>();
 }

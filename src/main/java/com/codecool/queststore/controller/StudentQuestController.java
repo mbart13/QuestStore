@@ -2,8 +2,6 @@ package com.codecool.queststore.controller;
 
 import com.codecool.queststore.model.Quest;
 import com.codecool.queststore.model.Student;
-import com.codecool.queststore.model.StudentItem;
-import com.codecool.queststore.model.StudentQuest;
 import com.codecool.queststore.service.QuestService;
 import com.codecool.queststore.service.StudentQuestService;
 import com.codecool.queststore.service.UserService;
@@ -27,7 +25,7 @@ public class StudentQuestController {
     @PostMapping
     public String startQuest(@RequestParam("questId") Long id,
                              @RequestParam("questAnswer") String answer,
-                             Principal principal){
+                             Principal principal) {
         Quest quest = questService.findById(id);
         Student student = (Student) userService.findByUsername(principal.getName());
         studentQuestService.addStudentQuest(student, quest, answer);
