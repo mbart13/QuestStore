@@ -16,13 +16,17 @@ import static com.codecool.queststore.model.Role.STUDENT;
 @Service
 public class UserService {
 
-    private final UserConverter converter;
+    private final UserConverter userConverter;
     private final UserRepository userRepository;
     private final PasswordGenerator passwordGenerator;
     private static final int PASSWORD_LENGTH = 10;
 
     public List<User> getAllUsers() {
         return userRepository.findAll();
+    }
+
+    public User findById(Long id) {
+        return userRepository.findById(id).orElseThrow(() -> new RuntimeException("Entity not found"));
     }
 
     public User findByUsername(String username) {
@@ -45,19 +49,20 @@ public class UserService {
         return String.format("%s%s%d", userDto.getFirstName(), userDto.getLastName(), this.getMaxId() + 1);
     }
 
-    public void createNewUser(UserDto userDto) {
-        userDto.setUsername(generateUsername(userDto));
-        userDto.setPassword(passwordGenerator.generateRandomPassword(PASSWORD_LENGTH));
+    public void createUser(UserDto userDto) {
+        userDto.setUsername(userDto.getUsername() != null ? userDto.getUsername() : generateUsername(userDto));
+        userDto.setPassword(userDto.getPassword() != null ? userDto.getPassword() : passwordGenerator.generateRandomPassword(PASSWORD_LENGTH));
         String role = userDto.getRole() != null ? userDto.getRole().toLowerCase() : "";
         User user;
 
         if (role.equals(STUDENT.getRoleName())) {
-            user = converter.convertToStudentEntity(userDto);
+            user = userConverter.convertToStudentEntity(userDto);
         } else if (role.equals(MENTOR.getRoleName())) {
-            user = converter.convertToMentorEntity(userDto);
+            user = userConverter.convertToMentorEntity(userDto);
         } else {
-            user = converter.convertToUserEntity(userDto);
+            user = userConverter.convertToUserEntity(userDto);
         }
+
         this.save(user);
     }
 }

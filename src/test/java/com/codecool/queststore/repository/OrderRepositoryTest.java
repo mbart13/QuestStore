@@ -1,6 +1,6 @@
 package com.codecool.queststore.repository;
 
-import com.codecool.queststore.model.StudentItem;
+import com.codecool.queststore.model.Order;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -13,15 +13,13 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @ExtendWith(SpringExtension.class)
 @Sql("test.db")
 @DataJpaTest
-class StudentItemRepositoryTest {
+class OrderRepositoryTest {
 
     @Autowired
-    StudentItemRepository studentItemRepository;
+    OrderRepository orderRepository;
 
     Long studentId;
     Long itemId;
@@ -36,7 +34,7 @@ class StudentItemRepositoryTest {
     @DisplayName("should return list of student items meeting conditions")
     void shouldReturnListOfStudentItemsMeetingCondition() {
         // when
-        List<StudentItem> studentItems = studentItemRepository.findByStudentIdAndItemId(studentId, itemId);
+        List<Order> studentItems = orderRepository.findByStudentIdAndItemId(studentId, itemId);
 
         //then
         Assertions.assertEquals(1, studentItems.size());
@@ -49,7 +47,7 @@ class StudentItemRepositoryTest {
         Long expected = 2L;
 
         //when
-        List<StudentItem> studentItems = studentItemRepository.findByStudentIdAndItemId(studentId, itemId);
+        List<Order> studentItems = orderRepository.findByStudentIdAndItemId(studentId, itemId);
 
         //then
         Assertions.assertEquals(expected, studentItems.get(0).getId());

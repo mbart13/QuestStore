@@ -16,7 +16,7 @@
 
     <div class="users-list">
 
-        <h1 class="header"><i th:onclick="|window.location.href='/admin/profile-page'|" class="fa fa-arrow-left"></i> Users Management<span title="create user" id="plus-icon"><a th:onclick="|window.location.href='/users/new'|"> <i class="fa fa-plus"></i></a></span></h1>
+        <h1 class="header"><i title="Go Back" th:onclick="|window.location.href='/admin/profile-page'|" class="fa fa-arrow-left"></i> Users Management<span title="Create User" id="plus-icon"><a th:onclick="|window.location.href='/users/new'|"> <i class="fa fa-plus"></i></a></span></h1>
 
         <div class="users-table">
             <table>
@@ -57,8 +57,8 @@
                         <td th:text="${user.firstName}"></td>
                         <td th:text="${user.lastName}"></td>
                         <td th:text="${#strings.capitalize(#strings.substring(user.role, 5, user.role.length()))}"></td>
-                        <td>
-                            <span class="action-btn"><a href="#">Edit</a> </span>
+                        <td class="actions">
+                            <span class="action-btn"><a href="#" th:href="@{/users/edit/{id}(id=${user.id})}">Edit</a> </span>
                             <span class="action-btn"><a href="#">Delete</a> </span>
                         </td>
                     </tr>

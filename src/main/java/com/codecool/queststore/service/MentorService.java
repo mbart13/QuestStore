@@ -14,4 +14,8 @@ public class MentorService {
     public Mentor save(Mentor mentor) {
         return mentorRepository.save(mentor);
     }
+
+    public Mentor findByUsername(String username) {
+        return mentorRepository.findByUsername(username);
+    }
 }

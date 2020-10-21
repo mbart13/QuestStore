@@ -18,18 +18,18 @@
     <!-- Page content goes here-->
 
     <div class="form-container">
-        <h1 class="header"><i th:onclick="|window.location.href='/users'|" class="fa fa-arrow-left"></i> Create User</h1>
+        <h1 class="header"><i title="Go Back" th:onclick="|window.location.href='/users'|" class="fa fa-arrow-left"></i> Create User</h1>
 
         <div class="form-body">
             <div class="form">
                 <form th:action="@{/users}" method="post" th:object="${user}">
                     <div class="form-item">
                         <label for="name">First Name:</label><br>
-                        <input class="input-field" id="name" th:field="*{firstName}" type="text" placeholder="Enter first name">
+                        <input class="input-field" id="name" th:field="*{firstName}" th:value="${user.firstName}" type="text" placeholder="Enter first name">
                     </div>
                     <div class="form-item">
                         <label for="surname">Last Name:</label><br>
-                        <input class="input-field" id="surname" th:field="*{lastName}" type="text" placeholder="Enter last name">
+                        <input class="input-field" id="surname" th:field="*{lastName}" th:value="${user.lastName}" type="text" placeholder="Enter last name">
                     </div>
                     <div class="form-item">
                         <select name="role">

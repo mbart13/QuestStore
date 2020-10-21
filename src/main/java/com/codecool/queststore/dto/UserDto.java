@@ -12,8 +12,5 @@ public class UserDto {
     private String username;
     private String role;
     private String password;
-    private Byte[] image;
-    private int currentBalance;
-    private int totalEarnings;
 
 }

@@ -85,3 +85,7 @@ td a {
     margin: .5em;
     font-size: .8em;
 }
+
+.actions {
+    width: 15em;
+}

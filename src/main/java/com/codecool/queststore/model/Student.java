@@ -27,7 +27,7 @@ public class Student extends User {
     private String module;
 
     @OneToMany(mappedBy = "student")
-    private Set<StudentItem> items = new HashSet<>();
+    private Set<Order> items = new HashSet<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "course_id")

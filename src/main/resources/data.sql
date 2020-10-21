@@ -28,6 +28,9 @@ values
 (1000, 'Samurai', 'Web', 1000, 3),
 (500, 'Samurai', 'Web', 1000, 4);
 
+insert into mentors (user_id)
+values(2);
+
 insert into courses (id, name)
 values
 (1, 'WAW.2019.10'),

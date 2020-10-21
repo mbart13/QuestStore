@@ -2,7 +2,7 @@ package com.codecool.queststore.controller;
 
 import com.codecool.queststore.model.Item;
 import com.codecool.queststore.service.ItemService;
-import com.codecool.queststore.service.StudentItemService;
+import com.codecool.queststore.service.OrderService;
 import com.codecool.queststore.service.UserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -29,7 +29,7 @@ class ItemControllerTest {
     ItemService itemService;
 
     @Mock
-    StudentItemService studentItemService;
+    OrderService orderService;
 
     @Mock
     UserService userService;

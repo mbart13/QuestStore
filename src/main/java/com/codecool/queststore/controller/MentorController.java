@@ -1,8 +1,7 @@
 package com.codecool.queststore.controller;
 
 import com.codecool.queststore.model.Mentor;
-import com.codecool.queststore.model.User;
-import com.codecool.queststore.service.UserService;
+import com.codecool.queststore.service.MentorService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,11 +15,11 @@ import java.security.Principal;
 @RequestMapping("mentor")
 public class MentorController {
 
-    private final UserService userService;
+    private final MentorService mentorService;
 
     @GetMapping("/mentor-page")
     public String mentorIndex(Model model, Principal principal) {
-        Mentor mentor = (Mentor) userService.findByUsername(principal.getName());
+        Mentor mentor = mentorService.findByUsername(principal.getName());
         model.addAttribute("mentor", mentor);
         return "mentor/mentor_page";
     }
