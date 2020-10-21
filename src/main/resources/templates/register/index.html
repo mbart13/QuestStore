@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../static/css/styles.css" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="../../static/assets/font-awesome-4.7.0/css/font-awesome.min.css" th:href="@{/assets/font-awesome-4.7.0/css/font-awesome.min.css}">
+    <link rel="stylesheet" href="../../static/css/form.css" th:href="@{/css/form.css}">
+    <title> Create User </title>
+
+</head>
+
+<body>
+<script src="../../static/js/init.js" th:src="@{/js/init.js}"></script>
+<script src="../../static/js/header.js" th:src="@{/js/header.js}"></script>
+
+<!-- Page content goes here-->
+
+<div class="form-container">
+    <h1 class="header"> Create User</h1>
+
+    <div class="form-body">
+        <div class="form">
+            <form action="../login.html">
+                <div class="form-item">
+                    <label for="name">First Name:</label><br>
+                    <input class="input-field" id="name" name="name" type="text" placeholder="Enter first name">
+                </div>
+                <div class="form-item">
+                    <label for="surname">Last Name:</label><br>
+                    <input class="input-field" id="surname" name="surname" type="text" placeholder="Enter last name">
+                </div>
+                <div class="form-item">
+                    <label for="username">Username:</label><br>
+                    <input class="input-field" id="username" name="username" type="text" placeholder="Enter Username">
+                </div>
+                <div class="form-item">
+                    <label for="password">Password:</label><br>
+                    <input class="input-field" id="password" name="username" type="text" placeholder="Enter Password">
+                </div>
+
+                <button type="submit">Submit</button>
+
+            </form>
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<!-- End of page content-->
+
+<script src="../../static/js/footer.js" th:src="@{/js/footer.js}"></script>
+
+</body>
+
+</html>

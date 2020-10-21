@@ -99,6 +99,14 @@ label {
   text-align: center;
 }
 
+.btn-register {
+  font-size: 1em;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+}
+
+
 .btn-container.btn-begin {
   text-align: center;
 
@@ -116,6 +124,12 @@ label {
 
 .forgotten-password-btn-container {
   text-align: right;
+  margin-bottom: 1.2em;
+}
+
+.register-btn-container {
+  text-align: right;
+  margin-bottom: 1.2em;
 }
 
 @media screen and (max-width: 420px) {
