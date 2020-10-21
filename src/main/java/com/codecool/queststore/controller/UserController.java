@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.validation.ConstraintViolationException;
 
 @AllArgsConstructor
 @Controller
@@ -24,14 +27,19 @@ public class UserController {
     }
 
     @GetMapping("/new")
-    public String create(Model model) {
+    public String showCreateUserForm(Model model) {
         model.addAttribute("user", new UserDto());
         return "user/create_user";
     }
 
     @PostMapping
-    public String addNewUser(@ModelAttribute UserDto userDto) {
-        userService.createNewUser(userDto);
+    public String createNewUser(@ModelAttribute UserDto userDto, RedirectAttributes attributes) {
+        try {
+            userService.createNewUser(userDto);
+        } catch (ConstraintViolationException e) {
+            attributes.addFlashAttribute("show_warning", true);
+            return "redirect:/users/new";
+        }
         return "redirect:/users";
     }
 

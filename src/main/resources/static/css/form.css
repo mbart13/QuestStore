@@ -90,6 +90,24 @@ button:hover {
   
 }
 
+.warning-message {
+    margin-top: .3em;
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #70070A;
+}
+
 table {
     padding: .3em;
+}
+
+.fa-arrow-left {
+    margin-top: .3em;
+    margin-left: .5em;
+    float: left;
+}
+
+.fa-arrow-left:hover {
+    color: white;
+    cursor: pointer;
 }

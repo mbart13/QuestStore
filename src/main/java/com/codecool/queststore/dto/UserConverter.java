@@ -9,11 +9,11 @@ import org.springframework.stereotype.Component;
 
 @AllArgsConstructor
 @Component
-public class Mapper {
+public class UserConverter {
 
     private final ModelMapper modelMapper;
 
-    public Mapper() {
+    public UserConverter() {
         modelMapper = new ModelMapper();
     }
 

@@ -1,12 +1,8 @@
 package com.codecool.queststore.service;
 
-import com.codecool.queststore.dto.Mapper;
+import com.codecool.queststore.dto.UserConverter;
 import com.codecool.queststore.dto.UserDto;
-import com.codecool.queststore.model.Mentor;
-import com.codecool.queststore.model.Student;
 import com.codecool.queststore.model.User;
-import com.codecool.queststore.repository.MentorRepository;
-import com.codecool.queststore.repository.StudentRepository;
 import com.codecool.queststore.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,19 +16,13 @@ import static com.codecool.queststore.model.Role.STUDENT;
 @Service
 public class UserService {
 
-    private final Mapper mapper;
+    private final UserConverter converter;
     private final UserRepository userRepository;
-    private final MentorRepository mentorRepository;
-    private final StudentRepository studentRepository;
     private final PasswordGenerator passwordGenerator;
     private static final int PASSWORD_LENGTH = 10;
 
     public List<User> getAllUsers() {
         return userRepository.findAll();
-    }
-
-    public User findById(Long id) {
-        return userRepository.findById(id).orElseThrow(() -> new RuntimeException("Entity not found"));
     }
 
     public User findByUsername(String username) {
@@ -58,17 +48,16 @@ public class UserService {
     public void createNewUser(UserDto userDto) {
         userDto.setUsername(generateUsername(userDto));
         userDto.setPassword(passwordGenerator.generateRandomPassword(PASSWORD_LENGTH));
-        String role = userDto.getRole().toLowerCase();
+        String role = userDto.getRole() != null ? userDto.getRole().toLowerCase() : "";
+        User user;
 
         if (role.equals(STUDENT.getRoleName())) {
-            Student student = mapper.convertToStudentEntity(userDto);
-            studentRepository.save(student);
+            user = converter.convertToStudentEntity(userDto);
         } else if (role.equals(MENTOR.getRoleName())) {
-            Mentor mentor = mapper.convertToMentorEntity(userDto);
-            mentorRepository.save(mentor);
+            user = converter.convertToMentorEntity(userDto);
         } else {
-            User user = mapper.convertToUserEntity(userDto);
-            this.save(user);
+            user = converter.convertToUserEntity(userDto);
         }
+        this.save(user);
     }
 }

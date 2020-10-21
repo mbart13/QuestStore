@@ -18,7 +18,7 @@
     <!-- Page content goes here-->
 
     <div class="form-container">
-        <h1 class="header"> Create User</h1>
+        <h1 class="header"><i th:onclick="|window.location.href='/users'|" class="fa fa-arrow-left"></i> Create User</h1>
 
         <div class="form-body">
             <div class="form">
@@ -40,6 +40,9 @@
                         </select>
                     </div>
                     <button type="submit">Save User</button>
+                    <div th:if="${show_warning != null}" class="warning-message">
+                        <p th:if="${show_warning}"><i class="fa fa-times"></i> Fields cannot be blank!</p>
+                    </div>
 
                 </form>
             </div>
