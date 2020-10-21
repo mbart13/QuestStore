@@ -44,4 +44,6 @@ public class Student extends User {
         this.module = "Intro";
     }
 
+    @OneToMany(mappedBy = "student")
+    private Set<StudentQuest> quests = new HashSet<>();
 }
