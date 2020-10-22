@@ -6,6 +6,7 @@ import com.codecool.queststore.model.User;
 import com.codecool.queststore.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.TransactionSystemException;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -46,11 +47,16 @@ public class UserController {
 
     @PostMapping("/edit/{id}")
     public String updateUser(@PathVariable Long id, @ModelAttribute UserDto userDto, RedirectAttributes attributes) {
-        User user = userConverter.convertToUserEntity(userDto);
+        User user = userService.findById(id);
+        user.setFirstName(userDto.getFirstName());
+        user.setLastName(userDto.getLastName());
+        user.setUsername(userDto.getUsername());
+        user.setPassword(userDto.getPassword());
+        user.setRole(userDto.getRole());
 
         try {
             userService.save(user);
-        } catch (ConstraintViolationException e) {
+        } catch (TransactionSystemException e ) {
             attributes.addFlashAttribute("show_warning", true);
             return "redirect:/users/edit/" + id;
         }

@@ -27,15 +27,15 @@ public class OrderService {
         return orderRepository.findByStudentIdAndItemId(studentId, itemId);
     }
 
-    public Order addNewOrder(Student student, Item item) {
-        Order savedStudentItem = null;
+    public boolean addNewOrder(Student student, Item item) {
+        Order order = null;
         if (student.getCurrentBalance() >= item.getCost()) {
-            Order studentItem = new Order();
-            studentItem.setItem(item);
-            studentItem.setStudent(student);
+            order = new Order();
+            order.setItem(item);
+            order.setStudent(student);
             student.setCurrentBalance(student.getCurrentBalance() - item.getCost());
-            savedStudentItem = this.save(studentItem);
+            order = this.save(order);
         }
-        return savedStudentItem;
+        return order != null;
     }
 }

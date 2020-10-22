@@ -1,8 +1,8 @@
 package com.codecool.queststore.service;
 
 import com.codecool.queststore.model.Item;
-import com.codecool.queststore.model.Student;
 import com.codecool.queststore.model.Order;
+import com.codecool.queststore.model.Student;
 import com.codecool.queststore.repository.OrderRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -13,7 +13,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 @ExtendWith(MockitoExtension.class)
 class OrderServiceTest {
@@ -38,10 +38,10 @@ class OrderServiceTest {
         item.setCost(500);
 
         // when
-        Order expected = orderService.addNewOrder(student, item);
+        boolean expected = orderService.addNewOrder(student, item);
 
         // then
-        assertNull(expected);
+        assertFalse(expected);
     }
 
     @Test
@@ -73,16 +73,16 @@ class OrderServiceTest {
         item = new Item();
         item.setCost(500);
 
-        Order studentItem = new Order();
-        studentItem.setItem(item);
-        studentItem.setStudent(student);
+        Order order = new Order();
+        order.setItem(item);
+        order.setStudent(student);
 
-        Mockito.when(orderRepository.save(Mockito.any())).thenReturn(studentItem);
+        Mockito.when(orderRepository.save(order)).thenReturn(order);
 
         // when
         orderService.addNewOrder(student, item);
 
         // then
-        Mockito.verify(orderRepository, Mockito.times(1)).save(studentItem);
+        Mockito.verify(orderRepository, Mockito.times(1)).save(order);
     }
 }
