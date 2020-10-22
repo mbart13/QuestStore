@@ -41,13 +41,20 @@
                     <input class="input-field" id="password" th:field="*{password}" type="text" placeholder="Enter password">
                 </div>
                 <div class="form-item">
-                    <select name="role">
+<!--                    <label for="role">Role</label><br>-->
+                    <select name="role" id="role">
                         <option disabled selected value>-- select role --</option>
                         <option th:field="*{role}" value="role_admin">Admin</option>
                         <option th:field="*{role}" value="role_mentor">Mentor</option>
                         <option th:field="*{role}" value="role_student">Student</option>
                     </select>
                 </div>
+<!--                <div th:if="${#strings.equals(user.role, 'role_mentor')}" class="form-item">-->
+<!--                    <label for="classes">Mentor Classes</label><br>-->
+<!--                    <select name="classes" id="classes" multiple>-->
+<!--                        <option th:each="course : ${user.courses}" th:text="${course.name}" th:value="${course.name}">Admin</option>-->
+<!--                    </select>-->
+<!--                </div>-->
                 <button type="submit">Save User</button>
                 <div th:if="${show_warning != null}" class="warning-message">
                     <p th:if="${show_warning}"><i class="fa fa-times"></i> Fields cannot be blank!</p>

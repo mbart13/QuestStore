@@ -39,6 +39,11 @@ values
 (4, 'KRK.2020.02'),
 (5, 'KRK.2020.05');
 
+insert into mentor_courses (mentor_id, course_id)
+values
+(2, 2),
+(2, 3);
+
 
 --INSERT INTO authorities (username, authority)
 --VALUES

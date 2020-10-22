@@ -3,6 +3,7 @@ package com.codecool.queststore.controller;
 import com.codecool.queststore.dto.UserConverter;
 import com.codecool.queststore.dto.UserDto;
 import com.codecool.queststore.model.User;
+import com.codecool.queststore.service.CourseService;
 import com.codecool.queststore.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,7 @@ public class UserController {
     public static final String REDIRECT_TO_USERS = "redirect:/users";
     private final UserService userService;
     private final UserConverter userConverter;
+    private final CourseService courseService;
 
     @GetMapping
     public String getAllUsers(Model model) {
@@ -48,15 +50,11 @@ public class UserController {
     @PostMapping("/edit/{id}")
     public String updateUser(@PathVariable Long id, @ModelAttribute UserDto userDto, RedirectAttributes attributes) {
         User user = userService.findById(id);
-        user.setFirstName(userDto.getFirstName());
-        user.setLastName(userDto.getLastName());
-        user.setUsername(userDto.getUsername());
-        user.setPassword(userDto.getPassword());
-        user.setRole(userDto.getRole());
+        user = userConverter.mapExistingUser(user, userDto);
 
         try {
             userService.save(user);
-        } catch (TransactionSystemException e ) {
+        } catch (TransactionSystemException e) {
             attributes.addFlashAttribute("show_warning", true);
             return "redirect:/users/edit/" + id;
         }
