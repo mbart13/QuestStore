@@ -26,6 +26,7 @@ public class User{
     private String lastName;
 
     @Column(name = "username", unique = true)
+    @NotBlank
     protected String username;
 
     @Column(name = "role")
@@ -33,6 +34,7 @@ public class User{
     protected String role;
 
     @Column(name = "password")
+    @NotBlank
     protected String password;
 
     @Lob

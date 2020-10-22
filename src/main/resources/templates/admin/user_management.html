@@ -59,7 +59,7 @@
                         <td th:text="${#strings.capitalize(#strings.substring(user.role, 5, user.role.length()))}"></td>
                         <td class="actions">
                             <span class="action-btn"><a href="#" th:href="@{/users/edit/{id}(id=${user.id})}">Edit</a> </span>
-                            <span class="action-btn"><a href="#">Delete</a> </span>
+                            <span class="action-btn"><a href="#" th:href="@{/users/{id}(id=${user.id})}">Delete</a> </span>
                         </td>
                     </tr>
                 </tbody>

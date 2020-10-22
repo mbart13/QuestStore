@@ -9,9 +9,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static com.codecool.queststore.model.Role.MENTOR;
-import static com.codecool.queststore.model.Role.STUDENT;
-
 @AllArgsConstructor
 @Service
 public class UserService {
@@ -37,6 +34,10 @@ public class UserService {
         return userRepository.save(user);
     }
 
+    public void delete(User user) {
+        userRepository.delete(user);
+    }
+
     public Long countByRole(String role) {
         return userRepository.countByRole(role);
     }
@@ -45,23 +46,14 @@ public class UserService {
         return userRepository.getMaxId();
     }
 
-    public String generateUsername(UserDto userDto) {
-        return String.format("%s%s%d", userDto.getFirstName(), userDto.getLastName(), this.getMaxId() + 1);
+    public String generateUsername(User user) {
+        return String.format("%s%s%d", user.getFirstName(), user.getLastName(), this.getMaxId() + 1);
     }
 
     public void createUser(UserDto userDto) {
-        userDto.setUsername(userDto.getUsername() != null ? userDto.getUsername() : generateUsername(userDto));
-        userDto.setPassword(userDto.getPassword() != null ? userDto.getPassword() : passwordGenerator.generateRandomPassword(PASSWORD_LENGTH));
-        String role = userDto.getRole() != null ? userDto.getRole().toLowerCase() : "";
-        User user;
-
-        if (role.equals(STUDENT.getRoleName())) {
-            user = userConverter.convertToStudentEntity(userDto);
-        } else if (role.equals(MENTOR.getRoleName())) {
-            user = userConverter.convertToMentorEntity(userDto);
-        } else {
-            user = userConverter.convertToUserEntity(userDto);
-        }
+        User user = userConverter.convertToUserEntity(userDto);
+        user.setUsername(generateUsername(user));
+        user.setPassword(passwordGenerator.generateRandomPassword(PASSWORD_LENGTH));
 
         this.save(user);
     }

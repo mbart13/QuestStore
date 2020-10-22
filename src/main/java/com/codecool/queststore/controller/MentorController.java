@@ -1,6 +1,5 @@
 package com.codecool.queststore.controller;
 
-import com.codecool.queststore.model.Mentor;
 import com.codecool.queststore.service.MentorService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -19,8 +18,7 @@ public class MentorController {
 
     @GetMapping("/mentor-page")
     public String mentorIndex(Model model, Principal principal) {
-        Mentor mentor = mentorService.findByUsername(principal.getName());
-        model.addAttribute("mentor", mentor);
+        model.addAttribute("mentor", mentorService.findByUsername(principal.getName()));
         return "mentor/mentor_page";
     }
 

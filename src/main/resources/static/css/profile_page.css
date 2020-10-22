@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
 .dashboard {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -11,6 +13,11 @@
     border-radius: 5px;
     grid-gap: .5em;
     padding: .5em;
+}
+
+.items-list {
+    list-style: none;
+    font-family: 'Permanent Marker', cursive;
 }
 
 .header {

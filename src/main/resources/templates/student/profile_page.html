@@ -64,8 +64,8 @@
             <p>Empty</p>
         </div>
         <div th:if="${not studentItems.isEmpty()}" class="user-info-item">
-            <ul th:each="studentItem : ${studentItems} ">
-                <li th:text="${studentItem.item.name}"></li>
+            <ul class="items-list" th:each="studentItem : ${studentItems} ">
+                <li th:text="${studentItem.item.name} + ', ' + ${studentItem.orderDate}" ></li>
             </ul>
         </div>
     </div>

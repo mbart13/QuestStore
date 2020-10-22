@@ -18,7 +18,7 @@
 <!-- Page content goes here-->
 
 <div class="form-container">
-    <h1 class="header"><i title="Go Back" th:onclick="|window.location.href='/users'|" class="fa fa-arrow-left"></i> Create User</h1>
+    <h1 class="header"><i title="Go Back" th:onclick="|window.location.href='/users'|" class="fa fa-arrow-left"></i> Edit User</h1>
 
     <div class="form-body">
         <div class="form">
@@ -31,6 +31,14 @@
                 <div class="form-item">
                     <label for="surname">Last Name:</label><br>
                     <input class="input-field" id="surname" th:field="*{lastName}" type="text" placeholder="Enter last name">
+                </div>
+                <div class="form-item">
+                    <label for="username">Username:</label><br>
+                    <input class="input-field" id="username" th:field="*{username}" type="text" placeholder="Enter username">
+                </div>
+                <div class="form-item">
+                    <label for="password">Password:</label><br>
+                    <input class="input-field" id="password" th:field="*{password}" type="text" placeholder="Enter password">
                 </div>
                 <div class="form-item">
                     <select name="role">

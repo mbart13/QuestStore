@@ -3,7 +3,6 @@ package com.codecool.queststore.controller;
 import com.codecool.queststore.model.Student;
 import com.codecool.queststore.service.OrderService;
 import com.codecool.queststore.service.StudentService;
-import com.codecool.queststore.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -17,7 +16,6 @@ import java.security.Principal;
 @RequestMapping("student/profile-page")
 public class StudentController {
 
-    private final UserService userService;
     private final StudentService studentService;
     private final OrderService orderService;
 

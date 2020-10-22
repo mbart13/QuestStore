@@ -1,5 +1,6 @@
 package com.codecool.queststore.controller;
 
+import com.codecool.queststore.dto.UserConverter;
 import com.codecool.queststore.dto.UserDto;
 import com.codecool.queststore.model.User;
 import com.codecool.queststore.service.UserService;
@@ -16,7 +17,9 @@ import javax.validation.ConstraintViolationException;
 @RequestMapping("/users")
 public class UserController {
 
+    public static final String REDIRECT_TO_USERS = "redirect:/users";
     private final UserService userService;
+    private final UserConverter userConverter;
 
     @GetMapping
     public String getAllUsers(Model model) {
@@ -38,23 +41,20 @@ public class UserController {
             attributes.addFlashAttribute("show_warning", true);
             return "redirect:/users/new";
         }
-        return "redirect:/users";
+        return REDIRECT_TO_USERS;
     }
 
     @PostMapping("/edit/{id}")
     public String updateUser(@PathVariable Long id, @ModelAttribute UserDto userDto, RedirectAttributes attributes) {
-        User user = userService.findById(id);
-        user.setFirstName(userDto.getFirstName());
-        user.setLastName(userDto.getLastName());
-        user.setRole(userDto.getRole());
+        User user = userConverter.convertToUserEntity(userDto);
 
         try {
             userService.save(user);
         } catch (ConstraintViolationException e) {
             attributes.addFlashAttribute("show_warning", true);
-            return "redirect:/edit/" + id;
+            return "redirect:/users/edit/" + id;
         }
-        return "redirect:/users";
+        return REDIRECT_TO_USERS;
     }
 
     @GetMapping("/edit/{id}")
@@ -63,8 +63,9 @@ public class UserController {
         return "user/edit_user_form";
     }
 
-    @GetMapping("/access-denied")
-    public String accessDenied() {
-        return "/error/access_denied";
+    @GetMapping("/{id}")
+    public String deleteUser(@PathVariable Long id) {
+        userService.delete(userService.findById(id));
+        return REDIRECT_TO_USERS;
     }
 }
