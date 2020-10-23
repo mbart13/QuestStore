@@ -66,14 +66,3 @@ document.write(`
     <div id="content-view">
         <div id="content">
 `);
-
-document.getElementById("sign-out").addEventListener("click", logout)
-document.getElementById("profile").addEventListener("click", goToProfile)
-
-function logout() {
-    window.location.replace("/logout")
-}
-
-function goToProfile() {
-    window.location.replace("/loginRedirect")
-}

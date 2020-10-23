@@ -34,7 +34,7 @@
 
         </div>
         <div class="user-buttons">
-            <a class="button-cta" href="#">Edit Profile</a>
+            <a class="button-cta" href="#" th:href="@{/user/profile-page/edit}">Edit Profile</a>
             <a class="button-cta" href="#" th:href="@{/profile-page}">Upload Image</a>
             <a class="button-cta" href="#" th:href="@{/items}">Items</a>
             <a class="button-cta" href="#" th:href="@{/quests}">Quests</a>
@@ -64,7 +64,7 @@
             <h2>Management</h2>
         </div>
         <div class="management-content">
-            <div class="action-item" th:onclick="|window.location.href='/users/'|">
+            <div class="action-item" id="users-icon" th:onclick="goToUsers()">
                 <a><i class="fa fa-user fa-4x"></i><br><span>Users</span></a>
             </div>
             <div class="action-item">
@@ -84,6 +84,7 @@
     <!-- End of page content-->
 
     <script src="../../static/js/footer.js" th:src="@{/js/footer.js}"></script>
+    <script src="../../static/js/redirects.js" th:src="@{/js/redirects.js}"></script>
 
 </body>
 

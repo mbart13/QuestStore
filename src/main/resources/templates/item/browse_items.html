@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Browse Items </title>
-    <link rel="stylesheet" href="../static/css/styles.css" th:href="@{/css/styles.css}">
-    <link rel="stylesheet" href="../static/css/browse_items.css" th:href="@{/css/browse_items.css}">
+    <link rel="stylesheet" href="../../static/css/styles.css" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="../../static/css/browse_items.css" th:href="@{/css/browse_items.css}">
 
 </head>
 
 <body>
     <script src="../../static/js/init.js" th:src="@{/js/init.js}"></script>
-    <script src="../static/js/header.js" th:src="@{/js/header.js}"></script>
+    <script src="../../static/js/header.js" th:src="@{/js/header.js}"></script>
 
     <!-- Page content goes here-->
 
@@ -33,7 +33,7 @@
         </div>
         <div class="item-body">
             <div class="icon">
-                <img class="shopping-cart" src="../static/assets/cart.png" th:src="@{/assets/cart.png}" alt="cart">
+                <img class="shopping-cart" src="../../static/assets/cart.png" th:src="@{/assets/cart.png}" alt="cart">
             </div>
             <div class="description">
                 <p th:text="${item.description}">This will be replaced with item description at runtime</p>
@@ -41,7 +41,7 @@
                 <p class="item-type" th:text="'Type: ' + ${#strings.toUpperCase(item.type)}"></p>
                 <br>
                 <div class="btn-container">
-                    <a class="button-cta" href="#" th:href="@{items/{id}(id=${item.id})}"> Go To Item </a>
+                    <a class="button-cta" href="#" th:href="@{/items/{id}(id=${item.id})}"> Go To Item </a>
                 </div>
             </div>
 
@@ -50,8 +50,9 @@
 
     <!-- End of page content-->
 
-    <script src="../static/js/footer.js" th:src="@{/js/footer.js}"></script>
-    <script src="../static/js/browse_items.js" th:src="@{/js/browse_items.js}"></script>
+    <script src="../../static/js/footer.js" th:src="@{/js/footer.js}"></script>
+    <script src="../../static/js/browse_items.js" th:src="@{/js/browse_items.js}"></script>
+    <script src="../../static/js/redirects.js" th:src="@{/js/redirects.js}"></script>
 </body>
 
 </html>
