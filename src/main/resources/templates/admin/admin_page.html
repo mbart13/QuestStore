@@ -19,7 +19,7 @@
     <div class="dashboard">
 
         <div class="header">
-            <h1 th:text="'Welcome, ' + ${user.username}">Welcome</h1>
+            <h1 th:text="'Welcome, ' + ${user.firstName}">Welcome</h1>
         </div>
 
         <div class="user-image">
@@ -64,7 +64,7 @@
             <h2>Management</h2>
         </div>
         <div class="management-content">
-            <div class="action-item" id="users-icon" th:onclick="goToUsers()">
+            <div class="action-item" th:onclick="goToUsers()">
                 <a><i class="fa fa-user fa-4x"></i><br><span>Users</span></a>
             </div>
             <div class="action-item">

@@ -1,5 +1,6 @@
 package com.codecool.queststore.controller;
 
+import com.codecool.queststore.dto.PasswordDto;
 import com.codecool.queststore.dto.UserConverter;
 import com.codecool.queststore.dto.UserDto;
 import com.codecool.queststore.model.User;
@@ -11,8 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.security.Principal;
-
 @AllArgsConstructor
 @Controller
 @RequestMapping("/{role}/profile-page/edit")
@@ -22,8 +21,8 @@ public class ProfileController {
     private final UserConverter userConverter;
 
     @GetMapping
-    public String showEditForm(Model model, Principal principal) {
-        model.addAttribute("user", userService.findByUsername(principal.getName()));
+    public String showEditForm(Model model) {
+        model.addAttribute("password", new PasswordDto());
         return "profile/edit_form";
     }
 

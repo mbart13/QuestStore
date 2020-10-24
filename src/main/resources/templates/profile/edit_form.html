@@ -18,32 +18,27 @@
     <!-- Page content goes here-->
 
     <div class="form-container">
-        <h1 class="header"><i title="Go Back" th:onclick="|window.location.href='/loginRedirect'|" class="fa fa-arrow-left"></i> Edit Profile</h1>
+        <h1 class="header"><i title="Go Back" th:onclick="goToProfile()" class="fa fa-arrow-left"></i>Change Password</h1>
 
         <div class="form-body">
             <div class="form">
-                <form method="post" th:object="${user}" th:action="@{/{role}/profile-page/edit/{id}(role=${#strings.substring(user.role, 5, user.role.length())}, id=${user.id})}">
-                    <input type="hidden" th:field="*{id}">
-                    <input type="hidden" th:field="*{username}">
-                    <input type="hidden" th:field="*{role}">
+<!--                <form method="post" th:object="${user}" th:action="@{/{role}/profile-page/edit/{id}(role=${#strings.substring(user.role, 5, user.role.length())}, id=${user.id})}">-->
+                <form method="post" action="#">
                     <div class="form-item">
-                        <label for="name">First Name:</label><br>
-                        <input class="input-field" id="name" th:field="*{firstName}" type="text" placeholder="Enter first name">
+                        <label for="old-password">Old Password:</label><br>
+                        <input class="input-field" name="old-password" id="old-password" type="password">
                     </div>
                     <div class="form-item">
-                        <label for="surname">Last Name:</label><br>
-                        <input class="input-field" id="surname" th:field="*{lastName}" type="text" placeholder="Enter last name">
-                    </div>
-                    <div class="form-item">
-                        <label for="password">New:</label><br>
-                        <input class="input-field" id="password" th:field="*{password}" type="password" placeholder="Enter new password">
+                        <label for="new-password">New Password:</label><br>
+                        <input class="input-field" name="new-password" id="new-password" type="password">
                     </div>
 
                     <div class="form-item">
-                        <label for="matchPassword">Confirm Password:</label><br>
-                        <input class="input-field" id="matchPassword" th:field="*{password}" type="password" placeholder="Enter new password">
+                        <label for="match-password">Confirm Password:</label><br>
+                        <input class="input-field" name="match-password" id="match-password" type="password">
                     </div>
-                    <button type="submit">Save User</button>
+
+                    <button type="submit">Save</button>
                     <div th:if="${show_warning != null}" class="warning-message">
                         <p th:if="${show_warning}"><i class="fa fa-times"></i> Fields cannot be blank!</p>
                     </div>
@@ -60,7 +55,6 @@
 
     <script src="../../static/js/footer.js" th:src="@{/js/footer.js}"></script>
     <script src="../../static/js/redirects.js" th:src="@{/js/redirects.js}"></script>
-
 </body>
 
 </html>

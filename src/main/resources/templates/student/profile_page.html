@@ -19,7 +19,7 @@
     <div class="dashboard">
 
         <div class="header">
-            <h1 th:text="'Welcome, ' + ${student.username}">Welcome</h1>
+            <h1 th:text="'Welcome, ' + ${student.firstName}">Welcome</h1>
         </div>
 
         <div class="user-image">
@@ -51,7 +51,7 @@
             </div>
         </div>
         <div class="user-buttons">
-            <a class="button-cta" href="#" th:href="@{/student/profile-page/edit}">Edit Profile</a>
+            <a class="button-cta" href="#" th:href="@{/student/profile-page/edit}">Change Password</a>
             <a class="button-cta" href="#" th:href="@{/profile-page}">Upload Image</a>
             <a class="button-cta" href="#" th:href="@{/items}">Items</a>
             <a class="button-cta" href="#" th:href="@{/quests}">Quests</a>

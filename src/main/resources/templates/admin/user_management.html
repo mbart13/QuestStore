@@ -16,7 +16,7 @@
 
     <div class="users-list">
 
-        <h1 class="header"><i title="Go Back" th:onclick="goToProfile()" class="fa fa-arrow-left"></i> Users Management<span title="Create User" id="plus-icon"><a th:onclick="|window.location.href='/users/new'|"> <i class="fa fa-plus"></i></a></span></h1>
+        <h1 class="header"><i title="Go Back" th:onclick="goToProfile()" class="fa fa-arrow-left"></i> Users Management<span title="Create User" th:onclick="goToUsersNew()"><i class="fa fa-plus" id="user-new"></i></span></h1>
 
         <div class="users-table">
             <table>
@@ -56,7 +56,7 @@
                         <td th:text="${user.id}"></td>
                         <td th:text="${user.firstName}"></td>
                         <td th:text="${user.lastName}"></td>
-                        <td th:text="${#strings.capitalize(#strings.substring(user.role, 5, user.role.length()))}"></td>
+                        <td th:text="${#strings.capitalize(#strings.substring(user.role.toLowerCase(), 5, user.role.length()))}"></td>
                         <td class="actions">
                             <span class="action-btn"><a href="#" th:href="@{/users/edit/{id}(id=${user.id})}">Edit</a> </span>
                             <span class="action-btn"><a href="#" th:href="@{/users/{id}(id=${user.id})}">Delete</a> </span>
@@ -73,6 +73,7 @@
 
     <script src="../../static/js/footer.js" th:src="@{/js/footer.js}"></script>
     <script src="../../static/js/redirects.js" th:src="@{/js/redirects.js}"></script>
+
 </body>
 
 </html>

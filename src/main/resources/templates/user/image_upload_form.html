@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../../static/css/styles.css" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="../../static/assets/font-awesome-4.7.0/css/font-awesome.min.css" th:href="@{/assets/font-awesome-4.7.0/css/font-awesome.min.css}">
     <link rel="stylesheet" href="../../static/css/form.css" th:href="@{/css/form.css}">
     <title>Upload Image</title>
 </head>
@@ -13,7 +14,7 @@
     <!-- Page content goes here-->
 
     <div class="form-container">
-        <h1 class="header">Upload New File</h1>
+        <h1 class="header"><i title="Go Back" th:onclick="goToProfile()" class="fa fa-arrow-left"></i> Upload New File</h1>
 
         <div class="form-body">
             <div class="form">
@@ -23,7 +24,7 @@
                         <label >Select File (<5MB)</label>
                         <input class="img-upload file" name="image-file" type="file">
                     </div>
-                    <button class="img-upload" type="submit">Upload File</button>
+                    <button class="img-upload" type="submit">Upload</button>
                 </form>
             </div>
         </div>
@@ -31,7 +32,8 @@
 
     <!-- End of page content-->
 
-    <script type="text/javascript" th:src="@{/js/footer.js}" src="../../static/js/footer.js"></script>
+    <script src="../../static/js/footer.js" th:src="@{/js/footer.js}" ></script>
     <script src="../../static/js/redirects.js" th:src="@{/js/redirects.js}"></script>
+
 </body>
 </html>
