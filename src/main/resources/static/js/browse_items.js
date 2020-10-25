@@ -1,5 +1,5 @@
-const basicHeader = document.querySelector('.basic-items');
-const magicHeader = document.querySelector('.magic-items');
+const basicItems = document.querySelector('.basic-items');
+const magicItems = document.querySelector('.magic-items');
 
 function selectBasicItems() {
     document.querySelector('.header').classList.add('basic-items-selected');
@@ -16,11 +16,11 @@ function selectMagicItems() {
 }
 
 function changeClassDisplay(elementClass, display) {
-    let elements = document.getElementsByClassName(elementClass);
+    const elements = document.getElementsByClassName(elementClass);
     for(let i = 0; i < elements.length; i++) {
         elements[i].style.display = display;
     }
 }
 
-basicHeader.addEventListener("click", selectBasicItems);
-magicHeader.addEventListener("click", selectMagicItems);
+basicItems.addEventListener("click", selectBasicItems);
+magicItems.addEventListener("click", selectMagicItems);

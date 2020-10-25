@@ -18,8 +18,8 @@
 
         <div class="form-body">
             <div class="form">
-                <form action="http://localhost" method="post" enctype="multipart/form-data"
-                      th:action="@{/profile-page}">
+                <form action="#" method="post" enctype="multipart/form-data"
+                      th:action="@{/{role}/profile-page/image(role=${#strings.toLowerCase(#strings.substring(user.role, 5, user.role.length()))})}">
                     <div class="form-item">
                         <label >Select File (<5MB)</label>
                         <input class="img-upload file" name="image-file" type="file">

@@ -14,12 +14,12 @@ import static com.codecool.queststore.model.Role.STUDENT;
 
 @AllArgsConstructor
 @Controller
-@RequestMapping("/admin")
+@RequestMapping("/admin/profile-page")
 public class AdminController {
 
     private final UserService userService;
 
-    @GetMapping("/profile-page")
+    @GetMapping
     public String admin(Model model, Principal principal) {
         model.addAttribute("mentors_count", userService.countByRole(MENTOR.getRoleName()));
         model.addAttribute("students_count", userService.countByRole(STUDENT.getRoleName()));
