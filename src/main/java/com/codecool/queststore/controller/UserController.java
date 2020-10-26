@@ -1,20 +1,28 @@
 package com.codecool.queststore.controller;
 
-import com.codecool.queststore.service.StudentItemService;
+import com.codecool.queststore.dto.UserConverter;
+import com.codecool.queststore.dto.UserDto;
+import com.codecool.queststore.model.User;
+import com.codecool.queststore.service.CourseService;
 import com.codecool.queststore.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.TransactionSystemException;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.validation.ConstraintViolationException;
 
 @AllArgsConstructor
 @Controller
 @RequestMapping("/users")
 public class UserController {
 
+    public static final String REDIRECT_TO_USERS = "redirect:/users";
     private final UserService userService;
-    private final StudentItemService studentItemService;
+    private final UserConverter userConverter;
+    private final CourseService courseService;
 
     @GetMapping
     public String getAllUsers(Model model) {
@@ -23,12 +31,45 @@ public class UserController {
     }
 
     @GetMapping("/new")
-    public String create() {
-        return "user/create_user";
+    public String showCreateUserForm(Model model) {
+        model.addAttribute("user", new UserDto());
+        return "user/create_user_form";
     }
 
-    @GetMapping("/access-denied")
-    public String accessDenied() {
-        return "/error/access_denied";
+    @PostMapping
+    public String createUser(@ModelAttribute UserDto userDto, RedirectAttributes attributes) {
+        try {
+            userService.createUser(userDto);
+        } catch (ConstraintViolationException e) {
+            attributes.addFlashAttribute("show_warning", true);
+            return "redirect:/users/new";
+        }
+        return REDIRECT_TO_USERS;
+    }
+
+    @PostMapping("/edit/{id}")
+    public String updateUser(@PathVariable Long id, @ModelAttribute UserDto userDto, RedirectAttributes attributes) {
+        User user = userService.findById(id);
+        user = userConverter.mapExistingUser(user, userDto);
+
+        try {
+            userService.save(user);
+        } catch (TransactionSystemException e) {
+            attributes.addFlashAttribute("show_warning", true);
+            return "redirect:/users/edit/" + id;
+        }
+        return REDIRECT_TO_USERS;
+    }
+
+    @GetMapping("/edit/{id}")
+    public String showEditUserForm(@PathVariable Long id, Model model) {
+        model.addAttribute("user", userService.findById(id));
+        return "user/edit_user_form";
+    }
+
+    @GetMapping("/{id}")
+    public String deleteUser(@PathVariable Long id) {
+        userService.delete(userService.findById(id));
+        return REDIRECT_TO_USERS;
     }
 }

@@ -2,7 +2,7 @@ package com.codecool.queststore.controller;
 
 import com.codecool.queststore.model.Student;
 import com.codecool.queststore.service.ItemService;
-import com.codecool.queststore.service.StudentItemService;
+import com.codecool.queststore.service.OrderService;
 import com.codecool.queststore.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -19,7 +19,7 @@ import java.security.Principal;
 public class ItemController {
 
     private final ItemService itemService;
-    private final StudentItemService studentItemService;
+    private final OrderService orderService;
     private final UserService userService;
 
     @GetMapping
@@ -32,7 +32,7 @@ public class ItemController {
     public String getItem(@PathVariable(name="id") Long id, Model model, Principal principal) {
         Student student = (Student) userService.findByUsername(principal.getName());
         model.addAttribute("item", itemService.findById(id));
-        model.addAttribute("studentItems", studentItemService.findByUserIdAndItemId(student.getId(), id));
+        model.addAttribute("studentItems", orderService.findByUserIdAndItemId(student.getId(), id));
         return "item/item_template";
     }
 }

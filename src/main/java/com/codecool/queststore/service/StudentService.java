@@ -15,5 +15,8 @@ public class StudentService {
         return studentRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("Entity not found"));
     }
 
-    public Student save(Student student) { return studentRepository.save(student); }
+    public Student save(Student student) {
+        return studentRepository.save(student);
+    }
+
 }

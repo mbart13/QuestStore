@@ -9,8 +9,8 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Entity
-@Table(name = "student_items")
-public class StudentItem {
+@Table(name = "orders")
+public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,10 +20,12 @@ public class StudentItem {
     private LocalDate orderDate = LocalDate.now();
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "student_id")
     private Student student;
 
     @OneToOne
     private Item item;
+
+    private boolean used = false;
 
 }

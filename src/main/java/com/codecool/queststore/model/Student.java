@@ -14,7 +14,7 @@ import java.util.Set;
 @NoArgsConstructor
 @PrimaryKeyJoinColumn(name = "user_id")
 @Table(name = "students")
-public class Student extends User{
+public class Student extends User {
 
     @Column(name = "current_balance")
     private int currentBalance;
@@ -29,7 +29,11 @@ public class Student extends User{
     private String module;
 
     @OneToMany(mappedBy = "student")
-    private Set<StudentItem> items = new HashSet<>();
+    private Set<Order> items = new HashSet<>();
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "course_id")
+    private Course course;
 
     public Student(User user) {
         super(user.getId(), user.getFirstName(), user.getLastName(), user.getUsername(),

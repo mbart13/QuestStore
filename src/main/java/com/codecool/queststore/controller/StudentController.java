@@ -1,8 +1,8 @@
 package com.codecool.queststore.controller;
 
 import com.codecool.queststore.model.Student;
-import com.codecool.queststore.service.StudentItemService;
-import com.codecool.queststore.service.UserService;
+import com.codecool.queststore.service.OrderService;
+import com.codecool.queststore.service.StudentService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -13,16 +13,16 @@ import java.security.Principal;
 
 @AllArgsConstructor
 @Controller
-@RequestMapping("student")
+@RequestMapping("student/profile-page")
 public class StudentController {
 
-    private final UserService userService;
-    private final StudentItemService studentItemService;
+    private final StudentService studentService;
+    private final OrderService orderService;
 
-    @GetMapping("/profile-page")
+    @GetMapping
     public String userIndex(ModelMap model, Principal principal) {
-        Student student = (Student) userService.findByUsername(principal.getName());
-        model.addAttribute("studentItems", studentItemService.findByUserId(student.getId()));
+        Student student = studentService.findByUsername(principal.getName());
+        model.addAttribute("studentItems", orderService.findByUserId(student.getId()));
         model.addAttribute("student", student);
         return "student/profile_page";
     }

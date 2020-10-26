@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.Set;
 
 @Getter
@@ -12,12 +11,13 @@ import java.util.Set;
 @Entity
 @PrimaryKeyJoinColumn(name = "user_id")
 @Table(name = "mentors")
-public class Mentor extends User{
+public class Mentor extends User {
 
-    @Column(name = "rank")
-    private String rank;
-
-    @OneToMany(mappedBy = "mentor")
-    private Set<MentorStudent> mentorStudents = new HashSet<>();
+    @ManyToMany
+    @JoinTable(
+            name = "mentor_courses",
+            joinColumns = @JoinColumn(name = "mentor_id"),
+            inverseJoinColumns = @JoinColumn(name = "course_id"))
+    private Set<Course> courses;
 
 }

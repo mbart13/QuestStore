@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Getter
 @Setter
@@ -21,18 +22,23 @@ public class User{
     protected Long id;
 
     @Column(name = "first_name")
+    @NotBlank
     private String firstName;
 
     @Column(name = "last_name")
+    @NotBlank
     private String lastName;
 
     @Column(name = "username", unique = true)
+    @NotBlank
     protected String username;
 
     @Column(name = "role")
+    @NotBlank
     protected String role;
 
     @Column(name = "password")
+    @NotBlank
     protected String password;
 
     @Lob

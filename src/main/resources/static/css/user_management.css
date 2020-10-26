@@ -21,9 +21,15 @@
   }
 
 
-.fa-plus:hover {
+.fa-plus:hover, .fa-arrow-left:hover {
+    color: white;
     cursor: pointer;
-    color: rgb(255, 255, 255);
+}
+
+.fa-arrow-left {
+    margin-left: 0.5em;
+    margin-top: .2em;
+    float: left;
 }
 
 .fa-sort {
@@ -78,4 +84,8 @@ td a {
     color: white;
     margin: .5em;
     font-size: .8em;
+}
+
+.actions {
+    width: 15em;
 }
