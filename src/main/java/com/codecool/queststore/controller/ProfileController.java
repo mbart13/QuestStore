@@ -41,7 +41,7 @@ public class ProfileController {
 
     @PostMapping("/edit")
     public String updatePassword(@ModelAttribute @Valid PasswordDto passwordDto, BindingResult bindingResult,
-                                 RedirectAttributes attributes, Principal principal)  {
+                                 RedirectAttributes attributes, Principal principal) {
 
         User user = userService.findByUsername(principal.getName());
         String role = user.getRole().substring(5).toLowerCase();
@@ -53,12 +53,11 @@ public class ProfileController {
                     .map(DefaultMessageSourceResolvable::getDefaultMessage)
                     .collect(Collectors.toSet());
             attributes.addFlashAttribute("error_messages", errorMessages);
-            return redirect;
+        } else {
+            user.setPassword(passwordDto.getNewPassword());
+            userService.save(user);
+            attributes.addFlashAttribute("password_updated", true);
         }
-
-        user.setPassword(passwordDto.getNewPassword());
-        userService.save(user);
-        attributes.addFlashAttribute("password_updated", true);
 
         return redirect;
     }
