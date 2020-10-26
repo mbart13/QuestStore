@@ -48,8 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers(
                             "/mentor"
                                 ).hasRole("MENTOR")
-//                    .anyRequest().authenticated()
-                    .anyRequest().permitAll()
+                    .anyRequest().authenticated()
                 .and()
                 .formLogin()
                     .loginPage("/login")
