@@ -22,7 +22,6 @@
 
         <div class="form-body">
             <div class="form">
-<!--                <form method="post" th:object="${user}" th:action="@{/{role}/profile-page/edit/{id}(role=${#strings.substring(user.role, 5, user.role.length())}, id=${user.id})}">-->
                 <form method="post"
                       th:action="@{/{role}/profile-page/edit(role=${#strings.toLowerCase(#strings.substring(user.role, 5, user.role.length()))})}"
                       th:object="${password}">
@@ -41,18 +40,16 @@
                     </div>
 
                     <button type="submit">Save</button>
-                    <div th:if="${error_msg != null || password_updated != null}" class="message">
-                        <p class="error" th:if="${#strings.equals(error_msg, 'Old password is not valid')}"><i class="fa fa-times"></i> Incorrect old password!</p>
-                        <p class="error" th:if="${#strings.equals(error_msg, 'Passwords do not match')}"><i class="fa fa-times"></i> Passwords don't match!</p>
-                        <p class="error" th:if="${#strings.equals(error_msg, 'Fields cannot be blank')}"><i class="fa fa-times"></i> Fields cannot be blank!</p>
+
+                    <div th:if="${error_messages != null}" class="message" th:each="err : ${error_messages}">
+                        <p class="error" th:text="${err}"> Error Message</p>
+                    </div>
+                    <div th:if="${password_updated != null}" class="message">
                         <p class="success" th:if="${password_updated}"><i class="fa fa-check"></i> Password updated!</p>
                     </div>
                 </form>
             </div>
-
         </div>
-
-
     </div>
 
 

@@ -6,6 +6,7 @@ import com.codecool.queststore.service.ImageService;
 import com.codecool.queststore.service.UserService;
 import lombok.AllArgsConstructor;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
+import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -21,6 +22,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.security.Principal;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @Controller
@@ -46,8 +49,10 @@ public class ProfileController {
 
         if (bindingResult.hasErrors()) {
             List<ObjectError> errors = bindingResult.getAllErrors();
-            String errorMsg = errors.get(errors.size() - 1).getDefaultMessage();
-            attributes.addFlashAttribute("error_msg", errorMsg);
+            Set<String> errorMessages = errors.stream()
+                    .map(DefaultMessageSourceResolvable::getDefaultMessage)
+                    .collect(Collectors.toSet());
+            attributes.addFlashAttribute("error_messages", errorMessages);
             return redirect;
         }
 
@@ -60,7 +65,7 @@ public class ProfileController {
 
     @GetMapping("/image-form")
     public String showImageForm() {
-        return "user/image_upload_form";
+        return "profile/image_upload_form";
     }
 
     @PostMapping("/image")

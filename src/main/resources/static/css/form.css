@@ -20,7 +20,7 @@
 }
 
 .form {
-    width: 70%;
+    width: 60%;
     margin: 0 auto;
     padding: 1em;
 }
@@ -87,13 +87,16 @@ button:hover {
     .user-creation-form select {
         width: 100%;
     }
-  
 }
 
 .message {
     margin-top: .3em;
     font-size: 1.3em;
     font-weight: bold;
+}
+
+.error::before {
+    content: "✖ ";
 }
 
 .error {
@@ -103,7 +106,6 @@ button:hover {
 .success {
     color: #06413B;
 }
-
 
 table {
     padding: .3em;
