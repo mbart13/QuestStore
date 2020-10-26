@@ -42,12 +42,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/quests/**"
                             ).hasAnyRole("ADMIN", "STUDENT", "MENTOR")
                     .antMatchers(
-                            "/admin"
+                            "/admin",
+                            "users/**"
                             ).hasRole("ADMIN")
                     .antMatchers(
                             "/mentor"
                                 ).hasRole("MENTOR")
-                    .anyRequest().authenticated()
+//                    .anyRequest().authenticated()
+                    .anyRequest().permitAll()
                 .and()
                 .formLogin()
                     .loginPage("/login")

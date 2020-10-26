@@ -17,10 +17,10 @@ values
 
 INSERT INTO users (id, first_name, last_name, username, role, password)
 VALUES
-(1, 'Noriaki', 'Kasai', 'nori','role_admin', '1'),
-(2, 'Dominik', 'Starzyk', 'domi', 'role_mentor', '1'),
-(3, 'Lukasz', 'Lesiuk', 'nodi', 'role_student', '1'),
-(4, 'Michal', 'Bartosik', 'mbart', 'role_student', '1');
+(1, 'Noriaki', 'Kasai', 'nori','role_admin', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
+(2, 'Dominik', 'Starzyk', 'domi', 'role_mentor', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
+(3, 'Lukasz', 'Lesiuk', 'nodi', 'role_student', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
+(4, 'Michal', 'Bartosik', 'mbart', 'role_student', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy');
 
 
 insert into students (current_balance, rank, module, total_earnings, user_id)
