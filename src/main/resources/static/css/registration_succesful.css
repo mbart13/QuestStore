@@ -1,0 +1,26 @@
+.go-back-btn-container {
+  text-align: center;
+  margin-bottom: 1.2em;
+}
+
+.go-back-btn {
+  font-size: 1em;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+}
+
+.btn-main-page {
+
+  clip-path: polygon(0 0, 90% 0, 100% 100%, 0% 100%);
+  outline: none;
+  cursor: pointer;
+  background-color: #550609;
+  color: #d3d3d3;
+  border: none;
+  font-weight: bold;
+  width: 80%;
+  padding: 0.4em;
+  font-family: inherit;
+
+}

@@ -2,23 +2,26 @@ package com.codecool.queststore.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @EnableWebSecurity
+@Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 //    @Autowired
 //    private LoggingAccessDeniedHandler accessDeniedHandler;
 
     @Autowired
-    UserDetailsService userDetailsService;
+    private UserDetailsService userDetailsService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -30,6 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/css/**",
                         "/assets/**",
                         "/forgotten-password/**",
+                        "/register/**",
                         "/h2-console/**").permitAll()
                     .antMatchers(
                         "/student/**",
@@ -37,7 +41,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/quests/**"
                             ).hasAnyRole("ADMIN", "STUDENT", "MENTOR")
                     .antMatchers(
-                            "/admin"
+                            "/admin",
+                            "/users/**"
                             ).hasRole("ADMIN")
                     .antMatchers(
                             "/mentor"
@@ -72,8 +77,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
     @Bean
-    public PasswordEncoder getPasswordEncoder() {
-        return NoOpPasswordEncoder.getInstance();
+    public PasswordEncoder passwordEncoder() {
+//        return NoOpPasswordEncoder.getInstance();
+        return new BCryptPasswordEncoder(10);
     }
 
 }

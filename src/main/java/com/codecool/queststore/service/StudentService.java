@@ -12,10 +12,11 @@ public class StudentService {
     private final StudentRepository studentRepository;
 
     public Student findByUsername(String username) {
-        return studentRepository.findByUsername(username);
+        return studentRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("Entity not found"));
     }
 
     public Student save(Student student) {
         return studentRepository.save(student);
     }
+
 }
