@@ -11,7 +11,7 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 @AllArgsConstructor
-public class OldPasswordValidator implements ConstraintValidator<OldPasswordValid, Object> {
+public class PasswordValidator implements ConstraintValidator<PasswordValid, Object> {
 
     private final UserService userService;
 

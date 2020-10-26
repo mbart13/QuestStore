@@ -11,9 +11,9 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @Target({TYPE, FIELD, ANNOTATION_TYPE})
 @Retention(RUNTIME)
-@Constraint(validatedBy = OldPasswordValidator.class)
+@Constraint(validatedBy = PasswordValidator.class)
 @Documented
-public @interface OldPasswordValid {
+public @interface PasswordValid {
     String message() default "Old password is not valid";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};

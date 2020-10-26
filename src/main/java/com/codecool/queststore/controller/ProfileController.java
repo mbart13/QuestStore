@@ -7,9 +7,9 @@ import com.codecool.queststore.service.UserService;
 import lombok.AllArgsConstructor;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.TransactionSystemException;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -20,6 +20,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.security.Principal;
+import java.util.List;
 
 @AllArgsConstructor
 @Controller
@@ -38,24 +39,23 @@ public class ProfileController {
     @PostMapping("/edit")
     public String updatePassword(@ModelAttribute @Valid PasswordDto passwordDto, BindingResult bindingResult,
                                  RedirectAttributes attributes, Principal principal)  {
+
         User user = userService.findByUsername(principal.getName());
         String role = user.getRole().substring(5).toLowerCase();
+        String redirect = "redirect:/" + role + "/profile-page/edit";
+
         if (bindingResult.hasErrors()) {
-            String errorMsg = bindingResult.getAllErrors().get(0).getDefaultMessage();
-            attributes.addFlashAttribute("show_warning", errorMsg);
-            return "redirect:/" + role + "/profile-page/edit";
+            List<ObjectError> errors = bindingResult.getAllErrors();
+            String errorMsg = errors.get(errors.size() - 1).getDefaultMessage();
+            attributes.addFlashAttribute("error_msg", errorMsg);
+            return redirect;
         }
 
         user.setPassword(passwordDto.getNewPassword());
+        userService.save(user);
+        attributes.addFlashAttribute("password_updated", true);
 
-        try {
-            userService.save(user);
-        } catch (TransactionSystemException e) {
-            attributes.addFlashAttribute("show_warning", "blank fields");
-            return "redirect:/" + role + "/profile-page/edit";
-        }
-
-        return "redirect:/loginRedirect";
+        return redirect;
     }
 
     @GetMapping("/image-form")

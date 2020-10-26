@@ -41,10 +41,11 @@
                     </div>
 
                     <button type="submit">Save</button>
-                    <div th:if="${show_warning != null}" class="warning-message">
-                        <p th:if="${#strings.equals(show_warning, 'Old password is not valid')}"><i class="fa fa-times"></i> Incorrect old password!</p>
-                        <p th:if="${#strings.equals(show_warning, 'Passwords do not match')}"><i class="fa fa-times"></i> Passwords don't match!</p>
-                        <p th:if="${#strings.equals(show_warning, 'blank fields')}"><i class="fa fa-times"></i> Fields cannot be blank!</p>
+                    <div th:if="${error_msg != null || password_updated != null}" class="message">
+                        <p class="error" th:if="${#strings.equals(error_msg, 'Old password is not valid')}"><i class="fa fa-times"></i> Incorrect old password!</p>
+                        <p class="error" th:if="${#strings.equals(error_msg, 'Passwords do not match')}"><i class="fa fa-times"></i> Passwords don't match!</p>
+                        <p class="error" th:if="${#strings.equals(error_msg, 'Fields cannot be blank')}"><i class="fa fa-times"></i> Fields cannot be blank!</p>
+                        <p class="success" th:if="${password_updated}"><i class="fa fa-check"></i> Password updated!</p>
                     </div>
                 </form>
             </div>

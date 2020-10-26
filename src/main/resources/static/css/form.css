@@ -90,12 +90,20 @@ button:hover {
   
 }
 
-.warning-message {
+.message {
     margin-top: .3em;
     font-size: 1.3em;
     font-weight: bold;
+}
+
+.error {
     color: #70070A;
 }
+
+.success {
+    color: #06413B;
+}
+
 
 table {
     padding: .3em;
