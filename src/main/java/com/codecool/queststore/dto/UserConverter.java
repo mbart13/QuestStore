@@ -34,9 +34,6 @@ public class UserConverter {
         user.setFirstName(userDto.getFirstName());
         user.setLastName(userDto.getLastName());
         user.setRole(userDto.getRole());
-        user.setUsername(userDto.getUsername());
-        user.setPassword(userDto.getPassword());
-
         return user;
     }
 }

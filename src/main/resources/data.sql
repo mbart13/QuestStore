@@ -17,7 +17,7 @@ values
 
 INSERT INTO users (id, first_name, last_name, username, role, password)
 VALUES
-(1, 'Noriaki', 'Kasai', 'nori','ROLE_ADMIN', '1'),
+(1, 'Noriaki', 'Kasai', 'nori', 'ROLE_ADMIN', '1'),
 (2, 'Dominik', 'Starzyk', 'domi', 'ROLE_MENTOR', '1'),
 (3, 'Lukasz', 'Lesiuk', 'nodi', 'ROLE_STUDENT', '1'),
 (4, 'Michal', 'Bartosik', 'mbart', 'ROLE_STUDENT', '1');

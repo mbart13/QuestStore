@@ -3,7 +3,7 @@ package com.codecool.queststore.controller;
 import com.codecool.queststore.dto.UserConverter;
 import com.codecool.queststore.dto.UserDto;
 import com.codecool.queststore.model.User;
-import com.codecool.queststore.service.CourseService;
+import com.codecool.queststore.service.PasswordGenerator;
 import com.codecool.queststore.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -20,9 +20,10 @@ import javax.validation.ConstraintViolationException;
 public class UserController {
 
     public static final String REDIRECT_TO_USERS = "redirect:/users";
+    public static final int PASSWORD_LENGTH = 10;
     private final UserService userService;
     private final UserConverter userConverter;
-    private final CourseService courseService;
+    private final PasswordGenerator passwordGenerator;
 
     @GetMapping
     public String getAllUsers(Model model) {
@@ -55,11 +56,21 @@ public class UserController {
 
         try {
             userService.save(user);
+            attributes.addFlashAttribute("details_updated", true);
         } catch (TransactionSystemException e) {
             attributes.addFlashAttribute("show_warning", true);
-            return "redirect:/users/edit/" + id;
         }
-        return REDIRECT_TO_USERS;
+        return "redirect:/users/edit/" + id;
+    }
+
+    @PostMapping("/edit/{id}/reset-password")
+    public String resetPassword(@PathVariable Long id, RedirectAttributes attributes) {
+        User user = userService.findById(id);
+        String password = passwordGenerator.generateRandomPassword(PASSWORD_LENGTH);
+        user.setPassword(password);
+        userService.save(user);
+        attributes.addFlashAttribute("password", password);
+        return "redirect:/users/edit/" + id;
     }
 
     @GetMapping("/edit/{id}")
