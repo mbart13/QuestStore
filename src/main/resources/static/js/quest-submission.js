@@ -8,3 +8,5 @@ function goToQuests() {
 function goToProfile() {
     window.location.replace("/loginRedirect")
 }
+
+setTimeout(goToQuests,4000)
