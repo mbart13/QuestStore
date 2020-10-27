@@ -22,7 +22,6 @@ VALUES
 (3, 'Lukasz', 'Lesiuk', 'nodi', 'role_student', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
 (4, 'Michal', 'Bartosik', 'mbart', 'role_student', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy');
 
-
 insert into students (current_balance, rank, module, total_earnings, user_id)
 values
 (1000, 'Samurai', 'Web', 1000, 3),

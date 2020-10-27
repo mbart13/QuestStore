@@ -43,6 +43,10 @@ table {
     margin: 0 auto;
 }
 
+.table-header:hover {
+    cursor: pointer;
+}
+
 th {
     height: 40px;
     text-align: center;

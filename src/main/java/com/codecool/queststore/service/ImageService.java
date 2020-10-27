@@ -3,11 +3,13 @@ package com.codecool.queststore.service;
 import com.codecool.queststore.model.User;
 import com.codecool.queststore.repository.UserRepository;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 
+@Slf4j
 @AllArgsConstructor
 @Service
 public class ImageService {
@@ -27,7 +29,7 @@ public class ImageService {
             userRepository.save(user);
 
         } catch (IOException e) {
-            e.printStackTrace();
+            log.info("Error while reading file");
         }
     }
 }

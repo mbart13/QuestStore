@@ -20,7 +20,7 @@
 }
 
 .form {
-    width: 70%;
+    width: 60%;
     margin: 0 auto;
     padding: 1em;
 }
@@ -34,7 +34,7 @@
 
 }
 .form label {
-    font-size: 1.5em;
+    font-size: 1.2em;
 }
 
 .form select {
@@ -60,14 +60,18 @@ button {
     outline: none;
     cursor: pointer;
     background-color: #550609;
-    color: white;
+    color: #d3d3d3;
     border: none;;
     font-weight: bold;
-    font-size: 1.5em;;
+    font-size: 1em;;
     width: 100%;
     padding: 0.4em;
     font-family: BLAME Regular, sans-serif;
     margin: .8em auto;
+}
+
+#reset-button {
+    margin-top: .3em;
 }
 
 button.img-upload {
@@ -87,18 +91,32 @@ button:hover {
     .user-creation-form select {
         width: 100%;
     }
-  
 }
 
-.warning-message {
+.message {
     margin-top: .3em;
     font-size: 1.3em;
     font-weight: bold;
+}
+
+.error::before {
+    content: "✖ ";
+}
+
+.error {
     color: #70070A;
 }
 
-table {
-    padding: .3em;
+.success, .credentials  {
+    color: #06413B;
+}
+
+.credentials {
+    font-size: .8em;
+}
+
+p.success:first-of-type {
+    margin-bottom: .7em;
 }
 
 .fa-arrow-left {

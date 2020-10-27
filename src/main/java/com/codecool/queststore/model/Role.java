@@ -2,9 +2,9 @@ package com.codecool.queststore.model;
 
 public enum Role {
 
-    ADMIN("role_admin"),
-    MENTOR("role_mentor"),
-    STUDENT("role_student");
+    ADMIN("ROLE_ADMIN"),
+    MENTOR("ROLE_MENTOR"),
+    STUDENT("ROLE_STUDENT");
 
     private final String roleName;
 
