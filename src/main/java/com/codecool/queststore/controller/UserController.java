@@ -19,7 +19,6 @@ import javax.validation.ConstraintViolationException;
 @RequestMapping("/users")
 public class UserController {
 
-    public static final String REDIRECT_TO_USERS = "redirect:/users";
     public static final int PASSWORD_LENGTH = 10;
     private final UserService userService;
     private final UserConverter userConverter;
@@ -82,6 +81,6 @@ public class UserController {
     @GetMapping("/{id}")
     public String deleteUser(@PathVariable Long id) {
         userService.delete(userService.findById(id));
-        return REDIRECT_TO_USERS;
+        return "redirect:/users";
     }
 }

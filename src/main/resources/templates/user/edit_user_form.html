@@ -45,11 +45,11 @@
                 <form th:action="@{/users/edit/{id}/reset-password(id=${user.id})}" method="post">
                     <button id="reset-button">Reset Password</button>
                 </form>
-                <div th:if="${show_warning != null}" class="message">
-                    <p class="error" th:if="${show_warning}">Some fields cannot be blank!</p>
+                <div th:if="${show_warning}" class="message">
+                    <p class="error">fields cannot be blank!</p>
                 </div>
-                <div th:if="${details_updated != null}" class="message">
-                    <p class="success" th:if="${details_updated}"><i class="fa fa-check"></i> User updated!</p>
+                <div th:if="${details_updated}" class="message">
+                    <p class="success"><i class="fa fa-check"></i> User updated!</p>
                 </div>
                 <div th:if="${password != null}" class="message">
                     <p class="success"><i class="fa fa-check"></i> Password was reset</p>

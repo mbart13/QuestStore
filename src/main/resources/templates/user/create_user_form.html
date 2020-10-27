@@ -41,10 +41,10 @@
                     </div>
                     <button type="submit">Save User</button>
                     <div th:if="${error != null}" class="message">
-                        <p class="error" th:if="${error}"> Fields cannot be blank!</p>
+                        <p class="error">Fields cannot be blank!</p>
                     </div>
                     <div th:if="${newUser != null}" class="message">
-                        <p class="success"><i class="fa fa-check"></i> New user created!</p>
+                        <p class="success"><i class="fa fa-check"></i> User created!</p>
                         <p class="credentials" th:text="'Username: ' + ${newUser.username}">username</p>
                         <p class="credentials" th:text="'Password: ' + ${newUser.password}">password</p>
                     </div>
