@@ -75,7 +75,17 @@
         </div>
     </div>
 
-
+    <div class="aux-container">
+        <p class="container-title">Quests</p>
+        <div th:if="${studentQuests.isEmpty()}" class="user-info-item">
+            <p>Empty</p>
+        </div>
+        <div th:if="${not studentQuests.isEmpty()}" class="user-info-item">
+            <ul th:each="studentQuest : ${studentQuests} ">
+                <li th:text="${studentQuest.quest.name}"></li>
+            </ul>
+        </div>
+    </div>
 
     <!-- End of page content-->
 

@@ -44,16 +44,17 @@
                     <p>George Patton </p>
                 </div>
             </div>
-            <form id="qform" action="#" th:action="@{/create}" th:object="${quest}" method="post">
+            <form id="qform" th:action="@{/student-quests}" method="post">
                 <div class="basic-section" id="qform-queries">
                     <div class="qform-querry">
                         <p><span th:text="${quest.instruction}">instruction</span></p>
-                        <textarea id="student-answer" class="input-field" rows="5" cols="50" ></textarea>
-<!--                    <span th:if="${#fields.hasErrors('assignment')}" th:errors="*{assignment}"></span>-->
+                        <textarea id="student-answer" class="input-field" rows="5" cols="50"
+                                  th:name="questAnswer"></textarea>
                     </div>
                 </div>
                 <div class="basic-section button-area">
-                    <button class="qsubmit" type="submit" onclick="alert('Not implemented yet!')">Start quest</button>
+                    <button class="qsubmit" type="submit"
+                            th:name="questId" th:value="${quest.getId()}">Start quest</button>
                 </div>
             </form>
             <div class="basic-section button-area">
