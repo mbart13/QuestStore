@@ -36,7 +36,7 @@ public class ProfileController {
     @GetMapping("/edit")
     public String showEditForm(Model model) {
         model.addAttribute("password", new PasswordDto());
-        return "profile/edit_form";
+        return "profile/change_password";
     }
 
     @PostMapping("/edit")

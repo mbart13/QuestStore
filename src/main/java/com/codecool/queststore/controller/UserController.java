@@ -37,14 +37,15 @@ public class UserController {
     }
 
     @PostMapping
-    public String createUser(@ModelAttribute UserDto userDto, RedirectAttributes attributes) {
+    public String createUser(@ModelAttribute UserDto userDto, Model model, RedirectAttributes attributes) {
+        User user = null;
         try {
-            userService.createUser(userDto);
+            user = userService.createUser(userDto);
         } catch (ConstraintViolationException e) {
-            attributes.addFlashAttribute("show_warning", true);
-            return "redirect:/users/new";
+            attributes.addFlashAttribute("error", true);
         }
-        return REDIRECT_TO_USERS;
+        attributes.addFlashAttribute("newUser", user);
+        return "redirect:/users/new";
     }
 
     @PostMapping("/edit/{id}")

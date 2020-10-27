@@ -15,6 +15,8 @@ public class UserService {
 
     private final UserConverter userConverter;
     private final UserRepository userRepository;
+    private final PasswordGenerator passwordGenerator;
+    private static final int PASSWORD_LENGTH = 10;
 
     public List<User> getAllUsers() {
         return userRepository.findAll();
@@ -48,12 +50,11 @@ public class UserService {
         return String.format("%s%s%d", user.getFirstName(), user.getLastName(), this.getMaxId() + 1);
     }
 
-    public void createUser(UserDto userDto) {
+    public User createUser(UserDto userDto) {
         User user = userConverter.mapNewUser(userDto);
-        String tempCredentials = generateUsername(user);
-        user.setUsername(tempCredentials);
-        user.setPassword(tempCredentials);
+        user.setUsername(generateUsername(user));
+        user.setPassword(passwordGenerator.generateRandomPassword(PASSWORD_LENGTH));
 
-        this.save(user);
+        return this.save(user);
     }
 }

@@ -103,12 +103,16 @@ button:hover {
     color: #70070A;
 }
 
-.success {
+.success, .credentials  {
     color: #06413B;
 }
 
-table {
-    padding: .3em;
+.credentials {
+    font-size: .8em;
+}
+
+p.success:first-of-type {
+    margin-bottom: .7em;
 }
 
 .fa-arrow-left {
