@@ -29,6 +29,6 @@ public class StudentQuestController {
         Quest quest = questService.findById(id);
         Student student = (Student) userService.findByUsername(principal.getName());
         studentQuestService.addStudentQuest(student, quest, answer);
-        return "redirect:/quests";
+        return "quest/quest_submission";
     }
 }

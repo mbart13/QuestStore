@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&display=swap");
+
+@font-face {
+    font-family: "BLAME Regular";
+    font-style: normal;
+    font-weight: normal;
+    src: url("../assets/the_blame.ttf") format("truetype");
+}
+
+h1 {
+    font-weight: normal;
+    user-select: none;
+}
+
+p {
+    font-size: 1.2em;
+}
+
+.basic-section {
+    background-color: #d3d3d3;
+    margin: 0.7% 0.7% 0 0.7%;
+    padding: 1%;
+}
+
+#quest{
+    background: linear-gradient(125.39deg, #001513 26.03%, #550609 49.2%, #001513 67.85%);
+    padding-bottom: 0.7%;
+}
+
+#qheader {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.qtitle {
+    color: #d3d3d3;
+    font-family: "BLAME Regular";
+    font-size: 1.4em;
+    margin: 0.7em 0.5em;
+}
+
+#qcontent {
+}
+
+#qinfo {
+    display: flex;
+    flex-direction: row;
+}
+
+#thank-you-message {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    align-items: center;
+}
+
+#thank-you-message p:not(:last-child) {
+    margin-bottom: 0.2em;
+}
+#thank-you-message p {
+    text-align: center;
+}
+
+.link {
+    text-decoration: underline;
+}
+
+.link:hover {
+    cursor: pointer;
+}

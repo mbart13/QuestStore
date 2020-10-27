@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Quest Store </title>
+    <link rel="stylesheet" href="../../static/css/styles.css" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="../../static/css/quest_submission.css" th:href="@{/css/quest_submission.css}">
+
+</head>
+
+<body>
+    <script src="../../static/js/init.js" th:src="@{/js/init.js}"></script>
+    <script src="../../static/js/header.js" th:src="@{/js/header.js}"></script>
+
+    <!-- Page content goes here-->
+    <div id="quest" th:object="${quest}">
+        <div id="qheader">
+            <h1 class="qtitle">Good luck on your new quest!</h1>
+        </div>
+
+        <div id="qcontent">
+            <div id="qinfo">
+                <div class="basic-section" id="thank-you-message">
+                    <p>You can find your quest in your profile page. From there you can check the status, edit or cancel it.</p>
+                    <p>You will now be redirected back to the list of quests</p>
+                    <p class="link" id="quests-link">Click here, if you wish to be redirected there immediately</p>
+                    <p class="link" id="profile-link">Click here, if you want to go back to your profile page</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- End of page content-->
+
+    <script src="../../static/js/footer.js" th:src="@{/js/footer.js}"></script>
+    <script src="../../static/js/quest-submission.js" th:src="@{/js/quest-submission.js}"></script>
+
+</body>
+
+</html>
