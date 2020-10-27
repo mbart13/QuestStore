@@ -3,7 +3,6 @@ package com.codecool.queststore.service;
 import com.codecool.queststore.model.Quest;
 import com.codecool.queststore.model.Student;
 import com.codecool.queststore.model.StudentQuest;
-import com.codecool.queststore.repository.StudentItemRepository;
 import com.codecool.queststore.repository.StudentQuestRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
