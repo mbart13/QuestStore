@@ -23,17 +23,15 @@ public class UserConverter {
         } else {
             user = new User();
         }
-        user.setFirstName(userDto.getFirstName());
-        user.setLastName(userDto.getLastName());
-        user.setRole(userDto.getRole());
 
-        return user;
+        return setAttributes(user, userDto);
     }
 
-    public User mapExistingUser(User user, UserDto userDto) {
+    public User setAttributes(User user, UserDto userDto) {
         user.setFirstName(userDto.getFirstName());
         user.setLastName(userDto.getLastName());
         user.setRole(userDto.getRole());
+        user.setEmail(userDto.getEmail());
         return user;
     }
 }

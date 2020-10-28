@@ -36,27 +36,29 @@ public class UserController {
     @PostMapping
     public String createUser(@ModelAttribute UserDto userDto, Model model, RedirectAttributes attributes) {
         User user = null;
-        String password = userService.generateUserPassword();
+        String password = null;
         try {
+            password = userService.generateUserPassword();
             user = userService.createUser(userDto, password);
+            attributes.addFlashAttribute("newUser", user);
+            attributes.addFlashAttribute("password", password);
         } catch (ConstraintViolationException e) {
             attributes.addFlashAttribute("error", true);
         }
-        attributes.addFlashAttribute("newUser", user);
-        attributes.addFlashAttribute("password", password);
+
         return "redirect:/users/new";
     }
 
     @PostMapping("/edit/{id}")
     public String updateUser(@PathVariable Long id, @ModelAttribute UserDto userDto, RedirectAttributes attributes) {
         User user = userService.findById(id);
-        user = userConverter.mapExistingUser(user, userDto);
+        user = userConverter.setAttributes(user, userDto);
 
         try {
             userService.save(user);
             attributes.addFlashAttribute("details_updated", true);
         } catch (TransactionSystemException e) {
-            attributes.addFlashAttribute("show_warning", true);
+            attributes.addFlashAttribute("error_msg", true);
         }
         return "redirect:/users/edit/" + id;
     }

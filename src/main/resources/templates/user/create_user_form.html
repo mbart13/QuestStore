@@ -34,7 +34,13 @@
                                type="text" placeholder="Enter last name" required>
                     </div>
                     <div class="form-item">
-                        <select name="role">
+                        <label for="surname">Email:</label><br>
+                        <input class="input-field" id="email" th:field="*{email}" th:value="${user.email}"
+                               type="email" placeholder="Enter email" required>
+                    </div>
+                    <div class="form-item">
+                        <label for="role">Role:</label><br>
+                        <select name="role" id="role" required>
                             <option disabled selected value>-- select role --</option>
                             <option th:field="*{role}" value="ROLE_ADMIN">Admin</option>
                             <option th:field="*{role}" value="ROLE_MENTOR">Mentor</option>
@@ -43,10 +49,10 @@
                     </div>
                     <button type="submit">Save User</button>
                     <div th:if="${error != null}" class="message">
-                        <p class="error">FIELDS CAN'T BE BLANK!</p>
+                        <p class="error">Fields can't be blank!</p>
                     </div>
                     <div th:if="${newUser != null || password != null}" class="message">
-                        <p class="success"><i class="fa fa-check"></i> USER CREATED</p>
+                        <p class="success"><i class="fa fa-check"></i> user created</p>
                         <p class="credentials" th:text="'Username: ' + ${newUser.username}">username</p>
                         <p class="credentials" th:text="'Password: ' + ${password}">password</p>
                     </div>

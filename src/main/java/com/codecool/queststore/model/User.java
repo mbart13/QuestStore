@@ -41,6 +41,9 @@ public class User{
     @NotBlank
     protected String password;
 
+    @Column(name = "email")
+    protected String email;
+
     @Lob
     @Column(name = "image")
     protected Byte[] image;

@@ -37,7 +37,7 @@ public class Student extends User {
 
     public Student(User user) {
         super(user.getId(), user.getFirstName(), user.getLastName(), user.getUsername(),
-                user.getRole(), user.getPassword(), user.getImage());
+                user.getRole(), user.getPassword(), user.getEmail(), user.getImage());
         this.currentBalance = 0;
         this.totalEarnings = 0;
         this.rank = "Farmer";

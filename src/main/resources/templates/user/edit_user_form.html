@@ -24,6 +24,7 @@
             <div class="form">
                 <form th:action="@{/users/edit/{id}(id=${user.id})}" method="post" th:object="${user}">
                     <input type="hidden" th:field="*{id}">
+                    <input type="hidden" th:field="*{role}">
                     <div class="form-item">
                         <label for="name">First Name:</label><br>
                         <input class="input-field" id="name" th:field="*{firstName}" type="text" placeholder="Enter first name" required>
@@ -33,27 +34,24 @@
                         <input class="input-field" id="surname" th:field="*{lastName}" type="text" placeholder="Enter last name" required>
                     </div>
                     <div class="form-item">
-                        <select name="role" id="role" required>
-                            <option disabled selected value>-- select role --</option>
-                            <option th:field="*{role}" value="ROLE_ADMIN">Admin</option>
-                            <option th:field="*{role}" value="ROLE_MENTOR">Mentor</option>
-                            <option th:field="*{role}" value="ROLE_STUDENT">Student</option>
-                        </select>
+                        <label for="email">Email:</label><br>
+                        <input class="input-field" id="email" th:field="*{email}" th:value="${user.email}"
+                               type="email" placeholder="Enter email" required>
                     </div>
                     <button type="submit">Save</button>
                 </form>
                 <form th:action="@{/users/edit/{id}/reset-password(id=${user.id})}" method="post">
                     <button id="reset-button">Reset Password</button>
                 </form>
-                <div th:if="${show_warning}" class="message">
+                <div th:if="${error_msg}" class="message">
                     <p class="error">fields cannot be blank!</p>
                 </div>
                 <div th:if="${details_updated}" class="message">
-                    <p class="success"><i class="fa fa-check"></i> USER UPDATED</p>
+                    <p class="success"><i class="fa fa-check"></i> user updated</p>
                 </div>
                 <div th:if="${password != null}" class="message">
-                    <p class="success"><i class="fa fa-check"></i> PASSWORD RESET</p>
-                    <p class="success password" th:text="'New password: ' + ${password}"></p>
+                    <p class="success"><i class="fa fa-check"></i> password reset</p>
+                    <p class="success password" th:text="'new password: ' + ${password}"></p>
                 </div>
 
             </div>
