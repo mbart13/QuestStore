@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/html">
 
 <head>
     <meta charset="UTF-8">
@@ -46,7 +46,7 @@
                 <div th:if="${error_msg}" class="message">
                     <p class="error">fields cannot be blank!</p>
                 </div>
-                <div th:if="${details_updated}" class="message">
+                <div th:if="${user_updated}" class="message">
                     <p class="success"><i class="fa fa-check"></i> user updated</p>
                 </div>
                 <div th:if="${password != null}" class="message">

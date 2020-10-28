@@ -42,7 +42,6 @@
     outline: none;
     font-size: 1em;
     width: 50%;
-    /*margin-top: .5em;*/
     padding: .3em;
 }
 
@@ -97,7 +96,6 @@ button:hover {
     margin-top: .3em;
     font-size: 1.3em;
     font-weight: bold;
-    text-transform: uppercase;
 }
 
 .error::before {
@@ -114,7 +112,6 @@ button:hover {
 
 .credentials, .password {
     font-size: .7em;
-    text-transform: capitalize;
 }
 
 p.success:first-of-type {

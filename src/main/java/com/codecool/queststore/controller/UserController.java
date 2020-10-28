@@ -34,12 +34,10 @@ public class UserController {
     }
 
     @PostMapping
-    public String createUser(@ModelAttribute UserDto userDto, Model model, RedirectAttributes attributes) {
-        User user = null;
-        String password = null;
+    public String createUser(@ModelAttribute UserDto userDto, RedirectAttributes attributes) {
         try {
-            password = userService.generateUserPassword();
-            user = userService.createUser(userDto, password);
+            String password = userService.generateUserPassword();
+            User user = userService.createUser(userDto, password);
             attributes.addFlashAttribute("newUser", user);
             attributes.addFlashAttribute("password", password);
         } catch (ConstraintViolationException e) {
@@ -56,7 +54,7 @@ public class UserController {
 
         try {
             userService.save(user);
-            attributes.addFlashAttribute("details_updated", true);
+            attributes.addFlashAttribute("user_updated", true);
         } catch (TransactionSystemException e) {
             attributes.addFlashAttribute("error_msg", true);
         }
