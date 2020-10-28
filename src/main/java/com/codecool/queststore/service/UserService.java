@@ -5,6 +5,7 @@ import com.codecool.queststore.dto.UserDto;
 import com.codecool.queststore.model.User;
 import com.codecool.queststore.repository.UserRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +17,7 @@ public class UserService {
     private final UserConverter userConverter;
     private final UserRepository userRepository;
     private final PasswordGenerator passwordGenerator;
+    private final PasswordEncoder passwordEncoder;
     private static final int PASSWORD_LENGTH = 10;
 
     public List<User> getAllUsers() {
@@ -50,11 +52,20 @@ public class UserService {
         return String.format("%s%s%d", user.getFirstName(), user.getLastName(), this.getMaxId() + 1);
     }
 
-    public User createUser(UserDto userDto) {
+    public String generateUserPassword() {
+        return passwordGenerator.generateRandomPassword(PASSWORD_LENGTH);
+    }
+
+    public User createUser(UserDto userDto, String password) {
         User user = userConverter.mapNewUser(userDto);
         user.setUsername(generateUsername(user));
-        user.setPassword(passwordGenerator.generateRandomPassword(PASSWORD_LENGTH));
+        user.setPassword(passwordEncoder.encode(password));
 
         return this.save(user);
+    }
+
+    public void changeUserPassword(User user, String password) {
+        String hashedPassword = passwordEncoder.encode(password);
+        user.setPassword(hashedPassword);
     }
 }

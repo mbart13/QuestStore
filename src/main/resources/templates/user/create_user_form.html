@@ -25,11 +25,13 @@
                 <form th:action="@{/users}" method="post" th:object="${user}">
                     <div class="form-item">
                         <label for="name">First Name:</label><br>
-                        <input class="input-field" id="name" th:field="*{firstName}" th:value="${user.firstName}" type="text" placeholder="Enter first name">
+                        <input class="input-field" id="name" th:field="*{firstName}" th:value="${user.firstName}"
+                               type="text" placeholder="Enter first name" required>
                     </div>
                     <div class="form-item">
                         <label for="surname">Last Name:</label><br>
-                        <input class="input-field" id="surname" th:field="*{lastName}" th:value="${user.lastName}" type="text" placeholder="Enter last name">
+                        <input class="input-field" id="surname" th:field="*{lastName}" th:value="${user.lastName}"
+                               type="text" placeholder="Enter last name" required>
                     </div>
                     <div class="form-item">
                         <select name="role">
@@ -41,20 +43,16 @@
                     </div>
                     <button type="submit">Save User</button>
                     <div th:if="${error != null}" class="message">
-                        <p class="error">Fields cannot be blank!</p>
+                        <p class="error">FIELDS CAN'T BE BLANK!</p>
                     </div>
-                    <div th:if="${newUser != null}" class="message">
-                        <p class="success"><i class="fa fa-check"></i> User created!</p>
+                    <div th:if="${newUser != null || password != null}" class="message">
+                        <p class="success"><i class="fa fa-check"></i> USER CREATED</p>
                         <p class="credentials" th:text="'Username: ' + ${newUser.username}">username</p>
-                        <p class="credentials" th:text="'Password: ' + ${newUser.password}">password</p>
+                        <p class="credentials" th:text="'Password: ' + ${password}">password</p>
                     </div>
-
                 </form>
             </div>
-
         </div>
-
-
     </div>
 
 

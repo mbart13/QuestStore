@@ -6,6 +6,7 @@ import com.codecool.queststore.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -14,6 +15,7 @@ import javax.validation.ConstraintValidatorContext;
 public class PasswordValidator implements ConstraintValidator<PasswordValid, Object> {
 
     private final UserService userService;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public boolean isValid(Object obj, ConstraintValidatorContext context){
@@ -21,7 +23,10 @@ public class PasswordValidator implements ConstraintValidator<PasswordValid, Obj
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentPrincipalName = authentication.getName();
         User user = userService.findByUsername(currentPrincipalName);
-        return user.getPassword().equals(passwordDto.getOldPassword());
+        String existingPassword  = passwordDto.getOldPassword();
+        String dbPassword = user.getPassword();
+
+        return passwordEncoder.matches(existingPassword, dbPassword);
     }
 }
 

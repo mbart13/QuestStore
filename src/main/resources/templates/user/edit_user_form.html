@@ -26,14 +26,14 @@
                     <input type="hidden" th:field="*{id}">
                     <div class="form-item">
                         <label for="name">First Name:</label><br>
-                        <input class="input-field" id="name" th:field="*{firstName}" type="text" placeholder="Enter first name">
+                        <input class="input-field" id="name" th:field="*{firstName}" type="text" placeholder="Enter first name" required>
                     </div>
                     <div class="form-item">
                         <label for="surname">Last Name:</label><br>
-                        <input class="input-field" id="surname" th:field="*{lastName}" type="text" placeholder="Enter last name">
+                        <input class="input-field" id="surname" th:field="*{lastName}" type="text" placeholder="Enter last name" required>
                     </div>
                     <div class="form-item">
-                        <select name="role" id="role">
+                        <select name="role" id="role" required>
                             <option disabled selected value>-- select role --</option>
                             <option th:field="*{role}" value="ROLE_ADMIN">Admin</option>
                             <option th:field="*{role}" value="ROLE_MENTOR">Mentor</option>
@@ -49,11 +49,11 @@
                     <p class="error">fields cannot be blank!</p>
                 </div>
                 <div th:if="${details_updated}" class="message">
-                    <p class="success"><i class="fa fa-check"></i> User updated!</p>
+                    <p class="success"><i class="fa fa-check"></i> USER UPDATED</p>
                 </div>
                 <div th:if="${password != null}" class="message">
-                    <p class="success"><i class="fa fa-check"></i> Password was reset</p>
-                    <p class="success" th:text="'New password: ' + ${password}"></p>
+                    <p class="success"><i class="fa fa-check"></i> PASSWORD RESET</p>
+                    <p class="success password" th:text="'New password: ' + ${password}"></p>
                 </div>
 
             </div>

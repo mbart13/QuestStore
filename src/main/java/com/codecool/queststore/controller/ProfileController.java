@@ -54,7 +54,7 @@ public class ProfileController {
                     .collect(Collectors.toSet());
             attributes.addFlashAttribute("error_messages", errorMessages);
         } else {
-            user.setPassword(passwordDto.getNewPassword());
+            userService.changeUserPassword(user, passwordDto.getNewPassword());
             userService.save(user);
             attributes.addFlashAttribute("password_updated", true);
         }

@@ -28,14 +28,13 @@
     grid-area: left;
 }
 
-.admin-buttons {
+.user-buttons {
     grid-area: right;
 }
 
 .user-stats, .user-data {
     grid-area: middle;
 }
-
 
 .user-buttons, .user-stats {
     display: flex;

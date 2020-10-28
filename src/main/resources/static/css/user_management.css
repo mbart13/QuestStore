@@ -45,6 +45,7 @@ table {
 
 .table-header:hover {
     cursor: pointer;
+    background-color: #BEBEBE;
 }
 
 th {

@@ -97,6 +97,7 @@ button:hover {
     margin-top: .3em;
     font-size: 1.3em;
     font-weight: bold;
+    text-transform: uppercase;
 }
 
 .error::before {
@@ -112,7 +113,11 @@ button:hover {
 }
 
 .credentials {
-    font-size: .8em;
+    font-size: .7em;
+}
+
+.password {
+    font-size: .7em;
 }
 
 p.success:first-of-type {
