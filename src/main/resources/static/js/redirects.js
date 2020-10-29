@@ -7,7 +7,11 @@ function goToProfile() {
 }
 
 function goToUsers() {
-    window.location.replace("/users");
+    window.location.replace("/users/page/1?sortField=id&sortDir=asc");
+}
+
+function sortTable(currentPage, columnHeader, reverseSortDir) {
+    window.location.replace(`/users/page/${currentPage}?sortField=${columnHeader}&sortDir=${reverseSortDir}`);
 }
 
 function goToUsersNew() {

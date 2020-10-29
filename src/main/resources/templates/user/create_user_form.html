@@ -36,7 +36,7 @@
                     <div class="form-item">
                         <label for="surname">Email:</label><br>
                         <input class="input-field" id="email" th:field="*{email}" th:value="${user.email}"
-                               type="email" placeholder="Enter email" required>
+                               type="email" placeholder="Enter email">
                     </div>
                     <div class="form-item">
                         <label for="role">Role:</label><br>
@@ -52,7 +52,7 @@
                         <p class="error">Fields can't be blank!</p>
                     </div>
                     <div th:if="${newUser != null || password != null}" class="message">
-                        <p class="success"><i class="fa fa-check"></i> user created</p>
+                        <p class="success"><i class="fa fa-check"></i> User created</p>
                         <p class="credentials" th:text="'Username: ' + ${newUser.username}">username</p>
                         <p class="credentials" th:text="'Password: ' + ${password}">password</p>
                     </div>

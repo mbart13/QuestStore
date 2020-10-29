@@ -20,15 +20,44 @@ VALUES
 (1, 'Noriaki', 'Kasai', 'nori', null, 'ROLE_ADMIN', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
 (2, 'Dominik', 'Starzyk', 'domi', null,'ROLE_MENTOR', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
 (3, 'Lukasz', 'Lesiuk', 'nodi', null,'ROLE_STUDENT', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
-(4, 'Michal', 'Bartosik', 'mbart', null,'ROLE_STUDENT', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy');
+(4, 'Michal', 'Bartosik', 'mbart', null,'ROLE_STUDENT', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
+(5, 'Przemek', 'Raczkowski', 'przemo', null,'ROLE_MENTOR', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
+(6, 'Agnieszka', 'Koszany', 'agi', null,'ROLE_MENTOR', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
+(7, 'Krzysztof', 'Jarośka', 'krzychu', null,'ROLE_MENTOR', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
+(8, 'Wojtek', 'Wilk', 'wilku', null,'ROLE_STUDENT', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
+(9, 'Wojtek', 'Makiela', 'wojtek123', null,'ROLE_MENTOR', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
+(10, 'Adrian', 'Widlak', 'adriano', null,'ROLE_MENTOR', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
+(11, 'Andrzej', 'Debowy', 'endrju', null,'ROLE_STUDENT', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
+(12, 'Artur', 'Kubiak', 'artur1', null,'ROLE_STUDENT', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
+(13, 'Marcin', 'Labaj', 'marcin1', null,'ROLE_STUDENT', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
+(14, 'Krzysztof', 'Nowak', 'krzysztof23', null,'ROLE_STUDENT', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
+(15, 'Aleksandra', 'Nowacka', 'Ola21', null,'ROLE_STUDENT', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
+(16, 'Krzysztof', 'Chromiec', 'krzychu12', null,'ROLE_STUDENT', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
+(17, 'Bartosz', 'Jakimko', 'bjakim', null,'ROLE_STUDENT', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
+(18, 'Andrzej', 'Kiełbowicz', 'andrzej111', null,'ROLE_STUDENT', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy');
 
 insert into students (current_balance, rank, module, total_earnings, user_id)
 values
-(1000, 'Samurai', 'Web', 1000, 3),
-(500, 'Samurai', 'Web', 1000, 4);
+(1000, 'Samurai', 'Web', 2000, 3),
+(500, 'Samurai', 'Web', 2500, 4),
+(2200, 'Samurai', 'Web', 3200, 8),
+(1500, 'Samurai', 'Web', 1500, 11),
+(3000, 'Samurai', 'Web', 4300, 12),
+(1700, 'Samurai', 'Web', 2000, 13),
+(1500, 'Samurai', 'Web', 2000, 14),
+(2500, 'Samurai', 'Web', 3500, 15),
+(1500, 'Samurai', 'Web', 2000, 16),
+(3000, 'Samurai', 'Web', 4000, 17),
+(1500, 'Samurai', 'Web', 5000, 18);
 
 insert into mentors (user_id)
-values(2);
+values
+(2),
+(5),
+(6),
+(7),
+(9),
+(10);
 
 insert into courses (id, name)
 values

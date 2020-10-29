@@ -5,10 +5,12 @@ import com.codecool.queststore.dto.UserDto;
 import com.codecool.queststore.model.User;
 import com.codecool.queststore.repository.UserRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @AllArgsConstructor
 @Service
@@ -20,8 +22,11 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
     private static final int PASSWORD_LENGTH = 10;
 
-    public List<User> getAllUsers() {
-        return userRepository.findAll();
+    public Page<User> getAllUsersPaginated(int pageNumber, int pageSize, String sortField, String sortDirection) {
+        Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending() :
+                        Sort.by(sortField).descending();
+        Pageable pageable = PageRequest.of(pageNumber - 1, pageSize, sort);
+        return userRepository.findAll(pageable);
     }
 
     public User findById(Long id) {

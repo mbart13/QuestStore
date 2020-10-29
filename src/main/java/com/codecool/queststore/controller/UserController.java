@@ -5,6 +5,7 @@ import com.codecool.queststore.dto.UserDto;
 import com.codecool.queststore.model.User;
 import com.codecool.queststore.service.UserService;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.TransactionSystemException;
 import org.springframework.ui.Model;
@@ -20,10 +21,19 @@ public class UserController {
 
     private final UserService userService;
     private final UserConverter userConverter;
+    private static final int PAGE_SIZE = 6;
 
-    @GetMapping
-    public String getAllUsers(Model model) {
-        model.addAttribute("users", userService.getAllUsers());
+    @GetMapping("/page/{pageNumber}")
+    public String getAllUsersPaginated(@PathVariable int pageNumber, @RequestParam("sortField") String sortField,
+                                       @RequestParam("sortDir") String sortDir, Model model) {
+        Page<User> page = userService.getAllUsersPaginated(pageNumber, PAGE_SIZE, sortField, sortDir);
+        model.addAttribute("currentPage", pageNumber);
+        model.addAttribute("totalPages", page.getTotalPages());
+        model.addAttribute("totalRecords", page.getTotalElements());
+        model.addAttribute("users", page.getContent());
+        model.addAttribute("sortField", sortField);
+        model.addAttribute("sortDir", sortDir);
+        model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc" : "asc");
         return "admin/user_management";
     }
 
