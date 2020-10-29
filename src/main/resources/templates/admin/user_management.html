@@ -78,7 +78,7 @@
 
                     <span th:each="i : ${#numbers.sequence(1, totalPages)}">
                         <a class="active" th:if="${currentPage != i}" th:href="@{'/users/page/' + ${i} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
-                        <span class="inactive" th:unless="${currentPage != i}">[[${i}]]</span>
+                        <span class="selected" th:unless="${currentPage != i}">[[${i}]]</span>
                     </span>
 
                     <a class="active next" th:if="${currentPage < totalPages}" th:href="@{'/users/page/' + ${currentPage + 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Next</a>
@@ -93,7 +93,7 @@
 
     <script src="../../static/js/footer.js" th:src="@{/js/footer.js}"></script>
     <script src="../../static/js/redirects.js" th:src="@{/js/redirects.js}"></script>
-    <script src="../../static/js/sort-table.js" th:src="@{/js/sort-table.js}"></script>
+
 </body>
 
 </html>

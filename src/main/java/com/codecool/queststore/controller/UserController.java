@@ -75,7 +75,7 @@ public class UserController {
     public String resetPassword(@PathVariable Long id, RedirectAttributes attributes) {
         User user = userService.findById(id);
         String password = userService.generateUserPassword();
-        userService.changeUserPassword(user, password);
+        userService.changeUserPassword(user, userService.generateUserPassword());
         userService.save(user);
         attributes.addFlashAttribute("password", password);
         return "redirect:/users/edit/" + id;
@@ -90,6 +90,6 @@ public class UserController {
     @GetMapping("/{id}")
     public String deleteUser(@PathVariable Long id) {
         userService.delete(userService.findById(id));
-        return "redirect:/users";
+        return "redirect:/users/page/1?sortField=id&sortDir=asc";
     }
 }

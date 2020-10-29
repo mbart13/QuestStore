@@ -91,24 +91,27 @@ td a {
     align-items: center;
     font-size: 1.3em;
     font-weight: bold;
+    color: #D3D3D3;
 }
 
 .total-records {
     text-align: left;
-    color: white;
     margin: .5em;
     font-size: .8em;
 }
 
 .page-number {
     text-align: right;
-    color: white;
     margin: .5em;
     font-size: .8em;
 }
 
 .inactive, .active {
-    color: #D3D3D3;;
+    color: #D3D3D3;
+}
+
+.selected {
+    color: white;
 }
 
 .active:hover {
