@@ -1,5 +1,6 @@
 package com.codecool.queststore.config;
 
+import com.codecool.queststore.controller.LoggingAccessDeniedHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -40,11 +41,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/quests/**"
                             ).hasAnyRole("ADMIN", "STUDENT", "MENTOR")
                     .antMatchers(
-                            "/admin",
+                            "/admin/**",
                             "/users/**"
                             ).hasRole("ADMIN")
                     .antMatchers(
-                            "/mentor"
+                            "/mentor/**"
                                 ).hasRole("MENTOR")
                     .anyRequest().authenticated()
                 .and()
@@ -63,13 +64,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //TODO - enable csfr
                 .csrf().disable();
                 //for temp disabling security
-                http.headers().frameOptions().disable();
+                http.headers().frameOptions().disable()
+                ;
     }
 
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService);
+        auth.userDetailsService(userDetailsService)
+            .passwordEncoder(passwordEncoder());
     }
 
 
