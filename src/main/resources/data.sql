@@ -43,10 +43,5 @@ values
 (2, 2),
 (2, 3);
 
-
---INSERT INTO authorities (username, authority)
---VALUES
---('nodi', 'USER'),
---('user1', 'USER'),
---('user2', 'USER'),
---('user3', 'USER');
+--required to get psql to work
+--SELECT setval(pg_get_serial_sequence('users', 'id'), coalesce(max(id)+1, 1), '0') FROM users;
