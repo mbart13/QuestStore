@@ -4,7 +4,8 @@ document.write(`
     <div id="header">
         <div id="header-left">
             <h1>Quest Store</h1>
-            <div class="search-field">
+            <div >
+                <input type="text" class="search-field">
             </div>
         </div>
         <div class="header-menu">

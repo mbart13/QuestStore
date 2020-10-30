@@ -9,7 +9,7 @@
     color: #D3D3D3;
     font-family: BLAME Regular, sans-serif;
     text-align: center;
-    padding: .5em 0;
+    padding: .3em 0;
 }
 
 .fa-plus {
@@ -111,9 +111,8 @@ td a {
 }
 
 .selected {
-    color: white;
+    color: #aa2517;
 }
-
 .active:hover {
     color: white;
 }

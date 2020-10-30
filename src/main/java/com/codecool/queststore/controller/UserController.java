@@ -44,12 +44,13 @@ public class UserController {
     }
 
     @PostMapping
-    public String createUser(@ModelAttribute UserDto userDto, RedirectAttributes attributes) {
+    public String createUser(@ModelAttribute UserDto userDto, RedirectAttributes attributes, Model model) {
         try {
             String password = userService.generateUserPassword();
             User user = userService.createUser(userDto, password);
-            attributes.addFlashAttribute("newUser", user);
-            attributes.addFlashAttribute("password", password);
+            model.addAttribute("newUser", user);
+            model.addAttribute("password", password);
+            return "user/confirmation";
         } catch (ConstraintViolationException e) {
             attributes.addFlashAttribute("error", true);
         }

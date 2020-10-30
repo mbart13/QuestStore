@@ -73,16 +73,16 @@
                     <p>Total Rows: <span th:text="${totalRecords}"></span></p>
                 </div>
                 <div>
-                    <a class="active prev" th:if="${currentPage > 1}" th:href="@{'/users/page/' + ${currentPage - 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Prev</a>
-                    <span class="inactive prev" th:unless="${currentPage > 1}">Prev</span>
+                    <a class="active prev" th:if="${currentPage > 1}" th:href="@{'/users/page/' + ${currentPage - 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}"><i class="fa fa-chevron-left"></i></a>
+                    <span class="inactive prev" th:unless="${currentPage > 1}"><i class="fa fa-chevron-left"></i></span>
 
                     <span th:each="i : ${#numbers.sequence(1, totalPages)}">
                         <a class="active" th:if="${currentPage != i}" th:href="@{'/users/page/' + ${i} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
                         <span class="selected" th:unless="${currentPage != i}">[[${i}]]</span>
                     </span>
 
-                    <a class="active next" th:if="${currentPage < totalPages}" th:href="@{'/users/page/' + ${currentPage + 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Next</a>
-                    <span class="inactive next" th:unless="${currentPage < totalPages}">Next</span>
+                    <a class="active next" th:if="${currentPage < totalPages}" th:href="@{'/users/page/' + ${currentPage + 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}"><i class="fa fa-chevron-right"></i></a>
+                    <span class="inactive next" th:unless="${currentPage < totalPages}"><i class="fa fa-chevron-right"></i></span>
                 </div>
                 <div class="page-number">
                     <p>Showing <span class="current-page" th:text="${currentPage}">1</span> of <span class="total-pages" th:text="${totalPages}">1</span></p>

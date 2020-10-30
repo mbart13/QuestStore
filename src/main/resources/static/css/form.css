@@ -13,6 +13,8 @@
     text-align: center;
     padding: .2em 0;
 }
+
+
 .form-body {
     background-color: #D3D3D3;
     margin: 5px;
@@ -107,12 +109,24 @@ button:hover {
     color: #70070A;
 }
 
-.success, .credentials  {
+.success  {
     color: #06413B;
 }
 
-.credentials, .password {
+.password {
     font-size: .7em;
+}
+
+.credentials {
+    color: #06413B;
+    font-size: 1.1em;
+    padding-bottom: .8em;
+
+}
+
+.user-created {
+    font-size: 1.3em;
+    padding: .5em;
 }
 
 p.success:first-of-type {

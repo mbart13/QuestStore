@@ -49,12 +49,7 @@
                     </div>
                     <button type="submit">Save User</button>
                     <div th:if="${error != null}" class="message">
-                        <p class="error">Fields can't be blank!</p>
-                    </div>
-                    <div th:if="${newUser != null || password != null}" class="message">
-                        <p class="success"><i class="fa fa-check"></i> User created</p>
-                        <p class="credentials" th:text="'Username: ' + ${newUser.username}">username</p>
-                        <p class="credentials" th:text="'Password: ' + ${password}">password</p>
+                        <p class="error">Fields cannot be blank!</p>
                     </div>
                 </form>
             </div>
