@@ -17,3 +17,11 @@ function sortTable(currentPage, columnHeader, reverseSortDir) {
 function goToUsersNew() {
     window.location.replace("/users/new");
 }
+
+function changePassword() {
+    window.location.replace('/admin/profile-page/edit');
+}
+
+function uploadImage() {
+    window.location.replace('/admin/profile-page/image-form');
+}

@@ -30,13 +30,30 @@
 
 .user-buttons {
     grid-area: right;
+    text-align: center;
+}
+
+.profile-icon {
+    margin: 1em;
+    padding: .5em;
+}
+
+.profile-icon p {
+    font-weight: bold;
+    font-size: 1.2em;
 }
 
 .user-stats, .user-data {
     grid-area: middle;
 }
 
-.user-buttons, .user-stats {
+.admin-links {
+    text-align: center;
+    display: grid;
+    align-content: center;
+}
+
+.user-buttons, .user-stats{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -49,7 +66,7 @@
     object-fit: contain;
 }
 
-.user-image, .user-buttons, .user-stats, .user-data {
+.user-image, .user-buttons, .user-stats, .user-data, .admin-links {
     background-color: #d3d3d3;
 }
 
@@ -212,7 +229,7 @@ hr.solid {
     text-align: center;
 }
 
-.action-item:hover {
+.action-item:hover, .profile-icon:hover {
     box-shadow: 0 0 0 5px black;
     cursor: pointer;
 }

@@ -26,7 +26,7 @@ public class UserService {
         Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending() :
                         Sort.by(sortField).descending();
         Pageable pageable = PageRequest.of(pageNumber - 1, pageSize, sort);
-        return userRepository.findAll(pageable);
+        return userRepository.getAllNonAdminUsers(pageable);
     }
 
     public User findById(Long id) {

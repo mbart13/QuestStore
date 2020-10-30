@@ -18,14 +18,16 @@
     <!-- Page content goes here-->
 
     <div class="form-container">
-        <h1 class="header"><i title="Go Back" th:onclick="goToUsersNew()" class="fa fa-arrow-left"></i> New User</h1>
+        <h1 class="header"><i title="Go Back" th:onclick="goToUsers()" class="fa fa-arrow-left"></i> Success</h1>
 
         <div class="form-body">
             <div th:if="${newUser != null || password != null}" class="message">
-                <h1 class="success user-created"><i class="fa fa-check"></i> User created!</h1>
-                <div class="credentials">
-                    <p th:text="'Username: ' + ${newUser.username}">username</p>
-                    <p th:text="'Password: ' + ${password}">password</p>
+                <div class="confirmation">
+                    <h1 class="success user-created"><i class="fa fa-check"></i> User Created!</h1>
+                    <div class="credentials">
+                        <p th:text="'Username: ' + ${newUser.username}">Username:</p>
+                        <p th:text="'Password: ' + ${password}">Password</p>
+                    </div>
                 </div>
             </div>
         </div>

@@ -33,11 +33,15 @@
             </div>
 
         </div>
-        <div class="user-buttons">
-            <a class="button-cta" href="#" th:href="@{/admin/profile-page/edit}">Change Password</a>
-            <a class="button-cta" href="#" th:href="@{/admin/profile-page/image-form}">Upload Image</a>
-            <a class="button-cta" href="#" th:href="@{/items}">Items</a>
-            <a class="button-cta" href="#" th:href="@{/quests}">Quests</a>
+        <div class="admin-links">
+            <div class="profile-icon" onclick="changePassword()" th:onclick="changePassword()">
+                <p><i class="fa fa-unlock-alt fa-3x"></i></p>
+                <p>Change Password</p>
+            </div>
+            <div class="profile-icon" onclick="uploadImage()" th:onclick="uploadImage()">
+                <p><i class="fa fa-image fa-3x"></i></p>
+                <p>Upload Image</p>
+            </div>
         </div>
         <div class="user-stats">
             <div class="stats-item mentors">
@@ -61,7 +65,7 @@
     </div>
     <div class="management">
         <div class="management-header">
-            <h2>Management</h2>
+            <h2>Data</h2>
         </div>
         <div class="management-content">
             <div class="action-item" onclick="goToUsers()" th:onclick="goToUsers()">
