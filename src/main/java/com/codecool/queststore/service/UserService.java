@@ -31,11 +31,13 @@ public class UserService {
     }
 
     public User findById(Long id) {
-        return userRepository.findById(id).orElseThrow(() -> new UserNotFoundException(String.format("User with id = %d was not found", id)));
+        return userRepository.findById(id).orElseThrow(() ->
+                new UserNotFoundException(String.format("User with id = %d was not found", id)));
     }
 
     public User findByUsername(String username) {
-        return userRepository.findByUsername(username).orElseThrow(() -> new UserNotFoundException(String.format("User with username = %s was not found", username)));
+        return userRepository.findByUsername(username).orElseThrow(() ->
+                new UserNotFoundException(String.format("User with username = %s was not found", username)));
     }
 
     public User save(User user) {
