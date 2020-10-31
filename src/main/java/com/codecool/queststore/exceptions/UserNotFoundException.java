@@ -1,6 +1,6 @@
 package com.codecool.queststore.exceptions;
 
-public class UserNotFoundException extends RuntimeException  {
+public class UserNotFoundException extends RuntimeException {
 
     private final String message;
 

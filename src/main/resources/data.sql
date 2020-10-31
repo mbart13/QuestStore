@@ -27,14 +27,16 @@ VALUES
 (8, 'Wojtek', 'Wilk', 'wilku1', null,'ROLE_STUDENT', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
 (9, 'Wojtek', 'Makiela', 'wojtek123', null,'ROLE_MENTOR', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
 (10, 'Adrian', 'Widlak', 'adriano', null,'ROLE_MENTOR', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
-(11, 'Andrzej', 'Debski', 'endrju', null,'ROLE_STUDENT', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
-(12, 'Artur', 'Kubicki', 'artur1', null,'ROLE_STUDENT', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
+(11, 'Andrzej', 'Kubicki', 'endrju', null,'ROLE_STUDENT', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
+(12, 'Artur', 'Debski', 'artur1', null,'ROLE_STUDENT', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
 (13, 'Jan', 'Kowalski', 'jkowalski1', null,'ROLE_STUDENT', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
 (14, 'Krzysztof', 'Nowak', 'krzysztof23', null,'ROLE_STUDENT', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
 (15, 'Aleksandra', 'Nowacka', 'Ola21', null,'ROLE_STUDENT', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
 (16, 'Mateusz', 'Adamski', 'mateo12', null,'ROLE_STUDENT', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
 (17, 'Bartosz', 'Wielicki', 'bartosz1', null,'ROLE_STUDENT', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
-(18, 'Cezary', 'Domanski', 'cezary1', null,'ROLE_STUDENT', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy');
+(18, 'Cezary', 'Domanski', 'cezary1', null,'ROLE_STUDENT', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
+(19, 'Tomasz', 'Biernacki', 'tomasz1', null,'ROLE_STUDENT', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
+(20, 'Konrad', 'Wallendrod', 'konrad1', null,'ROLE_MENTOR', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy');
 
 insert into students (current_balance, rank, module, total_earnings, user_id)
 values
@@ -70,7 +72,9 @@ values
 insert into mentor_courses (mentor_id, course_id)
 values
 (2, 2),
-(2, 3);
+(2, 3),
+(5, 2),
+(5, 3);
 
 --required to get psql to work
 --SELECT setval(pg_get_serial_sequence('users', 'id'), coalesce(max(id)+1, 1), '0') FROM users;
