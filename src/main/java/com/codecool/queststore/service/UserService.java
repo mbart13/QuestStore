@@ -2,6 +2,7 @@ package com.codecool.queststore.service;
 
 import com.codecool.queststore.dto.UserConverter;
 import com.codecool.queststore.dto.UserDto;
+import com.codecool.queststore.exceptions.UserNotFoundException;
 import com.codecool.queststore.model.User;
 import com.codecool.queststore.repository.UserRepository;
 import lombok.AllArgsConstructor;
@@ -30,11 +31,11 @@ public class UserService {
     }
 
     public User findById(Long id) {
-        return userRepository.findById(id).orElseThrow(() -> new RuntimeException("Entity not found"));
+        return userRepository.findById(id).orElseThrow(() -> new UserNotFoundException(String.format("User with id = %d was not found", id)));
     }
 
     public User findByUsername(String username) {
-        return userRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("Entity not found"));
+        return userRepository.findByUsername(username).orElseThrow(() -> new UserNotFoundException(String.format("User with username = %s was not found", username)));
     }
 
     public User save(User user) {

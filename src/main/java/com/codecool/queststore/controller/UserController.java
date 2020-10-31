@@ -2,9 +2,11 @@ package com.codecool.queststore.controller;
 
 import com.codecool.queststore.dto.UserConverter;
 import com.codecool.queststore.dto.UserDto;
+import com.codecool.queststore.exceptions.UserNotFoundException;
 import com.codecool.queststore.model.User;
 import com.codecool.queststore.service.UserService;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.TransactionSystemException;
@@ -14,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.ConstraintViolationException;
 
+@Slf4j
 @AllArgsConstructor
 @Controller
 @RequestMapping("/users")
@@ -88,9 +91,24 @@ public class UserController {
         return "user/edit_user_form";
     }
 
+    @GetMapping("/{id}/delete")
+    public String showDeleteConfirmation(@PathVariable Long id, Model model) {
+        User user = null;
+        try {
+            user = userService.findById(id);
+        } catch (UserNotFoundException e) {
+            log.info(e.getMessage());
+        }
+
+        model.addAttribute("user", user);
+        return "user/confirm-delete";
+    }
+
     @GetMapping("/{id}")
-    public String deleteUser(@PathVariable Long id) {
-        userService.delete(userService.findById(id));
-        return "redirect:/users/page/1?sortField=id&sortDir=asc";
+    public String deleteUser(@PathVariable Long id, RedirectAttributes attributes) {
+        User deletedUser = userService.findById(id);
+        userService.delete(deletedUser);
+        attributes.addFlashAttribute("deletedUser", deletedUser);
+        return "redirect:/users/" + id + "/delete";
     }
 }
