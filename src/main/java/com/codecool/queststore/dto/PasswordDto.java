@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
 
 @Getter
 @Setter
-@PasswordMatches
+@PasswordMatches(newPassword = "newPassword", matchingPassword = "matchingPassword")
 public class PasswordDto {
 
     @PasswordValid

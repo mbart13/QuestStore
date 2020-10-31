@@ -116,6 +116,7 @@ button:hover {
 
 .error {
     color: #70070A;
+    font-weight: bold;
 }
 
 .success  {

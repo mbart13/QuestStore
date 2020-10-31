@@ -6,11 +6,9 @@ import com.codecool.queststore.service.ImageService;
 import com.codecool.queststore.service.UserService;
 import lombok.AllArgsConstructor;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
-import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -22,9 +20,6 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.security.Principal;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @Controller
@@ -36,24 +31,21 @@ public class ProfileController implements WebMvcConfigurer {
 
     @GetMapping("/edit")
     public String showEditForm(Model model) {
-        model.addAttribute("password", new PasswordDto());
+        model.addAttribute("passwordDto", new PasswordDto());
         return "profile/change_password";
     }
 
     @PostMapping("/edit")
-    public String updatePassword(@ModelAttribute @Valid PasswordDto passwordDto, BindingResult bindingResult,
+    public String updatePassword(@ModelAttribute @Valid PasswordDto passwordDto, BindingResult bindingResult, Model model,
                                  RedirectAttributes attributes, Principal principal) {
 
         User user = userService.findByUsername(principal.getName());
         String role = user.getRole().substring(5).toLowerCase();
         String redirect = "redirect:/" + role + "/profile-page/edit";
+        model.addAttribute("password", passwordDto);
 
         if (bindingResult.hasErrors()) {
-            List<ObjectError> errors = bindingResult.getAllErrors();
-            Set<String> errorMessages = errors.stream()
-                    .map(DefaultMessageSourceResolvable::getDefaultMessage)
-                    .collect(Collectors.toSet());
-            attributes.addFlashAttribute("error_messages", errorMessages);
+            return "profile/change_password";
         } else {
             userService.changeUserPassword(user, passwordDto.getNewPassword());
             userService.save(user);
