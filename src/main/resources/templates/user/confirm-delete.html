@@ -28,7 +28,7 @@
                 <p th:text="'Name: ' + ${user.firstName + ' ' + user.lastName}">Name</p>
             </div>
             <div class="buttons">
-                <a class="button-cta" id="delete" type="button" href="#" th:href="@{/users/{id}(id=${user.id})}">Delete</a>
+                <a class="button-cta" type="button" href="#" th:href="@{/users/{id}(id=${user.id})}">Delete</a>
             </div>
         </div>
         <div th:if="${deletedUser} != null" class="message">
@@ -38,7 +38,7 @@
                 <p th:text="'Name: ' + ${deletedUser.firstName + ' ' + deletedUser.lastName}">Name</p>
             </div>
             <div class="buttons">
-                <a class="button-cta" id="delete" type="button" href="#" th:href="@{/users/{id}(id=${deletedUser.id})}">Delete</a>
+                <a class="button-cta" type="button" href="#" th:href="@{/users/{id}(id=${deletedUser.id})}">Delete</a>
             </div>
             <div class="message delete-message">
                 <p class="success"><i class="fa fa-check"></i> User Deleted!</p>
