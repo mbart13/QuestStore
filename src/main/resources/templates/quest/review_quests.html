@@ -33,9 +33,9 @@
                         "<span th:text="${quest.getStudent().username}">student username</span>"
                         <span th:text="${quest.getStudent().lastName}">student last name</span>
                     </p>
-                    <div class="basic-section button-area">
-                        <form id="qform" th:action="@{/student-quests/{id}(id=${quest.id})}" method="post">
-                            <button class="qsubmit" type="submit"
+                    <div class="button-area">
+                        <form class="qsubmit" id="qform" th:action="@{/student-quests/{id}(id=${quest.id})}" method="post">
+                            <button type="submit"
                                     th:name="questId" th:value="${quest.getId()}">Approve</button>
                         </form>
                     </div>

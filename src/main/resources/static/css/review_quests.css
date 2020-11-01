@@ -103,6 +103,11 @@ p {
     cursor: pointer;
 }
 
+.button-area {
+    width: 100%;
+    margin: 0.2em
+}
+
 .section-name {
     font-weight: bold;
 }
