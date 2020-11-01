@@ -1,6 +1,7 @@
 package com.codecool.queststore.controller;
 
 import com.codecool.queststore.service.QuestService;
+import com.codecool.queststore.service.StudentQuestService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

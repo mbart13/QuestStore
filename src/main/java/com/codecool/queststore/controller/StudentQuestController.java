@@ -2,14 +2,14 @@ package com.codecool.queststore.controller;
 
 import com.codecool.queststore.model.Quest;
 import com.codecool.queststore.model.Student;
+import com.codecool.queststore.model.StudentQuest;
 import com.codecool.queststore.service.QuestService;
 import com.codecool.queststore.service.StudentQuestService;
 import com.codecool.queststore.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 
@@ -30,5 +30,19 @@ public class StudentQuestController {
         Student student = (Student) userService.findByUsername(principal.getName());
         studentQuestService.addStudentQuest(student, quest, answer);
         return "quest/quest_submission";
+    }
+
+    @GetMapping("review")
+    public String reviewQuests(Model model){
+        model.addAttribute("quests", studentQuestService.showAllStudentQuests());
+        return "quest/review_quests";
+    }
+
+    @PostMapping("{id}")
+    public String approveQuest(@PathVariable(name="id") Long id) {
+        StudentQuest studentQuest = studentQuestService.showStudentQuestsById(id);
+        Student student = (Student) userService.findById(studentQuest.getStudent().getId());
+        studentQuestService.approveQuest(studentQuest, student);
+        return "quest/review_quests";
     }
 }

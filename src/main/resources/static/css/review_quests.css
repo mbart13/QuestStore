@@ -1,0 +1,108 @@
+@import url("https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&display=swap");
+
+@font-face {
+    font-family: "BLAME Regular";
+    font-style: normal;
+    font-weight: normal;
+    src: url("../assets/the_blame.ttf") format("truetype");
+}
+
+h1 {
+    font-weight: normal;
+    user-select: none;
+}
+
+h2 {
+    font-size: 1.3em;
+}
+
+p {
+    font-size: 1.2em;
+}
+
+.basic-section {
+    background-color: #d3d3d3;
+    margin: 0.7% 0.7% 0 0.7%;
+    padding: 1%;
+}
+
+.quest{
+    background-color: #001513;
+    padding-bottom: 0.7%;
+}
+
+.qheader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.qtitle {
+    color: #d3d3d3;
+    font-family: "BLAME Regular", sans-serif;
+    font-size: 1.4em;
+    margin: 0.7em 0.5em;
+}
+
+.qtitle:hover {
+    color: white;
+    cursor: pointer;
+}
+
+.quest{
+    background: linear-gradient(125.39deg, #001513 26.03%, #550609 49.2%, #001513 67.85%);
+    padding-bottom: 0.7%;
+    margin: 0.7em 0;
+}
+
+.qinfo {
+    display: flex;
+    flex-direction: row;
+}
+
+.qdescription {
+    display: flex;
+    flex-direction: row;
+}
+
+.qbasic-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 0.5em;
+}
+
+.qicon {
+    flex-basis: 40%;
+}
+
+.qicon path {
+    fill-opacity: 1;
+}
+
+.qsubmit {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.qsubmit button {
+    width: 75%;
+    background-color: #550609;
+    color: #d3d3d3;
+    font-family: "BLAME Regular", sans-serif;
+    clip-path: polygon(0 0, 95% 0, 100% 100%, 0% 100%);
+    font-size: 1.2em;
+    padding: 0.5em 0.5em 0.5em;
+    border: none;
+}
+
+.qsubmit button:hover {
+    background-color: #7e5556;
+    cursor: pointer;
+}
+
+.section-name {
+    font-weight: bold;
+}
