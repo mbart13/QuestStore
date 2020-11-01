@@ -34,7 +34,7 @@ public class StudentQuestController {
 
     @GetMapping("review")
     public String reviewQuests(Model model){
-        model.addAttribute("quests", studentQuestService.showAllStudentQuests());
+        model.addAttribute("quests", studentQuestService.showUnfinishedStudentQuests());
         return "quest/review_quests";
     }
 

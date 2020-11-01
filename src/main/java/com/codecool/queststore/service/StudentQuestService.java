@@ -20,6 +20,8 @@ public class StudentQuestService {
 
     public List<StudentQuest> showAllStudentQuests() {return studentQuestRepository.findAll(); }
 
+    public List<StudentQuest> showUnfinishedStudentQuests() {return studentQuestRepository.findByIsCompleted(false); }
+
     public StudentQuest showStudentQuestsById(Long id) {return studentQuestRepository.getOne(id); }
 
     public StudentQuest addStudentQuest(Student student, Quest quest, String answer) {
@@ -42,4 +44,5 @@ public class StudentQuestService {
 
         this.save(studentQuest);
     }
+
 }
