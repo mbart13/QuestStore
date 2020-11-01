@@ -45,7 +45,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                             "/users/**"
                             ).hasRole("ADMIN")
                     .antMatchers(
-                            "/mentor"
+                            "/mentor",
+                            "/quests/review"
                                 ).hasRole("MENTOR")
                     .anyRequest().authenticated()
                 .and()

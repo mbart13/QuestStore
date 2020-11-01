@@ -44,6 +44,10 @@ values
 (2, 2),
 (2, 3);
 
+insert into student_quests (id, answer, is_completed, quest_id, user_id)
+values
+(1, 'Test answer of the quest', 0, 1, 3)
+
 
 --INSERT INTO authorities (username, authority)
 --VALUES

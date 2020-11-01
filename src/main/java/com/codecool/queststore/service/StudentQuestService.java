@@ -18,6 +18,10 @@ public class StudentQuestService {
 
     public List<StudentQuest> findByUserId(Long id) { return studentQuestRepository.findByStudentId(id); }
 
+    public List<StudentQuest> showAllStudentQuests() {return studentQuestRepository.findAll(); }
+
+    public StudentQuest showStudentQuestsById(Long id) {return studentQuestRepository.getOne(id); }
+
     public StudentQuest addStudentQuest(Student student, Quest quest, String answer) {
         // studentQuest creation
         StudentQuest studentQuest = new StudentQuest();
@@ -25,13 +29,17 @@ public class StudentQuestService {
         studentQuest.setStudent(student);
         studentQuest.setAnswer(answer);
 
-        //TODO implement quest completition approval, as for now they're completed automatically
+        // finalize student quest creation
+        studentQuest = this.save(studentQuest);
+        return studentQuest;
+    }
+
+    public void approveQuest(StudentQuest studentQuest, Student student) {
+        Quest quest = studentQuest.getQuest();
         studentQuest.setCompleted(true);
         student.setCurrentBalance(student.getCurrentBalance() + quest.getReward());
         student.setTotalEarnings(student.getTotalEarnings() + quest.getReward());
 
-        // finalize student quest creation
-        studentQuest = this.save(studentQuest);
-        return studentQuest;
+        this.save(studentQuest);
     }
 }
