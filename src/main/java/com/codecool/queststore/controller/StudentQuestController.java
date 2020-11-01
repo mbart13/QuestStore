@@ -43,6 +43,6 @@ public class StudentQuestController {
         StudentQuest studentQuest = studentQuestService.showStudentQuestsById(id);
         Student student = (Student) userService.findById(studentQuest.getStudent().getId());
         studentQuestService.approveQuest(studentQuest, student);
-        return "quest/review_quests";
+        return "redirect:/student-quests/review";
     }
 }
