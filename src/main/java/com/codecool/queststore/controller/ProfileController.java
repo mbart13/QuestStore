@@ -36,12 +36,12 @@ public class ProfileController implements WebMvcConfigurer {
     }
 
     @PostMapping("/edit")
-    public String updatePassword(@ModelAttribute @Valid PasswordDto passwordDto, BindingResult bindingResult, Model model,
-                                 RedirectAttributes attributes, Principal principal) {
+    public String updatePassword(@ModelAttribute @Valid PasswordDto passwordDto, BindingResult bindingResult,
+                                 Model model, RedirectAttributes attributes, Principal principal) {
 
         User user = userService.findByUsername(principal.getName());
         String role = user.getRole().substring(5).toLowerCase();
-        String redirect = "redirect:/" + role + "/profile-page/edit";
+        String redirect = String.format("redirect:/%s/profile-page/edit", role);
         model.addAttribute("password", passwordDto);
 
         if (bindingResult.hasErrors()) {
@@ -49,7 +49,7 @@ public class ProfileController implements WebMvcConfigurer {
         } else {
             userService.changeUserPassword(user, passwordDto.getNewPassword());
             userService.save(user);
-            attributes.addFlashAttribute("password_updated", true);
+            attributes.addFlashAttribute("passwordUpdated", true);
         }
 
         return redirect;
@@ -65,7 +65,7 @@ public class ProfileController implements WebMvcConfigurer {
         imageService.saveImage(file, principal.getName());
         User user = userService.findByUsername(principal.getName());
         String role = user.getRole().substring(5).toLowerCase();
-        return "redirect:/" + role + "/profile-page";
+        return String.format("redirect:/%s/profile-page", role);
     }
 
     @GetMapping("/image")

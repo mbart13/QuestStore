@@ -9,12 +9,12 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.TransactionSystemException;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.validation.ConstraintViolationException;
+import javax.validation.Valid;
 
 @Slf4j
 @AllArgsConstructor
@@ -42,52 +42,52 @@ public class UserController {
 
     @GetMapping("/new")
     public String showCreateUserForm(Model model) {
-        model.addAttribute("user", new UserDto());
+        model.addAttribute("userDto", new UserDto());
         return "user/create_user_form";
     }
 
     @PostMapping
-    public String createUser(@ModelAttribute UserDto userDto, RedirectAttributes attributes, Model model) {
-        try {
-            String password = userService.generateUserPassword();
-            User user = userService.createUser(userDto, password);
-            model.addAttribute("newUser", user);
-            model.addAttribute("password", password);
-            return "user/confirmation";
-        } catch (ConstraintViolationException e) {
-            attributes.addFlashAttribute("error", true);
+    public String createUser(@ModelAttribute @Valid UserDto userDto, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            return "user/create_user_form";
         }
 
-        return "redirect:/users/new";
+        String password = userService.generateUserPassword();
+        User user = userService.createUser(userDto, password);
+        model.addAttribute("newUser", user);
+        model.addAttribute("password", password);
+        return "user/confirmation";
     }
 
     @PostMapping("/edit/{id}")
-    public String updateUser(@PathVariable Long id, @ModelAttribute UserDto userDto, RedirectAttributes attributes) {
+    public String updateUser(@PathVariable Long id, @ModelAttribute @Valid UserDto userDto,
+                             BindingResult bindingResult, RedirectAttributes attributes) {
+
+        if (bindingResult.hasErrors()) {
+            return "user/edit_user_form";
+        }
+
         User user = userService.findById(id);
         user = userConverter.setAttributes(user, userDto);
-
-        try {
-            userService.save(user);
-            attributes.addFlashAttribute("user_updated", true);
-        } catch (TransactionSystemException e) {
-            attributes.addFlashAttribute("error_msg", true);
-        }
-        return "redirect:/users/edit/" + id;
+        userService.save(user);
+        attributes.addFlashAttribute("user_updated", true);
+        return String.format("redirect:/users/edit/%d", id);
     }
 
     @PostMapping("/edit/{id}/reset-password")
     public String resetPassword(@PathVariable Long id, RedirectAttributes attributes) {
         User user = userService.findById(id);
         String password = userService.generateUserPassword();
-        userService.changeUserPassword(user, userService.generateUserPassword());
+        userService.changeUserPassword(user, password);
         userService.save(user);
         attributes.addFlashAttribute("password", password);
-        return "redirect:/users/edit/" + id;
+        return String.format("redirect:/users/edit/%d", id);
     }
 
     @GetMapping("/edit/{id}")
     public String showEditUserForm(@PathVariable Long id, Model model) {
-        model.addAttribute("user", userService.findById(id));
+        User user = userService.findById(id);
+        model.addAttribute("userDto", userConverter.mapEntityToDto(user));
         return "user/edit_user_form";
     }
 
@@ -101,7 +101,7 @@ public class UserController {
         }
 
         model.addAttribute("user", user);
-        return "user/confirm-delete";
+        return "user/confirm_delete";
     }
 
     @GetMapping("/{id}")
@@ -109,6 +109,6 @@ public class UserController {
         User deletedUser = userService.findById(id);
         userService.delete(deletedUser);
         attributes.addFlashAttribute("deletedUser", deletedUser);
-        return "redirect:/users/" + id + "/delete";
+        return String.format("redirect:/users/%d/delete", id);
     }
 }

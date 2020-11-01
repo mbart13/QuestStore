@@ -28,7 +28,7 @@ public class Student extends User {
     @Column(name = "module")
     private String module;
 
-    @OneToMany(mappedBy = "student")
+    @OneToMany(mappedBy = "student", cascade = CascadeType.REMOVE)
     private Set<Order> items = new HashSet<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -44,6 +44,6 @@ public class Student extends User {
         this.module = "Intro";
     }
 
-    @OneToMany(mappedBy = "student")
+    @OneToMany(mappedBy = "student", cascade = CascadeType.REMOVE)
     private Set<StudentQuest> quests = new HashSet<>();
 }

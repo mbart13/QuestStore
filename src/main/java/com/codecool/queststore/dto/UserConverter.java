@@ -27,6 +27,16 @@ public class UserConverter {
         return setAttributes(user, userDto);
     }
 
+    public UserDto mapEntityToDto(User user) {
+        UserDto userDto = new UserDto();
+        userDto.setId(user.getId());
+        userDto.setFirstName(user.getFirstName());
+        userDto.setLastName(user.getLastName());
+        userDto.setEmail(user.getEmail());
+        userDto.setRole(user.getRole());
+        return userDto;
+    }
+
     public User setAttributes(User user, UserDto userDto) {
         user.setFirstName(userDto.getFirstName());
         user.setLastName(userDto.getLastName());
