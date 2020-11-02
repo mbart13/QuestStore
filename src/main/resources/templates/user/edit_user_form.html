@@ -49,12 +49,12 @@
                 <form th:action="@{/users/edit/{id}/reset-password(id=${userDto.id})}" method="post">
                     <button id="reset-button">Reset Password</button>
                 </form>
-                <div th:if="${user_updated}" class="message">
+                <div th:if="${userUpdated}" class="message">
                     <p class="success"><i class="fa fa-check"></i> User Updated</p>
                 </div>
                 <div th:if="${password != null}" class="message">
                     <p class="success"><i class="fa fa-check"></i> Password Reset</p>
-                    <p class="success password" th:text="'new password: ' + ${password}"></p>
+                    <p class="success password" th:text="'New password: ' + ${password}"></p>
                 </div>
             </div>
         </div>

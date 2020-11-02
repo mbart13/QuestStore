@@ -1,3 +1,11 @@
+const defaultPage = 1;
+const defaultSortField = "id";
+const defaultSortDirection = "asc";
+
+function goToLogin() {
+    window.location.replace("/login");
+}
+
 function logout() {
     window.location.replace("/logout");
 }
@@ -7,7 +15,7 @@ function goToProfile() {
 }
 
 function goToUsers() {
-    window.location.replace("/users/page/1?sortField=id&sortDir=asc");
+    window.location.replace(`/users/page/${defaultPage}?sortField=${defaultSortField}&sortDir=${defaultSortDirection}`);
 }
 
 function sortTable(currentPage, columnHeader, reverseSortDir) {
@@ -24,4 +32,8 @@ function changePassword() {
 
 function uploadImage() {
     window.location.replace('/admin/profile-page/image-form');
+}
+
+function goToLostPassword() {
+    window.location.replace("/forgotten-password");
 }

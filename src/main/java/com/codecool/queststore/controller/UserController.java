@@ -59,6 +59,13 @@ public class UserController {
         return "user/confirmation";
     }
 
+    @GetMapping("/edit/{id}")
+    public String showEditUserForm(@PathVariable Long id, Model model) {
+        User user = userService.findById(id);
+        model.addAttribute("userDto", userConverter.mapEntityToDto(user));
+        return "user/edit_user_form";
+    }
+
     @PostMapping("/edit/{id}")
     public String updateUser(@PathVariable Long id, @ModelAttribute @Valid UserDto userDto,
                              BindingResult bindingResult, RedirectAttributes attributes) {
@@ -70,7 +77,7 @@ public class UserController {
         User user = userService.findById(id);
         user = userConverter.setAttributes(user, userDto);
         userService.save(user);
-        attributes.addFlashAttribute("user_updated", true);
+        attributes.addFlashAttribute("userUpdated", true);
         return String.format("redirect:/users/edit/%d", id);
     }
 
@@ -82,13 +89,6 @@ public class UserController {
         userService.save(user);
         attributes.addFlashAttribute("password", password);
         return String.format("redirect:/users/edit/%d", id);
-    }
-
-    @GetMapping("/edit/{id}")
-    public String showEditUserForm(@PathVariable Long id, Model model) {
-        User user = userService.findById(id);
-        model.addAttribute("userDto", userConverter.mapEntityToDto(user));
-        return "user/edit_user_form";
     }
 
     @GetMapping("/{id}/delete")
