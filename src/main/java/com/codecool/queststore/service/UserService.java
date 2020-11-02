@@ -72,8 +72,9 @@ public class UserService {
         return this.save(user);
     }
 
-    public void changeUserPassword(User user, String password) {
+    public void resetUserPassword(User user, String password) {
         String hashedPassword = passwordEncoder.encode(password);
         user.setPassword(hashedPassword);
+        this.save(user);
     }
 }

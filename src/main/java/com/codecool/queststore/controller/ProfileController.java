@@ -46,8 +46,7 @@ public class ProfileController {
         if (bindingResult.hasErrors()) {
             return "profile/change_password";
         } else {
-            userService.changeUserPassword(user, passwordDto.getNewPassword());
-            userService.save(user);
+            userService.resetUserPassword(user, passwordDto.getNewPassword());
             attributes.addFlashAttribute("passwordUpdated", true);
         }
 

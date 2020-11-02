@@ -85,8 +85,7 @@ public class UserController {
     public String resetPassword(@PathVariable Long id, RedirectAttributes attributes) {
         User user = userService.findById(id);
         String password = userService.generateUserPassword();
-        userService.changeUserPassword(user, password);
-        userService.save(user);
+        userService.resetUserPassword(user, password);
         attributes.addFlashAttribute("password", password);
         return String.format("redirect:/users/edit/%d", id);
     }

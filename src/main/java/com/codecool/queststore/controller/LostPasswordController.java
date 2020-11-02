@@ -41,9 +41,7 @@ public class LostPasswordController {
         }
         if (user != null) {
             String password = passwordGenerator.generateRandomPassword(PASSWORD_LENGTH);
-            String hashedPassword = passwordEncoder.encode(password);
-            user.setPassword(hashedPassword);
-            userService.save(user);
+            userService.resetUserPassword(user, password);
             model.addAttribute("newPassword", password);
         }
         model.addAttribute("userExists", user != null);
