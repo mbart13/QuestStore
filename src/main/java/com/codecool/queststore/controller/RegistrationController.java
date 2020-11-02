@@ -1,8 +1,10 @@
 package com.codecool.queststore.controller;
 
 import com.codecool.queststore.dto.UserDto;
+import com.codecool.queststore.model.Rank;
 import com.codecool.queststore.model.Student;
 import com.codecool.queststore.model.User;
+import com.codecool.queststore.service.RankService;
 import com.codecool.queststore.service.StudentService;
 import com.codecool.queststore.service.UserService;
 import lombok.AllArgsConstructor;
@@ -20,7 +22,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class RegistrationController {
 
     private final UserService userService;
-    private final StudentService studentSevice;
+    private final StudentService studentService;
+    private final RankService rankService;
     private final PasswordEncoder passwordEncoder;
 
     @GetMapping("/new-user")
@@ -41,12 +44,13 @@ public class RegistrationController {
 
         user.setRole("role_student");
 
+        Rank rank = rankService.getLowestRank();
         Student student = new Student(user);
 
         String hashedPassword = passwordEncoder.encode(user.getPassword());
 
         student.setPassword(hashedPassword);
-        studentSevice.save(student);
+        studentService.save(student);
 
         return "redirect:/register/registration-succesful";
     }

@@ -43,5 +43,15 @@ values
 (2, 2),
 (2, 3);
 
+insert into ranks (id, name, required_currency)
+values
+(1, 'Merchant', 0),
+(2, 'Artisan', 1000),
+(3, 'Peasant',3000),
+(4, 'Ronin', 5000),
+(5, 'Samurai',8000),
+(6, 'Daimyo',12000);
+
 --required to get psql to work
 --SELECT setval(pg_get_serial_sequence('users', 'id'), coalesce(max(id)+1, 1), '0') FROM users;
+
