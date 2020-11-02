@@ -11,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
@@ -36,21 +35,16 @@ public class ProfileController {
 
     @PostMapping("/edit")
     public String updatePassword(@ModelAttribute @Valid PasswordDto passwordDto, BindingResult bindingResult,
-                                 Model model, RedirectAttributes attributes, Principal principal) {
+                                 Model model, Principal principal) {
 
         User user = userService.findByUsername(principal.getName());
-        String role = user.getRole().substring(5).toLowerCase();
-        String redirect = String.format("redirect:/%s/profile-page/edit", role);
         model.addAttribute("password", passwordDto);
-
-        if (bindingResult.hasErrors()) {
-            return "profile/change_password";
-        } else {
+        if (!bindingResult.hasErrors()) {
             userService.resetUserPassword(user, passwordDto.getNewPassword());
-            attributes.addFlashAttribute("passwordUpdated", true);
+            model.addAttribute("passwordUpdated", !bindingResult.hasErrors());
         }
 
-        return redirect;
+        return "profile/change_password";
     }
 
     @GetMapping("/image-form")

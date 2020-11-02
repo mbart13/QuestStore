@@ -68,17 +68,17 @@ public class UserController {
 
     @PostMapping("/edit/{id}")
     public String updateUser(@PathVariable Long id, @ModelAttribute @Valid UserDto userDto,
-                             BindingResult bindingResult, RedirectAttributes attributes) {
+                             BindingResult bindingResult, Model model) {
 
-        if (bindingResult.hasErrors()) {
-            return "user/edit_user_form";
+        if (!bindingResult.hasErrors()) {
+            User user = userService.findById(id);
+            user = userConverter.setAttributes(user, userDto);
+            userService.save(user);
+            model.addAttribute("userUpdated", !bindingResult.hasErrors());
+            model.addAttribute("userDto", userDto);
         }
 
-        User user = userService.findById(id);
-        user = userConverter.setAttributes(user, userDto);
-        userService.save(user);
-        attributes.addFlashAttribute("userUpdated", true);
-        return String.format("redirect:/users/edit/%d", id);
+        return "user/edit_user_form";
     }
 
     @PostMapping("/edit/{id}/reset-password")
