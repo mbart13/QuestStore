@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.security.Principal;
 
 @Slf4j
 @AllArgsConstructor
@@ -25,10 +26,11 @@ public class UserController {
     private final UserService userService;
     private final UserConverter userConverter;
     private static final int PAGE_SIZE = 6;
+    private static final String USER_DTO = "userDto";
 
     @GetMapping("/page/{pageNumber}")
     public String getAllUsersPaginated(@PathVariable int pageNumber, @RequestParam("sortField") String sortField,
-                                       @RequestParam("sortDir") String sortDir, Model model) {
+                                       @RequestParam("sortDir") String sortDir, Model model, Principal principal) {
         Page<User> page = userService.getAllUsersPaginated(pageNumber, PAGE_SIZE, sortField, sortDir);
         model.addAttribute("currentPage", pageNumber);
         model.addAttribute("totalPages", page.getTotalPages());
@@ -37,12 +39,13 @@ public class UserController {
         model.addAttribute("sortField", sortField);
         model.addAttribute("sortDir", sortDir);
         model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc" : "asc");
+        model.addAttribute("principal", principal.getName());
         return "admin/user_management";
     }
 
     @GetMapping("/new")
     public String showCreateUserForm(Model model) {
-        model.addAttribute("userDto", new UserDto());
+        model.addAttribute(USER_DTO, new UserDto());
         return "user/create_user_form";
     }
 
@@ -62,7 +65,7 @@ public class UserController {
     @GetMapping("/edit/{id}")
     public String showEditUserForm(@PathVariable Long id, Model model) {
         User user = userService.findById(id);
-        model.addAttribute("userDto", userConverter.mapEntityToDto(user));
+        model.addAttribute(USER_DTO, userConverter.mapEntityToDto(user));
         return "user/edit_user_form";
     }
 
@@ -74,8 +77,8 @@ public class UserController {
             User user = userService.findById(id);
             user = userConverter.setAttributes(user, userDto);
             userService.save(user);
-            model.addAttribute("userUpdated", !bindingResult.hasErrors());
-            model.addAttribute("userDto", userDto);
+            model.addAttribute("userUpdated", Boolean.TRUE);
+            model.addAttribute(USER_DTO, userDto);
         }
 
         return "user/edit_user_form";
@@ -104,10 +107,10 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public String deleteUser(@PathVariable Long id, RedirectAttributes attributes) {
+    public String deleteUser(@PathVariable Long id, Model model) {
         User deletedUser = userService.findById(id);
         userService.delete(deletedUser);
-        attributes.addFlashAttribute("deletedUser", deletedUser);
-        return String.format("redirect:/users/%d/delete", id);
+        model.addAttribute("deletedUser", deletedUser);
+        return "user/confirmation";
     }
 }

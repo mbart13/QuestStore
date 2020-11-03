@@ -27,7 +27,7 @@ public class UserService {
         Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending() :
                         Sort.by(sortField).descending();
         Pageable pageable = PageRequest.of(pageNumber - 1, pageSize, sort);
-        return userRepository.getAllNonAdminUsers(pageable);
+        return userRepository.findAll(pageable);
     }
 
     public User findById(Long id) {
@@ -57,7 +57,7 @@ public class UserService {
     }
 
     public String generateUsername(User user) {
-        return String.format("%s%s%d", user.getFirstName(), user.getLastName(), this.getMaxId() + 1);
+        return String.format("%s%s%d", user.getFirstName().trim(), user.getLastName().trim(), this.getMaxId() + 1);
     }
 
     public String generateUserPassword() {

@@ -41,7 +41,7 @@ public class ProfileController {
         model.addAttribute("password", passwordDto);
         if (!bindingResult.hasErrors()) {
             userService.resetUserPassword(user, passwordDto.getNewPassword());
-            model.addAttribute("passwordUpdated", !bindingResult.hasErrors());
+            model.addAttribute("passwordUpdated", Boolean.TRUE);
         }
 
         return "profile/change_password";
