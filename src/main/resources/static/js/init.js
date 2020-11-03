@@ -12,7 +12,7 @@ newStyle.appendChild(document.createTextNode("\
     font-family: 'BLAME Regular';\
     font-style: normal;\
     font-weight: normal;\
-    src: url('../assets/" + font + "') format('truetype');\
+    src: url('/assets/" + font + "') format('truetype');\
 }\
 "))
 
