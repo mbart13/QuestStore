@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 @Getter
@@ -40,6 +41,10 @@ public class User{
     @Column(name = "password")
     @NotBlank
     protected String password;
+
+    @Column(name = "email")
+    @Email(message = "Email should be valid")
+    protected String email;
 
     @Lob
     @Column(name = "image")

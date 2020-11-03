@@ -1,5 +1,6 @@
 package com.codecool.queststore.controller;
 
+import com.codecool.queststore.dto.UserDto;
 import com.codecool.queststore.model.Student;
 import com.codecool.queststore.model.User;
 import com.codecool.queststore.service.StudentService;
@@ -20,8 +21,7 @@ public class RegistrationController {
 
     private final UserService userService;
     private final StudentService studentSevice;
-
-    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
     @GetMapping("/new-user")
     public String showCreateForm(Model model) {
@@ -29,15 +29,18 @@ public class RegistrationController {
         return "register/index";
     }
 
-    //todo
-//    1. validate user
     @PostMapping("/create-user")
     public String createUser(User user, BindingResult result, Model model) {
-//        if (result.hasErrors()) {
-//            return "new-user";
-//        }
+        if (result.hasErrors()) {
+            return "redirect: register/new-user";
+        }
+        //todo userDto instead of user
+//        userDto.setRole("role_student");
+//        userService.createUser(userDto);
+//        User user = userService.findByUsername(userDto.getUsername());
 
         user.setRole("role_student");
+
         Student student = new Student(user);
 
         String hashedPassword = passwordEncoder.encode(user.getPassword());

@@ -9,17 +9,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.security.Principal;
 
+import static com.codecool.queststore.model.Role.MENTOR;
+import static com.codecool.queststore.model.Role.STUDENT;
+
 @AllArgsConstructor
 @Controller
-@RequestMapping("/admin")
+@RequestMapping("/admin/profile-page")
 public class AdminController {
 
     private final UserService userService;
 
-    @GetMapping("/profile-page")
-    public String admin(Model model, Principal principal) {
-        model.addAttribute("mentors_count", userService.countByRole("role_mentor"));
-        model.addAttribute("students_count", userService.countByRole("role_student"));
+    @GetMapping
+    public String showAdminProfile(Model model, Principal principal) {
+        model.addAttribute("mentorsCount", userService.countByRole(MENTOR.getRoleName()));
+        model.addAttribute("studentsCount", userService.countByRole(STUDENT.getRoleName()));
         model.addAttribute("user", userService.findByUsername(principal.getName()));
         return "admin/admin_page";
     }

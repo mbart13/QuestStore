@@ -23,7 +23,6 @@
 
 .header {
     margin-bottom: .8em;
-    padding: .7em;
 }
 
 .button-cta {
@@ -74,14 +73,6 @@ img.shopping-cart {
     margin-bottom: .8em;
 }
 
-.hide {
-    display: none;
-}
-
-.show {
-    display: block;
-}
-
 .link-list li:hover {
     color: white;
     cursor: pointer;
@@ -92,7 +83,7 @@ img.shopping-cart {
 }
 
 .description p {
-    font-size: 1.4em;
+    font-size: 1.2em;
 }
 
 .description .item-type {

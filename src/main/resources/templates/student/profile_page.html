@@ -12,63 +12,70 @@
 </head>
 
 <body>
-<script src="../../static/js/init.js" th:src="@{/js/init.js}"></script>
-<script src="../../static/js/header.js" th:src="@{/js/header.js}"></script>
+    <script src="../../static/js/init.js" th:src="@{/js/init.js}"></script>
+    <script src="../../static/js/header.js" th:src="@{/js/header.js}"></script>
 
-<!-- Page content goes here-->
-<div class="dashboard">
+    <!-- Page content goes here-->
+    <div class="dashboard">
 
-    <div class="header">
-        <h1 th:text="'Welcome, ' + ${student.username}">Welcome</h1>
-    </div>
+        <div class="header">
+            <h1 th:text="'Welcome, ' + ${student.firstName}">Welcome</h1>
+        </div>
 
-    <div class="user-image">
-        <div class="image-container">
-            <div>
-                <img src="../../static/assets/images/profileImage.jpg" th:src="@{/profile-page/image}" alt="User Image">
+        <div class="user-image">
+            <div class="image-container">
+                <div>
+                    <img src="../../static/assets/images/profileImage.jpg"
+                         th:src="@{/student/profile-page/image}" alt="User Image">
+                </div>
+                <div class="user-rank">
+                    <p>Shogun</p>
+                </div>
             </div>
-            <div class="user-rank">
-                <p>Shogun</p>
+        </div>
+
+        <div class="user-data">
+            <div class="info-block">
+                <p>Module:</p>
+                <p th:text="${student.module != null} ? ${student.module} : 'Not assigned'" class="bold">Web</p>
+            </div>
+            <hr class="solid">
+            <div class="info-block">
+                <p>Account:</p>
+                <p th:text="${student.currentBalance}" class="bold">400 cc</p>
+
+            </div>
+            <hr class="solid">
+            <div class="info-block">
+                <p>Total earnings:</p>
+                <p th:text="${student.totalEarnings}" class="bold">1250 cc</p>
             </div>
         </div>
+        <div class="user-buttons">
+            <a class="button-cta" href="#" th:href="@{/student/profile-page/edit}">Change Password</a>
+            <a class="button-cta" href="#" th:href="@{/student/profile-page/image-form}">Upload Image</a>
+            <a class="button-cta" href="#" th:href="@{/items}">Items</a>
+            <a class="button-cta" href="#" th:href="@{/quests}">Quests</a>
+        </div>
+    </div>
+    <div class="backpack">
+        <div class="aux-container">
+            <p class="container-title">Backpack</p>
+            <div th:if="${studentItems.isEmpty()}" class="user-info-item">
+                <p>Empty</p>
+            </div>
+            <div th:if="${not studentItems.isEmpty()}" class="user-info-item">
+                <ul class="items-list" th:each="studentItem : ${studentItems} ">
+                    <li th:text="${studentItem.item.name} + ' purchased on ' + ${studentItem.orderDate}" ></li>
+                </ul>
+            </div>
+        </div>
+        <div class="aux-container">
+            <p class="container-title">Completed assignments</p>
+            <div class="user-info-item">Assignments</div>
+        </div>
     </div>
 
-    <div class="user-data">
-        <div class="info-block">
-            <p>Module:</p>
-            <p th:text="${student.module != null} ? ${student.module} : 'Not assigned'" class="bold">Web</p>
-        </div>
-        <hr class="solid">
-        <div class="info-block">
-            <p>Account:</p>
-            <p th:text="${student.currentBalance}" class="bold">400 cc</p>
-
-        </div>
-        <hr class="solid">
-        <div class="info-block">
-            <p>Total earnings:</p>
-            <p th:text="${student.totalEarnings}" class="bold">1250 cc</p>
-        </div>
-    </div>
-    <div class="user-buttons">
-        <a class="button-cta" href="#">Edit Profile</a>
-        <a class="button-cta" href="#" th:href="@{/profile-page}">Upload Image</a>
-        <a class="button-cta" href="#" th:href="@{/items}">Items</a>
-        <a class="button-cta" href="#" th:href="@{/quests}">Quests</a>
-    </div>
-</div>
-<div class="backpack">
-    <div class="aux-container">
-        <p class="container-title">Backpack</p>
-        <div th:if="${studentItems.isEmpty()}" class="user-info-item">
-            <p>Empty</p>
-        </div>
-        <div th:if="${not studentItems.isEmpty()}" class="user-info-item">
-            <ul class="items-list" th:each="studentItem : ${studentItems} ">
-                <li th:text="${studentItem.item.name} + ', ' + ${studentItem.orderDate}" ></li>
-            </ul>
-        </div>
-    </div>
     <div class="aux-container">
         <p class="container-title">Quests</p>
         <div th:if="${studentQuests.isEmpty()}" class="user-info-item">
@@ -80,13 +87,11 @@
             </ul>
         </div>
     </div>
-</div>
 
+    <!-- End of page content-->
 
-
-<!-- End of page content-->
-
-<script src="../../static/js/footer.js" th:src="@{/js/footer.js}"></script>
+    <script src="../../static/js/footer.js" th:src="@{/js/footer.js}"></script>
+    <script src="../../static/js/redirects.js" th:src="@{/js/redirects.js}"></script>
 
 </body>
 

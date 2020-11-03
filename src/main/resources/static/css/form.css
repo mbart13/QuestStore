@@ -13,6 +13,17 @@
     text-align: center;
     padding: .2em 0;
 }
+
+.buttons {
+    text-align: center;
+    padding: .7em;
+}
+
+.button-cta {
+    font-size: .7em;
+    width: 50%;
+}
+
 .form-body {
     background-color: #D3D3D3;
     margin: 5px;
@@ -20,7 +31,7 @@
 }
 
 .form {
-    width: 70%;
+    width: 60%;
     margin: 0 auto;
     padding: 1em;
 }
@@ -31,10 +42,10 @@
     font-size: 1em;
     padding: .3em;
     width: 100%;
-
+    border-radius: 4px;
 }
 .form label {
-    font-size: 1.5em;
+    font-size: 1.2em;
 }
 
 .form select {
@@ -42,7 +53,7 @@
     outline: none;
     font-size: 1em;
     width: 50%;
-    margin-top: .5em;
+    border-radius: 4px;
     padding: .3em;
 }
 
@@ -60,14 +71,18 @@ button {
     outline: none;
     cursor: pointer;
     background-color: #550609;
-    color: white;
+    color: #d3d3d3;
     border: none;;
     font-weight: bold;
-    font-size: 1.5em;;
+    font-size: 1em;;
     width: 100%;
     padding: 0.4em;
     font-family: BLAME Regular, sans-serif;
     margin: .8em auto;
+}
+
+#reset-button {
+    margin-top: .3em;
 }
 
 button.img-upload {
@@ -87,18 +102,48 @@ button:hover {
     .user-creation-form select {
         width: 100%;
     }
-  
 }
 
-.warning-message {
+.message {
     margin-top: .3em;
     font-size: 1.3em;
     font-weight: bold;
-    color: #70070A;
 }
 
-table {
-    padding: .3em;
+.error::before {
+    content: "✖ ";
+}
+
+.error {
+    color: #70070A;
+    font-weight: bold;
+}
+
+.success  {
+    color: #06413B;
+}
+
+.delete-message {
+    padding-bottom: .5em;
+}
+
+.password {
+    font-size: .7em;
+}
+
+.credentials {
+    color: #2D3130;
+    font-size: .8em;
+    padding: .8em;
+}
+
+#username {
+    margin-bottom: .5em;
+}
+
+.user-created, .confirmation, .delete-message {
+    font-size: 1.3em;
+    padding-top: .5em;
 }
 
 .fa-arrow-left {

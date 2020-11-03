@@ -22,7 +22,7 @@ public class StudentController {
     private final StudentQuestService studentQuestService;
 
     @GetMapping
-    public String userIndex(ModelMap model, Principal principal) {
+    public String showStudentProfile(ModelMap model, Principal principal) {
         Student student = studentService.findByUsername(principal.getName());
         model.addAttribute("studentItems", orderService.findByUserId(student.getId()));
         model.addAttribute("studentQuests", studentQuestService.findByUserId(student.getId()));

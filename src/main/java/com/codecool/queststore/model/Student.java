@@ -28,7 +28,7 @@ public class Student extends User {
     @Column(name = "module")
     private String module;
 
-    @OneToMany(mappedBy = "student")
+    @OneToMany(mappedBy = "student", cascade = CascadeType.REMOVE)
     private Set<Order> items = new HashSet<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -37,13 +37,13 @@ public class Student extends User {
 
     public Student(User user) {
         super(user.getId(), user.getFirstName(), user.getLastName(), user.getUsername(),
-                user.getRole(), user.getPassword(), user.getImage());
+                user.getRole(), user.getPassword(), user.getEmail(), user.getImage());
         this.currentBalance = 0;
         this.totalEarnings = 0;
         this.rank = "Farmer";
         this.module = "Intro";
     }
 
-    @OneToMany(mappedBy = "student")
+    @OneToMany(mappedBy = "student", cascade = CascadeType.REMOVE)
     private Set<StudentQuest> quests = new HashSet<>();
 }

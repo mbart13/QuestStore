@@ -1,37 +1,26 @@
-const basicHeader = document.querySelector('.basic-items');
-const magicHeader = document.querySelector('.magic-items');
-const basic_items = document.querySelectorAll(".basic");
-const magic_items = document.querySelectorAll(".magic");
-const header = document.querySelector('.header');
+const basicItems = document.querySelector('.basic-items');
+const magicItems = document.querySelector('.magic-items');
 
-basicHeader.addEventListener('click', () => {
-    basic_items.forEach(item => {
-        item.classList.add("show");
-        item.classList.remove("hide");
-    });
-    magic_items.forEach(item => {
-        item.classList.add("hide");
-        item.classList.remove("show");
-    });
-    basicHeader.classList.add('selected')
-    magicHeader.classList.remove('selected')
-    header.classList.add('basic-items-selected')
-    header.classList.remove('extra-items-selected')
-});
+function selectBasicItems() {
+    document.querySelector('.header').classList.add('basic-items-selected');
+    document.querySelector('.header').classList.remove('extra-items-selected');
+    changeClassDisplay('basic', 'block');
+    changeClassDisplay('magic', 'none');
+}
 
-magicHeader.addEventListener('click', () => {
-    basic_items.forEach(item => {
-        item.classList.add("hide");
-        item.classList.remove("show");
-    });
-    magic_items.forEach(item => {
-        item.classList.add("show");
-        item.classList.remove("hide");
-    });
-    basicHeader.classList.remove('selected')
-    magicHeader.classList.add('selected')
-    header.classList.add('extra-items-selected')
-    header.classList.remove('basic-items-selected')
-});
+function selectMagicItems() {
+    document.querySelector('.header').classList.add('extra-items-selected');
+    document.querySelector('.header').classList.remove('basic-items-selected');
+    changeClassDisplay('basic', 'none');
+    changeClassDisplay('magic', 'block');
+}
 
+function changeClassDisplay(elementClass, display) {
+    const elements = document.getElementsByClassName(elementClass);
+    for(let i = 0; i < elements.length; i++) {
+        elements[i].style.display = display;
+    }
+}
 
+basicItems.addEventListener("click", selectBasicItems);
+magicItems.addEventListener("click", selectMagicItems);

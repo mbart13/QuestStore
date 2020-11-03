@@ -6,8 +6,8 @@ values
 ('Off-School Day', 'The whole course goes to an off-school program for a day', 30000, 'EXTRA'),
 ('Workshop', 'Purchase 60 min workshop with a mentor or mentors on any topic you want', 1000, 'EXTRA'),
 ('Extra materials', 'Get some extra materials for the topic you are currently studying', 500, 'EXTRA'),
-('Dressing Up', 'All mentors should dress up as pirates (or just funny) for the day', 5000, 'EXTRA');
-
+('Dressing Up', 'All mentors should dress up as pirates (or just funny) for the day', 5000, 'EXTRA'),
+('Home Office', 'You can spend a day in home office', 300, 'BASIC');
 
 insert into quest (name, reward, short_description, details, instruction, is_extra)
 values
@@ -15,21 +15,51 @@ values
 ('Spot mistake in assignment2', 500, 'At Codecool we pay a lot of attention to the quality of our assignment instructions, but mistakes still happen. You can however let us know about them and not only make the life easier for your colleagues, but also earn some CCs!', 'The default value of quest is " + reward + ", but a mentor can award more depending on your replies, especially your fix suggestion.', 'Please let us know: on which page the mistake is, what exactly is it and what is your idea to fix it?', 0),
 ('Spot mistake in assignment3', 250, 'At Codecool we pay a lot of attention to the quality of our assignment instructions, but mistakes still happen. You can however let us know about them and not only make the life easier for your colleagues, but also earn some CCs!', 'The default value of quest is " + reward + ", but a mentor can award more depending on your replies, especially your fix suggestion.', 'Please let us know: on which page the mistake is, what exactly is it and what is your idea to fix it?', 1);
 
-INSERT INTO users (id, first_name, last_name, username, role, password)
+INSERT INTO users (id, first_name, last_name, username, email, role, password)
 VALUES
-(1, 'Noriaki', 'Kasai', 'nori','role_admin', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
-(2, 'Dominik', 'Starzyk', 'domi', 'role_mentor', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
-(3, 'Lukasz', 'Lesiuk', 'nodi', 'role_student', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
-(4, 'Michal', 'Bartosik', 'mbart', 'role_student', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy');
-
+(1, 'Noriaki', 'Kasai', 'nori', null, 'ROLE_ADMIN', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
+(2, 'Dominik', 'Starzyk', 'domi', null,'ROLE_MENTOR', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
+(3, 'Lukasz', 'Lesiuk', 'nodi', null,'ROLE_STUDENT', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
+(4, 'Michal', 'Bartosik', 'mbart', null,'ROLE_STUDENT', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
+(5, 'Przemek', 'Raczkowski', 'przemo', null,'ROLE_MENTOR', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
+(6, 'Agnieszka', 'Koszany', 'agi', null,'ROLE_MENTOR', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
+(7, 'Krzysztof', 'Jarośka', 'krzychu', null,'ROLE_MENTOR', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
+(8, 'Wojtek', 'Wilk', 'wilku1', null,'ROLE_STUDENT', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
+(9, 'Wojtek', 'Makiela', 'wojtek123', null,'ROLE_MENTOR', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
+(10, 'Adrian', 'Widlak', 'adriano', null,'ROLE_MENTOR', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
+(11, 'Andrzej', 'Kubicki', 'endrju', null,'ROLE_STUDENT', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
+(12, 'Artur', 'Debski', 'artur1', null,'ROLE_STUDENT', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
+(13, 'Jan', 'Kowalski', 'jkowalski1', null,'ROLE_STUDENT', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
+(14, 'Krzysztof', 'Nowak', 'krzysztof23', null,'ROLE_STUDENT', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
+(15, 'Aleksandra', 'Nowacka', 'Ola21', null,'ROLE_STUDENT', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
+(16, 'Mateusz', 'Adamski', 'mateo12', null,'ROLE_STUDENT', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
+(17, 'Bartosz', 'Wielicki', 'bartosz1', null,'ROLE_STUDENT', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
+(18, 'Cezary', 'Domanski', 'cezary1', null,'ROLE_STUDENT', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
+(19, 'Tomasz', 'Biernacki', 'tomasz1', null,'ROLE_STUDENT', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
+(20, 'Konrad', 'Wallenrod', 'konrad1', null,'ROLE_MENTOR', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy');
 
 insert into students (current_balance, rank, module, total_earnings, user_id)
 values
-(1000, 'Samurai', 'Web', 1000, 3),
-(500, 'Samurai', 'Web', 1000, 4);
+(1000, 'Samurai', 'Web', 2000, 3),
+(500, 'Samurai', 'Web', 2500, 4),
+(2200, 'Samurai', 'Web', 3200, 8),
+(1500, 'Samurai', 'Web', 1500, 11),
+(3000, 'Samurai', 'Web', 4300, 12),
+(1700, 'Samurai', 'Web', 2000, 13),
+(1500, 'Samurai', 'Web', 2000, 14),
+(2500, 'Samurai', 'Web', 3500, 15),
+(1500, 'Samurai', 'Web', 2000, 16),
+(3000, 'Samurai', 'Web', 4000, 17),
+(1500, 'Samurai', 'Web', 5000, 18);
 
 insert into mentors (user_id)
-values(2);
+values
+(2),
+(5),
+(6),
+(7),
+(9),
+(10);
 
 insert into courses (id, name)
 values
@@ -42,12 +72,9 @@ values
 insert into mentor_courses (mentor_id, course_id)
 values
 (2, 2),
-(2, 3);
+(2, 3),
+(5, 2),
+(5, 3);
 
-
---INSERT INTO authorities (username, authority)
---VALUES
---('nodi', 'USER'),
---('user1', 'USER'),
---('user2', 'USER'),
---('user3', 'USER');
+--required to get psql to work
+--SELECT setval(pg_get_serial_sequence('users', 'id'), coalesce(max(id)+1, 1), '0') FROM users;

@@ -28,16 +28,32 @@
     grid-area: left;
 }
 
-.admin-buttons {
+.user-buttons {
     grid-area: right;
+    text-align: center;
+}
+
+.profile-icon {
+    margin: 1em;
+    padding: .5em;
+}
+
+.profile-icon p {
+    font-weight: bold;
+    font-size: 1.2em;
 }
 
 .user-stats, .user-data {
     grid-area: middle;
 }
 
+.admin-links {
+    text-align: center;
+    display: grid;
+    align-content: center;
+}
 
-.user-buttons, .user-stats {
+.user-buttons, .user-stats{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -50,7 +66,7 @@
     object-fit: contain;
 }
 
-.user-image, .user-buttons, .user-stats, .user-data {
+.user-image, .user-buttons, .user-stats, .user-data, .admin-links {
     background-color: #d3d3d3;
 }
 
@@ -151,7 +167,7 @@ hr.solid {
 .button-cta {
     width: 80%;
     margin: 1.2em;
-    font-size: .9em;
+    font-size: .8em;
     padding: .8em;
 }
 
@@ -213,7 +229,7 @@ hr.solid {
     text-align: center;
 }
 
-.action-item:hover {
+.action-item:hover, .profile-icon:hover {
     box-shadow: 0 0 0 5px black;
     cursor: pointer;
 }

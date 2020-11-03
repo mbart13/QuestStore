@@ -9,6 +9,8 @@ import org.springframework.web.servlet.view.RedirectView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import static com.codecool.queststore.model.Role.*;
+
 @Controller
 @RequestMapping("/loginRedirect")
 public class LoginRedirectController {
@@ -18,20 +20,17 @@ public class LoginRedirectController {
         RedirectView redirectView = new RedirectView();
         String role =  authResult.getAuthorities().toString();
 
-        if(role.contains("ROLE_ADMIN")){
+        if(role.contains(ADMIN.getRoleName())){
             redirectView.setUrl("admin/profile-page");
 
         }
-        else if(role.contains("ROLE_STUDENT")) {
+        else if(role.contains(STUDENT.getRoleName())) {
             redirectView.setUrl("student/profile-page");
         }
-        else if(role.contains("ROLE_MENTOR")) {
+        else if(role.contains(MENTOR.getRoleName())) {
             redirectView.setUrl("mentor/mentor-page");
         }
         return redirectView;
 
     }
-
-
-
 }

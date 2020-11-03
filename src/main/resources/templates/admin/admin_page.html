@@ -19,13 +19,13 @@
     <div class="dashboard">
 
         <div class="header">
-            <h1 th:text="'Welcome, ' + ${user.username}">Welcome</h1>
+            <h1 th:text="'Welcome, ' + ${user.firstName}">Welcome</h1>
         </div>
 
         <div class="user-image">
             <div class="image-container">
                 <div>
-                    <img src="../../static/assets/AdminImage.jpeg" th:src="@{/profile-page/image}" alt="User Image">
+                    <img src="../../static/assets/AdminImage.jpeg" th:src="@{/admin/profile-page/image}" alt="User Image">
                 </div>
                 <div class="user-rank">
                     <p>Admin</p>
@@ -33,11 +33,15 @@
             </div>
 
         </div>
-        <div class="user-buttons">
-            <a class="button-cta" href="#">Edit Profile</a>
-            <a class="button-cta" href="#" th:href="@{/profile-page}">Upload Image</a>
-            <a class="button-cta" href="#" th:href="@{/items}">Items</a>
-            <a class="button-cta" href="#" th:href="@{/quests}">Quests</a>
+        <div class="admin-links">
+            <div class="profile-icon" onclick="changePassword()" th:onclick="changePassword()">
+                <p><i class="fa fa-unlock-alt fa-3x"></i></p>
+                <p>Change Password</p>
+            </div>
+            <div class="profile-icon" onclick="uploadImage()" th:onclick="uploadImage()">
+                <p><i class="fa fa-image fa-3x"></i></p>
+                <p>Upload Image</p>
+            </div>
         </div>
         <div class="user-stats">
             <div class="stats-item mentors">
@@ -45,7 +49,7 @@
                     <h2>Mentors</h2>
                 </div>
                 <div class="circle">
-                    <p th:text="${mentors_count}">12</p>
+                    <p th:text="${mentorsCount}">12</p>
                 </div>
             </div>
             <div class="stats-item codecoolers">
@@ -53,7 +57,7 @@
                     <h2>Students</h2>
                 </div>
                 <div class="circle">
-                    <p th:text="${students_count}">59</p>
+                    <p th:text="${studentsCount}">59</p>
                 </div>
             </div>
         </div>
@@ -61,10 +65,10 @@
     </div>
     <div class="management">
         <div class="management-header">
-            <h2>Management</h2>
+            <h2>Data</h2>
         </div>
         <div class="management-content">
-            <div class="action-item" th:onclick="|window.location.href='/users/'|">
+            <div class="action-item" onclick="goToUsers()" th:onclick="goToUsers()">
                 <a><i class="fa fa-user fa-4x"></i><br><span>Users</span></a>
             </div>
             <div class="action-item">
@@ -84,6 +88,7 @@
     <!-- End of page content-->
 
     <script src="../../static/js/footer.js" th:src="@{/js/footer.js}"></script>
+    <script src="../../static/js/redirects.js" th:src="@{/js/redirects.js}"></script>
 
 </body>
 

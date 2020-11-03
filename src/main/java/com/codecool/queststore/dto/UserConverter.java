@@ -23,20 +23,25 @@ public class UserConverter {
         } else {
             user = new User();
         }
-        user.setFirstName(userDto.getFirstName());
-        user.setLastName(userDto.getLastName());
-        user.setRole(userDto.getRole());
 
-        return user;
+        return setAttributes(user, userDto);
     }
 
-    public User mapExistingUser(User user, UserDto userDto) {
+    public UserDto mapEntityToDto(User user) {
+        UserDto userDto = new UserDto();
+        userDto.setId(user.getId());
+        userDto.setFirstName(user.getFirstName());
+        userDto.setLastName(user.getLastName());
+        userDto.setEmail(user.getEmail());
+        userDto.setRole(user.getRole());
+        return userDto;
+    }
+
+    public User setAttributes(User user, UserDto userDto) {
         user.setFirstName(userDto.getFirstName());
         user.setLastName(userDto.getLastName());
         user.setRole(userDto.getRole());
-        user.setUsername(userDto.getUsername());
-        user.setPassword(userDto.getPassword());
-
+        user.setEmail(userDto.getEmail());
         return user;
     }
 }

@@ -13,67 +13,69 @@
 
 <script src="../../static/js/init.js" th:src="@{/js/init.js}"></script>
 
-<div class="main-section-container">
-    <div class="main-section">
-        <div class="main-section-item title">
-            <h1 class="title quest">QUEST</h1>
-            <h1 class="title store">STORE</h1>
-        </div>
-        <div class="main-section-item">
-            <form th:action="@{/login}" method="post">
-                <div class="login">
-                    <div th:if="${param.error}">
-                        <div class="alert alert-danger">
-                            Invalid username or password.
+    <div class="main-section-container">
+        <div class="main-section">
+            <div class="main-section-item title">
+                <h1 class="title quest">QUEST</h1>
+                <h1 class="title store">STORE</h1>
+            </div>
+            <div class="main-section-item">
+                <form th:action="@{/login}" method="post">
+                    <div class="login">
+                        <div th:if="${param.error}">
+                            <div class="alert alert-danger">
+                                Invalid username or password.
+                            </div>
+                        </div>
+                        <div th:if="${param.logout}">
+                            <div class="alert alert-info">
+                                You have been logged out.
+                            </div>
+                        </div>
+                        <div class="input-item">
+                            <label for="username">Username</label><br>
+                            <input class="input-field"
+                                   id="username"
+                                   name="username"
+                                   type="text"
+                                   placeholder="username"
+                                   required>
+                        </div>
+                        <div class="input-item">
+                            <label for="password">Password</label><br>
+                            <input class="input-field"
+                                   id="password"
+                                   name="password"
+                                   type="password"
+                                   placeholder="password"
+                                   required>
                         </div>
                     </div>
-                    <div th:if="${param.logout}">
-                        <div class="alert alert-info">
-                            You have been logged out.
-                        </div>
-                    </div>
-                    <div class="input-item">
-                        <label for="username">Username</label><br>
-                        <input class="input-field"
-                               id="username"
-                               name="username"
-                               type="text"
-                               placeholder="username"
-                               required>
-                    </div>
-                    <div class="input-item">
-                        <label for="password">Password</label><br>
-                        <input class="input-field"
-                               id="password"
-                               name="password"
-                               type="password"
-                               placeholder="password"
-                               required>
-                    </div>
-                </div>
 
-                <div class="login-btn-container">
-                    <div>
-                        <button class="btn-main-page btn-login"
-                                type="submit"
-                                name="login-submit"
-                                id="login-submit">LOG IN</button>
+                    <div class="login-btn-container">
+                        <div>
+                            <button class="btn-main-page btn-login"
+                                    type="submit"
+                                    name="login-submit"
+                                    id="login-submit">LOG IN</button>
+                        </div>
                     </div>
-                </div>
-            </form>
-            <form  method="get">
-                <div class="forgotten-password-btn-container">
-                    <a class="btn-main-page btn-forgotten-password" href="forgotten_password.html" th:href="@{/forgotten-password/form}">Forgotten password</a>
-                </div>
-            </form>
-            <form  method="get">
-                <div class="register-btn-container">
-                    <a class="btn-main-page btn-register" href="registration.html" th:href="@{/register/new-user}">Register</a>
-                </div>
-            </form>
+                </form>
+                <form  method="get">
+                    <div class="forgotten-password-btn-container">
+                        <a class="btn-main-page btn-forgotten-password" href="forgotten_password.html" th:href="@{/forgotten-password}">Forgotten password</a>
+                    </div>
+                </form>
+                <form  method="get">
+                    <div class="register-btn-container">
+                        <a class="btn-main-page btn-register" href="registration.html" th:href="@{/register/new-user}">Register</a>
+                    </div>
+                </form>
+
+            </div>
+
         </div>
     </div>
-</div>
 </body>
 
 </html>

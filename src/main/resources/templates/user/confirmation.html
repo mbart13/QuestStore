@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../static/css/styles.css" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="../../static/assets/font-awesome-4.7.0/css/font-awesome.min.css" th:href="@{/assets/font-awesome-4.7.0/css/font-awesome.min.css}">
+    <link rel="stylesheet" href="../../static/css/form.css" th:href="@{/css/form.css}">
+    <title> Create User </title>
+
+</head>
+
+<body>
+    <script src="../../static/js/init.js" th:src="@{/js/init.js}"></script>
+    <script src="../../static/js/header.js" th:src="@{/js/header.js}"></script>
+
+    <!-- Page content goes here-->
+
+    <div class="form-container">
+        <h1 class="header"><i title="Go Back" th:onclick="goToUsers()" class="fa fa-arrow-left"></i> Success</h1>
+
+        <div class="form-body">
+            <div th:if="${newUser != null || password != null}" class="message">
+                <div class="confirmation">
+                    <h1 class="success user-created"><i class="fa fa-check"></i> User Created!</h1>
+                    <div class="credentials">
+                        <p th:text="'Username: ' + ${newUser.username}">Username:</p>
+                        <p th:text="'Password: ' + ${password}">Password</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- End of page content-->
+
+    <script src="../../static/js/footer.js" th:src="@{/js/footer.js}"></script>
+    <script src="../../static/js/redirects.js" th:src="@{/js/redirects.js}"></script>
+
+</body>
+
+</html>
