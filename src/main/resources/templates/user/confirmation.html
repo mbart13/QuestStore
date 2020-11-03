@@ -30,7 +30,18 @@
                     </div>
                 </div>
             </div>
+            <div th:if="${deletedUser} != null" class="message">
+                <div class="success delete-message">
+                    <p class="success"><i class="fa fa-check"></i> User Deleted!</p>
+                </div>
+                <div class="credentials">
+                    <p th:text="'ID: ' + ${deletedUser.id}">Id</p>
+                    <p th:text="'Name: ' + ${deletedUser.firstName + ' ' + deletedUser.lastName}">Name</p>
+                </div>
+
+            </div>
         </div>
+
     </div>
 
 

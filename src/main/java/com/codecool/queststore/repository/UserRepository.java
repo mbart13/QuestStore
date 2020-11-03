@@ -1,8 +1,6 @@
 package com.codecool.queststore.repository;
 
 import com.codecool.queststore.model.User;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -18,7 +16,4 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query(value = "SELECT max(u.id) FROM User u")
     Long getMaxId();
-
-    @Query(value = "SELECT u FROM User u where u.role <> 'ROLE_ADMIN'")
-    Page<User> getAllNonAdminUsers(Pageable pageable);
 }
