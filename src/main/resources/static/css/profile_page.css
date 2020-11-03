@@ -102,19 +102,15 @@ hr.solid {
     inset 0 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
     padding: .2em .5em;
+    margin-top: 10px;
 }
 
 .backpack {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 10px;
-    margin-top: 10px;
     text-align: center;
     color: black;
 }
 
 .current-quests {
-    margin-top: 10px;
     text-align: center;
 }
 
@@ -248,4 +244,21 @@ hr.solid {
     font-weight: bold;
     font-size: 1.2em;
     font-style: normal;
+}
+
+.lists {
+    display: flex;
+    flex-direction: row;
+}
+
+.lists > * {
+    flex-grow: 1;
+}
+
+.column {
+    margin-right: 5px;
+}
+
+.completed-quests {
+    margin-left: 5px;
 }
