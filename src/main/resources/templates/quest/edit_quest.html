@@ -17,7 +17,7 @@
     <!-- Page content goes here-->
     <div id="quest" th:object="${quest}">
         <div id="qheader">
-            <h1 class="qtitle"><span th:text="${quest.name}">quest name</span></h1>
+            <input form="qform" type="text" id="name" name="name" th:value="${quest.name}"><br>
             <h1 class="qtitle">Reward: <span th:text="${quest.reward}">reward</span>CC</h1>
         </div>
 
@@ -37,8 +37,14 @@
                     </div>
                 </div>
             </div>
-            <form id="qform" th:action="@{/student-quests}" method="post">
+            <form id="qform" th:action="@{/quests/update/{id}(id=${quest.id})}" method="post">
+                <div class="basic-section" id="qform-queries">
+                    <div class="qform-querry">
+                        <p><span th:text="${quest.instruction}">instruction</span></p>
+                    </div>
+                </div>
                 <div class="basic-section button-area">
+                    <div th:name="name" th:value="${quest.getName()}"></div>
                     <button class="qsubmit" type="submit"
                             th:name="questId" th:value="${quest.getId()}">Update quest</button>
                 </div>

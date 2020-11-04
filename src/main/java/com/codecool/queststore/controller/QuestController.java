@@ -6,9 +6,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.naming.AuthenticationException;
 import java.security.Principal;
@@ -41,5 +39,21 @@ public class QuestController {
         } else {
             return "quest/quest";
         }
+    }
+
+    @PostMapping("update/{id}")
+    public String updateQuest(@PathVariable(name="id") Long id,
+                              @RequestParam("name") String name,
+//                              @RequestParam("reward") String reward,
+//                              @RequestParam("shortDescription") String shortDescription,
+//                              @RequestParam("details") String details,
+//                              @RequestParam("instruction") String instruction,
+//                              @RequestParam("isExtra") String isExtra,
+                              Authentication authResult) {
+        System.out.println("****************************************************************************");
+        System.out.println(id);
+        System.out.println(name);
+        System.out.println("****************************************************************************");
+        return "quest/browse_quests";
     }
 }

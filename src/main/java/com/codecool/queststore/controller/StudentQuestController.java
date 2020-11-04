@@ -44,7 +44,7 @@ public class StudentQuestController {
         return "quest/review_quests";
     }
 
-    @PostMapping("{id}")
+    @PostMapping("approve/{id}")
     public String approveQuest(@PathVariable(name="id") Long id) {
         StudentQuest studentQuest = studentQuestService.showStudentQuestsById(id);
         Student student = (Student) userService.findById(studentQuest.getStudent().getId());
