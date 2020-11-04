@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Classes </title>
+    <link rel="stylesheet" href="../../static/css/styles.css" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="../../static/css/classes.css" th:href="@{/css/classes.css}">
+</head>
+
+<body>
+    <script th:src="@{/js/header.js}" src="../../static/js/header.js"></script>
+
+    <!-- Page content goes here-->
+    <section class="form-container">
+        <header class="header">
+            <h1>Classes</h1>
+        </header>
+        <div class="new-course">
+            <form action="/courses" method="post" th:object="${courseDto}">
+                <div>
+                    <label for="course">Add New Class</label>
+                </div>
+                <div>
+                    <input type="text" id="course" th:field="*{name}">
+                </div>
+
+                <button class="button-cta">Save</button>
+            </form>
+        </div>
+
+    </section>
+
+    <section class="course" th:each="course : ${courses}">
+        <header class="header">
+            <h1 th:text="${course.name}">Classes</h1>
+        </header>
+        <div class="course-body">
+            <p th:text="${course.name}"></p>
+        </div>
+    </section>
+
+
+
+    <!-- End of page content-->
+
+    <script src="../../static/js/footer.js" th:src="@{/js/footer.js}"></script>
+    <script src="../../static/js/redirects.js" th:src="@{/js/redirects.js}"></script>
+</body>
+
+</html>

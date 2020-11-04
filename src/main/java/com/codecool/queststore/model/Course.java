@@ -14,12 +14,13 @@ public class Course {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    String name;
+    private Long id;
+
+    private String name;
 
     @OneToMany(mappedBy = "course")
-    Set<Student> students;
+    private Set<Student> students;
 
     @ManyToMany(mappedBy = "courses")
-    Set<Mentor> mentors;
+    private Set<Mentor> mentors;
 }

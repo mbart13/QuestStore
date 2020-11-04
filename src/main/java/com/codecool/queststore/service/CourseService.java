@@ -3,6 +3,7 @@ package com.codecool.queststore.service;
 import com.codecool.queststore.model.Course;
 import com.codecool.queststore.repository.CourseRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,6 +15,11 @@ public class CourseService {
     private final CourseRepository courseRepository;
 
     public List<Course> getAllCourses() {
-        return courseRepository.findAll();
+        Sort sort = Sort.by("id").descending();
+        return courseRepository.findAll(sort);
+    }
+
+    public Course save(Course course) {
+        return courseRepository.save(course);
     }
 }
