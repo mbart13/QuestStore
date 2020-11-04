@@ -57,7 +57,7 @@ public class UserService {
     }
 
     public String generateUsername(User user) {
-        return String.format("%s%s%d", user.getFirstName().trim(), user.getLastName().trim(), this.getMaxId() + 1);
+        return String.format("%s%s%d", user.getFirstName().trim(), user.getLastName().trim(), getMaxId() + 1);
     }
 
     public String generateUserPassword() {
@@ -69,12 +69,12 @@ public class UserService {
         user.setUsername(generateUsername(user));
         user.setPassword(passwordEncoder.encode(password));
 
-        return this.save(user);
+        return save(user);
     }
 
     public void resetUserPassword(User user, String password) {
         String hashedPassword = passwordEncoder.encode(password);
         user.setPassword(hashedPassword);
-        this.save(user);
+        save(user);
     }
 }
