@@ -14,7 +14,12 @@
 <script src="../../static/js/header.js" th:src="@{/js/header.js}"></script>
 
     <!-- Page content goes here-->
-    <div class="quest" th:each="quest : ${quests}">
+    <div id="type-choice">
+        <h1 class="qtitle" id="basic-quests">BASIC QUESTS</h1>
+        <h1 class="qtitle" id="extra-quests">EXTRA QUESTS</h1>
+    </div>
+
+    <div class="quest" th:each="quest : ${quests}" th:classappend="${quest.isExtra()} ? 'extra' : 'basic'">
         <div class="qheader">
             <h1 class="qtitle"><span th:text="${quest.name}">quest name</span></h1>
             <h1 class="qtitle"><span th:text="${quest.reward}">quest reward</span>CC</h1>
@@ -30,7 +35,7 @@
                     <div class="qbasic-info">
                         <p class="short-description"><span th:text="${quest.shortDescription}">quest shortDescription</span></p>
                         <form class="qsubmit" action="#" th:action="@{quests/{id}(id=${quest.id})}" method="get">
-                            <button type="submit">Go to quest</button>
+                            <button type="submit">Edit quest</button>
                         </form>
                     </div>
                 </div>
@@ -40,6 +45,7 @@
     <!-- End of page content-->
 
     <script src="../../static/js/footer.js" th:src="@{/js/footer.js}"></script>
+    <script src="../../static/js/animate-quest-type.js" th:src="@{/js/animate-quest-type.js}"></script>
     <script src="../../static/js/redirects.js" th:src="@{/js/redirects.js}"></script>
 </body>
 

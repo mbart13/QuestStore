@@ -23,15 +23,15 @@
         <div class="qinfo">
             <div class="basic-section qdescription">
                 <div class="qbasic-info">
+                    <p class="short-description section-name">ID:</p>
+                    <p class="short-description"><span th:text="${quest.id}">quest id</span></p>
                     <p class="short-description section-name">Instruction:</p>
                     <p class="short-description"><span th:text="${quest.getQuest().shortDescription}">quest shortDescription</span></p>
                     <p class="short-description section-name">Answer:</p>
                     <p class="short-description"><span th:text="${quest.answer}">quest answer</span></p>
                     <p class="short-description section-name">Submitted by:</p>
                     <p class="short-description">
-                        <span th:text="${quest.getStudent().firstName}">student first name</span>
-                        "<span th:text="${quest.getStudent().username}">student username</span>"
-                        <span th:text="${quest.getStudent().lastName}">student last name</span>
+                        <span th:text="${quest.getStudent().username}">student username</span>
                     </p>
                     <div class="button-area">
                         <form class="qsubmit" id="qform" th:action="@{/student-quests/{id}(id=${quest.id})}" method="post">

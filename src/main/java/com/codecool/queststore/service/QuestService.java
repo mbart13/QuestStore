@@ -17,6 +17,8 @@ public class QuestService {
         return questRepository.findAll();
     }
 
+    public Object showExtraQuests() { return questRepository.findByIsExtra(true); }
+
     public Quest findById(Long id) {
         return questRepository.findById(id).orElseThrow(() -> new RuntimeException("Entity not found"));
     }
