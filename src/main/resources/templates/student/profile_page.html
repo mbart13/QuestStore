@@ -63,22 +63,25 @@
         <div class="column">
             <div class="current-quests aux-container">
                 <p class="container-title">Active Quests</p>
-                <div th:if="${studentQuests.isEmpty()}" class="user-info-item">
+                <div th:if="${studentOngoingQuests.isEmpty()}" class="user-info-list">
                     <p>Empty</p>
                 </div>
-                <div th:if="${not studentQuests.isEmpty()}" class="user-info-item">
+                <div th:if="${not studentOngoingQuests.isEmpty()}" class="user-info-list">
                     <table>
                         <thead>
                         <tr>
+                            <th class="table-header">ID</th>
                             <th class="table-header">Quest name</th>
                             <th class="table-header">Action</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="studentQuest : ${studentQuests} ">
+                        <tr th:each="studentQuest : ${studentOngoingQuests} ">
+                            <td th:text="${studentQuest.id}"></td>
                             <td th:text="${studentQuest.quest.name}"></td>
                             <td class="actions">
-                                <span class="action-btn"><a href="#" th:href="@{/quest/answer/{id}(id=${studentQuest.id})}">Edit</a> </span>
+                                <span class="action-btn"><a href="#" th:href="@{/student-quests/answer/{id}(id=${studentQuest.id})}">Edit</a> </span>
+                                <span class="action-btn"><a href="#" th:href="@{/quest/delete/{id}(id=${studentQuest.id})}">Abandon</a> </span>
                             </td>
                         </tr>
                         </tbody>
@@ -99,7 +102,26 @@
         </div>
         <div class="completed-quests aux-container">
             <p class="container-title">Completed quests</p>
-            <div class="user-info-item">Assignments</div>
+            <div class="user-info-list">
+                <table>
+                    <thead>
+                    <tr>
+                        <th class="table-header">ID</th>
+                        <th class="table-header">Quest name</th>
+                        <th class="table-header">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="studentQuest : ${studentCompletedQuests} ">
+                        <td th:text="${studentQuest.id}"></td>
+                        <td th:text="${studentQuest.quest.name}"></td>
+                        <td class="actions">
+                            <span class="action-btn"><a href="#" th:href="@{/quest/answer/{id}(id=${studentQuest.id})}">View</a> </span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 

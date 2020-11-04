@@ -80,7 +80,9 @@ insert into student_quests (id, answer, is_completed, quest_id, user_id)
 values
 (1, 'Test answer of the quest', 0, 1, 3),
 (2, 'Test answer2 of the quest', 1, 2, 4),
-(3, 'Test answer3 of the quest', 0, 2, 3);
+(3, 'Test answer3 of the quest', 0, 2, 3),
+(4, 'Test answer4 of the quest', 0, 2, 3),
+(5, 'This should be completed', 1, 2, 3);
 
 --required to get psql to work
 --SELECT setval(pg_get_serial_sequence('users', 'id'), coalesce(max(id)+1, 1), '0') FROM users;

@@ -24,6 +24,10 @@ public class StudentQuestService {
 
     public StudentQuest showStudentQuestsById(Long id) {return studentQuestRepository.getOne(id); }
 
+    public List<StudentQuest> findOngoingedByUserId(Long id) { return studentQuestRepository.findByStudentIdAndIsCompleted(id, false); }
+
+    public List<StudentQuest> findCompletedByUserId(Long id) { return studentQuestRepository.findByStudentIdAndIsCompleted(id, true);}
+
     public StudentQuest addStudentQuest(Student student, Quest quest, String answer) {
         // studentQuest creation
         StudentQuest studentQuest = new StudentQuest();

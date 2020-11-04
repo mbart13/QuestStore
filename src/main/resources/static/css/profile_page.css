@@ -115,7 +115,7 @@ hr.solid {
 }
 
 .user-info-item {
-    background: #b2b2b2;
+    background: #d3d3d3;
     border: 1px solid rgba(0, 0, 0, 0.8);
     text-align: left;
     padding: 10px;
@@ -261,4 +261,34 @@ hr.solid {
 
 .completed-quests {
     margin-left: 5px;
+}
+
+table {
+    width: 100%;
+    border-spacing: 0;
+}
+
+thead {
+    background-color: #b2b2b2;
+    padding: 2em;
+    font-size: .9rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+tr:nth-child(even) {
+    background-color: #b2b2b2;
+}
+
+td {
+    padding: .35em;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.user-info-list {
+    background: #d3d3d3;
+    text-align: left;
+    color: black;
+    flex-grow: 1;
 }

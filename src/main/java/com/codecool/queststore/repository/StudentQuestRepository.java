@@ -11,4 +11,6 @@ public interface StudentQuestRepository extends JpaRepository<StudentQuest, Long
     List<StudentQuest> findByStudentId(Long id);
 
     List<StudentQuest> findByIsCompleted(boolean is_completed);
+
+    List<StudentQuest> findByStudentIdAndIsCompleted(Long id, boolean b);
 }

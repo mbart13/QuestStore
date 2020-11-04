@@ -22,6 +22,12 @@ public class StudentQuestController {
     private final UserService userService;
     private final StudentQuestService studentQuestService;
 
+    @GetMapping("answer")
+    public String questAnswer(@PathVariable(name="id") Long id, Model model) {
+        model.addAttribute("quests", studentQuestService.showStudentQuestsById(id));
+        return "/quest/quest_answer";
+    }
+
     @PostMapping
     public String startQuest(@RequestParam("questId") Long id,
                              @RequestParam("questAnswer") String answer,
@@ -45,4 +51,5 @@ public class StudentQuestController {
         studentQuestService.approveQuest(studentQuest, student);
         return "redirect:/student-quests/review";
     }
+
 }

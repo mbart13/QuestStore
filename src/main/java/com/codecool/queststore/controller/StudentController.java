@@ -25,7 +25,8 @@ public class StudentController {
     public String showStudentProfile(ModelMap model, Principal principal) {
         Student student = studentService.findByUsername(principal.getName());
         model.addAttribute("studentItems", orderService.findByUserId(student.getId()));
-        model.addAttribute("studentQuests", studentQuestService.findByUserId(student.getId()));
+        model.addAttribute("studentOngoingQuests", studentQuestService.findOngoingedByUserId(student.getId()));
+        model.addAttribute("studentCompletedQuests", studentQuestService.findCompletedByUserId(student.getId()));
         model.addAttribute("student", student);
         return "student/profile_page";
     }
