@@ -106,7 +106,7 @@ public class UserController {
         return "user/confirm_delete";
     }
 
-    @GetMapping("/{id}")
+    @PostMapping("/{id}")
     public String deleteUser(@PathVariable Long id, Model model) {
         User deletedUser = userService.findById(id);
         userService.delete(deletedUser);
