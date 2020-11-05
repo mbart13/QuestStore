@@ -1,15 +1,13 @@
 package com.codecool.queststore.controller;
 
 import com.codecool.queststore.service.QuestService;
-import com.codecool.queststore.service.StudentQuestService;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.naming.AuthenticationException;
-import java.security.Principal;
+import static java.lang.Integer.parseInt;
 
 @AllArgsConstructor
 @Controller
@@ -41,19 +39,49 @@ public class QuestController {
         }
     }
 
+    @GetMapping("create")
+    public String createQuest() {
+        return "quest/create_quest";
+    }
+
+    @PostMapping("create")
+    public String createQuest(
+            @RequestParam("name") String name,
+            @RequestParam("reward") String reward,
+            @RequestParam("shortDescription") String shortDescription,
+            @RequestParam("details") String details,
+            @RequestParam("instruction") String instruction,
+            @RequestParam("isExtra") boolean isExtra
+          ) {
+        if (questService.isInputValid(reward)) {
+            int int_reward = parseInt(reward);
+            questService.addQuest(name, int_reward, shortDescription, details, instruction, isExtra);
+        }
+        return "redirect:/quests";
+    }
+
     @PostMapping("update/{id}")
     public String updateQuest(@PathVariable(name="id") Long id,
                               @RequestParam("name") String name,
-//                              @RequestParam("reward") String reward,
-//                              @RequestParam("shortDescription") String shortDescription,
-//                              @RequestParam("details") String details,
-//                              @RequestParam("instruction") String instruction,
-//                              @RequestParam("isExtra") String isExtra,
+                              @RequestParam("reward") String reward,
+                              @RequestParam("shortDescription") String shortDescription,
+                              @RequestParam("details") String details,
+                              @RequestParam("instruction") String instruction,
+                              @RequestParam("isExtra") boolean isExtra,
                               Authentication authResult) {
-        System.out.println("****************************************************************************");
-        System.out.println(id);
-        System.out.println(name);
-        System.out.println("****************************************************************************");
-        return "quest/browse_quests";
+        if (questService.isInputValid(reward)){
+            int int_reward = parseInt(reward);
+            questService.updateQuest(id,
+                                     name,
+                                     int_reward,
+                                     shortDescription,
+                                     details,
+                                     instruction,
+                                     isExtra);
+            return "redirect:/quests";
+        } else {
+            // TODO handle the result of providing wrong input
+            return "quest/update/{id}";
+        }
     }
 }

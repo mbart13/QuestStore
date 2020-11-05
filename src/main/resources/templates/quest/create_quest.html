@@ -15,10 +15,10 @@
     <script src="../../static/js/header.js" th:src="@{/js/header.js}"></script>
 
     <!-- Page content goes here-->
-    <div id="quest" th:object="${quest}">
+    <div id="quest">
         <div id="qheader">
-            <input form="qform" type="text" id="name" name="name" th:value="${quest.name}"><br>
-            <input form="qform" type="text" id="reward" name="reward" th:value="${quest.reward}"><br>
+            <input form="qform" type="text" id="name" name="name"><br>
+            <input form="qform" type="text" id="reward" name="reward"><br>
         </div>
 
         <div id="qcontent">
@@ -38,29 +38,28 @@
                             </select>
                             <p>Short description</p>
                             <textarea id="shortDescription" form="qform" class="input-field" rows="5" cols="50"
-                                      th:name="shortDescription" th:inline="text">[[${quest.shortDescription}]]</textarea>
+                                      th:name="shortDescription"></textarea>
                         </div>
                     </div>
                     <div id="more-inf-content">
                         <div class="vertical">
                         <p>Details</p>
                         <textarea form="qform" id="details" class="input-field" rows="5" cols="50"
-                                  th:name="details" th:inline="text">[[${quest.details}]]</textarea>
+                                  th:name="details"></textarea>
                         </div>
                     </div>
                 </div>
             </div>
-            <form id="qform" th:action="@{/quests/update/{id}(id=${quest.id})}" method="post">
+            <form id="qform" th:action="@{/quests/create}" method="post">
                 <div class="basic-section" id="qform-queries">
                     <div class="qform-querry">
                         <p>Instruction:</p>
                         <textarea form="qform" id="instruction" class="input-field" rows="5" cols="50"
-                                  th:name="instruction" th:inline="text">[[${quest.instruction}]]</textarea>
+                                  th:name="instruction"></textarea>
                     </div>
                 </div>
                 <div class="basic-section button-area">
-                    <button class="qsubmit" type="submit"
-                            th:name="questId" th:value="${quest.getId()}">Update quest</button>
+                    <button class="qsubmit" type="submit">Create quest</button>
                 </div>
             </form>
             <div class="basic-section button-area">

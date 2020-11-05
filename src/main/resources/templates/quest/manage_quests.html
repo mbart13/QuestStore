@@ -14,6 +14,10 @@
 <script src="../../static/js/header.js" th:src="@{/js/header.js}"></script>
 
     <!-- Page content goes here-->
+    <form class="qsubmit" action="#" th:action="@{quests/create}" method="get">
+        <button id="create-quest" type="submit">Create new quest</button>
+    </form>
+
     <div id="type-choice">
         <h1 class="qtitle" id="basic-quests">BASIC QUESTS</h1>
         <h1 class="qtitle" id="extra-quests">EXTRA QUESTS</h1>

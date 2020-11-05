@@ -76,7 +76,8 @@ label {
 }
 
 #short-description {
-    flex-basis: 100%;
+    width: 100%;
+    min-height: 8em;
 }
 
 #qicon path {
@@ -155,4 +156,12 @@ form {
     display: flex;
     flex-direction: column;
     flex-basis: 100%;
+}
+
+#name {
+    width: 50%;
+}
+
+.vertical {
+    flex-direction: column;
 }
