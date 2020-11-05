@@ -2,6 +2,8 @@ package com.codecool.queststore.controller;
 
 import com.codecool.queststore.service.QuestService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -83,5 +85,11 @@ public class QuestController {
             // TODO handle the result of providing wrong input
             return "quest/update/{id}";
         }
+    }
+
+    @PostMapping("delete/{id}")
+    public String deleteQuest(@PathVariable(name="id") Long id){
+        questService.deleteQuest(id);
+        return "redirect:/quests";
     }
 }

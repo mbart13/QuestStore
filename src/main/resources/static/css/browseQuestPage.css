@@ -106,13 +106,10 @@ p {
     font-size: 1.2em;
     padding: 0.5em 0.5em 0.5em;
     border: none;
+    margin-bottom: 0.7em;
 }
 
 .qsubmit button:hover {
     background-color: #7e5556;
     cursor: pointer;
-}
-
-#create-quest {
-    margin-bottom: 0.7em;
 }

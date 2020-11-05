@@ -3,7 +3,10 @@ package com.codecool.queststore.service;
 import com.codecool.queststore.model.Quest;
 import com.codecool.queststore.model.StudentQuest;
 import com.codecool.queststore.repository.QuestRepository;
+import com.codecool.queststore.repository.StudentQuestRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,6 +16,7 @@ import java.util.List;
 public class QuestService {
 
     private final QuestRepository questRepository;
+    private final StudentQuestRepository studentQuestRepository;
 
     public List<Quest> showAllQuests() {
         return questRepository.findAll();
@@ -77,5 +81,13 @@ public class QuestService {
         quest.setIsExtra(isExtra);
 
         this.save(quest);
+    }
+
+    public void deleteQuest(Long id) {
+        List<StudentQuest> ongoingQuests = studentQuestRepository.findAllByQuestId(id);
+        for (StudentQuest assignment : ongoingQuests) {
+            studentQuestRepository.deleteById(assignment.getId());
+        }
+        questRepository.deleteById(id);
     }
 }

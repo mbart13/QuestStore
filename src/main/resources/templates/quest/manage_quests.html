@@ -41,6 +41,9 @@
                         <form class="qsubmit" action="#" th:action="@{quests/{id}(id=${quest.id})}" method="get">
                             <button type="submit">Edit quest</button>
                         </form>
+                        <form class="qsubmit" action="#" th:action="@{quests/delete/{id}(id=${quest.id})}" method="post">
+                            <button type="submit">Delete quest</button>
+                        </form>
                     </div>
                 </div>
             </div>
