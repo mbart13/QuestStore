@@ -23,8 +23,7 @@ public class RegistrationController {
 
     private final UserService userService;
     private final StudentService studentService;
-    //TODO
-//    private final RankService rankService;
+    private final RankService rankService;
     private final PasswordEncoder passwordEncoder;
 
     @GetMapping("/new-user")
@@ -45,14 +44,12 @@ public class RegistrationController {
 
         user.setRole("role_student");
 
-        //TODO
-//        Rank rank = rankService.getLowestRank();
-        Rank rank = new Rank(Long.valueOf(101), "test", 1, null);
-        Student student = new Student(user);
+        Rank rank = rankService.getLowestRank();
+        Student student = new Student(user, rank);
 
         String hashedPassword = passwordEncoder.encode(user.getPassword());
-
         student.setPassword(hashedPassword);
+
         studentService.save(student);
 
         return "redirect:/register/registration-succesful";

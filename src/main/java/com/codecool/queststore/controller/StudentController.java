@@ -27,6 +27,9 @@ public class StudentController {
         model.addAttribute("studentItems", orderService.findByUserId(student.getId()));
         model.addAttribute("studentQuests", studentQuestService.findByUserId(student.getId()));
         model.addAttribute("student", student);
+
+        //TODO move to lower level
+        model.addAttribute("rank", student.getRank().getName());
         return "student/profile_page";
     }
 }

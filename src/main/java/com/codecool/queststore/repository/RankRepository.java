@@ -9,8 +9,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface RankRepository extends CrudRepository<Rank, Long> {
 
-    //TODO
-
-    @Query(value = "SELECT name, MAX(required_currency) FROM ranks WHERE required_currency < ?#{[0]}", nativeQuery = true)
+    @Query(value = "SELECT TOP 1 * FROM ranks WHERE required_currency  <= ?#{[0]} GROUP BY id ORDER BY required_currency desc;", nativeQuery = true)
     Rank findRankByRequiredCurrency(int total_earnings);
 }

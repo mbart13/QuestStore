@@ -31,6 +31,4 @@ public class Rank {
     @OneToOne(targetEntity = Student.class)
     Set<Student> studentSet;
 
-
-
 }
