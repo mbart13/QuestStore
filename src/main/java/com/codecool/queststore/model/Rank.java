@@ -28,7 +28,7 @@ public class Rank {
     @UniqueElements
     private int requiredCurrency;
 
-    @OneToOne
+    @OneToOne(targetEntity = Student.class)
     Set<Student> studentSet;
 
 

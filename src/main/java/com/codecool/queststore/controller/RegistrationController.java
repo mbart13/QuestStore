@@ -23,7 +23,8 @@ public class RegistrationController {
 
     private final UserService userService;
     private final StudentService studentService;
-    private final RankService rankService;
+    //TODO
+//    private final RankService rankService;
     private final PasswordEncoder passwordEncoder;
 
     @GetMapping("/new-user")
@@ -44,7 +45,9 @@ public class RegistrationController {
 
         user.setRole("role_student");
 
-        Rank rank = rankService.getLowestRank();
+        //TODO
+//        Rank rank = rankService.getLowestRank();
+        Rank rank = new Rank(Long.valueOf(101), "test", 1, null);
         Student student = new Student(user);
 
         String hashedPassword = passwordEncoder.encode(user.getPassword());

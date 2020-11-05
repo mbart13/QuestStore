@@ -12,12 +12,13 @@ public class RankService {
     private final RankRepository rankRepository;
     private final Integer LOWEST_RANK = 0;
 
+
     public Rank getByEarnings(int total_earnings) {
-        return rankRepository.findRankByTotalEarnings(total_earnings);
+        return rankRepository.findRankByRequiredCurrency(total_earnings);
     }
 
     public Rank getLowestRank() {
-        return rankRepository.findRankByTotalEarnings(LOWEST_RANK);
+        return rankRepository.findRankByRequiredCurrency(LOWEST_RANK);
     }
 
     public Rank save(Rank rank) {
