@@ -23,4 +23,9 @@ public class Course {
 
     @ManyToMany(mappedBy = "courses")
     private Set<Mentor> mentors;
+
+    public void removeMentorsFromCourse() {
+        mentors.forEach(mentor -> mentor.getCourses().remove(this));
+        this.mentors.clear();
+    }
 }

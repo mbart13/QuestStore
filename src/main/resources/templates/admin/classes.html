@@ -34,14 +34,30 @@
 
     <section class="course" th:each="course : ${courses}">
         <header class="header">
-            <h1 th:text="${course.name}">Classes</h1>
+            <h1 th:text="${course.name}">KRK.2020.02</h1>
         </header>
         <div class="course-body">
-            <p th:text="${course.name}"></p>
+            <form id="mentors-form" th:action="@{/courses/edit/{id}(id=${course.id})}" method="post">
+                <label class="heading" for="mentors">Assign Mentors</label><br>
+                <select id="mentors" name="mentor_id" multiple>
+                    <option th:each="mentor : ${mentors}" th:value="${mentor.id}"
+                            th:text="${mentor.firstName + ' ' + mentor.lastName}">
+                    </option>
+                </select>
+                <div>
+                    <button class="button-cta button-mentors">submit</button>
+                </div>
+
+            </form>
+
+            <div class="mentors-list">
+                <p class="heading">Mentors</p>
+                <ul th:each="courseMentor : ${course.mentors}">
+                    <li th:text="${courseMentor.firstName + ' ' + courseMentor.lastName}"></li>
+                </ul>
+            </div>
         </div>
     </section>
-
-
 
     <!-- End of page content-->
 

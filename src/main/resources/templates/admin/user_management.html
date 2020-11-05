@@ -31,7 +31,7 @@
                             th:onclick="sortTable(this.getAttribute('data-currentPage'), 'lastName', this.getAttribute('data-reverseSortDir'))">Last Name <i class="fa fa-sort"></i></th>
                         <th onclick="sortTable()" class="table-header" th:data-currentPage="${currentPage}" th:data-reverseSortDir="${reverseSortDir}"
                             th:onclick="sortTable(this.getAttribute('data-currentPage'), 'role', this.getAttribute('data-reverseSortDir'))">Role <i class="fa fa-sort"></i></th>
-                        <th>Action</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -55,19 +55,18 @@
                             <span class="action-btn"><a href="#">Edit</a> </span>
                             <span class="action-btn"><a href="#">Delete</a> </span>
                         </td>
-
                     </tr>
                     <tr th:each="user : ${users}">
-                        <th:block th:if="${!#strings.equals(user.username, principal)}">
-                            <td th:text="${user.id}"></td>
-                            <td th:text="${user.firstName}"></td>
-                            <td th:text="${user.lastName}"></td>
-                            <td th:text="${#strings.capitalize(#strings.substring(user.role.toLowerCase(), 5, user.role.length()))}"></td>
-                            <td class="actions">
-                                <span class="action-btn"><a href="#" th:href="@{/users/edit/{id}(id=${user.id})}">Edit</a></span>
-                                <span class="action-btn"><a href="#" th:href="@{/users/{id}/delete(id=${user.id})}">Delete</a></span>
-                            </td>
-                        </th:block>
+                        <td th:text="${user.id}"></td>
+                        <td th:text="${user.firstName}"></td>
+                        <td th:text="${user.lastName}"></td>
+                        <td th:text="${#strings.capitalize(#strings.substring(user.role.toLowerCase(), 5, user.role.length()))}"></td>
+                        <td class="actions" >
+                            <span th:if="${!#strings.equals(user.username, principal)}"
+                                  class="action-btn"><a href="#" th:href="@{/users/edit/{id}(id=${user.id})}">Edit</a></span>
+                            <span th:if="${!#strings.equals(user.username, principal)}"
+                                  class="action-btn"><a href="#" th:href="@{/users/{id}/delete(id=${user.id})}">Delete</a></span>
+                        </td>
                     </tr>
                 </tbody>
             </table>

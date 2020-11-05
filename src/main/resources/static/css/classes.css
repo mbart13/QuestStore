@@ -16,12 +16,20 @@
     text-align: center;
 }
 
-.new-course {
+.new-course,.course-body  {
     background-color: #d3d3d3;
     margin: .3em;
-    padding: .6em;
+    padding: 1em;
     text-align: center;
 }
+
+.course-body {
+    display: flex;
+    align-content: center;
+    text-align: center;
+    justify-content: space-evenly;
+}
+
 .new-course label {
     padding: .3em;
     font-size: 1.2em;
@@ -32,10 +40,19 @@
     border: none;
     outline: none;
     font-size: 1em;
-    padding: .3em;
+    padding: .5em;
     min-width: 50%;
     border-radius: 4px;
     margin-bottom: .8em;
+}
+
+.course-body select {
+    height: 8em;
+    width: 15em;
+}
+
+.course-body form {
+    text-align: center;
 }
 
 .button-cta {
@@ -43,4 +60,27 @@
     width: 20%;
     margin: 0 auto;
     font-size: .8em;
+}
+
+.buttons {
+    margin: auto 0;
+}
+
+.button-mentors {
+    width: 50%;
+    font-size: .7em;
+    margin-top: .5em;
+}
+
+.heading {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.mentors-list ul {
+    list-style: none;
+}
+
+.hidden {
+    display: none;
 }
