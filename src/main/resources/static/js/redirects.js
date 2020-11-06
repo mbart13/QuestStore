@@ -45,3 +45,7 @@ function goToClasses() {
 function deleteClass(id) {
     window.location.replace(`/courses/${id}`);
 }
+
+function goToRanksNew() {
+    window.location.replace("/rank/new");
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../static/css/styles.css" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="../../static/assets/font-awesome-4.7.0/css/font-awesome.min.css" th:href="@{/assets/font-awesome-4.7.0/css/font-awesome.min.css}">
+    <link rel="stylesheet" href="../../static/css/form.css" th:href="@{/css/form.css}">
+    <title> Edit Rank </title>
+
+</head>
+
+<body>
+    <script src="../../static/js/init.js" th:src="@{/js/init.js}"></script>
+    <script src="../../static/js/header.js" th:src="@{/js/header.js}"></script>
+
+    <!-- Page content goes here-->
+
+    <div class="form-container">
+        <h1 class="header"><i title="Go Back" th:onclick="goToUsers()" class="fa fa-arrow-left"></i> Edit User</h1>
+
+        <div class="form-body">
+            <div class="form">
+                <form th:action="@{/users/edit/{id}(id=${userDto.id})}" method="post" th:object="${userDto}">
+                    <input type="hidden" th:field="*{id}">
+                    <input type="hidden" th:field="*{role}">
+                    <div class="form-item">
+                        <label for="name">First Name:</label><br>
+                        <input class="input-field" id="name" th:field="*{firstName}" type="text" placeholder="Enter first name" required>
+                        <p class="error" th:each="error : ${#fields.errors('firstName')}"
+                           th:text="${error}">Validation error</p>
+                    </div>
+                    <div class="form-item">
+                        <label for="surname">Last Name:</label><br>
+                        <input class="input-field" id="surname" th:field="*{lastName}" type="text" placeholder="Enter last name" required>
+                        <p class="error" th:each="error : ${#fields.errors('lastName')}"
+                           th:text="${error}">Validation error</p>
+                    </div>
+                    <div class="form-item">
+                        <label for="email">Email:</label><br>
+                        <input class="input-field" id="email" th:field="*{email}"
+                               type="email" placeholder="Enter email" required>
+                        <p class="error" th:each="error : ${#fields.errors('email')}"
+                           th:text="${error}">Validation error</p>
+                    </div>
+                    <button type="submit">Save</button>
+                </form>
+                <form th:action="@{/users/edit/{id}/reset-password(id=${userDto.id})}" method="post">
+                    <button id="reset-button">Reset Password</button>
+                </form>
+                <div th:if="${userUpdated}" class="message">
+                    <p class="success"><i class="fa fa-check"></i> User Updated</p>
+                </div>
+                <div th:if="${password != null}" class="message">
+                    <p class="success"><i class="fa fa-check"></i> Password Reset</p>
+                    <p class="success password" th:text="'New password: ' + ${password}"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- End of page content-->
+
+    <script src="../../static/js/footer.js" th:src="@{/js/footer.js}"></script>
+    <script src="../../static/js/redirects.js" th:src="@{/js/redirects.js}"></script>
+
+</body>
+
+</html>

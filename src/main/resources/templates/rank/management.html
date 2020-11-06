@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../static/css/styles.css" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="../../static/assets/font-awesome-4.7.0/css/font-awesome.min.css" th:href="@{/assets/font-awesome-4.7.0/css/font-awesome.min.css}">
+    <link rel="stylesheet" href="../../static/css/rank_management.css" th:href="@{/css/rank_management.css}">
+    <title>Rank Management</title>
+</head>
+
+<body>
+<script src="../../static/js/init.js" th:src="@{/js/init.js}"></script>
+<script src="../../static/js/header.js" th:src="@{/js/header.js}"></script>
+
+<div class="rank-list">
+
+<!--    <h1 class="header"><i title="Go Back" th:onclick="goToProfile()" class="fa fa-arrow-left profile"></i> Students </h1>-->
+
+    <h1 class="header"><i title="Go Back" th:onclick="goToProfile()" class="fa fa-arrow-left profile"></i> Ranks <span title="Create User" ><i class="fa fa-plus" onclick="goToRanksNew()" th:onclick="goToRanksNew()"></i></span></h1>
+
+
+    <div class="users-table">
+        <table>
+            <thead>
+            <tr>
+                <th class="table-header">ID</th>
+                <th class="table-header">Rank Name</th>
+                <th class="table-header">Required Currency</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tr>
+            <tr th:each="rank : ${ranks}">
+                <td th:text="${rank.id}"></td>
+                <td th:text="${rank.name}"></td>
+                <td th:text="${rank.requiredCurrency}"></td>
+                <td class="actions" >
+                    <span class="action-btn"><a href="#" th:href="@{/rank/edit/{id}(id=${rank.id})}">Edit</a></span>
+                    <span class="action-btn"><a href="#" th:href="@{/rank/{id}/delete(id=${rank.id})}">Delete</a></span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="../../static/js/footer.js" th:src="@{/js/footer.js}"></script>
+<script src="../../static/js/redirects.js" th:src="@{/js/redirects.js}"></script>
+
+</body>
+
+</html>
