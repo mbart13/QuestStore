@@ -4,7 +4,7 @@ document.write(`
     <div id="header">
         <div id="header-left">
             <h1>Quest Store</h1>
-            <div >
+            <div class="search-field-wrapper">
                 <input type="text" class="search-field">
             </div>
         </div>
