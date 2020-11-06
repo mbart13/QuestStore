@@ -7,12 +7,11 @@
     margin-bottom: .5em;
 }
 
-.header h1 {
+.header h1, .course-header h1 {
     color: #d3d3d3;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-family: "BLAME Regular", sans-serif;
     margin: .2em .5em;
-    padding: .3em;
     text-align: center;
 }
 
@@ -69,7 +68,7 @@
 .button-mentors {
     width: 50%;
     font-size: .7em;
-    margin-top: .5em;
+    margin-top: 1em;
 }
 
 .heading {
@@ -83,4 +82,29 @@
 
 .hidden {
     display: none;
+}
+
+.fa-arrow-left {
+    margin-top: .3em;
+    float: left;
+}
+
+.fa-arrow-left:hover {
+    color: white;
+    cursor: pointer;
+}
+
+.course-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.fa-trash-o:hover {
+    color: white;
+    cursor: pointer;
+    align-items: center;
+}
+
+#delete {
+    margin: 0 .5em;
 }

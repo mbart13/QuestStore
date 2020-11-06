@@ -21,6 +21,7 @@ public class CourseController {
 
     private final CourseService courseService;
     private final MentorService mentorService;
+    private static final String REDIRECT_TO_COURSES = "redirect:/courses";
 
     @GetMapping
     public String index(Model model) {
@@ -35,11 +36,12 @@ public class CourseController {
         Course course = new Course();
         course.setName(courseDto.getName());
         courseService.save(course);
-        return "redirect:/courses";
+        return REDIRECT_TO_COURSES;
     }
 
     @PostMapping("/edit/{id}")
-    public String assignMentors(@PathVariable("id") Long id, @RequestParam(value = "mentor_id", defaultValue = "") String[] mentorsIds) {
+    public String assignMentors(@PathVariable("id") Long id,
+                                @RequestParam(value = "mentor_id", defaultValue = "") String[] mentorsIds) {
         Course course = courseService.findById(id);
         List<Mentor> mentors = Arrays.stream(mentorsIds)
                                     .map(Long::valueOf)
@@ -50,6 +52,14 @@ public class CourseController {
         mentors.forEach(mentor -> mentor.getCourses().add(course));
         courseService.save(course);
 
-        return "redirect:/courses";
+        return REDIRECT_TO_COURSES;
+    }
+
+    @GetMapping("/{id}")
+    public String deleteClass(@PathVariable Long id) {
+        Course course = courseService.findById(id);
+        course.removeMentorsFromCourse();
+        courseService.delete(course);
+        return REDIRECT_TO_COURSES;
     }
 }
