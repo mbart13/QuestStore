@@ -30,6 +30,11 @@ public class Course {
         this.mentors.clear();
     }
 
+    public void removeStudentsFromClass() {
+        students.forEach(student -> student.setCourse(null));
+        this.students.clear();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

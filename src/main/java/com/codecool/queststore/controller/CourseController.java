@@ -32,7 +32,7 @@ public class CourseController {
     }
 
     @PostMapping
-    public String addNew(@ModelAttribute @Valid CourseDto courseDto, BindingResult bindingResult, Model model) {
+    public String addNew(@ModelAttribute @Valid CourseDto courseDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "admin/classes";
         }
@@ -53,6 +53,7 @@ public class CourseController {
     @PostMapping("/edit/{id}")
     public String assignMentorsToClass(@PathVariable("id") Long id,
                                        @RequestParam(value = "mentor_id", defaultValue = "") String[] mentorsIds) {
+
         Course course = courseService.findById(id);
         course.removeMentorsFromCourse();
         List<Mentor> mentors = Arrays.stream(mentorsIds)
@@ -72,6 +73,7 @@ public class CourseController {
     public String deleteClass(@PathVariable Long id) {
         Course course = courseService.findById(id);
         course.removeMentorsFromCourse();
+        course.removeStudentsFromClass();
         courseService.delete(course);
         return REDIRECT_TO_COURSES;
     }

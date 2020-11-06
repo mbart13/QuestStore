@@ -54,8 +54,8 @@
 
                 <div>
                     <h1 class="heading">Students:</h1>
-                    <div>
-                        <p></p>
+                    <div th:each="student : ${course.students}">
+                        <p th:text="${student.firstName + ' ' + student.lastName}"></p>
                     </div>
                 </div>
             </div>

@@ -38,19 +38,24 @@ VALUES
 (19, 'Tomasz', 'Biernacki', 'tomasz1', null,'ROLE_STUDENT', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
 (20, 'Konrad', 'Wallenrod', 'konrad1', null,'ROLE_MENTOR', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy');
 
-insert into students (current_balance, rank, module, total_earnings, user_id)
+insert into courses (id, name)
 values
-(1000, 'Samurai', 'Web', 2000, 3),
-(500, 'Samurai', 'Web', 2500, 4),
-(2200, 'Samurai', 'Web', 3200, 8),
-(1500, 'Samurai', 'Web', 1500, 11),
-(3000, 'Samurai', 'Web', 4300, 12),
-(1700, 'Samurai', 'Web', 2000, 13),
-(1500, 'Samurai', 'Web', 2000, 14),
-(2500, 'Samurai', 'Web', 3500, 15),
-(1500, 'Samurai', 'Web', 2000, 16),
-(3000, 'Samurai', 'Web', 4000, 17),
-(1500, 'Samurai', 'Web', 5000, 18);
+(1, 'KRK.2019.10'),
+(2, 'KRK.2020.02');
+
+insert into students (current_balance, rank, module, total_earnings, user_id, course_id)
+values
+(1000, 'Samurai', 'Web', 2000, 3, 2),
+(500, 'Samurai', 'Web', 2500, 4,2),
+(2200, 'Samurai', 'Web', 3200, 8, 2),
+(1500, 'Samurai', 'Web', 1500, 11, 1),
+(3000, 'Samurai', 'Web', 4300, 12, 1),
+(1700, 'Samurai', 'Web', 2000, 13, 2),
+(1500, 'Samurai', 'Web', 2000, 14, 1),
+(2500, 'Samurai', 'Web', 3500, 15, 1),
+(1500, 'Samurai', 'Web', 2000, 16, 2),
+(3000, 'Samurai', 'Web', 4000, 17, 1),
+(1500, 'Samurai', 'Web', 5000, 18, 2);
 
 insert into mentors (user_id)
 values
@@ -61,10 +66,7 @@ values
 (9),
 (10);
 
-insert into courses (id, name)
-values
-(1, 'KRK.2019.10'),
-(2, 'KRK.2020.02');
+
 
 
 insert into mentor_courses (mentor_id, course_id)
