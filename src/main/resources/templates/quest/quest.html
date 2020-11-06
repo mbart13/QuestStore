@@ -50,21 +50,32 @@
                     </div>
                 </div>
             </div>
-            <form id="qform" th:action="@{/student-quests}" method="post">
                 <div class="basic-section" id="qform-queries">
                     <div class="qform-querry">
                         <p><span th:text="${quest.instruction}">instruction</span></p>
-                        <textarea id="student-answer" class="input-field" rows="5" cols="50"
-                                  th:name="questAnswer"></textarea>
+                        <textarea form="qform" id="student-answer" class="input-field" rows="5" cols="50"
+                                  th:name="questAnswer" th:inline="text">[[${assignment?.answer}]]</textarea>
                     </div>
                 </div>
-                <div class="basic-section button-area">
-                    <button class="qsubmit" type="submit"
-                            th:name="questId" th:value="${quest.getId()}">Start quest</button>
+                <div class="basic-section button-area" th:if="${assignment == null}">
+                    <form id="qform" th:action="@{/student-quests}" method="post">
+                        <button class="qsubmit" type="submit"
+                                th:name="questId" th:value="${quest.getId()}">Start quest</button>
+                    </form>
                 </div>
-            </form>
-            <div class="basic-section button-area">
+                <div class="basic-section button-area" th:if="${assignment != null}">
+                    <form id="qform" th:action="@{/student-quests/{id}(id=${assignment.id})}" method="post">
+                        <button class="qsubmit" type="submit"
+                                th:name="questId" th:value="${quest.getId()}">Update quest</button>
+                    </form>
+                </div>
+            <div class="basic-section button-area" th:if="${assignment == null}">
                 <form action="/quests">
+                    <button class="qsubmit" type="submit">Go back</button>
+                </form>
+            </div>
+            <div class="basic-section button-area" th:if="${assignment != null}">
+                <form action="/student/profile-page">
                     <button class="qsubmit" type="submit">Go back</button>
                 </form>
             </div>

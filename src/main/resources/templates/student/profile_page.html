@@ -80,8 +80,8 @@
                             <td th:text="${studentQuest.id}"></td>
                             <td th:text="${studentQuest.quest.name}"></td>
                             <td class="actions">
-                                <span class="action-btn"><a href="#" th:href="@{/student-quests/answer/{id}(id=${studentQuest.id})}">Edit</a> </span>
-                                <span class="action-btn"><a href="#" th:href="@{/quest/delete/{id}(id=${studentQuest.id})}">Abandon</a> </span>
+                                <span class="action-btn"><a href="#" th:href="@{/student-quests/{id}(id=${studentQuest.id})}">Edit</a> </span>
+                                <span class="action-btn"><a href="#" th:href="@{/student-quests/delete/{id}(id=${studentQuest.id})}">Abandon</a> </span>
                             </td>
                         </tr>
                         </tbody>
@@ -116,7 +116,7 @@
                         <td th:text="${studentQuest.id}"></td>
                         <td th:text="${studentQuest.quest.name}"></td>
                         <td class="actions">
-                            <span class="action-btn"><a href="#" th:href="@{/quest/answer/{id}(id=${studentQuest.id})}">View</a> </span>
+                            <span class="action-btn"><a href="#" th:href="@{/student-quests/{id}(id=${studentQuest.id})}">View</a> </span>
                         </td>
                     </tr>
                     </tbody>

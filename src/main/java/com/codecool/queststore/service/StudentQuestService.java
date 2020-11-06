@@ -6,10 +6,8 @@ import com.codecool.queststore.model.StudentQuest;
 import com.codecool.queststore.repository.StudentQuestRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Random;
-import java.util.Set;
+
+import java.util.*;
 
 @AllArgsConstructor
 @Service
@@ -18,6 +16,8 @@ public class StudentQuestService {
     private final Random random = new Random();
 
     public StudentQuest save(StudentQuest studentQuest) {return studentQuestRepository.save(studentQuest); }
+
+    public Optional<StudentQuest> findById(Long id) {return studentQuestRepository.findById(id); }
 
     public List<StudentQuest> findByUserId(Long id) { return studentQuestRepository.findByStudentId(id); }
 
@@ -71,5 +71,12 @@ public class StudentQuestService {
             }
         }
         return completedBy;
+    }
+
+    public void updateStudentQuest(Long id, String answer) {
+        StudentQuest studentQuest = studentQuestRepository.findById(id).get();
+        studentQuest.setAnswer(answer);
+
+        this.save(studentQuest);
     }
 }
