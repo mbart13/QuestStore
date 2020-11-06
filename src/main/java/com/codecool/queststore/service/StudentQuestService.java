@@ -79,4 +79,8 @@ public class StudentQuestService {
 
         this.save(studentQuest);
     }
+
+    public void deleteById(Long id) {
+        studentQuestRepository.deleteById(id);
+    }
 }

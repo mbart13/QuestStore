@@ -29,6 +29,12 @@ public class StudentQuestController {
         return "quest/quest";
     }
 
+    @GetMapping("delete/{id}")
+    public String deleteQuest(@PathVariable(name="id") Long id) {
+        studentQuestService.deleteById(id);
+        return "redirect:/student/profile-page";
+    }
+
     @PostMapping
     public String startQuest(@RequestParam("questId") Long id,
                              @RequestParam("questAnswer") String answer,
@@ -43,7 +49,7 @@ public class StudentQuestController {
     public String upadateQuest(@PathVariable(name="id") Long id,
                                @RequestParam("questAnswer") String answer) {
         studentQuestService.updateStudentQuest(id, answer);
-        return "quest/quest_submission";
+        return "redirect:/student/profile-page";
     }
 
     @GetMapping("review")
