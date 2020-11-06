@@ -63,18 +63,20 @@ values
 
 insert into courses (id, name)
 values
-(1, 'WAW.2019.10'),
-(2, 'KRK.2019.10'),
-(3, 'WAW.2020.02'),
-(4, 'KRK.2020.02'),
-(5, 'KRK.2020.05');
+(1, 'KRK.2019.10'),
+(2, 'KRK.2020.02');
+
 
 insert into mentor_courses (mentor_id, course_id)
 values
+(2, 1),
 (2, 2),
-(2, 3),
+(5, 1),
 (5, 2),
-(5, 3);
+(6, 1),
+(6, 2),
+(7, 1),
+(7, 2);
 
 insert into student_quests (id, answer, is_completed, quest_id, user_id)
 values

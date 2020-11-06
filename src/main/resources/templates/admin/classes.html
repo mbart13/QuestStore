@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../../static/css/styles.css" th:href="@{/css/styles.css}">
     <link rel="stylesheet" href="../../static/assets/font-awesome-4.7.0/css/font-awesome.min.css" th:href="@{/assets/font-awesome-4.7.0/css/font-awesome.min.css}">
     <link rel="stylesheet" href="../../static/css/classes.css" th:href="@{/css/classes.css}">
+
 </head>
 
 <body>
@@ -21,10 +22,12 @@
         <div class="new-course">
             <form action="/courses" method="post" th:object="${courseDto}">
                 <div>
-                    <label for="course">Add New Class</label>
+                    <label for="name">Add New Class</label>
                 </div>
-                <div>
-                    <input type="text" id="course" th:field="*{name}">
+                <div class="name">
+                    <input type="text" id="name" th:field="*{name}">
+                    <p class="error" th:each="error : ${#fields.errors('name')}"
+                       th:text="${error}">Validation error</p>
                 </div>
 
                 <button class="button-cta">Save</button>
@@ -41,27 +44,27 @@
                 id="delete" title="Delete"><i class="fa fa-trash-o"></i></h1>
         </header>
         <div class="course-body">
-            <form id="mentors-form" th:action="@{/courses/edit/{id}(id=${course.id})}" method="post">
+            <div class="persons">
                 <div>
-                    <label class="heading" for="mentors">Assign Mentors</label><br>
-                    <select id="mentors" name="mentor_id" multiple>
-                        <option th:each="mentor : ${mentors}" th:value="${mentor.id}"
-                                th:text="${mentor.firstName + ' ' + mentor.lastName}">
-                        </option>
-                    </select>
+                    <h1 class="heading" >Mentors:</h1>
+                    <div th:each="courseMentor : ${course.mentors}">
+                        <p th:text="${courseMentor.firstName + ' ' + courseMentor.lastName}"></p>
+                    </div>
                 </div>
-                <div>
-                    <button class="button-cta button-mentors">submit</button>
-                </div>
-            </form>
 
-            <div class="mentors-list">
-                <p class="heading">Mentors</p>
-                <div class="row" th:each="courseMentor : ${course.mentors}">
-                    <p th:text="${courseMentor.firstName + ' ' + courseMentor.lastName}"></p>
+                <div>
+                    <h1 class="heading">Students:</h1>
+                    <div>
+                        <p></p>
+                    </div>
                 </div>
             </div>
+            <div class="edit-button" >
+                <a class="button-cta" th:href="@{/courses/edit/{id}(id=${course.id})}">Edit</a>
+            </div>
         </div>
+
+
     </section>
 
     <!-- End of page content-->
