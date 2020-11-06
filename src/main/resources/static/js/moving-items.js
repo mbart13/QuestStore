@@ -1,4 +1,4 @@
-const submitFormButton = document.querySelector("#mentors-form");
+const submitForm = document.querySelector("#mentors-form");
 
 $(function() {
     $("#right-arrow").click(function() {
@@ -14,7 +14,7 @@ $(function() {
     });
 });
 
-submitFormButton.addEventListener("submit", function(e) {
+submitForm.addEventListener("submit", function(e) {
     e.preventDefault();
     const elements = document.querySelector("#right-box").options;
     for (let elem of elements) {
