@@ -10,6 +10,9 @@
 </head>
 
 <body class="page welcome-page">
+
+<script src="../../static/js/init.js" th:src="@{/js/init.js}"></script>
+
     <div class="main-section-container">
         <div class="main-section">
             <div class="main-section-item title">
@@ -36,6 +39,7 @@
                                    name="username"
                                    type="text"
                                    placeholder="username"
+                                   autofocus
                                    required>
                         </div>
                         <div class="input-item">
@@ -60,7 +64,7 @@
                 </form>
                 <form  method="get">
                     <div class="forgotten-password-btn-container">
-                        <a class="btn-main-page btn-forgotten-password" href="forgotten_password.html" th:href="@{/forgotten-password/form}">Forgotten password</a>
+                        <a class="btn-main-page btn-forgotten-password" href="forgotten_password.html" th:href="@{/forgotten-password}">Forgotten password</a>
                     </div>
                 </form>
                 <form  method="get">

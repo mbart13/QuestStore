@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/html">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -22,43 +22,42 @@
 
         <div class="form-body">
             <div class="form">
-                <form th:action="@{/users/edit/{id}(id=${user.id})}" method="post" th:object="${user}">
+                <form th:action="@{/users/edit/{id}(id=${userDto.id})}" method="post" th:object="${userDto}">
                     <input type="hidden" th:field="*{id}">
                     <input type="hidden" th:field="*{role}">
                     <div class="form-item">
                         <label for="name">First Name:</label><br>
                         <input class="input-field" id="name" th:field="*{firstName}" type="text" placeholder="Enter first name" required>
+                        <p class="error" th:each="error : ${#fields.errors('firstName')}"
+                           th:text="${error}">Validation error</p>
                     </div>
                     <div class="form-item">
                         <label for="surname">Last Name:</label><br>
                         <input class="input-field" id="surname" th:field="*{lastName}" type="text" placeholder="Enter last name" required>
+                        <p class="error" th:each="error : ${#fields.errors('lastName')}"
+                           th:text="${error}">Validation error</p>
                     </div>
                     <div class="form-item">
                         <label for="email">Email:</label><br>
-                        <input class="input-field" id="email" th:field="*{email}" th:value="${user.email}"
+                        <input class="input-field" id="email" th:field="*{email}"
                                type="email" placeholder="Enter email" required>
+                        <p class="error" th:each="error : ${#fields.errors('email')}"
+                           th:text="${error}">Validation error</p>
                     </div>
                     <button type="submit">Save</button>
                 </form>
-                <form th:action="@{/users/edit/{id}/reset-password(id=${user.id})}" method="post">
+                <form th:action="@{/users/edit/{id}/reset-password(id=${userDto.id})}" method="post">
                     <button id="reset-button">Reset Password</button>
                 </form>
-                <div th:if="${error_msg}" class="message">
-                    <p class="error">fields cannot be blank!</p>
-                </div>
-                <div th:if="${user_updated}" class="message">
-                    <p class="success"><i class="fa fa-check"></i> user updated</p>
+                <div th:if="${userUpdated}" class="message">
+                    <p class="success"><i class="fa fa-check"></i> User Updated</p>
                 </div>
                 <div th:if="${password != null}" class="message">
-                    <p class="success"><i class="fa fa-check"></i> password reset</p>
-                    <p class="success password" th:text="'new password: ' + ${password}"></p>
+                    <p class="success"><i class="fa fa-check"></i> Password Reset</p>
+                    <p class="success password" th:text="'New password: ' + ${password}"></p>
                 </div>
-
             </div>
-
         </div>
-
-
     </div>
 
 

@@ -33,7 +33,4 @@ public class LoginRedirectController {
         return redirectView;
 
     }
-
-
-
 }

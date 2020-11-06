@@ -22,21 +22,27 @@
 
         <div class="form-body">
             <div class="form">
-                <form th:action="@{/users}" method="post" th:object="${user}">
+                <form th:action="@{/users}" method="post" th:object="${userDto}">
                     <div class="form-item">
                         <label for="name">First Name:</label><br>
-                        <input class="input-field" id="name" th:field="*{firstName}" th:value="${user.firstName}"
+                        <input class="input-field" id="name" th:field="*{firstName}"
                                type="text" placeholder="Enter first name" required>
+                        <p class="error" th:each="error : ${#fields.errors('firstName')}"
+                           th:text="${error}">Validation error</p>
                     </div>
                     <div class="form-item">
                         <label for="surname">Last Name:</label><br>
-                        <input class="input-field" id="surname" th:field="*{lastName}" th:value="${user.lastName}"
+                        <input class="input-field" id="surname" th:field="*{lastName}"
                                type="text" placeholder="Enter last name" required>
+                        <p class="error" th:each="error : ${#fields.errors('lastName')}"
+                           th:text="${error}">Validation error</p>
                     </div>
                     <div class="form-item">
-                        <label for="surname">Email:</label><br>
-                        <input class="input-field" id="email" th:field="*{email}" th:value="${user.email}"
+                        <label for="email">Email:</label><br>
+                        <input class="input-field" id="email" th:field="*{email}"
                                type="email" placeholder="Enter email" required>
+                        <p class="error" th:each="error : ${#fields.errors('email')}"
+                           th:text="${error}">Validation error</p>
                     </div>
                     <div class="form-item">
                         <label for="role">Role:</label><br>
@@ -46,16 +52,10 @@
                             <option th:field="*{role}" value="ROLE_MENTOR">Mentor</option>
                             <option th:field="*{role}" value="ROLE_STUDENT">Student</option>
                         </select>
+                        <p class="error" th:each="error : ${#fields.errors('role')}"
+                           th:text="${error}">Validation error</p>
                     </div>
                     <button type="submit">Save User</button>
-                    <div th:if="${error != null}" class="message">
-                        <p class="error">Fields can't be blank!</p>
-                    </div>
-                    <div th:if="${newUser != null || password != null}" class="message">
-                        <p class="success"><i class="fa fa-check"></i> user created</p>
-                        <p class="credentials" th:text="'Username: ' + ${newUser.username}">username</p>
-                        <p class="credentials" th:text="'Password: ' + ${password}">password</p>
-                    </div>
                 </form>
             </div>
         </div>

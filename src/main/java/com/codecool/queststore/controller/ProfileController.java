@@ -6,15 +6,11 @@ import com.codecool.queststore.service.ImageService;
 import com.codecool.queststore.service.UserService;
 import lombok.AllArgsConstructor;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
-import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
@@ -22,45 +18,33 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.security.Principal;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @Controller
 @RequestMapping("/{role}/profile-page")
-public class ProfileController implements WebMvcConfigurer {
+public class ProfileController {
 
     private final UserService userService;
     private final ImageService imageService;
 
     @GetMapping("/edit")
     public String showEditForm(Model model) {
-        model.addAttribute("password", new PasswordDto());
+        model.addAttribute("passwordDto", new PasswordDto());
         return "profile/change_password";
     }
 
     @PostMapping("/edit")
     public String updatePassword(@ModelAttribute @Valid PasswordDto passwordDto, BindingResult bindingResult,
-                                 RedirectAttributes attributes, Principal principal) {
+                                 Model model, Principal principal) {
 
         User user = userService.findByUsername(principal.getName());
-        String role = user.getRole().substring(5).toLowerCase();
-        String redirect = "redirect:/" + role + "/profile-page/edit";
-
-        if (bindingResult.hasErrors()) {
-            List<ObjectError> errors = bindingResult.getAllErrors();
-            Set<String> errorMessages = errors.stream()
-                    .map(DefaultMessageSourceResolvable::getDefaultMessage)
-                    .collect(Collectors.toSet());
-            attributes.addFlashAttribute("error_messages", errorMessages);
-        } else {
-            userService.changeUserPassword(user, passwordDto.getNewPassword());
-            userService.save(user);
-            attributes.addFlashAttribute("password_updated", true);
+        model.addAttribute("password", passwordDto);
+        if (!bindingResult.hasErrors()) {
+            userService.resetUserPassword(user, passwordDto.getNewPassword());
+            model.addAttribute("passwordUpdated", Boolean.TRUE);
         }
 
-        return redirect;
+        return "profile/change_password";
     }
 
     @GetMapping("/image-form")
@@ -73,7 +57,7 @@ public class ProfileController implements WebMvcConfigurer {
         imageService.saveImage(file, principal.getName());
         User user = userService.findByUsername(principal.getName());
         String role = user.getRole().substring(5).toLowerCase();
-        return "redirect:/" + role + "/profile-page";
+        return String.format("redirect:/%s/profile-page", role);
     }
 
     @GetMapping("/image")

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Browse quests </title>
+    <link rel="stylesheet" href="../../static/css/styles.css" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="../../static/css/review_quests.css" th:href="@{/css/review_quests.css}">
+</head>
+
+<body>
+<script src="../../static/js/init.js" th:src="@{/js/init.js}"></script>
+<script src="../../static/js/header.js" th:src="@{/js/header.js}"></script>
+
+<!-- Page content goes here-->
+<div class="quest" th:each="quest : ${quests}">
+    <div class="qheader">
+        <h1 class="qtitle"><span th:text="${quest.getQuest().name}">quest name</span></h1>
+        <h1 class="qtitle"><span th:text="${quest.getQuest().reward}">quest reward</span>CC</h1>
+    </div>
+    <div class="qcontent">
+        <div class="qinfo">
+            <div class="basic-section qdescription">
+                <div class="qbasic-info">
+                    <p class="short-description section-name">ID:</p>
+                    <p class="short-description"><span th:text="${quest.id}">quest id</span></p>
+                    <p class="short-description section-name">Instruction:</p>
+                    <p class="short-description"><span th:text="${quest.getQuest().shortDescription}">quest shortDescription</span></p>
+                    <p class="short-description section-name">Answer:</p>
+                    <p class="short-description"><span th:text="${quest.answer}">quest answer</span></p>
+                    <p class="short-description section-name">Submitted by:</p>
+                    <p class="short-description">
+                        <span th:text="${quest.getStudent().username}">student username</span>
+                    </p>
+                    <div class="button-area">
+                        <form class="qsubmit" id="qform" th:action="@{/student-quests/approve/{id}(id=${quest.id})}" method="post">
+                            <button type="submit"
+                                    th:name="questId" th:value="${quest.getId()}">Approve</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End of page content-->
+
+<script src="../../static/js/footer.js" th:src="@{/js/footer.js}"></script>
+<script src="../../static/js/redirects.js" th:src="@{/js/redirects.js}"></script>
+
+</body>
+
+</html>

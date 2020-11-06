@@ -58,33 +58,70 @@
             <a class="button-cta" href="#" th:href="@{/quests}">Quests</a>
         </div>
     </div>
-    <div class="backpack">
-        <div class="aux-container">
-            <p class="container-title">Backpack</p>
-            <div th:if="${studentItems.isEmpty()}" class="user-info-item">
-                <p>Empty</p>
-            </div>
-            <div th:if="${not studentItems.isEmpty()}" class="user-info-item">
-                <ul class="items-list" th:each="studentItem : ${studentItems} ">
-                    <li th:text="${studentItem.item.name} + ' purchased on ' + ${studentItem.orderDate}" ></li>
-                </ul>
-            </div>
-        </div>
-        <div class="aux-container">
-            <p class="container-title">Completed assignments</p>
-            <div class="user-info-item">Assignments</div>
-        </div>
-    </div>
 
-    <div class="aux-container">
-        <p class="container-title">Quests</p>
-        <div th:if="${studentQuests.isEmpty()}" class="user-info-item">
-            <p>Empty</p>
+    <div class="lists">
+        <div class="column">
+            <div class="current-quests aux-container">
+                <p class="container-title">Active Quests</p>
+                <div th:if="${studentOngoingQuests.isEmpty()}" class="user-info-list">
+                    <p>Empty</p>
+                </div>
+                <div th:if="${not studentOngoingQuests.isEmpty()}" class="user-info-list">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th class="table-header">ID</th>
+                            <th class="table-header">Quest name</th>
+                            <th class="table-header">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="studentQuest : ${studentOngoingQuests} ">
+                            <td th:text="${studentQuest.id}"></td>
+                            <td th:text="${studentQuest.quest.name}"></td>
+                            <td class="actions">
+                                <span class="action-btn"><a href="#" th:href="@{/student-quests/{id}(id=${studentQuest.id})}">Edit</a> </span>
+                                <span class="action-btn"><a href="#" th:href="@{/student-quests/delete/{id}(id=${studentQuest.id})}">Abandon</a> </span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="backpack aux-container">
+                <p class="container-title">Backpack</p>
+                <div th:if="${studentItems.isEmpty()}" class="user-info-item">
+                    <p>Empty</p>
+                </div>
+                <div th:if="${not studentItems.isEmpty()}" class="user-info-item">
+                    <ul class="items-list" th:each="studentItem : ${studentItems} ">
+                        <li th:text="${studentItem.item.name} + ' purchased on ' + ${studentItem.orderDate}" ></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div th:if="${not studentQuests.isEmpty()}" class="user-info-item">
-            <ul th:each="studentQuest : ${studentQuests} ">
-                <li th:text="${studentQuest.quest.name}"></li>
-            </ul>
+        <div class="completed-quests aux-container">
+            <p class="container-title">Completed quests</p>
+            <div class="user-info-list">
+                <table>
+                    <thead>
+                    <tr>
+                        <th class="table-header">ID</th>
+                        <th class="table-header">Quest name</th>
+                        <th class="table-header">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="studentQuest : ${studentCompletedQuests} ">
+                        <td th:text="${studentQuest.id}"></td>
+                        <td th:text="${studentQuest.quest.name}"></td>
+                        <td class="actions">
+                            <span class="action-btn"><a href="#" th:href="@{/student-quests/{id}(id=${studentQuest.id})}">View</a> </span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 

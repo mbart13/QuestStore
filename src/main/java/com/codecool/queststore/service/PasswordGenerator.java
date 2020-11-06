@@ -9,7 +9,7 @@ public class PasswordGenerator {
 
     public String generateRandomPassword(int length) {
 
-        final String chars = "abcdefghijklmnopqrstuvwxyz0123456789!#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
+        final String chars = "abcdefghijklmnopqrstuvwxyz0123456789!#$%&*+-/?@^_";
 
         SecureRandom random = new SecureRandom();
         StringBuilder sb = new StringBuilder();

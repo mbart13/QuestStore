@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../static/css/styles.css" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="../../static/assets/font-awesome-4.7.0/css/font-awesome.min.css" th:href="@{/assets/font-awesome-4.7.0/css/font-awesome.min.css}">
+    <link rel="stylesheet" href="../../static/css/user_management.css" th:href="@{/css/user_management.css}">
+    <title>Student Management</title>
+</head>
+
+<body>
+    <script src="../../static/js/init.js" th:src="@{/js/init.js}"></script>
+    <script src="../../static/js/header.js" th:src="@{/js/header.js}"></script>
+
+    <div class="users-list">
+
+        <h1 class="header"><i title="Go Back" th:onclick="goToProfile()" class="fa fa-arrow-left profile"></i> Students </h1>
+
+        <div class="users-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="table-header">ID</th>
+                        <th oclass="table-header">First Name</th>
+                        <th class="table-header">Last Name</th>
+                        <th class="table-header">Module</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    </tr>
+                    <tr th:each="student : ${students}">
+                        <td th:text="${student.id}"></td>
+                        <td th:text="${student.firstName}"></td>
+                        <td th:text="${student.lastName}"></td>
+                        <td th:text="${student.module}"></td>
+                        <td class="actions">
+                            <span class="action-btn"><a href="#" th:href="@{/student/{id}/promote(id=${student.id})}">Promote</a> </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="../../static/js/footer.js" th:src="@{/js/footer.js}"></script>
+    <script src="../../static/js/redirects.js" th:src="@{/js/redirects.js}"></script>
+
+</body>
+
+</html>

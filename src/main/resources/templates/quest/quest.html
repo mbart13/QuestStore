@@ -39,26 +39,49 @@
                     <p id="more-inf-button">More info...</p>
                 </div>
                 <div class="basic-section" id="qdone-by">
-                    <p>Jose Moralez </p>
-                    <p>John Wick </p>
-                    <p>George Patton </p>
-                </div>
-            </div>
-            <form id="qform" th:action="@{/student-quests}" method="post">
-                <div class="basic-section" id="qform-queries">
-                    <div class="qform-querry">
-                        <p><span th:text="${quest.instruction}">instruction</span></p>
-                        <textarea id="student-answer" class="input-field" rows="5" cols="50"
-                                  th:name="questAnswer"></textarea>
+                    <div th:if= "${not #lists.isEmpty(completedBy)}">
+                        <p class="label">This quest has already been done by:</p>
+                        <div th:each="student : ${completedBy}">
+                            <p><span th:text="${student.username}">username</span></p>
+                        </div>
+                    </div>
+                    <div th:if= "${#lists.isEmpty(completedBy)}">
+                        <p class="label">Nobody has completed that quest yet</p>
                     </div>
                 </div>
-                <div class="basic-section button-area">
-                    <button class="qsubmit" type="submit"
-                            th:name="questId" th:value="${quest.getId()}">Start quest</button>
+            </div>
+                <div class="basic-section" id="qform-queries">
+                    <div th:if="${assignment == null or !assignment.getIsCompleted()}" class="qform-querry">
+                        <p><span th:text="${quest.instruction}">instruction</span></p>
+                        <textarea form="qform" id="student-answer" class="input-field" rows="5" cols="50"
+                                  th:name="questAnswer" th:inline="text">[[${assignment?.answer}]]</textarea>
+                    </div>
+                    <div th:if="${assignment != null and assignment.getIsCompleted()}" class="qform-querry">
+                        <p><span th:text="${quest.instruction}">instruction</span></p>
+                        <p><span th:text="${assignment.answer}">answer</span></p>
+                    </div>
                 </div>
-            </form>
-            <div class="basic-section button-area">
+                <div th:if="${assignment == null or !assignment.getIsCompleted()}">
+                    <div class="basic-section button-area" th:if="${assignment == null}">
+                        <form id="qform" th:action="@{/student-quests}" method="post">
+                            <button class="qsubmit" type="submit"
+                                    th:name="questId" th:value="${quest.getId()}">Start quest</button>
+                        </form>
+                    </div>
+                    <div class="basic-section button-area" th:if="${assignment != null}">
+                        <form id="qform" th:action="@{/student-quests/{id}(id=${assignment.id})}" method="post">
+                            <button class="qsubmit" type="submit"
+                                    th:name="questId" th:value="${quest.getId()}">Update quest</button>
+                        </form>
+                    </div>
+                </div>
+            <div class="basic-section button-area" th:if="${assignment == null}">
                 <form action="/quests">
+                    <button class="qsubmit" type="submit">Go back</button>
+                </form>
+            </div>
+            <div class="basic-section button-area" th:if="${assignment != null}">
+                <form action="/student/profile-page">
                     <button class="qsubmit" type="submit">Go back</button>
                 </form>
             </div>

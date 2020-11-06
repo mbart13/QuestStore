@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+                xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
     <meta charset="UTF-8">
@@ -22,11 +23,15 @@
             <table>
                 <thead>
                     <tr>
-                        <th class="table-header">ID <i class="fa fa-sort"></i></th>
-                        <th class="table-header">First Name <i class="fa fa-sort"></i></th>
-                        <th class="table-header">Last Name <i class="fa fa-sort"></i></th>
-                        <th class="table-header">Role <i class="fa fa-sort"></i></th>
-                        <th>Action</th>
+                        <th onclick="sortTable()" class="table-header" th:data-currentPage="${currentPage}" th:data-reverseSortDir="${reverseSortDir}"
+                            th:onclick="sortTable(this.getAttribute('data-currentPage'), 'id', this.getAttribute('data-reverseSortDir'))">ID <i class="fa fa-sort"></i></th>
+                        <th onclick="sortTable()" class="table-header" th:data-currentPage="${currentPage}" th:data-reverseSortDir="${reverseSortDir}"
+                            th:onclick="sortTable(this.getAttribute('data-currentPage'), 'firstName', this.getAttribute('data-reverseSortDir'))">First Name <i class="fa fa-sort"></i></th>
+                        <th onclick="sortTable()" class="table-header" th:data-currentPage="${currentPage}" th:data-reverseSortDir="${reverseSortDir}"
+                            th:onclick="sortTable(this.getAttribute('data-currentPage'), 'lastName', this.getAttribute('data-reverseSortDir'))">Last Name <i class="fa fa-sort"></i></th>
+                        <th onclick="sortTable()" class="table-header" th:data-currentPage="${currentPage}" th:data-reverseSortDir="${reverseSortDir}"
+                            th:onclick="sortTable(this.getAttribute('data-currentPage'), 'role', this.getAttribute('data-reverseSortDir'))">Role <i class="fa fa-sort"></i></th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -50,30 +55,47 @@
                             <span class="action-btn"><a href="#">Edit</a> </span>
                             <span class="action-btn"><a href="#">Delete</a> </span>
                         </td>
-
                     </tr>
                     <tr th:each="user : ${users}">
                         <td th:text="${user.id}"></td>
                         <td th:text="${user.firstName}"></td>
                         <td th:text="${user.lastName}"></td>
                         <td th:text="${#strings.capitalize(#strings.substring(user.role.toLowerCase(), 5, user.role.length()))}"></td>
-                        <td class="actions">
-                            <span class="action-btn"><a href="#" th:href="@{/users/edit/{id}(id=${user.id})}">Edit</a> </span>
-                            <span class="action-btn"><a href="#" th:href="@{/users/{id}(id=${user.id})}">Delete</a> </span>
+                        <td class="actions" >
+                            <span th:if="${!#strings.equals(user.username, principal)}"
+                                  class="action-btn"><a href="#" th:href="@{/users/edit/{id}(id=${user.id})}">Edit</a></span>
+                            <span th:if="${!#strings.equals(user.username, principal)}"
+                                  class="action-btn"><a href="#" th:href="@{/users/{id}/delete(id=${user.id})}">Delete</a></span>
                         </td>
                     </tr>
                 </tbody>
             </table>
             <div class="pagination">
-                <p>Showing <span class="current-page">1</span> of <span class="total-pages">1</span></p>
+                <div class="total-records">
+                    <p>Total Rows: <span th:text="${totalRecords}"></span></p>
+                </div>
+                <div>
+                    <a class="active prev" th:if="${currentPage > 1}" th:href="@{'/users/page/' + ${currentPage - 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}"><i class="fa fa-chevron-left"></i></a>
+                    <span class="inactive prev" th:unless="${currentPage > 1}"><i class="fa fa-chevron-left"></i></span>
+
+                    <span th:each="i : ${#numbers.sequence(1, totalPages)}">
+                        <a class="active" th:if="${currentPage != i}" th:href="@{'/users/page/' + ${i} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
+                        <span class="selected" th:unless="${currentPage != i}">[[${i}]]</span>
+                    </span>
+
+                    <a class="active next" th:if="${currentPage < totalPages}" th:href="@{'/users/page/' + ${currentPage + 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}"><i class="fa fa-chevron-right"></i></a>
+                    <span class="inactive next" th:unless="${currentPage < totalPages}"><i class="fa fa-chevron-right"></i></span>
+                </div>
+                <div class="page-number">
+                    <p>Showing <span class="current-page" th:text="${currentPage}">1</span> of <span class="total-pages" th:text="${totalPages}">1</span></p>
+                </div>
             </div>
         </div>
-
     </div>
 
     <script src="../../static/js/footer.js" th:src="@{/js/footer.js}"></script>
     <script src="../../static/js/redirects.js" th:src="@{/js/redirects.js}"></script>
-    <script src="../../static/js/sort-table.js" th:src="@{/js/sort-table.js}"></script>
+
 </body>
 
 </html>

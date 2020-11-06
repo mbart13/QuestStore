@@ -30,13 +30,30 @@
 
 .user-buttons {
     grid-area: right;
+    text-align: center;
+}
+
+.profile-icon {
+    margin: 1em;
+    padding: .5em;
+}
+
+.profile-icon p {
+    font-weight: bold;
+    font-size: 1.2em;
 }
 
 .user-stats, .user-data {
     grid-area: middle;
 }
 
-.user-buttons, .user-stats {
+.admin-links {
+    text-align: center;
+    display: grid;
+    align-content: center;
+}
+
+.user-buttons, .user-stats{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -49,7 +66,7 @@
     object-fit: contain;
 }
 
-.user-image, .user-buttons, .user-stats, .user-data {
+.user-image, .user-buttons, .user-stats, .user-data, .admin-links {
     background-color: #d3d3d3;
 }
 
@@ -85,19 +102,20 @@ hr.solid {
     inset 0 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
     padding: .2em .5em;
+    margin-top: 10px;
 }
 
 .backpack {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 10px;
-    margin-top: 10px;
     text-align: center;
     color: black;
 }
 
+.current-quests {
+    text-align: center;
+}
+
 .user-info-item {
-    background: #b2b2b2;
+    background: #d3d3d3;
     border: 1px solid rgba(0, 0, 0, 0.8);
     text-align: left;
     padding: 10px;
@@ -212,7 +230,7 @@ hr.solid {
     text-align: center;
 }
 
-.action-item:hover {
+.action-item:hover, .profile-icon:hover {
     box-shadow: 0 0 0 5px black;
     cursor: pointer;
 }
@@ -226,4 +244,51 @@ hr.solid {
     font-weight: bold;
     font-size: 1.2em;
     font-style: normal;
+}
+
+.lists {
+    display: flex;
+    flex-direction: row;
+}
+
+.lists > * {
+    flex-grow: 1;
+}
+
+.column {
+    margin-right: 5px;
+}
+
+.completed-quests {
+    margin-left: 5px;
+}
+
+table {
+    width: 100%;
+    border-spacing: 0;
+}
+
+thead {
+    background-color: #b2b2b2;
+    padding: 2em;
+    font-size: .9rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+tr:nth-child(even) {
+    background-color: #b2b2b2;
+}
+
+td {
+    padding: .35em;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.user-info-list {
+    background: #d3d3d3;
+    text-align: left;
+    color: black;
+    flex-grow: 1;
 }

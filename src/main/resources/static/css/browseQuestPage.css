@@ -70,6 +70,7 @@ p {
 .qdescription {
     display: flex;
     flex-direction: row;
+    width: 100%;
 }
 
 .qbasic-info {
@@ -77,10 +78,12 @@ p {
     flex-direction: column;
     align-items: center;
     margin-left: 0.5em;
+    flex-grow: 1;
 }
 
 .qicon {
-    flex-basis: 40%;
+    flex-basis: 15%;
+    flex-shrink: 0;
 }
 
 .qicon path {
@@ -103,6 +106,7 @@ p {
     font-size: 1.2em;
     padding: 0.5em 0.5em 0.5em;
     border: none;
+    margin-bottom: 0.7em;
 }
 
 .qsubmit button:hover {

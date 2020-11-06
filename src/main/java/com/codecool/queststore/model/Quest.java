@@ -23,4 +23,8 @@ public class Quest {
     private String instruction;
     private boolean isExtra;
 
+    public void setIsExtra(boolean isExtra) {
+        this.isExtra = isExtra;
+    }
 }
+

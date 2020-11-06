@@ -1,5 +1,6 @@
 package com.codecool.queststore.controller;
 
+import com.codecool.queststore.exceptions.UserNotFoundException;
 import com.codecool.queststore.model.User;
 import com.codecool.queststore.service.UserService;
 import lombok.AllArgsConstructor;
@@ -7,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -18,24 +20,27 @@ public class LostPasswordController {
 
     private final UserService userService;
 
-    @GetMapping("/form")
+    @GetMapping
     public String showForm() {
-        return "forgotten_password";
+        return "login/forgotten_password";
     }
 
-    @GetMapping
-    public String getPassword(@RequestParam("username") String username, Model model) {
+    @PostMapping
+    public String resetPassword(@RequestParam("username") String username, Model model) {
         User user = null;
         try {
             user = userService.findByUsername(username);
 
-        } catch (RuntimeException e) {
+        } catch (UserNotFoundException e) {
             log.info(String.format("There is no user with username '%s' in the database", username));
         }
         if (user != null) {
-            model.addAttribute("password", user.getPassword());
+            String password = userService.generateUserPassword();
+            userService.resetUserPassword(user, password);
+            model.addAttribute("newPassword", password);
         }
-        model.addAttribute("user_exists", user != null);
-        return "forgotten_password";
+        model.addAttribute("userExists", user != null);
+        model.addAttribute("username", username);
+        return "login/forgotten_password";
     }
 }

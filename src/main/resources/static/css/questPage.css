@@ -103,6 +103,8 @@ label {
 #qform {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 #qform-queries {
@@ -161,4 +163,8 @@ form {
     display: flex;
     flex-direction: column;
     flex-basis: 100%;
+}
+
+.label {
+    font-weight: bold;
 }

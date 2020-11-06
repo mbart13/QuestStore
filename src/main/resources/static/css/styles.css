@@ -57,6 +57,7 @@ body.page {
 #header-left {
   display: flex;
   flex-flow: row nowrap;
+  min-width: 0;
 }
 
 #header h1 {
@@ -65,6 +66,8 @@ body.page {
   color: #d3d3d3;
   align-self: center;
   padding: 0 0.7em;
+  flex-shrink: 0;
+  text-wrap: none;
 }
 
 .search-field {
@@ -73,6 +76,10 @@ body.page {
   max-width: 100%;
   clip-path: polygon(0 0, 95% 0, 100% 100%, 0% 100%);
   border-radius: 5px;
+  height: 100%;
+  font-size: 1.5em;
+  padding: .5em;
+  border: none;
 }
 
 .header-menu {
@@ -155,4 +162,8 @@ svg path {
 .button-cta:hover {
   background-color: #701f1f;
   color: white;
+}
+
+.search-field-wrapper {
+  min-width: 0;
 }

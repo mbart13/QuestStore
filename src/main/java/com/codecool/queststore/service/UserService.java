@@ -2,13 +2,16 @@ package com.codecool.queststore.service;
 
 import com.codecool.queststore.dto.UserConverter;
 import com.codecool.queststore.dto.UserDto;
+import com.codecool.queststore.exceptions.UserNotFoundException;
 import com.codecool.queststore.model.User;
 import com.codecool.queststore.repository.UserRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @AllArgsConstructor
 @Service
@@ -20,16 +23,21 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
     private static final int PASSWORD_LENGTH = 10;
 
-    public List<User> getAllUsers() {
-        return userRepository.findAll();
+    public Page<User> getAllUsersPaginated(int pageNumber, int pageSize, String sortField, String sortDirection) {
+        Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending() :
+                        Sort.by(sortField).descending();
+        Pageable pageable = PageRequest.of(pageNumber - 1, pageSize, sort);
+        return userRepository.findAll(pageable);
     }
 
     public User findById(Long id) {
-        return userRepository.findById(id).orElseThrow(() -> new RuntimeException("Entity not found"));
+        return userRepository.findById(id).orElseThrow(() ->
+                new UserNotFoundException(String.format("User with id = %d was not found", id)));
     }
 
     public User findByUsername(String username) {
-        return userRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("Entity not found"));
+        return userRepository.findByUsername(username).orElseThrow(() ->
+                new UserNotFoundException(String.format("User with username = %s was not found", username)));
     }
 
     public User save(User user) {
@@ -49,7 +57,7 @@ public class UserService {
     }
 
     public String generateUsername(User user) {
-        return String.format("%s%s%d", user.getFirstName(), user.getLastName(), this.getMaxId() + 1);
+        return String.format("%s%s%d", user.getFirstName().trim(), user.getLastName().trim(), getMaxId() + 1);
     }
 
     public String generateUserPassword() {
@@ -61,11 +69,12 @@ public class UserService {
         user.setUsername(generateUsername(user));
         user.setPassword(passwordEncoder.encode(password));
 
-        return this.save(user);
+        return save(user);
     }
 
-    public void changeUserPassword(User user, String password) {
+    public void resetUserPassword(User user, String password) {
         String hashedPassword = passwordEncoder.encode(password);
         user.setPassword(hashedPassword);
+        save(user);
     }
 }

@@ -1,0 +1,167 @@
+@import url("https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&display=swap");
+
+@font-face {
+    font-family: "BLAME Regular";
+    font-style: normal;
+    font-weight: normal;
+    src: url("../assets/the_blame.ttf") format("truetype");
+}
+
+h1 {
+    font-weight: normal;
+    user-select: none;
+}
+
+h2 {
+    font-size: 1.3em;
+}
+
+p {
+    font-size: 1.2em;
+}
+
+label {
+    font-size: 1.2em;
+}
+
+#content {
+}
+
+.basic-section {
+    background-color: #d3d3d3;
+    margin: 0.7% 0.7% 0 0.7%;
+    padding: 1%;
+}
+
+#quest{
+    background: linear-gradient(125.39deg, #001513 26.03%, #550609 49.2%, #001513 67.85%);
+    padding-bottom: 0.7%;
+}
+
+#qheader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.qtitle {
+    color: #d3d3d3;
+    font-family: "BLAME Regular";
+    font-size: 1.4em;
+    margin: 0.7em 0.5em;
+}
+
+#qcontent {
+}
+
+#qinfo {
+    display: flex;
+    flex-direction: row;
+}
+
+#qdescription {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+}
+
+#qbasic-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#qicon {
+    flex-basis: 25%;
+}
+
+#short-description {
+    width: 100%;
+    min-height: 8em;
+}
+
+#qicon path {
+    fill-opacity: 1;
+}
+
+#more-inf-button {
+    align-self: center;
+    color: #70070A;
+    margin: 0.5em;
+}
+
+#more-inf-content {
+    display: flex;
+    margin-top: 0.5em;
+}
+
+#qform {
+    display: flex;
+    flex-direction: column;
+}
+
+#qform-queries {
+    display: flex;
+    flex-direction: column;
+}
+
+.qform-querry {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.5em;
+}
+
+.input-field {
+    width: 100%;
+    resize: vertical;
+    padding: 0.5em;
+    border: none;
+    border-radius: 0.3em;
+    margin-top: 0.5em;
+    outline: none;
+}
+
+.button-area {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.qsubmit {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 75%;
+    background-color: #550609;
+    color: #d3d3d3;
+    font-family: "BLAME Regular", sans-serif;
+    clip-path: polygon(0 0, 95% 0, 100% 100%, 0% 100%);
+    font-size: 1.2em;
+    padding: 0.5em 0.5em 0.5em;
+    border: none;
+}
+
+.qsubmit:hover {
+    background-color: #7e5556;
+}
+
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#thank-you-message {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+}
+
+#name {
+    width: 50%;
+}
+
+.vertical {
+    flex-direction: column;
+}

@@ -3,12 +3,11 @@ package com.codecool.queststore.controller;
 import com.codecool.queststore.model.Quest;
 import com.codecool.queststore.model.Student;
 import com.codecool.queststore.service.*;
+import com.codecool.queststore.model.StudentQuest;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 import java.security.Principal;
 
 @AllArgsConstructor
@@ -21,6 +20,20 @@ public class StudentQuestController {
     private final StudentQuestService studentQuestService;
     private final StudentService studentService;
 
+    @GetMapping("{id}")
+    public String questAnswer(@PathVariable(name="id") Long id, Model model) {
+        StudentQuest assignment = studentQuestService.findById(id).get();
+        model.addAttribute("assignment", assignment);
+        model.addAttribute("quest", assignment.getQuest());
+        return "quest/quest";
+    }
+
+    @GetMapping("delete/{id}")
+    public String deleteQuest(@PathVariable(name="id") Long id) {
+        studentQuestService.deleteById(id);
+        return "redirect:/student/profile-page";
+    }
+
     @PostMapping
     public String startQuest(@RequestParam("questId") Long id,
                              @RequestParam("questAnswer") String answer,
@@ -31,4 +44,26 @@ public class StudentQuestController {
         studentService.updateRank(student);
         return "quest/quest_submission";
     }
+
+    @PostMapping("{id}")
+    public String upadateQuest(@PathVariable(name="id") Long id,
+                               @RequestParam("questAnswer") String answer) {
+        studentQuestService.updateStudentQuest(id, answer);
+        return "redirect:/student/profile-page";
+    }
+
+    @GetMapping("review")
+    public String reviewQuests(Model model){
+        model.addAttribute("quests", studentQuestService.showUnfinishedStudentQuests());
+        return "quest/review_quests";
+    }
+
+    @PostMapping("approve/{id}")
+    public String approveQuest(@PathVariable(name="id") Long id) {
+        StudentQuest studentQuest = studentQuestService.showStudentQuestsById(id);
+        Student student = (Student) userService.findById(studentQuest.getStudent().getId());
+        studentQuestService.approveQuest(studentQuest, student);
+        return "redirect:/student-quests/review";
+    }
+
 }

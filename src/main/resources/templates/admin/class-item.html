@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Classes </title>
+    <link rel="stylesheet" href="../../static/css/styles.css" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="../../static/assets/font-awesome-4.7.0/css/font-awesome.min.css" th:href="@{/assets/font-awesome-4.7.0/css/font-awesome.min.css}">
+    <link rel="stylesheet" href="../../static/css/classes.css" th:href="@{/css/classes.css}">
+
+</head>
+
+<body>
+<script th:src="@{/js/header.js}" src="../../static/js/header.js"></script>
+
+    <!-- Page content goes here-->
+
+    <section class="course">
+        <header class="course-item-header">
+            <h1><i title="Go Back" th:onclick="goToClasses()" class="fa fa-arrow-left"></i></h1>
+            <h1 th:text="${course.name}">KRK.2020.02</h1>
+        </header>
+
+        <div class="course-mentors">
+
+            <div>
+                <label for="left-box">Move names the the right</label><br>
+                <select id="left-box" name="mentor_id" multiple>
+                    <option th:each="mentor : ${mentors}"
+                            th:value="${mentor.id}"
+                            th:text="${mentor.firstName + ' ' + mentor.lastName}">
+                    </option>
+                </select>
+            </div>
+            <div class="buttons">
+                <button id="right-arrow">&gt;&gt;</button><br>
+                <button id="left-arrow">&lt;&lt;</button>
+            </div>
+            <form id="mentors-form" th:action="@{/courses/edit/{id}(id=${course.id})}" method="post">
+                <div>
+                    <label for="right-box">Hit submit button when done</label><br>
+                    <select id="right-box" name="mentor_id" multiple>
+                    </select>
+                    <div>
+                        <input type="button" id="submit-form" class="hidden">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="submit-button">
+            <button class="button-cta" form="mentors-form">Submit</button>
+        </div>
+
+
+
+    </section>
+
+    <!-- End of page content-->
+
+    <script src="../../static/js/footer.js" th:src="@{/js/footer.js}"></script>
+    <script src="../../static/js/redirects.js" th:src="@{/js/redirects.js}"></script>
+    <script th:src="@{https://code.jquery.com/jquery-3.5.1.min.js}"></script>
+    <script src="../../static/js/moving-items.js" th:src="@{/js/moving-items.js}"></script>
+</body>
+
+</html>

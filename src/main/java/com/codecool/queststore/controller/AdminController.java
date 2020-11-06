@@ -20,9 +20,9 @@ public class AdminController {
     private final UserService userService;
 
     @GetMapping
-    public String admin(Model model, Principal principal) {
-        model.addAttribute("mentors_count", userService.countByRole(MENTOR.getRoleName()));
-        model.addAttribute("students_count", userService.countByRole(STUDENT.getRoleName()));
+    public String showAdminProfile(Model model, Principal principal) {
+        model.addAttribute("mentorsCount", userService.countByRole(MENTOR.getRoleName()));
+        model.addAttribute("studentsCount", userService.countByRole(STUDENT.getRoleName()));
         model.addAttribute("user", userService.findByUsername(principal.getName()));
         return "admin/admin_page";
     }

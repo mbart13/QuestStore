@@ -10,18 +10,17 @@ import javax.validation.constraints.Size;
 
 @Getter
 @Setter
-@PasswordValid
-@PasswordMatches
+@PasswordMatches(newPassword = "newPassword", matchingPassword = "matchingPassword")
 public class PasswordDto {
 
-    @NotBlank(message = "Fields cannot be blank")
+    @PasswordValid
     private String oldPassword;
 
-    @NotBlank(message = "Fields cannot be blank")
+    @NotBlank(message = "Field cannot be blank")
     @Size(min=8, max=16, message = "Password must be between 8-16 characters")
     private String newPassword;
 
-    @NotBlank(message = "Fields cannot be blank")
+    @NotBlank(message = "Field cannot be blank")
     @Size(min=8, max=16, message = "Password must be between 8-16 characters")
     private String matchingPassword;
 
