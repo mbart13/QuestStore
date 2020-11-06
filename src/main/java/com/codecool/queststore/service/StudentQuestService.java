@@ -6,13 +6,16 @@ import com.codecool.queststore.model.StudentQuest;
 import com.codecool.queststore.repository.StudentQuestRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-
+import java.util.HashSet;
 import java.util.List;
+import java.util.Random;
+import java.util.Set;
 
 @AllArgsConstructor
 @Service
 public class StudentQuestService {
     private final StudentQuestRepository studentQuestRepository;
+    private final Random random = new Random();
 
     public StudentQuest save(StudentQuest studentQuest) {return studentQuestRepository.save(studentQuest); }
 
@@ -27,6 +30,8 @@ public class StudentQuestService {
     public List<StudentQuest> findOngoingedByUserId(Long id) { return studentQuestRepository.findByStudentIdAndIsCompleted(id, false); }
 
     public List<StudentQuest> findCompletedByUserId(Long id) { return studentQuestRepository.findByStudentIdAndIsCompleted(id, true);}
+
+    public List<StudentQuest> findCompletedByQuestId(Long id) { return studentQuestRepository.findByQuestIdAndIsCompleted(id, true); }
 
     public StudentQuest addStudentQuest(Student student, Quest quest, String answer) {
         // studentQuest creation
@@ -49,4 +54,22 @@ public class StudentQuestService {
         this.save(studentQuest);
     }
 
+    public Set<Student> getStudentsFromAssignments(List<StudentQuest> finishedQuests, int result_number) {
+        Set<Student> completedBy = new HashSet<>();
+        for (StudentQuest quest : finishedQuests) {
+            completedBy.add(quest.getStudent());
+        }
+
+        while (completedBy.size() > result_number) {
+            int index = random.ints(0,completedBy.size()).findFirst().getAsInt();
+            int i = 0;
+            for (Student student : completedBy) {
+                if (i == index) {
+                    completedBy.remove(student);
+                    i++;
+                }
+            }
+        }
+        return completedBy;
+    }
 }

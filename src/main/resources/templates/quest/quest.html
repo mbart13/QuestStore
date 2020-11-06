@@ -39,9 +39,15 @@
                     <p id="more-inf-button">More info...</p>
                 </div>
                 <div class="basic-section" id="qdone-by">
-                    <p>Jose Moralez </p>
-                    <p>John Wick </p>
-                    <p>George Patton </p>
+                    <div th:if= "${not #lists.isEmpty(completedBy)}">
+                        <p class="label">This quest has already been done by:</p>
+                        <div th:each="student : ${completedBy}">
+                            <p><span th:text="${student.username}">username</span></p>
+                        </div>
+                    </div>
+                    <div th:if= "${#lists.isEmpty(completedBy)}">
+                        <p class="label">Nobody has completed that quest yet</p>
+                    </div>
                 </div>
             </div>
             <form id="qform" th:action="@{/student-quests}" method="post">

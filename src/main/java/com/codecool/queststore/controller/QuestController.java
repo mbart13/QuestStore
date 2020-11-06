@@ -1,13 +1,18 @@
 package com.codecool.queststore.controller;
 
+import com.codecool.queststore.model.Student;
+import com.codecool.queststore.model.StudentQuest;
 import com.codecool.queststore.service.QuestService;
+import com.codecool.queststore.service.StudentQuestService;
 import lombok.AllArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import static java.lang.Integer.parseInt;
 
@@ -17,6 +22,7 @@ import static java.lang.Integer.parseInt;
 public class QuestController {
 
     private final QuestService questService;
+    private final StudentQuestService studentQuestService;
 
     @GetMapping
     public String showQuests(Model model, Authentication authResult){
@@ -34,6 +40,12 @@ public class QuestController {
     public String showQuest(@PathVariable(name="id") Long id, Model model, Authentication authResult) {
         String role = authResult.getAuthorities().toString();
         model.addAttribute("quest", questService.findById(id));
+
+        // Find a list of people who already completed it
+        List<StudentQuest> finishedQuests = studentQuestService.findCompletedByQuestId(id);
+        Set<Student> completedBy = studentQuestService.getStudentsFromAssignments(finishedQuests, 3);
+        model.addAttribute("completedBy", completedBy);
+
         if (role.contains("ROLE_MENTOR") || role.contains("ROLE_ADMIN")){
             return "quest/edit_quest";
         } else {

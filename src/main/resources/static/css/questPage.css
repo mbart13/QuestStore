@@ -162,3 +162,7 @@ form {
     flex-direction: column;
     flex-basis: 100%;
 }
+
+.label {
+    font-weight: bold;
+}
