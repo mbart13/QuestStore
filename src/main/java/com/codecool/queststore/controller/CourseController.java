@@ -8,8 +8,10 @@ import com.codecool.queststore.service.MentorService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,24 +27,34 @@ public class CourseController {
 
     @GetMapping
     public String index(Model model) {
-        model.addAttribute("courses", courseService.getAll());
         model.addAttribute("courseDto", new CourseDto());
-        model.addAttribute("mentors", mentorService.getAll());
         return "admin/classes";
     }
 
     @PostMapping
-    public String addNew(@ModelAttribute CourseDto courseDto) {
+    public String addNew(@ModelAttribute @Valid CourseDto courseDto, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            return "admin/classes";
+        }
         Course course = new Course();
         course.setName(courseDto.getName());
         courseService.save(course);
         return REDIRECT_TO_COURSES;
     }
 
+    @GetMapping("/edit/{id}")
+    public String showClass(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("course", courseService.findById(id));
+        model.addAttribute("mentors", mentorService.getAll());
+
+        return "admin/class-item";
+    }
+
     @PostMapping("/edit/{id}")
-    public String assignMentors(@PathVariable("id") Long id,
-                                @RequestParam(value = "mentor_id", defaultValue = "") String[] mentorsIds) {
+    public String assignMentorsToClass(@PathVariable("id") Long id,
+                                       @RequestParam(value = "mentor_id", defaultValue = "") String[] mentorsIds) {
         Course course = courseService.findById(id);
+        course.removeMentorsFromCourse();
         List<Mentor> mentors = Arrays.stream(mentorsIds)
                                     .map(Long::valueOf)
                                     .map(mentorService::findById)
@@ -55,11 +67,17 @@ public class CourseController {
         return REDIRECT_TO_COURSES;
     }
 
+
     @GetMapping("/{id}")
     public String deleteClass(@PathVariable Long id) {
         Course course = courseService.findById(id);
         course.removeMentorsFromCourse();
         courseService.delete(course);
         return REDIRECT_TO_COURSES;
+    }
+
+    @ModelAttribute
+    public void addAttributes(Model model) {
+        model.addAttribute("courses", courseService.getAll());
     }
 }

@@ -9,6 +9,6 @@ import javax.validation.constraints.NotBlank;
 @Setter
 public class CourseDto {
 
-    @NotBlank
+    @NotBlank(message = "Field cannot be blank")
     private String name;
 }

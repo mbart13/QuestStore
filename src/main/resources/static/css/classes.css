@@ -7,26 +7,65 @@
     margin-bottom: .5em;
 }
 
-.header h1, .course-header h1 {
+.header h1, .course-header h1, .course-item-header {
     color: #d3d3d3;
-    font-size: 1.8rem;
     font-family: "BLAME Regular", sans-serif;
     margin: .2em .5em;
     text-align: center;
 }
 
-.new-course,.course-body  {
+.submit-button {
     background-color: #d3d3d3;
-    margin: .3em;
-    padding: 1em;
-    text-align: center;
 }
 
-.course-body {
+.name {
+    margin-bottom: .5em;
+}
+
+.header h1, .course-header h1 {
+    font-size: 1.8rem;
+}
+
+.course-item-header {
+    font-size: 1.3rem;
+}
+
+.persons {
     display: flex;
     align-content: center;
     text-align: center;
     justify-content: space-evenly;
+}
+
+.new-course,.course-body, .course-mentors, .submit-button, .mentors-list {
+    background-color: #d3d3d3;
+    margin: 0 .3em;
+    padding: 1em;
+    text-align: center;
+}
+
+.course-mentors {
+    display: flex;
+    align-content: center;
+    text-align: center;
+    justify-content: space-evenly;
+}
+
+.edit-button {
+    background-color: #d3d3d3;
+    margin-top: 1em;
+}
+
+.course-body {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    text-align: center;
+    justify-content: space-evenly;
+}
+
+.course {
+    padding-bottom: .3em;
 }
 
 .new-course label {
@@ -45,12 +84,12 @@
     margin-bottom: .8em;
 }
 
-.course-body select {
+.course-body select, .course-mentors select {
     height: 8em;
     width: 15em;
 }
 
-.course-body form {
+.course-body form, .course-mentors form {
     text-align: center;
 }
 
@@ -72,7 +111,7 @@
 }
 
 .heading {
-    font-size: 1.2em;
+    font-size: 1.6em;
     font-weight: bold;
 }
 
@@ -99,6 +138,10 @@
     justify-content: space-between;
 }
 
+.persons p {
+    font-size: 1.2em;
+}
+
 .fa-trash-o:hover {
     color: white;
     cursor: pointer;
@@ -107,4 +150,27 @@
 
 #delete {
     margin: 0 .5em;
+}
+
+#right-arrow, #left-arrow {
+    font-size: 1.3em;
+    font-weight: bold;
+    background-color: #550609;;
+    color: #d3d3d3;
+    border: none;
+    outline: none;
+    padding: .2em;
+}
+#right-arrow {
+    margin-bottom: .3em;
+}
+
+#right-arrow:hover, #left-arrow:hover {
+    cursor: pointer;
+    color: white;
+}
+
+.error {
+    color: #70070A;
+    font-weight: bold;
 }
