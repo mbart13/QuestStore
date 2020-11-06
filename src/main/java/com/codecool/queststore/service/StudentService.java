@@ -10,9 +10,15 @@ import org.springframework.stereotype.Service;
 public class StudentService {
 
     private final StudentRepository studentRepository;
+    private final RankService rankService;
 
     public Student findByUsername(String username) {
         return studentRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("Entity not found"));
+    }
+
+    public void updateRank(Student student) {
+        student.setRank(rankService.getByEarnings(student.getTotalEarnings()));
+        save(student);
     }
 
     public Student save(Student student) {

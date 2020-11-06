@@ -33,7 +33,7 @@ values
 
 insert into students (current_balance, rank_id, module, total_earnings, user_id)
 values
-(1000, 2, 'Web', 1000, 3),
+(1000, 2, 'Web', 2900, 3),
 (500, 2, 'Web', 1000, 4);
 
 insert into mentors (user_id)

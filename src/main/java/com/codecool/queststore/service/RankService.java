@@ -24,4 +24,6 @@ public class RankService {
     public Rank save(Rank rank) {
         return rankRepository.save(rank);
     }
+
+
 }
