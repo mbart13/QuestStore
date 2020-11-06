@@ -27,4 +27,6 @@ public class StudentQuest {
 
     @Column(name = "is_completed")
     private boolean isCompleted;
+
+    public boolean getIsCompleted() {return isCompleted;}
 }
