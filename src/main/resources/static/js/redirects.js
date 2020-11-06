@@ -41,3 +41,7 @@ function goToLostPassword() {
 function goToClasses() {
     window.location.replace("/courses");
 }
+
+function deleteClass(id) {
+    window.location.replace(`/courses/${id}`);
+}

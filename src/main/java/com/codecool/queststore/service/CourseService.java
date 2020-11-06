@@ -28,4 +28,8 @@ public class CourseService {
         return courseRepository.findById(id).orElseThrow(() ->
                 new CourseNotFoundException(String.format("Course with id = %d was not found", id)));
     }
+
+    public void delete(Course course) {
+        courseRepository.delete(course);
+    }
 }
