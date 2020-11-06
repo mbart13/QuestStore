@@ -37,3 +37,11 @@ function uploadImage() {
 function goToLostPassword() {
     window.location.replace("/forgotten-password");
 }
+
+function goToClasses() {
+    window.location.replace("/courses");
+}
+
+function deleteClass(id) {
+    window.location.replace(`/courses/${id}`);
+}

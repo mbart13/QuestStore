@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Objects;
 import java.util.Set;
 
 @Getter
@@ -14,12 +15,36 @@ public class Course {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    String name;
+    private Long id;
+
+    private String name;
 
     @OneToMany(mappedBy = "course")
-    Set<Student> students;
+    private Set<Student> students;
 
     @ManyToMany(mappedBy = "courses")
-    Set<Mentor> mentors;
+    private Set<Mentor> mentors;
+
+    public void removeMentorsFromCourse() {
+        mentors.forEach(mentor -> mentor.getCourses().remove(this));
+        this.mentors.clear();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Course course = (Course) o;
+
+        if (!Objects.equals(id, course.id)) return false;
+        return Objects.equals(name, course.name);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        return result;
+    }
 }

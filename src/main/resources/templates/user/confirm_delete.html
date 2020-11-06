@@ -18,7 +18,7 @@
 <!-- Page content goes here-->
 
 <div class="form-container">
-    <h1 class="header"><i title="Go Back" th:onclick="goToUsers()" class="fa fa-arrow-left"></i> Delete</h1>
+    <h1 class="header"><i title="Go Back" th:onclick="goToUsers()" class="fa fa-arrow-left"></i>Delete</h1>
 
     <div class="form-body">
         <div th:if="${user} != null" class="message">
@@ -27,19 +27,16 @@
                 <p th:text="'ID: ' + ${user.id}">Id</p>
                 <p th:text="'Name: ' + ${user.firstName + ' ' + user.lastName}">Name</p>
             </div>
-            <div class="buttons">
-                <a class="button-cta" type="button" href="#" th:href="@{/users/{id}(id=${user.id})}">Delete</a>
-            </div>
+            <form class="buttons" th:action="@{/users/{id}(id=${user.id})}" method="post">
+                <button class="button-cta">Delete</button>
+            </form>
         </div>
-        <div th:if="${deletedUser} != null" class="message">
-            <div class="success delete-message">
-                <p class="success"><i class="fa fa-check"></i> User Deleted!</p>
-            </div>
+        <div th:unless="${user} != null" class="message">
+            <h1 class="confirmation">User doesn't exist</h1>
             <div class="credentials">
-                <p th:text="'ID: ' + ${deletedUser.id}">Id</p>
-                <p th:text="'Name: ' + ${deletedUser.firstName + ' ' + deletedUser.lastName}">Name</p>
+                <p>Id</p>
+                <p>Name</p>
             </div>
-
         </div>
     </div>
 

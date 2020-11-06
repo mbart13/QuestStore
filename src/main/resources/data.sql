@@ -23,7 +23,7 @@ VALUES
 (4, 'Michal', 'Bartosik', 'mbart', null,'ROLE_STUDENT', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
 (5, 'Przemek', 'Raczkowski', 'przemo', null,'ROLE_MENTOR', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
 (6, 'Agnieszka', 'Koszany', 'agi', null,'ROLE_MENTOR', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
-(7, 'Krzysztof', 'Jarośka', 'krzychu', null,'ROLE_MENTOR', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
+(7, 'Krzysztof', 'Jaroska', 'krzychu', null,'ROLE_MENTOR', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
 (8, 'Wojtek', 'Wilk', 'wilku1', null,'ROLE_STUDENT', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
 (9, 'Wojtek', 'Makiela', 'wojtek123', null,'ROLE_MENTOR', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
 (10, 'Adrian', 'Widlak', 'adriano', null,'ROLE_MENTOR', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
@@ -63,18 +63,20 @@ values
 
 insert into courses (id, name)
 values
-(1, 'WAW.2019.10'),
-(2, 'KRK.2019.10'),
-(3, 'WAW.2020.02'),
-(4, 'KRK.2020.02'),
-(5, 'KRK.2020.05');
+(1, 'KRK.2019.10'),
+(2, 'KRK.2020.02');
+
 
 insert into mentor_courses (mentor_id, course_id)
 values
+(2, 1),
 (2, 2),
-(2, 3),
+(5, 1),
 (5, 2),
-(5, 3);
+(6, 1),
+(6, 2),
+(7, 1),
+(7, 2);
 
 insert into student_quests (id, answer, is_completed, quest_id, user_id)
 values

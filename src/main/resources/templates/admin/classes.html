@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Classes </title>
+    <link rel="stylesheet" href="../../static/css/styles.css" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="../../static/assets/font-awesome-4.7.0/css/font-awesome.min.css" th:href="@{/assets/font-awesome-4.7.0/css/font-awesome.min.css}">
+    <link rel="stylesheet" href="../../static/css/classes.css" th:href="@{/css/classes.css}">
+
+</head>
+
+<body>
+    <script th:src="@{/js/header.js}" src="../../static/js/header.js"></script>
+
+    <!-- Page content goes here-->
+    <section class="form-container">
+        <header class="header">
+            <h1><i title="Go Back" th:onclick="goToProfile()" class="fa fa-arrow-left"></i>Classes</h1>
+        </header>
+        <div class="new-course">
+            <form action="/courses" method="post" th:object="${courseDto}">
+                <div>
+                    <label for="name">Add New Class</label>
+                </div>
+                <div class="name">
+                    <input type="text" id="name" th:field="*{name}">
+                    <p class="error" th:each="error : ${#fields.errors('name')}"
+                       th:text="${error}">Validation error</p>
+                </div>
+
+                <button class="button-cta">Save</button>
+            </form>
+        </div>
+
+    </section>
+
+    <section class="course" th:each="course : ${courses}">
+        <header class="course-header">
+            <h1 th:text="${course.name}">KRK.2020.02</h1>
+            <h1 th:data-id="${course.id}"
+                th:onclick="deleteClass(this.getAttribute('data-id'))"
+                id="delete" title="Delete"><i class="fa fa-trash-o"></i></h1>
+        </header>
+        <div class="course-body">
+            <div class="persons">
+                <div>
+                    <h1 class="heading" >Mentors:</h1>
+                    <div th:each="courseMentor : ${course.mentors}">
+                        <p th:text="${courseMentor.firstName + ' ' + courseMentor.lastName}"></p>
+                    </div>
+                </div>
+
+                <div>
+                    <h1 class="heading">Students:</h1>
+                    <div>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+            <div class="edit-button" >
+                <a class="button-cta" th:href="@{/courses/edit/{id}(id=${course.id})}">Edit</a>
+            </div>
+        </div>
+
+
+    </section>
+
+    <!-- End of page content-->
+
+    <script src="../../static/js/footer.js" th:src="@{/js/footer.js}"></script>
+    <script src="../../static/js/redirects.js" th:src="@{/js/redirects.js}"></script>
+
+</body>
+
+</html>
