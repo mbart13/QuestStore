@@ -22,14 +22,10 @@
             <table>
                 <thead>
                     <tr>
-                        <th onclick="sortTable()" class="table-header" th:data-currentPage="${currentPage}" th:data-reverseSortDir="${reverseSortDir}"
-                            th:onclick="sortTable(this.getAttribute('data-currentPage'), 'id', this.getAttribute('data-reverseSortDir'))">ID <i class="fa fa-sort"></i></th>
-                        <th onclick="sortTable()" class="table-header" th:data-currentPage="${currentPage}" th:data-reverseSortDir="${reverseSortDir}"
-                            th:onclick="sortTable(this.getAttribute('data-currentPage'), 'firstName', this.getAttribute('data-reverseSortDir'))">First Name <i class="fa fa-sort"></i></th>
-                        <th onclick="sortTable()" class="table-header" th:data-currentPage="${currentPage}" th:data-reverseSortDir="${reverseSortDir}"
-                            th:onclick="sortTable(this.getAttribute('data-currentPage'), 'lastName', this.getAttribute('data-reverseSortDir'))">Last Name <i class="fa fa-sort"></i></th>
-                        <th onclick="sortTable()" class="table-header" th:data-currentPage="${currentPage}" th:data-reverseSortDir="${reverseSortDir}"
-                            th:onclick="sortTable(this.getAttribute('data-currentPage'), 'module', this.getAttribute('data-reverseSortDir'))">Module <i class="fa fa-sort"></i></th>
+                        <th class="table-header">ID</th>
+                        <th oclass="table-header">First Name</th>
+                        <th class="table-header">Last Name</th>
+                        <th class="table-header">Module</th>
                         <th>Action</th>
                     </tr>
                 </thead>
