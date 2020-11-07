@@ -28,7 +28,7 @@ public class LoginRedirectController {
             redirectView.setUrl("student/profile-page");
         }
         else if(role.contains(MENTOR.getRoleName())) {
-            redirectView.setUrl("mentor/mentor-page");
+            redirectView.setUrl("mentor/profile-page");
         }
         return redirectView;
 
