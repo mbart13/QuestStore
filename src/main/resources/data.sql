@@ -67,9 +67,6 @@ values
 (9),
 (10);
 
-
-
-
 insert into mentor_courses (mentor_id, course_id)
 values
 (2, 1),

@@ -43,7 +43,7 @@
     font-size: 1.2em;
 }
 
-.user-stats, .user-data {
+.user-stats, .user-data, .student-stats {
     grid-area: middle;
 }
 
@@ -53,7 +53,7 @@
     align-content: center;
 }
 
-.user-buttons, .user-stats{
+.user-buttons, .user-stats, .student-stats{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -66,8 +66,12 @@
     object-fit: contain;
 }
 
-.user-image, .user-buttons, .user-stats, .user-data, .admin-links {
+.user-image, .user-buttons, .user-stats, .user-data, .admin-links, .student-stats {
     background-color: #d3d3d3;
+}
+
+.student-stats {
+    display: block;
 }
 
 .user-data {
