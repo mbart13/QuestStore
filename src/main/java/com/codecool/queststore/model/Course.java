@@ -30,7 +30,7 @@ public class Course {
         this.mentors.clear();
     }
 
-    public void removeStudentsFromClass() {
+    public void removeStudentsFromCourse() {
         students.forEach(student -> student.setCourse(null));
         this.students.clear();
     }

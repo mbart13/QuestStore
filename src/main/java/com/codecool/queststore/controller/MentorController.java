@@ -11,15 +11,14 @@ import java.security.Principal;
 
 @AllArgsConstructor
 @Controller
-@RequestMapping("mentor")
+@RequestMapping("/mentor/profile-page")
 public class MentorController {
 
     private final MentorService mentorService;
 
-    @GetMapping("/mentor-page")
+    @GetMapping
     public String mentorIndex(Model model, Principal principal) {
         model.addAttribute("mentor", mentorService.findByUsername(principal.getName()));
         return "mentor/mentor_page";
     }
-
 }
