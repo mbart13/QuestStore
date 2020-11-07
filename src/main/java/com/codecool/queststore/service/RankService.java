@@ -31,7 +31,7 @@ public class RankService {
     }
 
     public List<Rank> showAllRanks() {
-        return rankRepository.findAll();
+        return rankRepository.findAllOrderByRequiredCurrencyAsc();
     }
 
     public Rank findById(Long id) {
