@@ -8,7 +8,6 @@ import javax.validation.constraints.NotBlank;
 @Getter
 @Setter
 public class RankDto {
-    private Long id;
 
     @NotBlank(message = "Field cannot be blank")
     private String name;

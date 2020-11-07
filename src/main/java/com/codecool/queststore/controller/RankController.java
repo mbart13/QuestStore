@@ -48,7 +48,7 @@ public class RankController {
         return REDIRECT_TO_RANKS;
     }
 
-    @GetMapping("/edit/{id}")
+    @GetMapping("edit/{id}")
     public String showEditRankForm(@PathVariable Long id, Model model) {
         Rank rank = rankService.findById(id);
         RankDto rankDto = new RankDto();
@@ -60,7 +60,6 @@ public class RankController {
     }
 
     @PostMapping("edit/{id}")
-//    @RequestMapping(value="edit/{id}", method = RequestMethod.POST)
     public String updateRank(@PathVariable Long id, @ModelAttribute @Valid RankDto rankDto,
                              BindingResult bindingResult, Model model) {
 
@@ -70,7 +69,6 @@ public class RankController {
             rank.setRequiredCurrency(rankDto.getRequiredCurrency());
             rankService.save(rank);
             model.addAttribute("rankUpdated", Boolean.TRUE);
-            model.addAttribute("rankDto", rankDto);
         }
 
         return "REDIRECT_TO_RANKS";
