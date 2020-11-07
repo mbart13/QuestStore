@@ -1,9 +1,7 @@
 package com.codecool.queststore.controller;
 
 import com.codecool.queststore.dto.RankDto;
-import com.codecool.queststore.dto.UserDto;
 import com.codecool.queststore.model.Rank;
-import com.codecool.queststore.model.User;
 import com.codecool.queststore.service.RankService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -19,7 +17,6 @@ import javax.validation.Valid;
 public class RankController {
 
     private final RankService rankService;
-    private static final String RANK_DTO = "rankDto";
     private static final String REDIRECT_TO_RANKS = "redirect:/rank/management";
 
 
@@ -32,12 +29,13 @@ public class RankController {
 
     @GetMapping("/new")
     public String showCreateRankForm(Model model) {
-        model.addAttribute(RANK_DTO, new RankDto());
+        model.addAttribute("rankDto", new RankDto());
         return "rank/create_rank_form";
     }
 
-    @PostMapping
-    public String createRank(@ModelAttribute @Valid RankDto rankDto, BindingResult bindingResult, Model model) {
+//    @RequestMapping(value="management", method = RequestMethod.POST)
+    @PostMapping(value = "management")
+    public String createRank(@ModelAttribute @Valid RankDto rankDto, Model model, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "rank/create_rank_form";
         }
@@ -45,18 +43,24 @@ public class RankController {
         Rank rank = new Rank();
         rank.setName(rankDto.getName());
         rank.setRequiredCurrency(rankDto.getRequiredCurrency());
-        model.addAttribute("newRank", rank);
 
+        rankService.save(rank);
         return REDIRECT_TO_RANKS;
     }
 
     @GetMapping("/edit/{id}")
     public String showEditRankForm(@PathVariable Long id, Model model) {
-        model.addAttribute("rank" ,rankService.findById(id));
+        Rank rank = rankService.findById(id);
+        RankDto rankDto = new RankDto();
+        rankDto.setName(rank.getName());
+        rankDto.setRequiredCurrency(rank.getRequiredCurrency());
+        model.addAttribute("rankDto" ,rankDto);
+
         return "rank/edit_rank_form";
     }
 
-    @PostMapping("/edit/{id}")
+    @PostMapping("edit/{id}")
+//    @RequestMapping(value="edit/{id}", method = RequestMethod.POST)
     public String updateRank(@PathVariable Long id, @ModelAttribute @Valid RankDto rankDto,
                              BindingResult bindingResult, Model model) {
 
@@ -66,10 +70,10 @@ public class RankController {
             rank.setRequiredCurrency(rankDto.getRequiredCurrency());
             rankService.save(rank);
             model.addAttribute("rankUpdated", Boolean.TRUE);
-            model.addAttribute(RANK_DTO, rankDto);
+            model.addAttribute("rankDto", rankDto);
         }
 
-        return "user/edit_user_form";
+        return "REDIRECT_TO_RANKS";
     }
 
 }

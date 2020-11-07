@@ -13,6 +13,5 @@ public class RankDto {
     @NotBlank(message = "Field cannot be blank")
     private String name;
 
-    @NotBlank(message = "Field cannot be blank")
     private int requiredCurrency;
 }

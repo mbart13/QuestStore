@@ -22,7 +22,7 @@
 
         <div class="form-body">
             <div class="form">
-                <form th:action="@{/ranks}" method="post" th:object="${rankDto}">
+                <form th:action="@{/rank/management}" method="post" th:object="${rankDto}">
                     <div class="form-item">
                         <label for="name">Name:</label><br>
                         <input class="input-field" id="name" th:field="*{name}"
