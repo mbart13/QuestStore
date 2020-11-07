@@ -37,4 +37,8 @@ public class RankService {
         return rankRepository.findById(id).orElseThrow(() ->
                 new CourseNotFoundException(String.format("Rank with id = %d was not found", id)));
     }
+
+    public void deleteRank(Rank rank) {
+        rankRepository.delete(rank);
+    }
 }

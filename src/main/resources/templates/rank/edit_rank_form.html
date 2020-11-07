@@ -18,11 +18,12 @@
     <!-- Page content goes here-->
 
     <div class="form-container">
-        <h1 class="header"><i title="Go Back" th:onclick="goToUsers()" class="fa fa-arrow-left"></i> Edit Rank</h1>
+        <h1 class="header"><i title="Go Back" th:onclick="goToRanksList()" class="fa fa-arrow-left"></i> Edit Rank</h1>
 
         <div class="form-body">
             <div class="form">
                 <form th:action="@{/rank/management}" method="post" th:object="${rankDto}">
+                    <input type="hidden" th:field="*{id}">
                     <div class="form-item">
                         <label for="name">Name:</label><br>
                         <input class="input-field" id="name" th:field="*{name}"

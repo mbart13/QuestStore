@@ -49,3 +49,7 @@ function deleteClass(id) {
 function goToRanksNew() {
     window.location.replace("/rank/new");
 }
+
+function goToRanksList() {
+    window.location.replace("/rank/management");
+}
