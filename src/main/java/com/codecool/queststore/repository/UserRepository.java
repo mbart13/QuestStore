@@ -1,5 +1,6 @@
 package com.codecool.queststore.repository;
 
+import com.codecool.queststore.model.Rank;
 import com.codecool.queststore.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

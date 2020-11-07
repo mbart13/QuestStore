@@ -2,8 +2,10 @@ package com.codecool.queststore.service;
 
 import com.codecool.queststore.model.CourseModule;
 import com.codecool.queststore.model.Quest;
+import com.codecool.queststore.model.Rank;
 import com.codecool.queststore.model.Student;
 import com.codecool.queststore.repository.QuestRepository;
+import com.codecool.queststore.repository.RankRepository;
 import com.codecool.queststore.repository.StudentRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,7 +15,9 @@ import java.util.List;
 @Service
 public class StudentService {
 
+    private final int LOWER_RANK_STEP = 1;
     private final StudentRepository studentRepository;
+    private final RankRepository rankRepository;
     private final RankService rankService;
     private final QuestRepository questRepository;
     private final StudentQuestService studentQuestService;
@@ -50,5 +54,28 @@ public class StudentService {
 
     public List<Student> findAll() {
         return studentRepository.findAll();
+    }
+
+    public void updateRanks(List<Student> students) {
+        for (Student student: students) {
+            updateRank(student);
+        }
+    }
+
+    public List<Student> findByRankId(Long id) {
+        return studentRepository.findByRankId(id);
+    }
+
+    public void setRanksToLowest(List<Student> students) {
+        for (Student student: students) {
+            student.setRank(rankService.getLowestRank());
+        }
+    }
+
+    public void deleteRank(Rank rank) {
+        List<Student> studentsWithRank = findByRankId(rank.getId());
+        setRanksToLowest(studentsWithRank);
+        rankRepository.delete(rank);
+        updateRanks(studentsWithRank);
     }
 }

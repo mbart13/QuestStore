@@ -3,7 +3,9 @@ package com.codecool.queststore.controller;
 import com.codecool.queststore.dto.RankDto;
 import com.codecool.queststore.exceptions.RankNotFoundException;
 import com.codecool.queststore.model.Rank;
+import com.codecool.queststore.model.Student;
 import com.codecool.queststore.service.RankService;
+import com.codecool.queststore.service.StudentService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -20,6 +22,7 @@ import javax.validation.Valid;
 public class RankController {
 
     private final RankService rankService;
+    private final StudentService studentService;
 
 
     @GetMapping("/management")
@@ -104,7 +107,7 @@ public class RankController {
     @PostMapping("{id}")
     public String deleteRank(@PathVariable Long id, Model model) {
         Rank rank = rankService.findById(id);
-        rankService.deleteRank(rank);
+        studentService.deleteRank(rank);
         model.addAttribute("ranks" ,rankService.showAllRanks());
         return "rank/management";
     }

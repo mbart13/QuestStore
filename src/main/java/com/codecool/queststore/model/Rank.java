@@ -26,7 +26,7 @@ public class Rank {
     @Column(name = "required_currency")
     private int requiredCurrency;
 
-    @OneToOne(targetEntity = Student.class)
+    @OneToMany(targetEntity = Student.class)
     Set<Student> studentSet;
 
 }
