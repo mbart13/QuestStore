@@ -28,9 +28,9 @@ public class StudentQuestController {
         StudentQuest assignment = studentQuestService.findById(id).get();
         model.addAttribute("assignment", assignment);
         model.addAttribute("quest", assignment.getQuest());
-        
+
         // Find a list of people who already completed it
-        List<StudentQuest> finishedQuests = studentQuestService.findCompletedByQuestId(id);
+        List<StudentQuest> finishedQuests = studentQuestService.findCompletedByQuestId(assignment.getQuest().getId());
         Set<Student> completedBy = studentQuestService.getStudentsFromAssignments(finishedQuests, 3);
         model.addAttribute("completedBy", completedBy);
         return "quest/quest";

@@ -42,15 +42,15 @@ public class QuestController {
         String role = authResult.getAuthorities().toString();
         model.addAttribute("quest", questService.findById(id));
 
-        // Find a list of people who already completed it
-        List<StudentQuest> finishedQuests = studentQuestService.findCompletedByQuestId(id);
-        Set<Student> completedBy = studentQuestService.getStudentsFromAssignments(finishedQuests, 3);
-        model.addAttribute("completedBy", completedBy);
-
         if (role.contains("ROLE_MENTOR") || role.contains("ROLE_ADMIN")){
             model.addAttribute("modules", CourseModule.values());
             return "quest/edit_quest";
         } else {
+            // Find a list of people who already completed it
+            List<StudentQuest> finishedQuests = studentQuestService.findCompletedByQuestId(id);
+            Set<Student> completedBy = studentQuestService.getStudentsFromAssignments(finishedQuests, 3);
+            model.addAttribute("completedBy", completedBy);
+
             return "quest/quest";
         }
     }

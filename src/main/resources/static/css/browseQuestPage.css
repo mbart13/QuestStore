@@ -113,3 +113,7 @@ p {
     background-color: #7e5556;
     cursor: pointer;
 }
+
+.short-description {
+    align-self: flex-start;
+}
