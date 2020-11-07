@@ -162,6 +162,7 @@ svg path {
 .button-cta:hover {
   background-color: #701f1f;
   color: white;
+  cursor: pointer;
 }
 
 .search-field-wrapper {

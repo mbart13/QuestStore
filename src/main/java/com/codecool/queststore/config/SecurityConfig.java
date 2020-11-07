@@ -12,12 +12,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import static com.codecool.queststore.model.Role.*;
+
 @EnableWebSecurity
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
-//    @Autowired
-//    private LoggingAccessDeniedHandler accessDeniedHandler;
 
     @Autowired
     private UserDetailsService userDetailsService;
@@ -38,16 +37,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/student/**",
                         "/items/**",
                         "/quests/**"
-                            ).hasAnyRole("ADMIN", "STUDENT", "MENTOR")
+                            ).hasAnyRole(ADMIN.getRoleName(), STUDENT.getRoleName(), MENTOR.getRoleName())
                     .antMatchers(
                             "/admin/**",
                             "/users/**"
-                            ).hasRole("ADMIN")
+                            ).hasRole(ADMIN.getRoleName())
+                    .antMatchers(
+                            "/rank/**").hasAnyRole(ADMIN.getRoleName(), MENTOR.getRoleName())
                     .antMatchers(
                             "/mentor/**",
-                            "/student-quests/review",
-                            "/rank/**"
-                                ).hasRole("MENTOR")
+                            "/student-quests/review"
+                                ).hasRole(MENTOR.getRoleName())
                     .anyRequest().authenticated()
                 .and()
                 .formLogin()

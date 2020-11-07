@@ -149,7 +149,9 @@ label {
 }
 
 .qsubmit:hover {
-    background-color: #7e5556;
+    background-color: #701f1f;
+    color: white;
+    cursor: pointer;
 }
 
 form {

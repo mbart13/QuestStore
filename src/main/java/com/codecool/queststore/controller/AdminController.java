@@ -21,8 +21,8 @@ public class AdminController {
 
     @GetMapping
     public String showAdminProfile(Model model, Principal principal) {
-        model.addAttribute("mentorsCount", userService.countByRole(MENTOR.getRoleName()));
-        model.addAttribute("studentsCount", userService.countByRole(STUDENT.getRoleName()));
+        model.addAttribute("mentorsCount", userService.countByRole(MENTOR.getDbName()));
+        model.addAttribute("studentsCount", userService.countByRole(STUDENT.getDbName()));
         model.addAttribute("user", userService.findByUsername(principal.getName()));
         return "admin/admin_page";
     }

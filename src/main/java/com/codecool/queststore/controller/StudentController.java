@@ -1,9 +1,9 @@
 package com.codecool.queststore.controller;
 
+import com.codecool.queststore.model.Course;
+import com.codecool.queststore.model.Mentor;
 import com.codecool.queststore.model.Student;
-import com.codecool.queststore.service.OrderService;
-import com.codecool.queststore.service.StudentService;
-import com.codecool.queststore.service.StudentQuestService;
+import com.codecool.queststore.service.*;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.security.Principal;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @AllArgsConstructor
 @Controller
@@ -22,6 +24,8 @@ public class StudentController {
 
     private final StudentService studentService;
     private final OrderService orderService;
+    private final MentorService mentorService;
+    private final CourseService courseService;
     private final StudentQuestService studentQuestService;
 
     @GetMapping("profile-page")
@@ -40,8 +44,13 @@ public class StudentController {
     }
 
     @GetMapping("management")
-    public String studentManagement(Model model){
-        List<Student> students = studentService.findAll();
+    public String studentManagement(Model model, Principal principal){
+        Mentor mentor = mentorService.findByUsername(principal.getName());
+        Set<Course> courses = courseService.findByMentorUsername(mentor.getId());
+        Set<Student> students = new HashSet<>();
+        for (Course course : courses) {
+            students.addAll(course.getStudents());
+        }
         model.addAttribute("students", students);
         return "/mentor/student_management";
     }
