@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import java.security.Principal;
+import java.util.List;
+import java.util.Set;
 
 @AllArgsConstructor
 @Controller
@@ -25,6 +27,11 @@ public class StudentQuestController {
         StudentQuest assignment = studentQuestService.findById(id).get();
         model.addAttribute("assignment", assignment);
         model.addAttribute("quest", assignment.getQuest());
+
+        // Find a list of people who already completed it
+        List<StudentQuest> finishedQuests = studentQuestService.findCompletedByQuestId(assignment.getQuest().getId());
+        Set<Student> completedBy = studentQuestService.getStudentsFromAssignments(finishedQuests, 3);
+        model.addAttribute("completedBy", completedBy);
         return "quest/quest";
     }
 

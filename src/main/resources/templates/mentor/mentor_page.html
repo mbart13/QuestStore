@@ -8,7 +8,7 @@
     <title>Profile page</title>
     <link rel="stylesheet" href="../../static/css/styles.css" th:href="@{/css/styles.css}">
     <link rel="stylesheet" href="../../static/assets/font-awesome-4.7.0/css/font-awesome.min.css" th:href="@{/assets/font-awesome-4.7.0/css/font-awesome.min.css}">
-    <link rel="stylesheet" href="../../static/css/mentor_page.css" th:href="@{/css/mentor_page.css}">
+    <link rel="stylesheet" href="../../static/css/profile_page.css" th:href="@{/css/profile_page.css}">
 </head>
 
 <body>
@@ -16,74 +16,79 @@
 <script src="../../static/js/header.js" th:src="@{/js/header.js}"></script>
 
 <!-- Page content goes here-->
-<div class="dashboard">
 
-    <div class="header">
-        <h1 th:text="'Welcome, ' + ${mentor.username}">Welcome</h1>
-    </div>
+    <div class="dashboard">
 
-    <div class="user-image">
-        <div class="image-container">
-            <div>
-                <img src="../../static/assets/images/profileImage.jpg" th:src="@{/profile-page/image}" alt="User Image">
+        <div class="header">
+            <h1 th:text="'Welcome, ' + ${mentor.firstName}">Welcome</h1>
+        </div>
+
+        <div class="user-image">
+            <div class="image-container">
+                <div>
+                    <img src="../../static/assets/AdminImage.jpeg" th:src="@{/mentor/profile-page/image}" alt="User Image">
+                </div>
+                <div class="user-rank">
+                    <p>Mentor</p>
+                </div>
             </div>
-            <div class="user-rank">
-                <p>MENTOR</p>
+
+        </div>
+        <div class="admin-links">
+            <div class="profile-icon" th:onclick="changePassword('mentor')">
+                <p><i class="fa fa-unlock-alt fa-3x"></i></p>
+                <p>Change Password</p>
+            </div>
+            <div class="profile-icon" th:onclick="uploadImage('mentor')">
+                <p><i class="fa fa-image fa-3x"></i></p>
+                <p>Upload Image</p>
+            </div>
+        </div>
+        <div class="student-stats">
+            <table>
+                <thead>
+                <tr>
+                    <th class="table-header">ID</th>
+                    <th class="table-header">Class</th>
+                    <th class="table-header"># Students</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="course : ${mentor.courses} ">
+                    <td th:text="${course.id}"></td>
+                    <td th:text="${course.name}"></td>
+                    <td th:text="${course.students.size()}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    <div class="management">
+        <div class="management-header">
+            <h2>Manage</h2>
+        </div>
+        <div class="management-content">
+            <div class="action-item" onclick="goToStudents()" th:onclick="goToStudents()">
+                <a><i class="fa fa-graduation-cap fa-4x"></i><br><span>Students</span></a>
+            </div>
+            <div class="action-item" onclick="goToQuests()" th:onclick="goToQuests()">
+                <a><i class="fa fa-diamond fa-4x"></i><br><span>Quests</span></a>
+            </div>
+            <div class="action-item" th:onclick="goToQuestsReview()">
+                <a><i class="fa fa-check-circle fa-4x"></i><br><span>Review Quests</span></a>
+            </div>
+            <div class="action-item">
+                <a><i class="fa fa-university fa-4x"></i><br><span>Ranks</span></a>
             </div>
         </div>
     </div>
 
-    <div class="user-data">
-        <div class="info-block">
-<!--            <p>Module</p>-->
-<!--            <p th:text="${student.module}" class="bold">Web</p>-->
-        </div>
-<!--        <hr class="solid">-->
-<!--        <div class="info-block">-->
-<!--            <p>Account:</p>-->
-<!--            <p th:text="${student.currentBalance}" class="bold">400 cc</p>-->
 
-<!--        </div>-->
-<!--        <hr class="solid">-->
-<!--        <div class="info-block">-->
-<!--            <p>Total earnings:</p>-->
-<!--            <p th:text="${student.totalEarnings}" class="bold">1250 cc</p>-->
-<!--        </div>-->
-    </div>
-    <div class="user-buttons">
-        <a class="button-cta" href="#">Edit Profile</a>
-        <a class="button-cta" href="#" th:href="@{/profile-page}">Upload Image</a>
-        <a class="button-cta" href="#" th:href="@{/items}">Items</a>
-        <a class="button-cta" href="#" th:href="@{/quests}">Edit Quests</a>
-        <a class="button-cta" href="#" th:href="@{/student-quests/review}">Review Quests</a>
-        <a class="button-cta" href="#" th:href="@{/student/management}">Manage Students</a>
-        <a class="button-cta" href="#" th:href="@{/rank/management}">Manage Ranks</a>
-    </div>
-</div>
-<!--<div class="backpack">-->
-<!--    <div class="aux-container">-->
-<!--        <p class="container-title">Backpack</p>-->
-<!--        <div th:if="${studentItems.isEmpty()}" class="user-info-item">-->
-<!--            <p>Empty</p>-->
-<!--        </div>-->
-<!--        <div th:if="${not studentItems.isEmpty()}" class="user-info-item">-->
-<!--            <ul th:each="studentItem : ${studentItems} ">-->
-<!--                <li th:text="${studentItem.item.name}"></li>-->
-<!--            </ul>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    <div class="aux-container">-->
-<!--        <p class="container-title">Completed assignments</p>-->
-<!--        <div class="user-info-item">Assignments</div>-->
-<!--    </div>-->
-<!--</div>-->
+    <!-- End of page content-->
 
-
-
-<!-- End of page content-->
-
-<script src="../../static/js/footer.js" th:src="@{/js/footer.js}"></script>
-<script src="../../static/js/redirects.js" th:src="@{/js/redirects.js}"></script>
+    <script src="../../static/js/footer.js" th:src="@{/js/footer.js}"></script>
+    <script src="../../static/js/redirects.js" th:src="@{/js/redirects.js}"></script>
 
 </body>
 

@@ -95,11 +95,6 @@ label {
     margin-top: 0.5em;
 }
 
-#qform {
-    display: flex;
-    flex-direction: column;
-}
-
 #qform-queries {
     display: flex;
     flex-direction: column;

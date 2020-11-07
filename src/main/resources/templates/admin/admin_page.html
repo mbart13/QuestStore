@@ -34,11 +34,11 @@
 
         </div>
         <div class="admin-links">
-            <div class="profile-icon" onclick="changePassword()" th:onclick="changePassword()">
+            <div class="profile-icon" th:onclick="changePassword('admin')">
                 <p><i class="fa fa-unlock-alt fa-3x"></i></p>
                 <p>Change Password</p>
             </div>
-            <div class="profile-icon" onclick="uploadImage()" th:onclick="uploadImage()">
+            <div class="profile-icon" onclick="uploadImage()" th:onclick="uploadImage('admin')">
                 <p><i class="fa fa-image fa-3x"></i></p>
                 <p>Upload Image</p>
             </div>

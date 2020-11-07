@@ -26,12 +26,12 @@ function goToUsersNew() {
     window.location.replace("/users/new");
 }
 
-function changePassword() {
-    window.location.replace('/admin/profile-page/edit');
+function changePassword(role) {
+    window.location.replace(`/${role}/profile-page/edit`);
 }
 
-function uploadImage() {
-    window.location.replace('/admin/profile-page/image-form');
+function uploadImage(role) {
+    window.location.replace(`/${role}/profile-page/image-form`);
 }
 
 function goToLostPassword() {
@@ -52,4 +52,15 @@ function goToRanksNew() {
 
 function goToRanksList() {
     window.location.replace("/rank/management");
+}
+function goToStudents() {
+    window.location.replace("/student/management");
+}
+
+function goToQuests() {
+    window.location.replace("/quests");
+}
+
+function goToQuestsReview() {
+    window.location.replace("/student-quests/review");
 }

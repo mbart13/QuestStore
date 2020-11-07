@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Browse quests </title>
+    <title>Manage quests</title>
     <link rel="stylesheet" href="../../static/css/styles.css" th:href="@{/css/styles.css}">
     <link rel="stylesheet" href="../../static/css/browseQuestPage.css" th:href="@{/css/browseQuestPage.css}">
 </head>
@@ -38,6 +38,7 @@
                     </svg>
                     <div class="qbasic-info">
                         <p class="short-description"><span th:text="${quest.shortDescription}">quest shortDescription</span></p>
+                        <p th:if="${!quest.isExtra()}" class="short-description">Module: <span th:text="${quest.module}">quest shortDescription</span></p>
                         <form class="qsubmit" action="#" th:action="@{quests/{id}(id=${quest.id})}" method="get">
                             <button type="submit">Edit quest</button>
                         </form>

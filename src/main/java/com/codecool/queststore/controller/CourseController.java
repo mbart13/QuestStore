@@ -73,7 +73,7 @@ public class CourseController {
     public String deleteClass(@PathVariable Long id) {
         Course course = courseService.findById(id);
         course.removeMentorsFromCourse();
-        course.removeStudentsFromClass();
+        course.removeStudentsFromCourse();
         courseService.delete(course);
         return REDIRECT_TO_COURSES;
     }
