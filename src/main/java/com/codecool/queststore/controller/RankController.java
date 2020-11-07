@@ -20,7 +20,6 @@ import javax.validation.Valid;
 public class RankController {
 
     private final RankService rankService;
-    private static final String REDIRECT_TO_RANKS = "redirect:rank/management";
 
 
     @GetMapping("/management")
@@ -37,7 +36,7 @@ public class RankController {
     }
 
     @PostMapping(value = "management")
-    public String createRank(@ModelAttribute @Valid RankDto rankDto, BindingResult bindingResult) {
+    public String createRank(@ModelAttribute @Valid RankDto rankDto, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             return "rank/create_rank_form";
         }
@@ -47,7 +46,10 @@ public class RankController {
         rank.setRequiredCurrency(rankDto.getRequiredCurrency());
 
         rankService.save(rank);
-        return REDIRECT_TO_RANKS;
+        model.addAttribute("ranks" ,rankService.showAllRanks());
+
+
+        return "rank/management";
     }
 
     @GetMapping("edit/{id}")
@@ -55,17 +57,14 @@ public class RankController {
         Rank rank = null;
         try {
             rank = rankService.findById(id);
+            RankDto rankDto = new RankDto();
+            rankDto.setId(rank.getId());
+            rankDto.setName(rank.getName());
+            rankDto.setRequiredCurrency(rank.getRequiredCurrency());
+            model.addAttribute("rankDto" ,rankDto);
         } catch (RankNotFoundException e) {
             log.info(e.getMessage());
         }
-        RankDto rankDto = new RankDto();
-        rankDto.setId(rank.getId());
-        rankDto.setName(rank.getName());
-        rankDto.setRequiredCurrency(rank.getRequiredCurrency());
-        model.addAttribute("rankDto" ,rankDto);
-
-
-        model.addAttribute("rankDto", rankDto);
 
         return "rank/edit_rank_form";
     }
@@ -76,7 +75,6 @@ public class RankController {
 
         if (!bindingResult.hasErrors()) {
             Rank rank = rankService.findById(rankDto.getId());
-//            rankService.deleteRank(rank);
             rank.setId(rankDto.getId());
             rank.setName(rankDto.getName());
             rank.setRequiredCurrency(rankDto.getRequiredCurrency());
