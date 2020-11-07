@@ -68,13 +68,13 @@
             <h2>Data</h2>
         </div>
         <div class="management-content">
-            <div class="action-item" onclick="goToUsers()" th:onclick="goToUsers()">
+            <div class="action-item" th:onclick="goToUsers()">
                 <a><i class="fa fa-user fa-4x"></i><br><span>Users</span></a>
             </div>
-            <div class="action-item" onclick="goToClasses()" th:onclick="goToClasses()">
+            <div class="action-item" th:onclick="goToClasses()">
                 <a><i class="fa fa-users fa-4x"></i><br><span>Classes</span></a>
             </div>
-            <div class="action-item">
+            <div class="action-item" th:onclick="goToRanksList()">
                 <a><i class="fa fa-university fa-4x"></i><br><span>Ranks</span></a>
             </div>
 

@@ -20,14 +20,14 @@ public class LoginRedirectController {
         RedirectView redirectView = new RedirectView();
         String role =  authResult.getAuthorities().toString();
 
-        if(role.contains(ADMIN.getRoleName())){
+        if(role.contains(ADMIN.getDbName())){
             redirectView.setUrl("admin/profile-page");
 
         }
-        else if(role.contains(STUDENT.getRoleName())) {
+        else if(role.contains(STUDENT.getDbName())) {
             redirectView.setUrl("student/profile-page");
         }
-        else if(role.contains(MENTOR.getRoleName())) {
+        else if(role.contains(MENTOR.getDbName())) {
             redirectView.setUrl("mentor/profile-page");
         }
         return redirectView;

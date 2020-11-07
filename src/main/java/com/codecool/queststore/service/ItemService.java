@@ -1,5 +1,6 @@
 package com.codecool.queststore.service;
 
+import com.codecool.queststore.exceptions.ItemNotFoundException;
 import com.codecool.queststore.model.Item;
 import com.codecool.queststore.repository.ItemRepository;
 import lombok.AllArgsConstructor;
@@ -18,6 +19,7 @@ public class ItemService {
     }
 
     public Item findById(Long id) {
-        return itemRepository.findById(id).orElseThrow(() -> new RuntimeException(String.format("Item with id = %d was not found", id)));
+        return itemRepository.findById(id).orElseThrow(() ->
+                new ItemNotFoundException(String.format("Item with id = %d was not found", id)));
     }
 }
