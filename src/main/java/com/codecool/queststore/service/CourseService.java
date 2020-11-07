@@ -8,6 +8,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @AllArgsConstructor
 @Service
@@ -31,5 +32,9 @@ public class CourseService {
 
     public void delete(Course course) {
         courseRepository.delete(course);
+    }
+
+    public Set<Course> findByMentorUsername(Long mentorID) {
+        return courseRepository.findByMentorUsername(mentorID);
     }
 }
