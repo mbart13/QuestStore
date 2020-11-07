@@ -24,8 +24,8 @@
                 <div class="details details-left">
                     <h2 th:text="${item.description}">Description of the item</h2>
                     <p class="info">Type: <strong th:text="${item.type}">BASIC</strong></p>
-                    <p class="info"><span>Basic items</span>: available for individual students</p>
-                    <p><span>Extra items</span>: available only for group</p>
+<!--                    <p class="info"><span>Basic items</span>: available for individual students</p>-->
+<!--                    <p><span>Extra items</span>: available only for group</p>-->
                 </div>
                 <th:block th:switch="${studentItems.size()}">
                     <div th:case="0" class="details details-right">
@@ -43,8 +43,9 @@
                 <div class="details details-bottom">
                     <h3>Make sure you have enough coolcoins before purchase!</h3>
                     <form class="btn purchase" th:action="@{/student-items}" method="post">
-                        <button class="button-cta" th:name="item_id" th:value="${item.getId()}" type="submit"
-                           th:text="${#strings.toUpperCase(item.type) == 'BASIC'} ? 'Purchase Reward' : 'Purchase with Team'">Purchase Reward</button>
+                        <button class="button-cta" th:name="item_id" th:value="${item.getId()}" type="submit">Purchase Reward</button>
+<!--                           th:text="${#strings.toUpperCase(item.type) == 'BASIC'} ? 'Purchase Reward' : 'Purchase with Team'">Purchase Reward</button>-->
+
                     </form>
                     <div class="btn go-back">
                         <a class="button-cta" href="#" th:href="@{/items}">Go Back</a>

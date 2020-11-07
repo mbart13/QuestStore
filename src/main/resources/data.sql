@@ -79,6 +79,7 @@ values
 
 insert into mentor_courses (mentor_id, course_id)
 values
+(2, 1),
 (2, 2),
 (5, 1),
 (5, 2),

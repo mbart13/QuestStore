@@ -48,14 +48,12 @@
             <table>
                 <thead>
                 <tr>
-                    <th class="table-header">ID</th>
                     <th class="table-header">Class</th>
                     <th class="table-header"># Students</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="course : ${mentor.courses} ">
-                    <td th:text="${course.id}"></td>
                     <td th:text="${course.name}"></td>
                     <td th:text="${course.students.size()}"></td>
                 </tr>
