@@ -20,7 +20,7 @@ import javax.validation.Valid;
 public class RankController {
 
     private final RankService rankService;
-    private static final String REDIRECT_TO_RANKS = "redirect:/rank/management";
+    private static final String REDIRECT_TO_RANKS = "redirect:rank/management";
 
 
     @GetMapping("/management")
@@ -85,12 +85,9 @@ public class RankController {
             model.addAttribute("ranks" ,rankService.showAllRanks());
 
         }
-        Rank rank = rankService.findById(id);
-        rankService.deleteRank(rank);
         model.addAttribute("ranks" ,rankService.showAllRanks());
 
-
-        return "REDIRECT_TO_RANKS";
+        return "rank/management";
     }
 
     @GetMapping("/{id}/delete")
