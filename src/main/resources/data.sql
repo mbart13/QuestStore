@@ -16,8 +16,8 @@ values
 ('Spot mistake in assignment2', 500, 'At Codecool we pay a lot of attention to the quality of our assignment instructions, but mistakes still happen. You can however let us know about them and not only make the life easier for your colleagues, but also earn some CCs!', 'The default value of quest is " + reward + ", but a mentor can award more depending on your replies, especially your fix suggestion.', 'Please let us know: on which page the mistake is, what exactly is it and what is your idea to fix it?', 'Advanced');
 
 
-INSERT INTO users (id, first_name, last_name, username, email, role, password)
-VALUES
+insert into users (id, first_name, last_name, username, email, role, password)
+values
 (1, 'Noriaki', 'Kasai', 'nori', null, 'ROLE_ADMIN', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
 (2, 'Dominik', 'Starzyk', 'domi', null,'ROLE_MENTOR', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
 (3, 'Lukasz', 'Lesiuk', 'nodi', null,'ROLE_STUDENT', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
@@ -39,24 +39,34 @@ VALUES
 (19, 'Tomasz', 'Biernacki', 'tomasz1', null,'ROLE_STUDENT', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy'),
 (20, 'Konrad', 'Wallenrod', 'konrad1', null,'ROLE_MENTOR', '$2a$10$q85./aUgQSyvTI.1dypU/OUrociI5k82l0t4evmUgIYsRrB8hICdy');
 
+insert into ranks (id, name, required_currency)
+values
+(1, 'Merchant', 0),
+(2, 'Artisan', 1000),
+(3, 'Peasant',3000),
+(4, 'Ronin', 5000),
+(5, 'Samurai',8000),
+(6, 'Daimyo',12000);
+
 insert into courses (id, name)
 values
 (1, 'KRK.2019.10'),
 (2, 'KRK.2020.02');
 
-insert into students (current_balance, rank, module, total_earnings, user_id, course_id)
+insert into students (current_balance, rank_id, module, total_earnings, user_id, course_id)
 values
-(1000, 'Samurai', 'Web', 2000, 3, 2),
-(500, 'Samurai', 'Web', 2500, 4,2),
-(2200, 'Samurai', 'Web', 3200, 8, 2),
-(1500, 'Samurai', 'Web', 1500, 11, 1),
-(3000, 'Samurai', 'Web', 4300, 12, 1),
-(1700, 'Samurai', 'Web', 2000, 13, 2),
-(1500, 'Samurai', 'Web', 2000, 14, 1),
-(2500, 'Samurai', 'Web', 3500, 15, 1),
-(1500, 'Samurai', 'Web', 2000, 16, 2),
-(3000, 'Samurai', 'Web', 4000, 17, 1),
-(1500, 'Samurai', 'Web', 5000, 18, 2);
+(1000, 1, 'Web', 2000, 3, 2),
+(500, 1, 'Web', 2500, 4,2),
+(2200, 1, 'Web', 3200, 8, 2),
+(1500, 1, 'Web', 1500, 11, 1),
+(3000, 1, 'Web', 4300, 12, 1),
+(1700, 1, 'Web', 2000, 13, 2),
+(1500, 1, 'Web', 2000, 14, 1),
+(2500, 1, 'Web', 3500, 15, 1),
+(1500, 1, 'Web', 2000, 16, 2),
+(3000, 1, 'Web', 4000, 17, 1),
+(1500, 1, 'Web', 5000, 18, 2),
+(1500, 1, 'Web', 5000, 19, 2);
 
 insert into mentors (user_id)
 values
@@ -85,5 +95,7 @@ values
 (4, 'Test answer4 of the quest', 0, 2, 3),
 (5, 'This should be completed', 1, 2, 3);
 
+
 --required to get psql to work
 --SELECT setval(pg_get_serial_sequence('users', 'id'), coalesce(max(id)+1, 1), '0') FROM users;
+

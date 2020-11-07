@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../static/css/styles.css" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="../../static/assets/font-awesome-4.7.0/css/font-awesome.min.css" th:href="@{/assets/font-awesome-4.7.0/css/font-awesome.min.css}">
+    <link rel="stylesheet" href="../../static/css/form.css" th:href="@{/css/form.css}">
+    <title> Create Rank </title>
+
+</head>
+
+<body>
+    <script src="../../static/js/init.js" th:src="@{/js/init.js}"></script>
+    <script src="../../static/js/header.js" th:src="@{/js/header.js}"></script>
+
+    <!-- Page content goes here-->
+
+    <div class="form-container">
+        <h1 class="header"><i title="Go Back" th:onclick="goToRanksList()" class="fa fa-arrow-left"></i> Create Rank</h1>
+
+        <div class="form-body">
+            <div class="form">
+                <form th:action="@{/rank/management}" method="post" th:object="${rankDto}">
+                    <div class="form-item">
+                        <label for="name">Name:</label><br>
+                        <input class="input-field" id="name" th:field="*{name}"
+                               type="text" placeholder="Enter rank name" required>
+                        <p class="error" th:each="error : ${#fields.errors('name')}"
+                           th:text="${error}">Validation error</p>
+                    </div>
+                    <div class="form-item">
+                        <label for="required_currency">Required Currency:</label><br>
+                        <input class="input-field" id="required_currency" th:field="*{requiredCurrency}"
+                               type="number" placeholder="Enter required currency" required>
+                        <p class="error" th:each="error : ${#fields.errors('requiredCurrency')}"
+                           th:text="${error}">Validation error</p>
+                    </div>
+                    <button type="submit">Save Rank</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- End of page content-->
+
+    <script src="../../static/js/footer.js" th:src="@{/js/footer.js}"></script>
+    <script src="../../static/js/redirects.js" th:src="@{/js/redirects.js}"></script>
+
+</body>
+
+</html>

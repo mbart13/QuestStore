@@ -1,0 +1,126 @@
+.rank-list {
+  background: linear-gradient(125.39deg, #001513 26.03%, #550609 49.2%, #001513 67.85%);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25),
+  inset 0 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+}
+
+.rank-list .header {
+
+    color: #D3D3D3;
+    font-family: BLAME Regular, sans-serif;
+    text-align: center;
+    padding: .3em 0;
+   }
+
+.fa-plus {
+    color: #D3D3D3;
+    float: right;
+    margin-right: 0.5em;
+    margin-top: .2em;
+    transition: color .2s;
+  }
+
+
+.fa-plus:hover, .fa-arrow-left:hover {
+    color: white;
+    cursor: pointer;
+}
+
+.fa-arrow-left {
+    margin-left: 0.5em;
+    margin-top: .2em;
+    float: left;
+}
+
+.fa-sort {
+    color: white;
+}
+
+table {
+    display: table;
+    border-collapse: collapse;
+    width: 99%;
+    margin: 0 auto;
+}
+
+.table-header:hover {
+    cursor: pointer;
+    background-color: #BEBEBE;
+}
+
+th {
+    height: 40px;
+    text-align: center;
+}
+
+td {
+    height: 30px;
+    text-align: center;
+    padding: .8em;
+    border-bottom: 1px solid #D3D3D3;
+    font-size: 1rem;
+}
+
+thead {
+    background-color: #D3D3D3;
+    width: 100%;
+    padding: 2em;
+    font-size: .9rem;
+    font-weight: bold;
+    border-bottom: 1px solid #D3D3D3;
+
+}
+
+tbody {
+    background-color: white;
+    width: 100%;
+}
+
+.action-btn {
+    margin: .5em;
+}
+
+td a {
+    color: black;
+}
+
+.pagination {
+    margin: .3em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #D3D3D3;
+}
+
+.total-records {
+    text-align: left;
+    margin: .5em;
+    font-size: .8em;
+}
+
+.page-number {
+    text-align: right;
+    margin: .5em;
+    font-size: .8em;
+}
+
+.inactive, .active {
+    color: #D3D3D3;
+}
+
+.selected {
+    color: #aa2517;
+}
+.active:hover {
+    color: white;
+}
+
+.next, .prev {
+    font-size: .7em;
+}
+.actions {
+    width: 15em;
+}

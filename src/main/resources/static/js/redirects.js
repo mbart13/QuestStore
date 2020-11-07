@@ -46,6 +46,13 @@ function deleteClass(id) {
     window.location.replace(`/courses/${id}`);
 }
 
+function goToRanksNew() {
+    window.location.replace("/rank/new");
+}
+
+function goToRanksList() {
+    window.location.replace("/rank/management");
+}
 function goToStudents() {
     window.location.replace("/student/management");
 }

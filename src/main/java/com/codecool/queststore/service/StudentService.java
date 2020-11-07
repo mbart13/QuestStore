@@ -14,11 +14,17 @@ import java.util.List;
 public class StudentService {
 
     private final StudentRepository studentRepository;
+    private final RankService rankService;
     private final QuestRepository questRepository;
     private final StudentQuestService studentQuestService;
 
     public Student findByUsername(String username) {
         return studentRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("Entity not found"));
+    }
+
+    public void updateRank(Student student) {
+        student.setRank(rankService.getByEarnings(student.getTotalEarnings()));
+        save(student);
     }
 
     public Student save(Student student) {

@@ -22,25 +22,26 @@ public class Student extends User {
     @Column(name = "total_earnings")
     private int totalEarnings;
 
-    @Column(name = "rank")
-    private String rank;
-
     @Column(name = "module")
     private String module;
 
     @OneToMany(mappedBy = "student", cascade = CascadeType.REMOVE)
     private Set<Order> items = new HashSet<>();
 
+    @ManyToOne
+    @JoinColumn(name = "rank_id")
+    private Rank rank;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "course_id")
     private Course course;
 
-    public Student(User user) {
+    public Student(User user, Rank rank) {
         super(user.getId(), user.getFirstName(), user.getLastName(), user.getUsername(),
                 user.getRole(), user.getPassword(), user.getEmail(), user.getImage());
         this.currentBalance = 0;
         this.totalEarnings = 0;
-        this.rank = "Farmer";
+        this.rank = rank;
         this.module = "Intro";
     }
 

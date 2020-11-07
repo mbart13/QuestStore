@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../static/css/styles.css" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="../../static/assets/font-awesome-4.7.0/css/font-awesome.min.css" th:href="@{/assets/font-awesome-4.7.0/css/font-awesome.min.css}">
+    <link rel="stylesheet" href="../../static/css/form.css" th:href="@{/css/form.css}">
+    <title> Delete Rank </title>
+
+</head>
+
+<body>
+<script src="../../static/js/init.js" th:src="@{/js/init.js}"></script>
+<script src="../../static/js/header.js" th:src="@{/js/header.js}"></script>
+
+<!-- Page content goes here-->
+
+<div class="form-container">
+    <h1 class="header"><i title="Go Back" th:onclick="goToRanksList()" class="fa fa-arrow-left"></i>Delete</h1>
+
+    <div class="form-body">
+        <div th:if="${rank} != null" class="message">
+            <h1 class="confirmation">Do you wish to delete this rank?</h1>
+            <div class="credentials">
+                <p th:text="'ID: ' + ${rank.id}">Id</p>
+                <p th:text="'Name: ' + ${rank.name}">Name</p>
+                <p th:text="'Required Currency: ' + ${rank.requiredCurrency}">RequiredCurrency</p>
+
+            </div>
+            <form class="buttons" th:action="@{/rank/{id}(id=${rank.id})}" method="post">
+                <button class="button-cta">Delete</button>
+            </form>
+        </div>
+        <div th:unless="${rank} != null" class="message">
+            <h1 class="confirmation">Rank doesn't exist</h1>
+            <div class="credentials">
+                <p>Id</p>
+                <p>Name</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- End of page content-->
+
+<script src="../../static/js/footer.js" th:src="@{/js/footer.js}"></script>
+<script src="../../static/js/redirects.js" th:src="@{/js/redirects.js}"></script>
+
+</body>
+
+</html>

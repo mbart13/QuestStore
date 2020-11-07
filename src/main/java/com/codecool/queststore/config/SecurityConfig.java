@@ -1,6 +1,5 @@
 package com.codecool.queststore.config;
 
-import com.codecool.queststore.controller.LoggingAccessDeniedHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -46,7 +45,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                             ).hasRole("ADMIN")
                     .antMatchers(
                             "/mentor/**",
-                            "/student-quests/review"
+                            "/student-quests/review",
+                            "/rank/**"
                                 ).hasRole("MENTOR")
                     .anyRequest().authenticated()
                 .and()
