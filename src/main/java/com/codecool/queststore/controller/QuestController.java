@@ -1,5 +1,6 @@
 package com.codecool.queststore.controller;
 
+import com.codecool.queststore.model.CourseModule;
 import com.codecool.queststore.model.Student;
 import com.codecool.queststore.model.StudentQuest;
 import com.codecool.queststore.service.QuestService;
@@ -47,6 +48,7 @@ public class QuestController {
         model.addAttribute("completedBy", completedBy);
 
         if (role.contains("ROLE_MENTOR") || role.contains("ROLE_ADMIN")){
+            model.addAttribute("modules", CourseModule.values());
             return "quest/edit_quest";
         } else {
             return "quest/quest";
@@ -54,8 +56,9 @@ public class QuestController {
     }
 
     @GetMapping("create")
-    public String createQuest() {
-        return "quest/create_quest";
+    public String createQuest(Model model) {
+        model.addAttribute("modules", CourseModule.values());
+        return "quest/edit_quest";
     }
 
     @PostMapping("create")
@@ -65,11 +68,11 @@ public class QuestController {
             @RequestParam("shortDescription") String shortDescription,
             @RequestParam("details") String details,
             @RequestParam("instruction") String instruction,
-            @RequestParam("isExtra") boolean isExtra
+            @RequestParam("module") String module
           ) {
         if (questService.isInputValid(reward)) {
             int int_reward = parseInt(reward);
-            questService.addQuest(name, int_reward, shortDescription, details, instruction, isExtra);
+            questService.addQuest(name, int_reward, shortDescription, details, instruction, module);
         }
         return "redirect:/quests";
     }
@@ -81,7 +84,7 @@ public class QuestController {
                               @RequestParam("shortDescription") String shortDescription,
                               @RequestParam("details") String details,
                               @RequestParam("instruction") String instruction,
-                              @RequestParam("isExtra") boolean isExtra,
+                              @RequestParam("module") String module,
                               Authentication authResult) {
         if (questService.isInputValid(reward)){
             int int_reward = parseInt(reward);
@@ -91,7 +94,7 @@ public class QuestController {
                                      shortDescription,
                                      details,
                                      instruction,
-                                     isExtra);
+                                     module);
             return "redirect:/quests";
         } else {
             // TODO handle the result of providing wrong input

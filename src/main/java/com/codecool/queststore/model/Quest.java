@@ -21,10 +21,8 @@ public class Quest {
     private String shortDescription;
     private String details;
     private String instruction;
-    private boolean isExtra;
+    private String module;
 
-    public void setIsExtra(boolean isExtra) {
-        this.isExtra = isExtra;
-    }
+    public boolean isExtra() { return module.equals("Extra"); }
 }
 

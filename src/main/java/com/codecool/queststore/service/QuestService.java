@@ -22,7 +22,7 @@ public class QuestService {
         return questRepository.findAll();
     }
 
-    public Object showExtraQuests() { return questRepository.findByIsExtra(true); }
+    public Object showExtraQuests() { return questRepository.findByModule("Extra"); }
 
     public Quest findById(Long id) {
         return questRepository.findById(id).orElseThrow(() -> new RuntimeException("Entity not found"));
@@ -36,14 +36,14 @@ public class QuestService {
                             String shortDescription,
                             String details,
                             String instruction,
-                            boolean isExtra) {
+                            String module) {
         Quest quest = findById(id);
         quest.setName(name);
         quest.setReward(reward);
         quest.setShortDescription(shortDescription);
         quest.setDetails(details);
         quest.setInstruction(instruction);
-        quest.setIsExtra(isExtra);
+        quest.setModule(module);
         this.save(quest);
     }
 
@@ -70,7 +70,7 @@ public class QuestService {
                        String shortDescription,
                        String details,
                        String instruction,
-                       boolean isExtra) {
+                       String module) {
 
         Quest quest = new Quest();
         quest.setName(name);
@@ -78,7 +78,7 @@ public class QuestService {
         quest.setShortDescription(shortDescription);
         quest.setDetails(details);
         quest.setInstruction(instruction);
-        quest.setIsExtra(isExtra);
+        quest.setModule(module);
 
         this.save(quest);
     }
