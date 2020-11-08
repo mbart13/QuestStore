@@ -27,10 +27,12 @@ public class StudentController {
     private final MentorService mentorService;
     private final CourseService courseService;
     private final StudentQuestService studentQuestService;
+    private final ImageService imageService;
 
     @GetMapping("profile-page")
     public String showStudentProfile(ModelMap model, Principal principal) {
         Student student = studentService.findByUsername(principal.getName());
+        imageService.setDefaultImageIfNonePresent(student);
         studentService.updateRank(student);
 
         model.addAttribute("studentItems", orderService.findByUserId(student.getId()));
