@@ -16,9 +16,9 @@ public class UserConverter {
     public User mapNewUser(UserDto userDto) {
         User user;
         String role = userDto.getRole() != null ? userDto.getRole() : "";
-        if (role.equals(MENTOR.getRoleName())) {
+        if (role.equals(MENTOR.getDbName())) {
             user = new Mentor();
-        } else if (role.equals(STUDENT.getRoleName())) {
+        } else if (role.equals(STUDENT.getDbName())) {
             user = new Student();
         } else {
             user = new User();

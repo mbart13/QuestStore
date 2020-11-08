@@ -27,7 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                    .antMatchers(
+                .antMatchers(
                         "/",
                         "/js/**",
                         "/css/**",
@@ -35,46 +35,46 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/forgotten-password/**",
                         "/register/**",
                         "/h2-console/**").permitAll()
-                    .antMatchers(
+                .antMatchers(
                         "/student/**",
                         "/items/**",
                         "/quests/**"
-                            ).hasAnyRole(ADMIN.getRoleName(), STUDENT.getRoleName(), MENTOR.getRoleName())
-                    .antMatchers(
-                            "/admin/**",
-                            "/users/**"
-                            ).hasRole(ADMIN.getRoleName())
-                    .antMatchers(
-                            "/rank/**").hasAnyRole(ADMIN.getRoleName(), MENTOR.getRoleName())
-                    .antMatchers(
-                            "/mentor/**",
-                            "/student-quests/review"
-                                ).hasRole(MENTOR.getRoleName())
-                    .anyRequest().authenticated()
+                ).hasAnyRole(ADMIN.getRoleName(), STUDENT.getRoleName(), MENTOR.getRoleName())
+                .antMatchers(
+                        "/admin/**",
+                        "/users/**"
+                ).hasRole(ADMIN.getRoleName())
+                .antMatchers(
+                        "/rank/**").hasAnyRole(ADMIN.getRoleName(), MENTOR.getRoleName())
+                .antMatchers(
+                        "/mentor/**",
+                        "/student-quests/review"
+                ).hasRole(MENTOR.getRoleName())
+                .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                    .loginPage("/login")
-                    .defaultSuccessUrl("/loginRedirect", true)
-                    .permitAll()
+                .loginPage("/login")
+                .defaultSuccessUrl("/loginRedirect", true)
+                .permitAll()
                 .and()
                 .logout()
-                    .invalidateHttpSession(true)
-                    .clearAuthentication(true)
-                    .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                    .logoutSuccessUrl("/login?logout")
-                    .permitAll()
+                .invalidateHttpSession(true)
+                .clearAuthentication(true)
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/login?logout")
+                .permitAll()
                 .and()
                 //TODO - enable csfr
                 .csrf().disable();
-                //for temp disabling security
-                http.headers().frameOptions().disable();
+        //for temp disabling security
+        http.headers().frameOptions().disable();
     }
 
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService)
-            .passwordEncoder(passwordEncoder());
+                .passwordEncoder(passwordEncoder());
     }
 
 
@@ -83,4 +83,3 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder(10);
     }
 }
-
