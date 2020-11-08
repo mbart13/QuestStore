@@ -3,10 +3,7 @@ package com.codecool.queststore.model;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -19,7 +16,9 @@ public class Quest {
     private String name;
     private int reward;
     private String shortDescription;
+    @Lob
     private String details;
+    @Lob
     private String instruction;
     private String module;
 

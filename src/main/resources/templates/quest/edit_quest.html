@@ -18,8 +18,8 @@
     <!-- Page content goes here-->
     <div id="quest" th:object="${quest}">
         <div id="qheader">
-            <input form="qform" type="text" id="name" name="name" th:value="${quest?.name}"><br>
-            <input form="qform" type="text" id="reward" name="reward" th:value="${quest?.reward}"><br>
+            <input form="qform" type="text" id="name" class="header-input" name="name" placeholder="Quest name" th:value="${quest?.name}"><br>
+            <input form="qform" type="text" id="reward" class="header-input" name="reward" placeholder="Reward" th:value="${quest?.reward}"><br>
         </div>
 
         <div id="qcontent">
