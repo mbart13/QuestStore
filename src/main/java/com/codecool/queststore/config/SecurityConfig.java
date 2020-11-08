@@ -1,6 +1,7 @@
 package com.codecool.queststore.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -15,11 +16,12 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import static com.codecool.queststore.model.Role.*;
 
 @EnableWebSecurity
+@AllArgsConstructor
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private UserDetailsService userDetailsService;
+    @Qualifier("userDetailsServiceImpl")
+    private final UserDetailsService userDetailsService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -65,8 +67,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //TODO - enable csfr
                 .csrf().disable();
                 //for temp disabling security
-                http.headers().frameOptions().disable()
-                ;
+                http.headers().frameOptions().disable();
     }
 
 

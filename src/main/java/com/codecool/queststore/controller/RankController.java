@@ -3,7 +3,6 @@ package com.codecool.queststore.controller;
 import com.codecool.queststore.dto.RankDto;
 import com.codecool.queststore.exceptions.RankNotFoundException;
 import com.codecool.queststore.model.Rank;
-import com.codecool.queststore.model.Student;
 import com.codecool.queststore.service.RankService;
 import com.codecool.queststore.service.StudentService;
 import lombok.AllArgsConstructor;
@@ -111,7 +110,6 @@ public class RankController {
         model.addAttribute("ranks" ,rankService.showAllRanks());
         return "rank/management";
     }
-
 
 }
 
