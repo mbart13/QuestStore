@@ -40,7 +40,6 @@ public class StudentController {
         model.addAttribute("studentCompletedQuests", studentQuestService.findCompletedByUserId(student.getId()));
         model.addAttribute("student", student);
 
-        //TODO move to lower level
         model.addAttribute("rank", student.getRank().getName());
         return "student/profile_page";
     }
