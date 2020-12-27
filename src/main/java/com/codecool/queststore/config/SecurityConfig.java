@@ -34,6 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/assets/**",
                         "/forgotten-password/**",
                         "/register/**",
+                        "/api/v1/**",
                         "/h2-console/**").permitAll()
                 .antMatchers(
                         "/student/**",

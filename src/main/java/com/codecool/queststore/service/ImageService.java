@@ -32,10 +32,4 @@ public class ImageService {
             log.info("Error while reading file");
         }
     }
-
-//    public MultipartFile setDefaultImageIfNonePresent(User user) {
-//        if (user.getImage() == null) {
-//            user.setImage();
-//        }
-//    }
 }

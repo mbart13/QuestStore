@@ -15,23 +15,41 @@ public class StudentQuestService {
     private final StudentQuestRepository studentQuestRepository;
     private final Random random = new Random();
 
-    public StudentQuest save(StudentQuest studentQuest) {return studentQuestRepository.save(studentQuest); }
+    public StudentQuest save(StudentQuest studentQuest) {
+        return studentQuestRepository.save(studentQuest);
+    }
 
-    public Optional<StudentQuest> findById(Long id) {return studentQuestRepository.findById(id); }
+    public Optional<StudentQuest> findById(Long id) {
+        return studentQuestRepository.findById(id);
+    }
 
-    public List<StudentQuest> findByUserId(Long id) { return studentQuestRepository.findByStudentId(id); }
+    public List<StudentQuest> findByUserId(Long id) {
+        return studentQuestRepository.findByStudentId(id);
+    }
 
-    public List<StudentQuest> showAllStudentQuests() {return studentQuestRepository.findAll(); }
+    public List<StudentQuest> showAllStudentQuests() {
+        return studentQuestRepository.findAll();
+    }
 
-    public List<StudentQuest> showUnfinishedStudentQuests() {return studentQuestRepository.findByIsCompleted(false); }
+    public List<StudentQuest> showUnfinishedStudentQuests() {
+        return studentQuestRepository.findByIsCompleted(false);
+    }
 
-    public StudentQuest showStudentQuestsById(Long id) {return studentQuestRepository.getOne(id); }
+    public StudentQuest showStudentQuestsById(Long id) {
+        return studentQuestRepository.getOne(id);
+    }
 
-    public List<StudentQuest> findOngoingedByUserId(Long id) { return studentQuestRepository.findByStudentIdAndIsCompleted(id, false); }
+    public List<StudentQuest> findOngoingedByUserId(Long id) {
+        return studentQuestRepository.findByStudentIdAndIsCompleted(id, false);
+    }
 
-    public List<StudentQuest> findCompletedByUserId(Long id) { return studentQuestRepository.findByStudentIdAndIsCompleted(id, true);}
+    public List<StudentQuest> findCompletedByUserId(Long id) {
+        return studentQuestRepository.findByStudentIdAndIsCompleted(id, true);
+    }
 
-    public List<StudentQuest> findCompletedByQuestId(Long id) { return studentQuestRepository.findByQuestIdAndIsCompleted(id, true); }
+    public List<StudentQuest> findCompletedByQuestId(Long id) {
+        return studentQuestRepository.findByQuestIdAndIsCompleted(id, true);
+    }
 
     public StudentQuest addStudentQuest(Student student, Quest quest, String answer) {
         // studentQuest creation
