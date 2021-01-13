@@ -6,3 +6,5 @@
 ![queststore4](https://user-images.githubusercontent.com/36601103/103179134-1c73c280-4889-11eb-8376-6b1937cb418f.JPG)
 ![queststore5](https://user-images.githubusercontent.com/36601103/103179135-1e3d8600-4889-11eb-8f56-1156b64619e1.JPG)
 ![queststore6](https://user-images.githubusercontent.com/36601103/103179136-20074980-4889-11eb-9fde-7f7bcaa0469f.JPG)
+![QS1](https://user-images.githubusercontent.com/36601103/104442330-2ee24180-5595-11eb-8a83-74cc32e83dd9.JPG)
+![QS2](https://user-images.githubusercontent.com/36601103/104442333-30136e80-5595-11eb-9589-cd39a91980f1.JPG)
